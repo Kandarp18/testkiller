@@ -7,13 +7,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-   <h2>Signup</h2>
-   <form method="post" action="saveuser">
-		FirstName: <input type="text" name="firstName"><br> <br>
+<h2>Forgot Password</h2>
+    <form method="get" action="forgotpwd">
 		Email: <input type="text" name="email"><br> <br>
-		Password: <input type="password" name="password"><br> <br>
-		<input type="submit" value="Signup">
+		<input type="submit" value="Reset Password">
 	</form>
-   
 </body>
 </html>

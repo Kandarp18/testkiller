@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Dashboard</title>
 </head>
 <body>
    <h2>Welcome to the main page of the website</h2>

@@ -1,6 +1,9 @@
 package com.arth.dao;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -19,5 +22,9 @@ public class RoleDao {
 		stmt.update("insert into role (rolename) values (?)",role.getRoleName());
 	}
 	
+	public List<RoleBean>  getAllRoles() {
+		List<RoleBean> roles = stmt.query("select * from role", new BeanPropertyRowMapper<RoleBean>(RoleBean.class));
+		return roles;
+	}
 	
 }

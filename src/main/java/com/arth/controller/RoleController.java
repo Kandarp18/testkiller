@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 //import org.springframework.web.bind.annotation.RequestMapping;
 //import org.springframework.web.bind.annotation.RequestMethod;
@@ -29,7 +30,7 @@ public class RoleController {
 	public String saveRole(RoleBean role) {
 		System.out.println(role.getRoleName());
         roleDao.insertRole(role);
-		return "";
+		return "redirect:/listroles";
 	}
 	
 	@GetMapping("/listroles")
@@ -39,4 +40,12 @@ public class RoleController {
 		return "ListRoles";
 	}
 
+	@GetMapping("/deleterole/{roleId}")
+	public String deleteRole(@PathVariable("roleId") int roleId) {
+		
+		
+		roleDao.deleteRole(roleId);
+		
+		return "redirect:/listroles";
+	}
 }

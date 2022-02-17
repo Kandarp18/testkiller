@@ -26,5 +26,8 @@ public class RoleDao {
 		List<RoleBean> roles = stmt.query("select * from role", new BeanPropertyRowMapper<RoleBean>(RoleBean.class));
 		return roles;
 	}
-	
+	public void deleteRole(int roleId) {
+		stmt.update("delete from role where roleid = ?",roleId);
+	}
+
 }

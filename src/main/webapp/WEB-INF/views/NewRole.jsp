@@ -10,7 +10,7 @@
 <h2>New Role</h2>
  <form method="post" action="saverole">
 		Rolename: <input type="text" name="roleName"><br> <br>
-		<input type="submit" value="Submit">
+		<input type="submit" value="Add Role">
 	</form>
 </body>
 </html>

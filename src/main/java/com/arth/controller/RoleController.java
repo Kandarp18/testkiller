@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 //import org.springframework.web.bind.annotation.RequestMapping;
 //import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.arth.bean.RoleBean;
 import com.arth.dao.RoleDao;
@@ -46,6 +47,21 @@ public class RoleController {
 		
 		roleDao.deleteRole(roleId);
 		
+		return "redirect:/listroles";
+	}
+	
+	@GetMapping("/editrole")
+	public String editRole(@RequestParam("roleId") int roleId, Model model) {
+
+		RoleBean role = roleDao.getRoleById(roleId);
+		model.addAttribute("role", role);
+		return "EditRole";
+
+	}
+	
+	@PostMapping("/updaterole")
+	public String updateRole(RoleBean role) {
+		roleDao.updateRole(role);
 		return "redirect:/listroles";
 	}
 }

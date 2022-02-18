@@ -10,7 +10,7 @@
 <h2>Forgot Password</h2>
     <form method="get" action="forgotpwd">
 		Email: <input type="text" name="email"><br> <br>
-		<input type="submit" value="Reset Password">
+		<input type="submit" value="Submit">
 	</form>
 </body>
 </html>

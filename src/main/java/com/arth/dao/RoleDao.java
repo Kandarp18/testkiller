@@ -29,5 +29,16 @@ public class RoleDao {
 	public void deleteRole(int roleId) {
 		stmt.update("delete from role where roleid = ?",roleId);
 	}
+	public RoleBean getRoleById(int roleId) {
+
+		RoleBean role = stmt.queryForObject("select *  from role where roleid = ? ",
+				new BeanPropertyRowMapper<RoleBean>(RoleBean.class), new Object[] { roleId });
+
+		return role;
+	}
+
+	public void updateRole(RoleBean role) {
+		stmt.update("update role set rolename = ? where roleid = ? ", role.getRoleName(), role.getRoleId());
+	}
 
 }

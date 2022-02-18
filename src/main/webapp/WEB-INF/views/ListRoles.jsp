@@ -9,7 +9,7 @@
 </head>
 <body>
 <h2>List Roles</h2>
-<a href="newrole">Add Role</a>
+<a href="newrole">Add Role</a><br><br>
 <table border="1">
 <tr>
 <th>RoleId</th>

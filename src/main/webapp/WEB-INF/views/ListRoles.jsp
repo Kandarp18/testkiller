@@ -22,7 +22,6 @@
 <td>${role.roleName }</td>
 <td><a href="deleterole/${role.roleId}">Delete</a>|
 <a href="editrole?roleId=${role.roleId}">Edit</a>
-
 </td>
 </tr>
 </c:forEach>

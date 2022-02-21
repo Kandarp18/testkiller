@@ -22,13 +22,15 @@ public class RoleDao {
 		stmt.update("insert into role (rolename) values (?)",role.getRoleName());
 	}
 	
-	public List<RoleBean>  getAllRoles() {
+	public List<RoleBean> getAllRoles() {
 		List<RoleBean> roles = stmt.query("select * from role", new BeanPropertyRowMapper<RoleBean>(RoleBean.class));
 		return roles;
 	}
+	
 	public void deleteRole(int roleId) {
 		stmt.update("delete from role where roleid = ?",roleId);
 	}
+	
 	public RoleBean getRoleById(int roleId) {
 
 		RoleBean role = stmt.queryForObject("select *  from role where roleid = ? ",

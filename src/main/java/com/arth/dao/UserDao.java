@@ -27,4 +27,15 @@ public class UserDao {
 	public void deleteUser(int userId) {
 		stmt.update("delete from users where userid = ?",userId);
 	}
+	public UserBean getUserByEmail(String email) {
+		UserBean dbUser = null;
+
+		try {
+			dbUser = stmt.queryForObject("select * from users where email = ? ",
+					new BeanPropertyRowMapper<UserBean>(UserBean.class), new Object[] { email });
+		} catch (Exception e) {
+
+		}
+		return dbUser;
+	}
 }

@@ -13,6 +13,9 @@
 		Password: <input type="password" name="password"><br> <br>
 		<input type="submit" value="Login">
 	</form>
-	${error }
+	${error}${msg }
+<br>
+<a href="newuser">New User?</a> | 
+<a href="forgotpassword">Forgot Password?</a>
 </body>
 </html>

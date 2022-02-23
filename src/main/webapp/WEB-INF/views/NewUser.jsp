@@ -10,6 +10,7 @@
 <title>New User</title>
 </head>
 <body>
+<h2>Sign Up!</h2>
 
 <form action="saveuser" method="post">
 	FirstName : <input type="text" name="firstName"/><br><br>

@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>New Role</title>
+<title>Testkiller</title>
 </head>
 <body>
 <h2>New Role</h2>

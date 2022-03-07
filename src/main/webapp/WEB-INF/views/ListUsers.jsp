@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>List Users</title>
+<title>Testkiller</title>
 </head>
 <body>
 	<h2>List Users</h2>
@@ -17,7 +17,8 @@
 			<th>UserId</th>
 			<th>FirstName</th>
 			<th>Email</th>
-			<th>Password</th>
+		    <th>Password</th>
+		    <th>Gender</th>
 			<th>RoleName</th>
 			<th>Action</th>
 		</tr>
@@ -28,6 +29,7 @@
 				<td>${u.firstName}</td>
 				<td>${u.email}</td>
 				<td>${u.password}</td>
+				<td>${u.gender }</td>
 				<td>${u.roleName}</td>
 				<td><a href="deleteuser/${u.userId}">Delete</a></td>
 			</tr>

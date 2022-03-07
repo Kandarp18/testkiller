@@ -1,65 +1,71 @@
-<nav class="pcoded-navbar" navbar-theme="theme1"
-	active-item-theme="theme1" sub-item-theme="theme2"
-	active-item-style="style0" pcoded-navbar-position="fixed">
-	<div class="nav-list">
-		<div class="slimScrollDiv"
-			style="position: relative; overflow: hidden; width: 100%; height: 100%;">
-			<div class="pcoded-inner-navbar main-menu"
-				style="overflow: hidden; width: 100%; height: 100%;">
-				<div class="pcoded-navigation-label" menu-title-theme="theme1">Navigation</div>
+  <!-- Sidebar -->
+        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
+            <!-- Sidebar - Brand -->
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="dashboard.php">
+                <div class="sidebar-brand-icon rotate-n-15">
+                    
+                </div>
+                <i class="fas fa-laugh-wink"></i>
+                <div class="sidebar-brand-text mx-3">Admin</div>
+            </a>
 
+            <!-- Divider -->
+            <hr class="sidebar-divider my-0">
 
+            <!-- Nav Item - Dashboard -->
+            <li class="nav-item">
+                <a class="nav-link" href="class">
+                    <i class="fas fa-door-open"></i>
+                    <span>Classes</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#" data-toggle="collapse" data-target="#subject_collapse" aria-expanded="false" aria-controls="subject_collapse">
+                    <i class="fas fa-book-open"></i>
+                    <span>Subject</span>
+                </a>
+                <div id="subject_collapse" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar" style="">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="subject">Subject</a>
+                        <a class="collapse-item" href="assign_subject">Assign Subject</a>
+                    </div>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#" data-toggle="collapse" data-target="#student_collapse" aria-expanded="false" aria-controls="student_collapse">
+                    <i class="fas fa-address-book"></i>
+                    <span>Student</span>
+                </a>
+                <div id="student_collapse" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar" style="">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="student">Student</a>
+                        <a class="collapse-item" href="assign_student">Assign Student</a>
+                    </div>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#" data-toggle="collapse" data-target="#exam_collapse" aria-expanded="false" aria-controls="exam_collapse">
+                    <i class="fas fa-edit"></i>
+                    <span>Exam</span>
+                </a>
+                <div id="exam_collapse" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar" style="">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="exam">Exam</a>
+                        <a class="collapse-item" href="exam_subject">Exam Subject</a>
+                        <a class="collapse-item" href="exam_subject_question">Question</a>
+                    </div>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="listusers">
+                    <i class="fas fa-users-cog"></i>
+                    <span>User</span></a>
+            </li>
+            
+            <!-- Sidebar Toggler (Sidebar) -->
+            <div class="text-center d-none d-md-inline">
+                <button class="rounded-circle border-0" id="sidebarToggle"></button>
+            </div>
 
-				<ul class="pcoded-item pcoded-left-item" item-border="true"
-					item-border-style="solid" subitem-border="false">
-					<li class="pcoded-hasmenu" dropdown-icon="style1"
-						subitem-icon="style1"><a href="javascript:void(0)"
-						class="waves-effect waves-dark"> <span class="pcoded-micon">
-								<i class="feather icon-clipboard"></i>
-						</span> <span class="pcoded-mtext">Form</span>
-					</a>
-						<ul class="pcoded-submenu">
-							<li class=" "><a href="form-elements-component.html"
-								class="waves-effect waves-dark"> <span class="pcoded-mtext">Components</span>
-							</a></li>
-							<li class=" "><a href="form-elements-add-on.html"
-								class="waves-effect waves-dark"> <span class="pcoded-mtext">Add-On</span>
-							</a></li>
-							<li class=" "><a href="form-elements-advance.html"
-								class="waves-effect waves-dark"> <span class="pcoded-mtext">Advance</span>
-							</a></li>
-							<li class=" "><a href="form-validation.html"
-								class="waves-effect waves-dark"> <span class="pcoded-mtext">Validation</span>
-							</a></li>
-						</ul></li>
-
-					<li class=" "><a href="listroles"
-						class="waves-effect waves-dark"> <span class="pcoded-micon">
-								<i class="feather icon-feather"></i>
-						</span> <span class="pcoded-mtext">List Roles</span>
-					</a></li>
-
-
-
-				</ul>
-
-
-
-
-
-
-
-
-
-
-
-
-			</div>
-			<div class="slimScrollBar"
-				style="background: rgb(0, 0, 0); width: 5px; position: absolute; top: 0px; opacity: 0.4; display: none; border-radius: 7px; z-index: 99; right: 1px; height: 867px;"></div>
-			<div class="slimScrollRail"
-				style="width: 5px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; background: rgb(51, 51, 51); opacity: 0.2; z-index: 90; right: 1px;"></div>
-		</div>
-	</div>
-</nav>
+        </ul>
+        <!-- End of Sidebar -->

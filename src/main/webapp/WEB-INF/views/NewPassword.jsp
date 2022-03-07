@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>New Password</title>
+<title>Testkiller</title>
 </head>
 <body>
 <h2>Update Password</h2>

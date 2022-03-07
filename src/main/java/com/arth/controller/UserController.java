@@ -35,30 +35,26 @@ public class UserController {
 
 	@PostMapping("/saveuser")
 	public String saveUser(UserBean user) {
-		String plainPassword = user.getPassword(); 
-		String encPassword = bCryptPasswordEncoder.encode(plainPassword);//10 
+		String plainPassword = user.getPassword();
+		String encPassword = bCryptPasswordEncoder.encode(plainPassword);// 10
 		user.setPassword(encPassword);
 		userDao.addUser(user);
 		return "redirect:/getallusers";
 	}
-	
+
 	@GetMapping("/getallusers")
-	public String getAllUsers(Model model)
-	{
-		List<UserBean> users =  userDao.getAllUsers();
-		model.addAttribute("users",users);
+	public String getAllUsers(Model model) {
+		List<UserBean> users = userDao.getAllUsers();
+		model.addAttribute("users", users);
 		return "ListUsers";
 	}
-	
+
 	@GetMapping("/deleteuser/{userId}")
 	public String deleteUser(@PathVariable("userId") int userId) {
-		
-		
+
 		userDao.deleteUser(userId);
-		
+
 		return "redirect:/getallusers";
 	}
-	
+
 }
-
-

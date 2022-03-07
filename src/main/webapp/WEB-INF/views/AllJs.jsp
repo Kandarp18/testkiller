@@ -1,41 +1,32 @@
-<script type="text/javascript" src="js/jquery.min.js"></script>
-	<script type="text/javascript" src="js/jquery-ui.min.js"></script>
-	<script type="text/javascript" src="js/popper.min.js"></script>
-	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<!-- Bootstrap core JavaScript-->
+    <script src="/vendor/jquery/jquery.min.js"></script>
+    <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-	<script src="js/waves.min.js" type="text/javascript"></script>
+    <!-- Core plugin JavaScript-->
+    <script src="/vendor/jquery-easing/jquery.easing.min.js"></script>
 
-	<script type="text/javascript" src="js/jquery.slimscroll.js"></script>
+    <!-- Custom scripts for all pages-->
+    <script src="/js/sb-admin-2.min.js"></script>
 
-	<script type="text/javascript" src="js/jquery.datatables.min.js"></script>
+    <!-- Page level plugins -->
+    <script src="/vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="/vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
-	<script src="js/jquery.flot.js" type="text/javascript"></script>
-	<script src="js/jquery.flot.categories.js" type="text/javascript"></script>
-	<script src="js/curvedlines.js" type="text/javascript"></script>
-	<script src="js/jquery.flot.tooltip.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="/vendor/parsley/dist/parsley.min.js"></script>
 
-	<script src="js/amcharts.js" type="text/javascript"></script>
-	<script src="js/serial.js" type="text/javascript"></script>
-	<script src="js/light.js" type="text/javascript"></script>
+    <script type="text/javascript" src="/vendor/bootstrap-select/bootstrap-select.min.js"></script>
 
-	<script src="js/markerclusterer.js" type="text/javascript"></script>
-	<script type="text/javascript"
-		src="https://maps.google.com/maps/api/js?sensor=true"></script>
-	<script type="text/javascript" src="js/gmaps.js"></script>
+    <script type="text/javascript" src="/vendor/datepicker/bootstrap-datepicker.js"></script>
 
-	<script src="js/pcoded.min.js" type="text/javascript"></script>
-	<script src="js/vertical-layout.min.js" type="text/javascript"></script>
-	<script type="text/javascript" src="js/crm-dashboard.min.js"></script>
-	<script type="text/javascript" src="js/script.min.js"></script>
+    <script type="text/javascript" src="/vendor/datetimepicker/bootstrap-datetimepicker.js"></script>
 
-	<script async=""
-		src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"
-		type="text/javascript"></script>
-	<script type="text/javascript">
-		window.dataLayer = window.dataLayer || [];
-		function gtag() {
-			dataLayer.push(arguments);
-		}
-		gtag('js', new Date());
-		gtag('config', 'UA-23581568-13');
-	</script>
+    <script>
+          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+          ga('create', 'UA-87739877-1', 'auto');
+          ga('send', 'pageview');
+
+        </script>

@@ -1,247 +1,183 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html>
-<html>
-<head>
 
-<title>Admin Dashboard</title>
-<jsp:include page="AllCss.jsp"></jsp:include>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script data-ad-client="ca-pub-4529508631166774" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Testkiller</title>
+
+    <jsp:include page="AllCss.jsp"></jsp:include>
 </head>
 
-<body themebg-pattern="theme1">
+<body id="page-top">
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+<jsp:include page="AdminSideBar.jsp"></jsp:include>
+               <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
 
 
+                   <jsp:include page="AdminHeader.jsp"></jsp:include>
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+                   
+                    
+                    <!-- Page Heading -->
+                    <h1 class="h3 mb-4 text-gray-800">Dashboard</h1>
 
-	<div id="pcoded" class="pcoded iscollapsed" nav-type="st2"
-		theme-layout="vertical" vertical-placement="left"
-		vertical-layout="wide" pcoded-device-type="desktop"
-		vertical-nav-type="expanded" vertical-effect="shrink"
-		vnavigation-view="view1" fream-type="theme1" layout-type="light">
-		<div class="pcoded-overlay-box"></div>
-		<div class="pcoded-container navbar-wrapper">
+                    <!-- Content Row -->
+                    <div class="row row-cols-5">
+                        <!-- Earnings (Monthly) Card Example -->
+                        <div class="col mb-4">
+                            <div class="card border-left-primary shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                                Today Result Publish</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">145</div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
+                        <!-- Earnings (Monthly) Card Example -->
+                        <div class="col mb-4">
+                            <div class="card border-left-primary shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                                Total Exam</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">433</div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
+                        <!-- Earnings (Monthly) Card Example -->
+                        <div class="col mb-4">
+                            <div class="card border-left-primary shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Total Student
+                                            </div>
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col-auto">
+                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">173</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
-			<jsp:include page="AdminHeader.jsp"></jsp:include>
+                        <!-- Pending Requests Card Example -->
+                        <div class="col mb-4">
+                            <div class="card border-left-primary shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                                Total Subject</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">119</div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>     
+                        <div class="col mb-4">
+                            <div class="card border-left-primary shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                                Total Classes</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">109</div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> 
+                    </div>
 
+                                </div>
+                <!-- /.container-fluid -->
 
+            </div>
+            <!-- End of Main Content -->
 
+            <!-- Footer -->
+            <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>Copyright &copy; Testkiller 2022</span>
+                    </div>
+                </div>
+            </footer>
+            <!-- End of Footer -->
 
-			<div class="pcoded-main-container" style="margin-top: 70.3906px;">
-				<div class="pcoded-wrapper">
+        </div>
+        <!-- End of Content Wrapper -->
 
-					<jsp:include page="AdminSideBar.jsp"></jsp:include>
+    </div>
+    <!-- End of Page Wrapper -->
 
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
 
-					<div class="pcoded-content">
-
-						<div class="page-header card">
-							<div class="row align-items-end">
-								<div class="col-lg-8">
-									<div class="page-header-title">
-										<i class="feather icon-home bg-c-blue"></i>
-										<div class="d-inline">
-											<h5>Dashboard CRM</h5>
-											<span>lorem ipsum dolor sit amet, consectetur
-												adipisicing elit</span>
-										</div>
-									</div>
-								</div>
-								<div class="col-lg-4">
-									<div class="page-header-breadcrumb">
-										<ul class=" breadcrumb breadcrumb-title">
-											<li class="breadcrumb-item"><a href="index.html"><i
-													class="feather icon-home"></i></a></li>
-											<li class="breadcrumb-item"><a href="#!">Dashboard
-													CRM</a></li>
-										</ul>
-									</div>
-								</div>
-							</div>
-						</div>
-
-						<div class="pcoded-inner-content">
-							<div class="main-body">
-								<div class="page-wrapper">
-									<div class="page-body">
-
-										<div class="row">
-
-											<div class="col-xl-3 col-md-6">
-												<div class="card prod-p-card card-red">
-													<div class="card-body">
-														<div class="row align-items-center m-b-30">
-															<div class="col">
-																<h6 class="m-b-5 text-white">Total Profit</h6>
-																<h3 class="m-b-0 f-w-700 text-white">$1,783</h3>
-															</div>
-															<div class="col-auto">
-																<i class="fas fa-money-bill-alt text-c-red f-18"></i>
-															</div>
-														</div>
-														<p class="m-b-0 text-white">
-															<span class="label label-danger m-r-10">+11%</span>From
-															Previous Month
-														</p>
-													</div>
-												</div>
-											</div>
-											<div class="col-xl-3 col-md-6">
-												<div class="card prod-p-card card-blue">
-													<div class="card-body">
-														<div class="row align-items-center m-b-30">
-															<div class="col">
-																<h6 class="m-b-5 text-white">Total Orders</h6>
-																<h3 class="m-b-0 f-w-700 text-white">15,830</h3>
-															</div>
-															<div class="col-auto">
-																<i class="fas fa-database text-c-blue f-18"></i>
-															</div>
-														</div>
-														<p class="m-b-0 text-white">
-															<span class="label label-primary m-r-10">+12%</span>From
-															Previous Month
-														</p>
-													</div>
-												</div>
-											</div>
-											<div class="col-xl-3 col-md-6">
-												<div class="card prod-p-card card-green">
-													<div class="card-body">
-														<div class="row align-items-center m-b-30">
-															<div class="col">
-																<h6 class="m-b-5 text-white">Average Price</h6>
-																<h3 class="m-b-0 f-w-700 text-white">$6,780</h3>
-															</div>
-															<div class="col-auto">
-																<i class="fas fa-dollar-sign text-c-green f-18"></i>
-															</div>
-														</div>
-														<p class="m-b-0 text-white">
-															<span class="label label-success m-r-10">+52%</span>From
-															Previous Month
-														</p>
-													</div>
-												</div>
-											</div>
-											<div class="col-xl-3 col-md-6">
-												<div class="card prod-p-card card-yellow">
-													<div class="card-body">
-														<div class="row align-items-center m-b-30">
-															<div class="col">
-																<h6 class="m-b-5 text-white">Product Sold</h6>
-																<h3 class="m-b-0 f-w-700 text-white">6,784</h3>
-															</div>
-															<div class="col-auto">
-																<i class="fas fa-tags text-c-yellow f-18"></i>
-															</div>
-														</div>
-														<p class="m-b-0 text-white">
-															<span class="label label-warning m-r-10">+52%</span>From
-															Previous Month
-														</p>
-													</div>
-												</div>
-											</div>
-
-
-											<div class="col-xl-6 col-md-12">
-												<div class="card latest-update-card">
-													<div class="card-header">
-														<h5>What's New</h5>
-														<div class="card-header-right">
-															<ul class="list-unstyled card-option">
-																<li class="first-opt"><i
-																	class="feather icon-chevron-left open-card-option"></i></li>
-																<li><i class="feather icon-maximize full-card"></i></li>
-																<li><i class="feather icon-minus minimize-card"></i></li>
-																<li><i class="feather icon-refresh-cw reload-card"></i></li>
-																<li><i class="feather icon-trash close-card"></i></li>
-																<li><i
-																	class="feather icon-chevron-left open-card-option"></i></li>
-															</ul>
-														</div>
-													</div>
-													<div class="card-block">
-														<div class="latest-update-box">
-															<div class="row p-t-20 p-b-30">
-																<div class="col-auto text-right update-meta p-r-0">
-																	<img src="jpg/avatar-4.jpg" alt="user image"
-																		class="img-radius img-40 align-top m-r-15 update-icon">
-																</div>
-																<div class="col p-l-5">
-																	<a href="#!"><h6>Your Manager Posted.</h6></a>
-																	<p class="text-muted m-b-0">Jonny michel</p>
-																</div>
-															</div>
-															<div class="row p-b-30">
-																<div class="col-auto text-right update-meta p-r-0">
-																	<i class="feather icon-briefcase bg-c-red update-icon"></i>
-																</div>
-																<div class="col p-l-5">
-																	<a href="#!"><h6>You have 3 pending Task.</h6></a>
-																	<p class="text-muted m-b-0">Hemilton</p>
-																</div>
-															</div>
-															<div class="row p-b-30">
-																<div class="col-auto text-right update-meta p-r-0">
-																	<i
-																		class="feather icon-check f-w-600 bg-c-green update-icon"></i>
-																</div>
-																<div class="col p-l-5">
-																	<a href="#!"><h6>New Order Received.</h6></a>
-																	<p class="text-muted m-b-0">Hemilton</p>
-																</div>
-															</div>
-															<div class="row">
-																<div class="col-auto text-right update-meta p-r-0">
-																	<img src="jpg/avatar-4.jpg" alt="user image"
-																		class="img-radius img-40 align-top m-r-15 update-icon">
-																</div>
-																<div class="col p-l-5">
-																	<a href="#!"><h6>Your Manager Posted.</h6></a>
-																	<p class="text-muted m-b-0">Jonny michel</p>
-																</div>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-										</div>
-
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div id="styleSelector"></div>
-
-				</div>
-			</div>
-		</div>
-	</div>
-
-
-	<jsp:include page="AllJs.jsp"></jsp:include>
-
-	<!-- Mirrored from colorlib.com/polygon/admindek/default/dashboard-crm.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 12 Dec 2019 16:08:32 GMT -->
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-primary" href="logout">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+<jsp:include page="AllJs.jsp"></jsp:include>
+    
 </body>
 
 </html>

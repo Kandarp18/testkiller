@@ -10,5 +10,9 @@ public class AdminController {
 	public String adminDashboard() {
 		return "AdminDashboard";
 	}
-	
+	@GetMapping("/class")
+	public String newClass() {
+		return "NewClass";
+	}
+
 }

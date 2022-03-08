@@ -35,7 +35,8 @@
                     <input type="password" name="password" id="password" class="form-control" placeholder="***********">
                   </div>
                   <input name="login" id="login" class="btn btn-block login-btn mb-4" type="submit" value="Login" >
-               ${error }${msg }
+             <p style="color:red;">  ${error }</p>
+             <p style="color:green;">  ${msg }</p>
                 </form>
                 <a href="forgotpassword" class="forgot-password-link">Forgot password?</a>
                 <p class="login-card-footer-text">Don't have an account? <a href="newuser" class="text-reset">Register here</a></p>

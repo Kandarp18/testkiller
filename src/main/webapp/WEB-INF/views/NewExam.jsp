@@ -5,6 +5,7 @@
 <html lang="en">
 
 <head>
+    <script data-ad-client="ca-pub-4529508631166774" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -12,7 +13,8 @@
     <meta name="author" content="">
 
     <title>Testkiller</title>
-<jsp:include page="AllCss.jsp"></jsp:include>
+
+    <jsp:include page="AllCss.jsp"></jsp:include>
 </head>
 
 <body id="page-top">
@@ -20,44 +22,42 @@
     <!-- Page Wrapper -->
     <div id="wrapper">
 <jsp:include page="AdminSideBar.jsp"></jsp:include>
-      
-        <!-- Content Wrapper -->
+               <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
 
             <!-- Main Content -->
             <div id="content">
-
 <jsp:include page="AdminHeader.jsp"></jsp:include>
-
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-                    
+                   
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-4 text-gray-800">Classes Management</h1>
+                    <h1 class="h3 mb-4 text-gray-800">Exam Management</h1>
 
                     <!-- DataTales Example -->
                     <span id="message"></span>
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-
                         	<div class="row">
                             	<div class="col">
-                            		<h6 class="m-0 font-weight-bold text-primary">Class List</h6>
+                            		<h6 class="m-0 font-weight-bold text-primary">Exam List</h6>
                             	</div>
                             	<div class="col" align="right">
-                            		<button type="button" name="add_class" id="add_class" class="btn btn-success btn-circle btn-sm">
-                            		<i class="fas fa-plus"></i>
-                            		</button>
+                                    <button type="button" name="add_subject" id="add_subject" class="btn btn-success btn-circle btn-sm"><i class="fas fa-plus"></i></button>
                             	</div>
                             </div>
                         </div>
-                       <div class="card-body">
+                        <div class="card-body">
                             <div class="table-responsive">
-                                <table class="table table-bordered" id="class_table" width="100%" cellspacing="0">
+                                <table class="table table-bordered" id="subject_table" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
+                                            <th>Exam Name</th>
                                             <th>Class Name</th>
+                                            <th>Exam Duration</th>
+                                            <th>Result Date & Time</th>
                                             <th>Status</th>
+                                            <th>Created On</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -115,7 +115,6 @@
             </div>
         </div>
     </div>
-
     <jsp:include page="AllJs.jsp"></jsp:include>
 </body>
 

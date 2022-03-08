@@ -27,7 +27,7 @@
                 <div id="subject_collapse" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar" style="">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="subject">Subject</a>
-                        <a class="collapse-item" href="assign_subject">Assign Subject</a>
+                        <a class="collapse-item" href="assignsubject">Assign Subject</a>
                     </div>
                 </div>
             </li>
@@ -39,7 +39,7 @@
                 <div id="student_collapse" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar" style="">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="student">Student</a>
-                        <a class="collapse-item" href="assign_student">Assign Student</a>
+                        <a class="collapse-item" href="assignstudent">Assign Student</a>
                     </div>
                 </div>
             </li>
@@ -51,13 +51,13 @@
                 <div id="exam_collapse" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar" style="">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="exam">Exam</a>
-                        <a class="collapse-item" href="exam_subject">Exam Subject</a>
-                        <a class="collapse-item" href="exam_subject_question">Question</a>
+                        <a class="collapse-item" href="examsubject">Exam Subject</a>
+                        <a class="collapse-item" href="examsubjectquestion">Question</a>
                     </div>
                 </div>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="listusers">
+                <a class="nav-link" href="users">
                     <i class="fas fa-users-cog"></i>
                     <span>User</span></a>
             </li>

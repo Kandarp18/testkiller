@@ -22,7 +22,7 @@
           <div class="col-md-7">
             <div class="card-body">
               <div class="brand-wrapper">
-                <img src="/images/logo.jpg" alt="logo" class="logo">
+                <img src="/images/logo.svg" alt="logo" class="logo">
               </div>
               <p class="login-card-description">Sign into your account</p>
               <form action="login" method="post">

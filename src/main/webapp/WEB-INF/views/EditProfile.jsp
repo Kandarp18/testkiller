@@ -55,7 +55,7 @@
                                     <div class="col-md-6">!-->
                                         <div class="form-group">
                                             <label>Name</label>
-                                            <input type="tex" name="user_name" id="user_name" class="form-control" required data-parsley-pattern="/^[a-zA-Z0-9 \s]+$/" data-parsley-maxlength="175" data-parsley-trigger="keyup" />
+                                            <input type="text" name="firstName" id="user_name" value="${user.firstName }" class="form-control" required data-parsley-pattern="/^[a-zA-Z0-9 \s]+$/" data-parsley-maxlength="175" data-parsley-trigger="keyup" />
                                         </div>
                                         <div class="form-group">
                                             <label>Contact Number</label>
@@ -63,11 +63,11 @@
                                         </div>
                                         <div class="form-group">
                                             <label>Email Address</label>
-                                            <input type="tex" name="user_email" id="user_email" class="form-control" required data-parsley-maxlength="175" data-parsley-type="email" data-parsley-trigger="keyup" />
+                                            <input type="tex" name="email" id="user_email" value="${user.email }" class="form-control" required data-parsley-maxlength="175" data-parsley-type="email" data-parsley-trigger="keyup" />
                                         </div>
                                         <div class="form-group">
                                             <label>Password</label>
-                                            <input type="password" name="user_password" id="user_password" class="form-control" required data-parsley-maxlength="16" data-parsley-trigger="keyup" />
+                                            <input type="password" name="password" id="user_password" class="form-control" required data-parsley-maxlength="16" data-parsley-trigger="keyup" />
                                         </div>
                                         <div class="form-group">
                                             <label>Select Profile Image</label><br />

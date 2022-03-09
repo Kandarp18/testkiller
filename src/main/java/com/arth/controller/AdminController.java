@@ -49,5 +49,9 @@ public class AdminController {
 	public String createUser() {
 		return "User";
 	}
+	@GetMapping("/profile")
+	public String Profile() {
+		return "EditProfile";
+	}
 
 }

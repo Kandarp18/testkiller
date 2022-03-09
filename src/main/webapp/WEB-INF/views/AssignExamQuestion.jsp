@@ -43,7 +43,11 @@
                             		<h6 class="m-0 font-weight-bold text-primary">Exam Question Subject List</h6>
                             	</div>
                             	<div class="col" align="right">
-                                    <button type="button" name="add_subject" id="add_subject" class="btn btn-success btn-circle btn-sm"><i class="fas fa-plus"></i></button>
+                                  <!-- Button trigger modal -->
+                                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
+                                 <i class="fas fa-plus"></i>
+                                   </button>
+                            		
                             	</div>
                             </div>
                         </div>
@@ -118,6 +122,92 @@
         </div>
     </div>
     <jsp:include page="AllJs.jsp"></jsp:include>
+     <!-- Modal -->
+<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+   <form method="post" id="exam_subject_question_form">
+      		<div class="modal-content">
+        		<div class="modal-header">
+          			<h4 class="modal-title" id="modal_title">Add Exam Subject Question Data</h4>
+          			<button type="button" class="close" data-dismiss="modal">&times;</button>
+        		</div>
+        		<div class="modal-body">
+        			<span id="form_message"></span>
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label">Exam Name</label>
+                        <div class="col-sm-9">
+                            <select name="exam_id" id="exam_id" class="form-control" required>
+                                <option value="">Select Exam</option>
+                                
+                                    <option value="470">2</option>
+                                    
+                                    <option value="464">4</option>
+                                    
+                                    <option value="236">a</option>
+                                    
+                                                                        </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label">Subject</label>
+                        <div class="col-sm-9">
+                            <select name="exam_subject_id" id="exam_subject_id" class="form-control" required>
+                                <option value="">Select Subject</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label">Question Title</label>
+                        <div class="col-sm-9">
+                            <input type="text" name="exam_subject_question_title" id="exam_subject_question_title" class="form-control datepicker" required data-parsley-trigger="keyup" />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label">Option 1</label>
+                        <div class="col-sm-9">
+                            <input type="text" name="option_title_1" id="option_title_1" autocomplete="off" class="form-control" required />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label">Option 2</label>
+                        <div class="col-sm-9">
+                            <input type="text" name="option_title_2" id="option_title_2" autocomplete="off" class="form-control" required />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label">Option 3</label>
+                        <div class="col-sm-9">
+                            <input type="text" name="option_title_3" id="option_title_3" autocomplete="off" class="form-control" required />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label">Option 4</label>
+                        <div class="col-sm-9">
+                            <input type="text" name="option_title_4" id="option_title_4" autocomplete="off" class="form-control" required />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label">Answer</label>
+                        <div class="col-sm-9">
+                            <select name="exam_subject_question_answer" id="exam_subject_question_answer" class="form-control" required>
+                                <option value="">Select</option>
+                                <option value="1">1 Option</option>
+                                <option value="2">2 Option</option>
+                                <option value="3">3 Option</option>
+                                <option value="4">4 Option</option>
+                            </select>
+                        </div>
+                    </div>
+        		</div>
+        		<div class="modal-footer">
+          			
+          			<input type="submit" name="submit" id="submit_button" class="btn btn-success" value="Add" />
+          			<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        		</div>
+      		</div>
+    	</form>
+  </div>
+</div>
 </body>
 
 </html>

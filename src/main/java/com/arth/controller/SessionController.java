@@ -84,22 +84,10 @@ public class SessionController {
 
 		if (isCorrect == true) {
 
-			if (dbUser.getRoleId() == 1) {
-				// admin
-				return "redirect:/admindashboard";
-			} else if (dbUser.getRoleId() == 2) {
-				// pm
-				return "redirect:/facultydashboard";
-
-			} else if (dbUser.getRoleId() == 3) {
-				// developer
-				return "redirect:/examinerdashboard";
-			} else {
-				return "NoRole";
-			}
-
-		} else {
-			model.addAttribute("error", "Invalid Credentials");
+			return "AdminDashboard";
+		}
+		else {
+			model.addAttribute("error", "Invalid Credentials!");
 			return "Login";
 		}
 	}

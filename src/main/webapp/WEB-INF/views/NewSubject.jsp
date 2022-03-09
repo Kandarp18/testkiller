@@ -43,7 +43,10 @@
                             		<h6 class="m-0 font-weight-bold text-primary">Subject List</h6>
                             	</div>
                             	<div class="col" align="right">
-                                    <button type="button" name="add_subject" id="add_subject" class="btn btn-success btn-circle btn-sm"><i class="fas fa-plus"></i></button>
+                              <!-- Button trigger modal -->
+                                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
+                                 <i class="fas fa-plus"></i>
+                                   </button>	
                             	</div>
                             </div>
                         </div>
@@ -113,6 +116,33 @@
         </div>
     </div>
     <jsp:include page="AllJs.jsp"></jsp:include>
+     <!-- Modal -->
+<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+  <form method="post">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Add Subject</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <span id="form_message"></span>
+                   
+		          	<div class="form-group">
+		          		<label>Subject Name</label>
+		          		<input type="text" name="subject_name" id="subject_name" class="form-control" required data-parsley-pattern="/^[a-zA-Z0-9 \s]+$/" data-parsley-trigger="keyup" />
+		          	</div>
+      </div>
+      <div class="modal-footer">
+        <input type="submit" name="submit" id="submit_button" class="btn btn-success" value="Add" />
+         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+    </form>
+  </div>
+</div>
 </body>
 
 </html>

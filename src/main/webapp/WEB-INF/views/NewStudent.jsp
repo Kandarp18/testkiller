@@ -43,7 +43,11 @@
                             		<h6 class="m-0 font-weight-bold text-primary">Student List</h6>
                             	</div>
                             	<div class="col" align="right">
-                                    <button type="button" name="add_subject" id="add_subject" class="btn btn-success btn-circle btn-sm"><i class="fas fa-plus"></i></button>
+                            	<!-- Button trigger modal -->
+                                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
+                                 <i class="fas fa-plus"></i>
+                                   </button>
+                            		
                             	</div>
                             </div>
                         </div>
@@ -118,6 +122,59 @@
         </div>
     </div>
     <jsp:include page="AllJs.jsp"></jsp:include>
+     <!-- Modal -->
+<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+   <form method="post" id="student_form" enctype="multipart/form-data">
+      		<div class="modal-content">
+        		<div class="modal-header">
+          			<h4 class="modal-title" id="modal_title">Add Student</h4>
+          			<button type="button" class="close" data-dismiss="modal">&times;</button>
+        		</div>
+        		<div class="modal-body">
+        			<span id="form_message"></span>
+		          	<div class="form-group">
+		          		<label>Student Name</label>
+		          		<input type="text" name="student_name" id="student_name" class="form-control" required data-parsley-pattern="/^[a-zA-Z0-9 \s]+$/" data-parsley-trigger="keyup" />
+		          	</div>
+                    <div class="form-group">
+                        <label>Student Address</label>
+                        <input type="text" name="student_address" id="student_address" class="form-control" required data-parsley-pattern="/^[a-zA-Z0-9\s]+$/" data-parsley-trigger="keyup" />
+                    </div>
+                    <div class="form-group">
+                        <label>Student Email</label>
+                        <input type="text" name="student_email_id" id="student_email_id" class="form-control" required data-parsley-type="email" data-parsley-trigger="keyup" />
+                    </div>
+                    <div class="form-group">
+                        <label>Student Password</label>
+                        <input type="password" name="student_password" id="student_password" class="form-control" required  data-parsley-trigger="keyup" />
+                    </div>
+                    <div class="form-group">
+                        <label>Gender</label>
+                        <select name="student_gender" id="student_gender" class="form-control">
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Date of Birth</label>
+                        <input type="text" name="student_dob" id="student_dob" class="form-control datepicker" readonly required data-parsley-trigger="keyup" />
+                    </div>
+                    <div class="form-group">
+                        <label>Date of Birth</label><br />
+                        <input type="file" name="student_image" id="student_image" />
+                        <span id="student_uploaded_image"></span>
+                    </div>
+        		</div>
+        		<div class="modal-footer">
+          			
+          			<input type="submit" name="submit" id="submit_button" class="btn btn-success" value="Add" />
+          			<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        		</div>
+      		</div>
+    	</form>
+  </div>
+</div>
 </body>
 
 </html>

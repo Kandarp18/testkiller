@@ -43,7 +43,11 @@
                             		<h6 class="m-0 font-weight-bold text-primary">Exam List</h6>
                             	</div>
                             	<div class="col" align="right">
-                                    <button type="button" name="add_subject" id="add_subject" class="btn btn-success btn-circle btn-sm"><i class="fas fa-plus"></i></button>
+                                    <!-- Button trigger modal -->
+                                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
+                                 <i class="fas fa-plus"></i>
+                                   </button>
+                            		
                             	</div>
                             </div>
                         </div>
@@ -116,6 +120,61 @@
         </div>
     </div>
     <jsp:include page="AllJs.jsp"></jsp:include>
+     <!-- Modal -->
+<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <form method="post" id="exam_form">
+      		<div class="modal-content">
+        		<div class="modal-header">
+          			<h4 class="modal-title" id="modal_title">Add Exam Data</h4>
+          			<button type="button" class="close" data-dismiss="modal">&times;</button>
+        		</div>
+        		<div class="modal-body">
+        			<span id="form_message"></span>
+                    <div class="form-group">
+                        <label>Exam Name</label>
+                        <input type="text" name="exam_title" id="exam_title" class="form-control" required data-parsley-pattern="/^[a-zA-Z0-9 \s]+$/" data-parsley-trigger="keyup" />
+                    </div>
+                    <div class="form-group">
+                        <label>Class</label>
+                        <select name="exam_class_id" id="exam_class_id" class="form-control" required>
+                            <option value="">Select Class</option>
+                            
+                                <option value="78">123</option>
+                                
+                                <option value="76">12th cs tm</option>
+                                
+                                <option value="148">1777</option>
+                                
+                                                                         
+                                        </select>
+                    </div>
+		          	
+                    <div class="form-group">
+                        <label>Exam Duration for Each Subject <span class="text-danger">*</span></label>
+                        <select name="exam_duration" id="exam_duration" class="form-control" required>
+                            <option value="">Select</option>
+                            <option value="5">5 Minute</option>
+                            <option value="30">30 Minute</option>
+                            <option value="60">1 Hour</option>
+                            <option value="120">2 Hour</option>
+                            <option value="180">3 Hour</option>
+                        </select>
+                    </div>
+                    <div class="form-group" id="ifedit">
+
+                    </div>
+        		</div>
+        		<div class="modal-footer">
+          			
+          			<input type="submit" name="submit" id="submit_button" class="btn btn-success" value="Add" />
+          			<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        		</div>
+      		</div>
+    	</form>
+    
+  </div>
+</div>
 </body>
 
 </html>

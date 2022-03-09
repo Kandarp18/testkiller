@@ -43,7 +43,12 @@
                             		<h6 class="m-0 font-weight-bold text-primary">Exam Subject List</h6>
                             	</div>
                             	<div class="col" align="right">
-                                    <button type="button" name="add_subject" id="add_subject" class="btn btn-success btn-circle btn-sm"><i class="fas fa-plus"></i></button>
+                            	<!-- Button trigger modal -->
+                                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
+                                 <i class="fas fa-plus"></i>
+                                   </button>
+                            		
+
                             	</div>
                             </div>
                         </div>
@@ -57,7 +62,6 @@
                                             <th>Exam Datetime</th>
                                             <th>Total Question</th>
                                             <th>Right Answer Mark</th>
-                                            <th>Wrong Answer Mark</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -116,6 +120,76 @@
         </div>
     </div>
     <jsp:include page="AllJs.jsp"></jsp:include>
+     <!-- Modal -->
+<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <form method="post" id="exam_subject_form">
+      		<div class="modal-content">
+        		<div class="modal-header">
+          			<h4 class="modal-title" id="modal_title">Add Exam Subject Data</h4>
+          			<button type="button" class="close" data-dismiss="modal">&times;</button>
+        		</div>
+        		<div class="modal-body">
+        			<span id="form_message"></span>
+                    <div class="form-group">
+                        <label>Exam Name</label>
+                        <select name="exam_id" id="exam_id" class="form-control" required>
+                            <option value="">Select Exam</option>
+                            
+                                <option value="470">2</option>
+                                
+                                <option value="464">4</option>
+                                
+                                <option value="236">a</option>
+                                
+                                                              </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Subject</label>
+                        <select name="subject_id" id="subject_id" class="form-control" required>
+                            <option value="">Select Subject</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Exam Date & Time</label>
+                        <input type="text" name="subject_exam_datetime" id="subject_exam_datetime" class="form-control datepicker" readonly required data-parsley-trigger="keyup" />
+                    </div>
+                    <div class="form-group">
+                        <label>Total Question</label>
+                        <select name="subject_total_question" id="subject_total_question" class="form-control" required>
+                            <option value="">Select</option>
+                            <option value="5">5 Question</option>
+                            <option value="10">10 Question</option>
+                            <option value="25">25 Question</option>
+                            <option value="50">50 Question</option>
+                            <option value="100">100 Question</option>
+                            <option value="200">200 Question</option>
+                            <option value="300">300 Question</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Marks for Correct Answer</label>
+                        <select name="marks_per_right_answer" id="marks_per_right_answer" class="form-control">
+                            <option value="">Select</option>
+                            <option value="1">+1 Mark</option>
+                            <option value="2">+2 Mark</option>
+                            <option value="3">+3 Mark</option>
+                            <option value="4">+4 Mark</option>
+                            <option value="5">+5 Mark</option>
+                        </select>
+                    </div>
+                   
+        		</div>
+        		<div class="modal-footer">
+          			
+          			<input type="submit" name="submit" id="submit_button" class="btn btn-success" value="Add" />
+          			<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        		</div>
+      		</div>
+    	</form>
+    
+  </div>
+</div>
 </body>
 
 </html>

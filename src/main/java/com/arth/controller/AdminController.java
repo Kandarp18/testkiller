@@ -3,21 +3,17 @@ package com.arth.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
+
 @Controller
 public class AdminController {
+	
 
 	@GetMapping("/admindashboard")
 	public String adminDashboard() {
 		return "AdminDashboard";
 	}
-	@GetMapping("/class")
-	public String newClass() {
-		return "NewClass";
-	}
-	@GetMapping("/subject")
-	public String newSubject() {
-		return "NewSubject";
-	}
+	
+	
 	@GetMapping("/assignsubject")
 	public String assignSubject() {
 		return "AssignSubject";
@@ -53,5 +49,5 @@ public class AdminController {
 	public String Profile() {
 		return "EditProfile";
 	}
-
+	
 }

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -62,7 +63,17 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        
+                                         <c:forEach items="${subject }" var="s">
+	                                      <tr>
+		                                      
+		                                      <td>${s.subjectName}</td>
+		                                      <td>...</td>
+		                                      <td>Active</td>
+		                                      <td><a href="deletesubject/${s.subjectId}">Delete</a> 
+                                      
+		                                       </td>
+	                                           </tr>
+                                      </c:forEach>
                                     </tbody>
                                 </table>
                             </div>
@@ -119,7 +130,7 @@
      <!-- Modal -->
 <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
   <div class="modal-dialog" role="document">
-  <form method="post">
+  <form method="post" action="newsubject">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLongTitle">Add Subject</h5>
@@ -132,7 +143,7 @@
                    
 		          	<div class="form-group">
 		          		<label>Subject Name</label>
-		          		<input type="text" name="subject_name" id="subject_name" class="form-control" required data-parsley-pattern="/^[a-zA-Z0-9 \s]+$/" data-parsley-trigger="keyup" />
+		          		<input type="text" name="subjectName" id="subjectName" class="form-control" required data-parsley-pattern="/^[a-zA-Z0-9 \s]+$/" data-parsley-trigger="keyup" />
 		          	</div>
       </div>
       <div class="modal-footer">

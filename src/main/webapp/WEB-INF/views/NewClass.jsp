@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+  
 
 <!DOCTYPE html>
 <html lang="en">
@@ -62,8 +64,25 @@
                                             <th>Status</th>
                                             <th>Action</th>
                                         </tr>
-                                    </thead>
-                                    <tbody>
+                                          </thead>
+                                        <tbody>
+                                     <c:forEach items="${classes }" var="c">
+	                                      <tr>
+		                                      
+		                                      <td>${c.className}</td>
+		                                      <td>Active</td>
+		                                      <td>
+		                                      <button type="button"  class="btn btn-warning" >
+		                                      <a  href="deleteclass/${c.classId}">Delete</a>
+		                                      </button> |
+                                  <button type="button" name="editclass" class="btn btn-warning" data-toggle="modal" data-target="#editModal">
+			                                  <a href="editclass?classId=${c.classId}" style="color:black;" data-toggle="modal">Edit</a>
+			                        </button>     
+		                                       </td>
+	                                           </tr>
+                                      </c:forEach>
+                                  
+                                    
                                         
                                     </tbody>
                                 </table>
@@ -123,7 +142,7 @@
     <!-- Modal -->
 <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
   <div class="modal-dialog" role="document">
-  	<form method="post" >
+  	<form method="post" action="newclass">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLongTitle">Add Class</h5>
@@ -136,7 +155,7 @@
         			<span id="form_message"></span>
 		          	<div class="form-group">
 		          		<label>Class Name</label>
-		          		<input type="text" name="class_name" id="class_name" class="form-control" required data-parsley-pattern="/^[a-zA-Z0-9 \s]+$/" data-parsley-trigger="keyup" />
+		          		<input type="text" name="className" id="className" class="form-control" required data-parsley-pattern="/^[a-zA-Z0-9 \s]+$/" data-parsley-trigger="keyup" />
 		          	</div>
         		</div>
       
@@ -148,6 +167,42 @@
     </form>
   </div>
 </div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+  	<form method="post" action="updateclass">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editModalLabel">Edit Class</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      
+       <div class="modal-body">
+        			<span id="form_message"></span>
+        					<input type="hidden" value="${c.classId}" name="classId"/>
+        			
+		          	<div class="form-group">
+		          		<label>Class Name</label>
+		          		<input type="text" name="className" value="${c.className}" id="className" class="form-control" />
+		          	</div>
+        		</div>
+      
+      <div class="modal-footer">
+        <input type="submit" name="submit" id="submit_button" class="btn btn-success" value="Edit" />
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+    </form>
+  </div>
+</div>
+
+
+
+
 </body>
 
 </html>

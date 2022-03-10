@@ -28,7 +28,6 @@ public class RoleController {
 
 	@PostMapping("/saverole")
 	public String saveRole(RoleBean role) {
-		System.out.println(role.getRoleName());
 		roleDao.insertRole(role);
 		return "redirect:/listroles";
 	}

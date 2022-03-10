@@ -12,7 +12,7 @@
 <form action="updaterole" method="post" >
 		<input type="hidden" value="${role.roleId}" name="roleId"/>
 		
-		RoleName : <input type="text" name="roleName" value="${role.roleName }"/><br><Br>
+		RoleName : <input type="text" name="roleName" value="${role.roleName }"/><br><br>
 		<input type="submit" value="Update Role"/>
 	</form>
 

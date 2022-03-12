@@ -53,10 +53,10 @@
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table class="table table-bordered" id="subject_table" width="100%" cellspacing="0">
+                                <table class="table table-bordered" id="usertable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                           <th>Image</th>
+                                          
                                             <th>User Name</th>
                                             <th>User Contact No.</th>
                                             <th>User Email</th>
@@ -166,15 +166,7 @@
                         </div>
                     </div>
                     
-                    <div class="form-group">
-                        <div class="row">
-                            <label class="col-md-4 text-right">User Profile</label>
-                            <div class="col-md-8">
-                                <input type="file" name="user_image" id="user_image" />
-                                <span id="user_uploaded_image"></span>
-                            </div>
-                        </div>
-                    </div>
+                   
         		</div>
         		<div class="modal-footer">
           			
@@ -185,6 +177,12 @@
     	</form>
   </div>
 </div>
+
+<script type="text/javascript">
+			$(document).ready(function() {
+				$('#usertable').DataTable();
+			});
+		</script>
 </body>
 
 </html>

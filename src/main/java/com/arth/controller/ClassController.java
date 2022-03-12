@@ -1,5 +1,7 @@
 package com.arth.controller;
 
+
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,22 +15,44 @@ import com.arth.bean.ClassBean;
 import com.arth.dao.ClassDao;
 
 
+
 @Controller
 public class ClassController {
 	@Autowired
 	ClassDao classdao;
 	
+	
 	@GetMapping("/class")
 	public String newClass(Model model) {
-		model.addAttribute("classes", classdao.getAllClasses());
+	     
+		model.addAttribute("classes", classdao.getAllClasses());	
+		
 		return "NewClass";
 	}
 	
+	
+	
 	@PostMapping("/newclass")
-	public String newClass(ClassBean classes,Model model) {
-	classdao.insertClass(classes);
-	return "redirect:/class";
-	}
+	public String addClass(ClassBean classes,Model model) {
+		boolean p=false;
+		ClassBean dbClass=classdao.getClassByName(classes.getClassName());
+		if(dbClass!=null) {
+		if((classes.getClassName()).equalsIgnoreCase(dbClass.getClassName())==true){
+			p=true;
+		}
+		}
+		
+		if(p==true) {
+			model.addAttribute("error","This Class Name Already Exists!");
+			return "redirect:/class";
+		}else {
+			classdao.insertClass(classes);
+		}
+		return "redirect:/class";
+		}
+	
+	
+	
 	@GetMapping("/deleteclass/{classId}")
 	public String deleteClass(@PathVariable("classId") int classId) {
 
@@ -36,20 +60,27 @@ public class ClassController {
 
 		return "redirect:/class";
 	}
-	@GetMapping("/editclass")
-	public String editClass(@RequestParam("classId") int classId, Model model) {
-
-		
-		model.addAttribute("classes", classdao.getClassById(classId));
-		return "redirect:/class";
-
-	}
-
-	@PostMapping("/updateclass")
-	public String updateClassById(ClassBean c) {
-		
-		classdao.updateClass(c);
-		return "redirect:/class";
-	}
 	
+
+
+@GetMapping("/editclass")
+public String editClass(@RequestParam("classId") int classId, Model model) {	
+	ClassBean classes=classdao.getClassById(classId);
+	model.addAttribute("c", classes);
+	
+	return "redirect:/class";
+
+}
+
+@PostMapping("/updateclass")
+public String updateClass(ClassBean classes) {
+try {
+	classdao.updateClass(classes);
+}
+catch(Exception e) {
+	
+}
+	return "redirect:/class";
+}
+
 }

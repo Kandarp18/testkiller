@@ -4,6 +4,7 @@ public class ClassBean {
 
 	private int classId;
 	private String className;
+	
 	public int getClassId() {
 		return classId;
 	}

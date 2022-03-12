@@ -3,22 +3,22 @@
     <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Core plugin JavaScript-->
-    <script src="/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
     <!-- Custom scripts for all pages-->
-    <script src="/js/sb-admin-2.min.js"></script>
+    <script src="js/sb-admin-2.min.js"></script>
 
     <!-- Page level plugins -->
-    <script src="/vendor/datatables/jquery.dataTables.min.js"></script>
-    <script src="/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+    <script src="vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
-    <script type="text/javascript" src="/vendor/parsley/dist/parsley.min.js"></script>
+    <script type="text/javascript" src="vendor/parsley/dist/parsley.min.js"></script>
 
-    <script type="text/javascript" src="/vendor/bootstrap-select/bootstrap-select.min.js"></script>
+    <script type="text/javascript" src="vendor/bootstrap-select/bootstrap-select.min.js"></script>
 
-    <script type="text/javascript" src="/vendor/datepicker/bootstrap-datepicker.js"></script>
+    <script type="text/javascript" src="vendor/datepicker/bootstrap-datepicker.js"></script>
 
-    <script type="text/javascript" src="/vendor/datetimepicker/bootstrap-datetimepicker.js"></script>
+    <script type="text/javascript" src="vendor/datetimepicker/bootstrap-datetimepicker.js"></script>
 
     <script>
           (function(i,s,o,g,r,a,m)

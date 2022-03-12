@@ -7,6 +7,7 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+
 import com.arth.bean.SubjectBean;
 
 
@@ -25,5 +26,16 @@ public class SubjectDao {
 	}
 	public void deleteSubject(int subjectId) {
 		stmt.update("delete from subject where subjectid = ?", subjectId);
+	}
+	
+	public SubjectBean getSubjectById(int subjectId) {
+
+	   SubjectBean subject = stmt.queryForObject("select * from subject where subjectid = ? ", new BeanPropertyRowMapper<SubjectBean>(SubjectBean.class), new Object[] { subjectId });
+
+		return subject;
+	}
+
+	public void updateSubject(SubjectBean subject) {
+		stmt.update("update subject set subjectname = ? where subjectid = ? ", subject.getSubjectName(), subject.getSubjectId());
 	}
 }

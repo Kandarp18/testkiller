@@ -35,8 +35,19 @@ public class ClassDao {
 		return classes;
 	}
 
-	public void updateClass(ClassBean classes) {
-		stmt.update("update classes set classname = ? where classid = ? ", classes.getClassName(), classes.getClassId());
+	public void updateClass(ClassBean c) {
+		stmt.update("update classes set classname = ? where classid = ? ",c.getClassName(), c.getClassId());
+	}
+	public ClassBean getClassByName(String className) {
+		ClassBean dbClass = null;
+
+		try {
+			dbClass = stmt.queryForObject("select * from classes where classname = ? ",
+					new BeanPropertyRowMapper<ClassBean>(ClassBean.class), new Object[] { className });
+		}catch(Exception e) {
+			
+		}
+		return dbClass;
 	}
 
 

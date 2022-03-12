@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+    pageEncoding="ISO-8859-1" isELIgnored="false"%>
      <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
@@ -53,7 +53,7 @@
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table class="table table-bordered" id="subject_table" width="100%" cellspacing="0">
+                                <table class="table table-bordered" id="subjecttable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
                                             <th>Subject Name</th>
@@ -69,7 +69,10 @@
 		                                      <td>${s.subjectName}</td>
 		                                      <td>...</td>
 		                                      <td>Active</td>
-		                                      <td><a href="deletesubject/${s.subjectId}">Delete</a> 
+		                                      <td><a href="deletesubject/${s.subjectId}">Delete</a> |
+		                                        <button type="button" name="editclass" class="btn btn-warning" data-toggle="modal" data-target="#editModal">
+			                                  <a href="editsubject?subjectId=${s.subjectId}" style="color:black;" data-toggle="modal">Edit</a>
+			                        </button>       
                                       
 		                                       </td>
 	                                           </tr>
@@ -154,6 +157,42 @@
     </form>
   </div>
 </div>
+
+<!-- Modal -->
+<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+  	<form method="post" action="updatesubject">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editModalLabel">Edit Subject</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      
+       <div class="modal-body">
+        			<span id="form_message"></span>
+        			
+        			<input type="hidden" name="subjectId" value="${sub.subjectId }" />
+		          	<div class="form-group">
+		          		<label>Subject Name</label>
+		          		<input type="text" name="subjectName" value="${sub.subjectName }" id="subjectName" class="form-control" />
+		          	</div>
+        		</div>
+   
+      <div class="modal-footer">
+        <input type="submit" name="submit" id="submit" class="btn btn-success" value="Edit" />
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+    </form>
+  </div>
+</div>
+<script type="text/javascript">
+			$(document).ready(function() {
+				$('#subjecttable').DataTable();
+			});
+		</script>
 </body>
 
 </html>

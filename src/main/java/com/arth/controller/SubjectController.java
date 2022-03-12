@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.arth.bean.SubjectBean;
 
@@ -35,5 +36,21 @@ public class SubjectController {
 
 		return "redirect:/subject";
 	}
+	@GetMapping("/editsubject")
+	public String editSubject(@RequestParam("subjectId") int subjectId, Model model) {	
+		
+	model.addAttribute("sub", subjectdao.getSubjectById(subjectId));
+		
+		
+		return "redirect:/subject";
+
+	}
+
+	@PostMapping("/updatesubject")
+	public String updateSubjectById(SubjectBean subject) {
+		subjectdao.updateSubject(subject);
+		return "redirect:/class";
+	}
+	
 	
 }

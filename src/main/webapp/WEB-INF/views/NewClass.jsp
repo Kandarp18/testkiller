@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+    pageEncoding="ISO-8859-1" isELIgnored="false"%>
   <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
   
 
@@ -55,9 +55,10 @@
                             	</div>
                             </div>
                         </div>
+                    
                        <div class="card-body">
                             <div class="table-responsive">
-                                <table class="table table-bordered" id="class_table" width="100%" cellspacing="0">
+                                <table class="table table-bordered" id="classtable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
                                             <th>Class Name</th>
@@ -81,9 +82,7 @@
 		                                       </td>
 	                                           </tr>
                                       </c:forEach>
-                                  
-                                    
-                                        
+                                       
                                     </tbody>
                                 </table>
                             </div>
@@ -152,6 +151,7 @@
       </div>
       
        <div class="modal-body">
+        <p style="color:red;">  ${error }</p>
         			<span id="form_message"></span>
 		          	<div class="form-group">
 		          		<label>Class Name</label>
@@ -167,8 +167,6 @@
     </form>
   </div>
 </div>
-
-
 <!-- Modal -->
 <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalTitle" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -182,12 +180,14 @@
       </div>
       
        <div class="modal-body">
+      
+       
         			<span id="form_message"></span>
-        					<input type="hidden" value="${c.classId}" name="classId"/>
         			
+        			<input type="hidden" name="classId" value="${c.classId }" />
 		          	<div class="form-group">
 		          		<label>Class Name</label>
-		          		<input type="text" name="className" value="${c.className}" id="className" class="form-control" />
+		          		<input type="text" name="className" value="${c.className }"  class="form-control" />
 		          	</div>
         		</div>
       
@@ -202,7 +202,11 @@
 
 
 
-
+<script type="text/javascript">
+			$(document).ready(function() {
+				$('#classtable').DataTable();
+			});
+</script>
 </body>
 
 </html>

@@ -53,7 +53,7 @@
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table class="table table-bordered" id="subject_table" width="100%" cellspacing="0">
+                                <table class="table table-bordered" id="studenttable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
                                             <th>Class Name</th>
@@ -150,6 +150,12 @@
     	</form>
   </div>
 </div>
+
+<script type="text/javascript">
+			$(document).ready(function() {
+				$('#studenttable').DataTable();
+			});
+		</script>
 </body>
 
 </html>

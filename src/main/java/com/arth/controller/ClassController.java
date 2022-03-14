@@ -8,7 +8,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.arth.bean.ClassBean;
@@ -64,8 +63,8 @@ public class ClassController {
 	
 
 
-@GetMapping("/editclass/{classId}")
-public String editClass(@PathVariable("classId") int classId, Model model) {	
+@GetMapping("/editclass")
+public String editClass(@RequestParam("classId") int classId, Model model) {	
 	ClassBean classes=classdao.getClassById(classId);
 	model.addAttribute("c", classes);
 	

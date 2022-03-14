@@ -17,7 +17,7 @@ public class SubjectDao {
 	JdbcTemplate stmt;
 	
 	public void insertSubject(SubjectBean subject) {
-		stmt.update("insert into subject (subjectname) values (?)", subject.getSubjectName());
+		stmt.update("insert into subject (subjectname,status) values (?,?)", subject.getSubjectName(), subject.getStatus());
 	}
 
 	public List<SubjectBean> getAllSubject() {

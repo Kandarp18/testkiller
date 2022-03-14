@@ -20,6 +20,13 @@
 		          		<label>Class Name</label>
 		          		<input type="text" name="className" value="${c.className }"  class="form-control" />
 		          	</div>
+		          	<div class="form-group">
+		          		<label>Status</label>
+		          		<select name="status" id="status" class="form-control" required>
+		          		   <option value="Active">Active</option>
+		          		   <option value="InActive">InActive</option>
+		          		</select>
+		          	</div>
         		</div>
       
       <div class="modal-footer">

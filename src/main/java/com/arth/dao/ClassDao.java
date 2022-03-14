@@ -18,7 +18,7 @@ public class ClassDao {
 	JdbcTemplate stmt;
 	
 	public void insertClass(ClassBean classes) {
-		stmt.update("insert into classes (classname) values (?)", classes.getClassName());
+		stmt.update("insert into classes (classname,status) values (?,?)", classes.getClassName(),classes.getStatus());
 	}
 
 	public List<ClassBean> getAllClasses() {

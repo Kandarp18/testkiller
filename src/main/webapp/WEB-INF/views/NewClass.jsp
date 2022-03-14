@@ -71,13 +71,13 @@
 	                                      <tr>
 		                                      
 		                                      <td>${c.className}</td>
-		                                      <td>Active</td>
+		                                      <td>${c.status }</td>
 		                                      <td>
 		                                      <button type="button"  class="btn btn-warning" >
 		                                      <a  href="deleteclass/${c.classId}">Delete</a>
 		                                      </button> |
                                   <button type="button" name="editclass" class="btn btn-warning" data-toggle="modal" data-target="#editModal">
-			                                  <a href="editclass/${c.classId}" style="color:black;" data-toggle="modal">Edit</a>
+			                                  <a href="editclass?classId=${c.classId}" style="color:black;" data-toggle="modal">Edit</a>
 			                        </button>     
 		                                       </td>
 	                                           </tr>
@@ -156,6 +156,13 @@
 		          	<div class="form-group">
 		          		<label>Class Name</label>
 		          		<input type="text" name="className" id="className" class="form-control" required data-parsley-pattern="/^[a-zA-Z0-9 \s]+$/" data-parsley-trigger="keyup" />
+		          	</div>
+		          	<div class="form-group">
+		          		<label>Status</label>
+		          		<select name="status" id="status" class="form-control" required>
+		          		   <option value="Active">Active</option>
+		          		   <option value="InActive">InActive</option>
+		          		</select>
 		          	</div>
         		</div>
       

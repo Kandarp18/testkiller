@@ -69,7 +69,7 @@
 		                                      
 		                                      <td>${s.subjectName}</td>
 		                                      <td>...</td>
-		                                      <td>Active</td>
+		                                      <td>${s.status}</td>
 		                                      <td><a href="deletesubject/${s.subjectId}">Delete</a> |
 		                                        <button type="button" name="editclass" class="btn btn-warning" data-toggle="modal" data-target="#editModal">
 			                                  <a href="editsubject?subjectId=${s.subjectId}" style="color:black;" data-toggle="modal">Edit</a>
@@ -149,6 +149,13 @@
 		          		<label>Subject Name</label>
 		          		<input type="text" name="subjectName" id="subjectName" class="form-control" required data-parsley-pattern="/^[a-zA-Z0-9 \s]+$/" data-parsley-trigger="keyup" />
 		          	</div>
+		          	<div class="form-group">
+		          		<label>Status</label>
+		          		<select name="status" id="status" class="form-control" required>
+		          		   <option value="Active">Active</option>
+		          		   <option value="InActive">InActive</option>
+		          		</select>
+		          	</div>
       </div>
       <div class="modal-footer">
         <input type="submit" name="submit" id="submit_button" class="btn btn-success" value="Add" />
@@ -178,6 +185,13 @@
 		          	<div class="form-group">
 		          		<label>Subject Name</label>
 		          		<input type="text" name="subjectName" value="${sub.subjectName }" id="subjectName" class="form-control" />
+		          	</div>
+		          	<div class="form-group">
+		          		<label>Status</label>
+		          		<select name="status" id="status" class="form-control" required>
+		          		   <option value="Active">Active</option>
+		          		   <option value="InActive">InActive</option>
+		          		</select>
 		          	</div>
         		</div>
    

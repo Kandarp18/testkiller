@@ -32,10 +32,7 @@ public class AdminController {
 	
 	
 
-	@GetMapping("/student")
-	public String newStudent() {
-		return "NewStudent";
-	}
+	
 	@GetMapping("/assignstudent")
 	public String assignStudent() {
 		return "AssignStudent";
@@ -58,7 +55,7 @@ public class AdminController {
 	public String createUser() {
 		return "User";
 	}
-	@PostMapping("/profile")
+	@GetMapping("/profile")
 	public String Profile() {
 		return "EditProfile";
 	}

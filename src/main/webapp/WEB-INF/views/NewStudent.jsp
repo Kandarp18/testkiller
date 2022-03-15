@@ -158,13 +158,9 @@
                     </div>
                     <div class="form-group">
                         <label>Date of Birth</label>
-                        <input type="text" name="student_dob" id="student_dob" class="form-control datepicker" readonly required data-parsley-trigger="keyup" />
+                        <input type="date" name="student_dob" id="student_dob" class="form-control datepicker"  required data-parsley-trigger="keyup" />
                     </div>
-                    <div class="form-group">
-                        <label>Date of Birth</label><br />
-                        <input type="file" name="student_image" id="student_image" />
-                        <span id="student_uploaded_image"></span>
-                    </div>
+                    
         		</div>
         		<div class="modal-footer">
           			

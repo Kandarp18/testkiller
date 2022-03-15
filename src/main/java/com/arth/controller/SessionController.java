@@ -12,9 +12,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.arth.bean.ClassBean;
+import com.arth.bean.StudentBean;
 import com.arth.bean.SubjectBean;
 import com.arth.bean.UserBean;
 import com.arth.dao.ClassDao;
+import com.arth.dao.StudentDao;
 import com.arth.dao.SubjectDao;
 import com.arth.dao.UserDao;
 
@@ -26,6 +28,8 @@ public class SessionController {
 	ClassDao classdao;
 	@Autowired
 	SubjectDao subjectdao;
+	@Autowired
+	StudentDao studentdao;
 
 	@Autowired
 	BCryptPasswordEncoder bcryptPasswordEncoder;
@@ -50,17 +54,18 @@ public class SessionController {
 	}
 
 	@PostMapping("/forgotpassword")
-	public String forgetPassword(UserBean user, Model model, HttpSession session) {
-		UserBean dbUser = userDao.getUserByEmail(user.getEmail());
-
-		if (dbUser == null) {
+	public String forgetPassword(StudentBean student, Model model, HttpSession session) {
+		StudentBean dbStudent = studentdao.getStudentByEmail(student.getEmail());
+            
+		if (dbStudent == null ) {
 			model.addAttribute("error", "Please Enter Valid Email");
 			return "ForgotPassword";
 
 		} else {
 			int otp = (int) (Math.random() * 1000000); // 0325842.15621 * 1000000
 			session.setAttribute("otp", otp);
-			session.setAttribute("email", user.getEmail());
+			session.setAttribute("email", student.getEmail());
+			
 			model.addAttribute("msg", "Otp is generated and sent to your email!!!");
 			System.out.println("your otp is => " + otp);
 			/// send email to user
@@ -82,11 +87,13 @@ public class SessionController {
 
 		boolean isCorrect = false;
 		UserBean dbUser = userDao.getUserByEmail(user.getEmail());
-		if (dbUser != null) {
+		
+		if (dbUser != null ) {
 
-			if (bcryptPasswordEncoder.matches(user.getPassword(), dbUser.getPassword()) == true) {
+			if (bcryptPasswordEncoder.matches(user.getPassword(), dbUser.getPassword()) ) {
 				isCorrect = true;
 				session.setAttribute("user", dbUser);
+				
 			}
 		}
 
@@ -105,19 +112,19 @@ public class SessionController {
 	}
 
 	@PostMapping("/updatepassword")
-	public String updatePassword(UserBean user, HttpSession session, Model model) {
+	public String updatePassword(StudentBean student, HttpSession session, Model model) {
 		int otp = (int) session.getAttribute("otp");
 		String email = (String) session.getAttribute("email");
 
-		if (otp == user.getOtp() && email.equalsIgnoreCase(user.getEmail())) {
+		if (otp == student.getOtp() && email.equalsIgnoreCase(student.getEmail())) {
 
-			String encPassword = bcryptPasswordEncoder.encode(user.getPassword());
-			user.setPassword(encPassword);
+			String encPassword = bcryptPasswordEncoder.encode(student.getPassword());
+			student.setPassword(encPassword);
 
-			userDao.updatePassword(user);
+			studentdao.updatePassword(student);
 
 			model.addAttribute("msg", "Password Modified Please Login");
-			return "Login";
+			return "LoginStudent";
 		} else {
 			model.addAttribute("error", "You data mismatch with our records!!!");
 			return "NewPassword";

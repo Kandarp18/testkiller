@@ -16,7 +16,7 @@ public class SubjectDao {
 	JdbcTemplate stmt;
 	
 	public void insertSubject(SubjectBean subject) {
-		stmt.update("insert into subject (subjectname,status,classid) values (?,?,?)", subject.getSubjectName(), subject.getStatus(),subject.getClassId());
+		stmt.update("insert into subject (subjectname,status) values (?,?)", subject.getSubjectName(), subject.getStatus());
 	}
 
 	public List<SubjectBean> getAllSubject() {
@@ -39,6 +39,22 @@ public class SubjectDao {
 	}
 	public int countSubject(SubjectBean subject) {
 		return stmt.queryForObject("select count(*) from subject where status='Active'", Integer.class);
+	}
+	public SubjectBean getSubjectByName(String subjectName) {
+		SubjectBean dbSubject = null;
+
+		try {
+			dbSubject = stmt.queryForObject("select * from subject where subjectname = ? ",
+					new BeanPropertyRowMapper<SubjectBean>(SubjectBean.class), new Object[] { subjectName });
+		}catch(Exception e) {
+			
+		}
+		return dbSubject;
+	}
+
+	public List<SubjectBean> getAllSubjectByStatus() {
+		List<SubjectBean> classes = stmt.query("select * from subject where status='Active'", new BeanPropertyRowMapper<SubjectBean>(SubjectBean.class));
+		return classes;
 	}
 	
 }

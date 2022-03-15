@@ -144,6 +144,7 @@
       </div>
       <div class="modal-body">
         <span id="form_message"></span>
+        <p style="color:red;">  ${error }</p>
                    
 		          	<div class="form-group">
 		          		<label>Subject Name</label>

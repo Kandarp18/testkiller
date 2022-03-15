@@ -64,7 +64,22 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        
+                                         <c:forEach items="${asb }" var="asb">
+	                                      <tr>
+		                                      
+		                                      <td>${asb.className}</td>
+		                                      <td>${asb.subjectName }</td>
+		                                      <td>...</td>
+		                                      <td>
+		                                      <button type="button"  class="btn btn-warning" >
+		                                      <a  href="deleteclass/${c.classId}">Delete</a>
+		                                      </button> |
+                                  <button type="button" name="editclass" class="btn btn-warning" data-toggle="modal" data-target="#editModal">
+			                                  <a href="editclass?classId=${c.classId}" style="color:black;" data-toggle="modal">Edit</a>
+			                        </button>     
+		                                       </td>
+	                                           </tr>
+                                      </c:forEach>
                                     </tbody>
                                 </table>
                             </div>

@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-
 import com.arth.bean.SubjectBean;
 import com.arth.dao.ClassDao;
 import com.arth.dao.SubjectDao;
@@ -29,7 +28,21 @@ public class SubjectController {
 	
 	@PostMapping("/newsubject")
 	public String newSubject(SubjectBean subject,Model model) {
-	subjectdao.insertSubject(subject);
+		boolean p=false;
+	   SubjectBean dbSubject=subjectdao.getSubjectByName(subject.getSubjectName());
+		if(dbSubject!=null) {
+		if((subject.getSubjectName()).equalsIgnoreCase(dbSubject.getSubjectName())==true){
+			p=true;
+		
+		}
+		}
+		
+		if(p==true) {
+			model.addAttribute("error","This Class Name Already Exists!");
+			return "redirect:/subject";
+		}else {
+			subjectdao.insertSubject(subject);
+		}
 	return "redirect:/subject";
 	}
 	@GetMapping("/deletesubject/{subjectId}")
@@ -42,8 +55,8 @@ public class SubjectController {
 	@GetMapping("/editsubject")
 	public String editSubject(@RequestParam("subjectId") int subjectId, Model model) {	
 		
-	model.addAttribute("sub", subjectdao.getSubjectById(subjectId));
-		
+	
+		model.addAttribute("sub", subjectdao.getSubjectById(subjectId));
 		
 		return "redirect:/subject";
 
@@ -52,15 +65,8 @@ public class SubjectController {
 	@PostMapping("/updatesubject")
 	public String updateSubjectById(SubjectBean subject) {
 		subjectdao.updateSubject(subject);
-		return "redirect:/class";
+		return "redirect:/subject";
 	}
-	@GetMapping("/assignsubject")
-	public String assignSubject(Model model) {
-		model.addAttribute("classes", classdao.getAllClasses());
-		model.addAttribute("subject",subjectdao.getAllSubject());
-		return "AssignSubject";
-	}
-	
 	
 	
 	

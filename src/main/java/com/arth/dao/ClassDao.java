@@ -53,5 +53,10 @@ public class ClassDao {
 		return stmt.queryForObject("select count(*) from classes where status='Active'", Integer.class);
 	}
 
+	public List<ClassBean> getAllClassesByStatus() {
+		List<ClassBean> classes = stmt.query("select * from classes where status='Active'", new BeanPropertyRowMapper<ClassBean>(ClassBean.class));
+		return classes;
+	}
+
 
 }

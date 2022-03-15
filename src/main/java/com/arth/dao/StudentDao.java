@@ -15,9 +15,9 @@ import com.arth.bean.StudentBean;
 public class StudentDao {
 	@Autowired
 	JdbcTemplate stmt;
-	public void addUser(StudentBean student) {
-		stmt.update("insert into student (studentname,email,gender,dateofbirth,password) values (?,?,?,?,?) ", 
-				student.getStudentName(),student.getEmail(),student.getGender(),student.getDateOfBirth(),student.getPassword());
+	public void addStudent(StudentBean student) {
+		stmt.update("insert into student (studentname,email,gender,dateofbirth,password,status) values (?,?,?,?,?,?) ", 
+				student.getStudentName(),student.getEmail(),student.getGender(),student.getDateOfBirth(),student.getPassword(),student.getStatus());
 	}
 
 	public List<StudentBean> getAllStudent() {
@@ -38,5 +38,11 @@ public class StudentDao {
 
 	public void updatePassword(StudentBean student) {
 		stmt.update("update student set password = ? where email = ?", student.getPassword(), student.getEmail());
+	}
+	public int countStudent(StudentBean student) {
+		return stmt.queryForObject("select count(*) from student where status='Active'", Integer.class);
+	}
+	public void deleteStudent(int studentId) {
+		stmt.update("delete from student where studentid = ?", studentId);
 	}
 }

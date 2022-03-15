@@ -90,7 +90,7 @@
 									<div class="dropdown-toggle" data-toggle="dropdown"
 										aria-expanded="false">
 										<img src="jpg/avatar-4.jpg" class="img-radius"
-											alt="User-Profile-Image"> <span>${user.studentName}</span> <i
+											alt="User-Profile-Image"> <span>${student.studentName}</span> <i
 											class="feather icon-chevron-down"></i>
 									</div>
 									<ul

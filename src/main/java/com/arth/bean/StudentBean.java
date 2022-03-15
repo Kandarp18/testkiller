@@ -10,6 +10,13 @@ private String password;
 private int otp;
 private String gender;
 private Date dateOfBirth;
+private String status;
+public String getStatus() {
+	return status;
+}
+public void setStatus(String status) {
+	this.status = status;
+}
 public int getStudentId() {
 	return StudentId;
 }

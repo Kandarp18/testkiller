@@ -83,7 +83,7 @@ public class SessionController {
 	}
 
 	@PostMapping("/login")
-	public String authenticate(UserBean user, Model model,HttpSession session,ClassBean classes,SubjectBean subject) {
+	public String authenticate(UserBean user, Model model,HttpSession session,ClassBean classes,SubjectBean subject,StudentBean student) {
 
 		boolean isCorrect = false;
 		UserBean dbUser = userDao.getUserByEmail(user.getEmail());
@@ -100,8 +100,10 @@ public class SessionController {
 		if (isCorrect == true) {
 			int count=classdao.countClass(classes);
 			int countsub=subjectdao.countSubject(subject);
+			int countstd=studentdao.countStudent(student);
 			model.addAttribute("cc",count);
 			model.addAttribute("cs",countsub);
+			model.addAttribute("cst",countstd);
 
 			return "AdminDashboard";
 		}

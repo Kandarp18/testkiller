@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+    pageEncoding="ISO-8859-1" isELIgnored="false"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -61,14 +62,32 @@
                                             <th>Student Email</th>
                                             <th>Gender</th>
                                             <th>Date of Birth</th>
-                                            <th>Password</th>
+                                            
                                             <th>Added On</th>
                                             <th>Status</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        
+                                         <c:forEach items="${student }" var="s">
+	                                      <tr>
+		                                      
+		                                      <td>${s.studentName}</td>
+		                                      <td>${s.email }</td>
+		                                      <td>${s.gender }</td>
+		                                      <td>${s.dateOfBirth }</td>
+		                                      <td>...</td>
+		                                      <td>${s.status}</td>
+		                                      <td>
+		                                      <button type="button"  class="btn btn-warning" >
+		                                      <a  href="deletestudent/${s.studentId}">Delete</a>
+		                                      </button> |
+                                  <button type="button" name="editclass" class="btn btn-warning" data-toggle="modal" data-target="#editModal">
+			                                  <a href="editclass?classId=${c.classId}" style="color:black;" data-toggle="modal">Edit</a>
+			                        </button>     
+		                                       </td>
+	                                           </tr>
+                                      </c:forEach>
                                     </tbody>
                                 </table>
                             </div>
@@ -125,7 +144,7 @@
      <!-- Modal -->
 <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
   <div class="modal-dialog" role="document">
-   <form method="post" id="student_form" enctype="multipart/form-data">
+   <form method="post" action="insertstudent" >
       		<div class="modal-content">
         		<div class="modal-header">
           			<h4 class="modal-title" id="modal_title">Add Student</h4>
@@ -135,31 +154,35 @@
         			<span id="form_message"></span>
 		          	<div class="form-group">
 		          		<label>Student Name</label>
-		          		<input type="text" name="student_name" id="student_name" class="form-control" required data-parsley-pattern="/^[a-zA-Z0-9 \s]+$/" data-parsley-trigger="keyup" />
+		          		<input type="text" name="studentName" id="studentName" class="form-control" required data-parsley-pattern="/^[a-zA-Z0-9 \s]+$/" data-parsley-trigger="keyup" />
 		          	</div>
-                    <div class="form-group">
-                        <label>Student Address</label>
-                        <input type="text" name="student_address" id="student_address" class="form-control" required data-parsley-pattern="/^[a-zA-Z0-9\s]+$/" data-parsley-trigger="keyup" />
-                    </div>
+                   
                     <div class="form-group">
                         <label>Student Email</label>
-                        <input type="text" name="student_email_id" id="student_email_id" class="form-control" required data-parsley-type="email" data-parsley-trigger="keyup" />
+                        <input type="text" name="email" id="email" class="form-control" required data-parsley-type="email" data-parsley-trigger="keyup" />
                     </div>
                     <div class="form-group">
                         <label>Student Password</label>
-                        <input type="password" name="student_password" id="student_password" class="form-control" required  data-parsley-trigger="keyup" />
+                        <input type="password" name="password" id="password" class="form-control" required  data-parsley-trigger="keyup" />
                     </div>
                     <div class="form-group">
                         <label>Gender</label>
-                        <select name="student_gender" id="student_gender" class="form-control">
+                        <select name="gender" id="gender" class="form-control">
                             <option value="Male">Male</option>
                             <option value="Female">Female</option>
                         </select>
                     </div>
                     <div class="form-group">
                         <label>Date of Birth</label>
-                        <input type="date" name="student_dob" id="student_dob" class="form-control datepicker"  required data-parsley-trigger="keyup" />
+                        <input type="date" name="dateOfBirth" id="dateOfBirth" class="form-control datepicker"  required data-parsley-trigger="keyup" />
                     </div>
+                    	<div class="form-group">
+		          		<label>Status</label>
+		          		<select name="status" id="status" class="form-control" required>
+		          		   <option value="Active">Active</option>
+		          		   <option value="InActive">InActive</option>
+		          		</select>
+		          	</div>
                     
         		</div>
         		<div class="modal-footer">

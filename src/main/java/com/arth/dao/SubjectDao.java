@@ -7,7 +7,6 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-
 import com.arth.bean.SubjectBean;
 
 
@@ -17,7 +16,7 @@ public class SubjectDao {
 	JdbcTemplate stmt;
 	
 	public void insertSubject(SubjectBean subject) {
-		stmt.update("insert into subject (subjectname,status) values (?,?)", subject.getSubjectName(), subject.getStatus());
+		stmt.update("insert into subject (subjectname,status,classid) values (?,?,?)", subject.getSubjectName(), subject.getStatus(),subject.getClassId());
 	}
 
 	public List<SubjectBean> getAllSubject() {
@@ -38,4 +37,8 @@ public class SubjectDao {
 	public void updateSubject(SubjectBean subject) {
 		stmt.update("update subject set subjectname = ? where subjectid = ? ", subject.getSubjectName(), subject.getSubjectId());
 	}
+	public int countSubject(SubjectBean subject) {
+		return stmt.queryForObject("select count(*) from subject where status='Active'", Integer.class);
+	}
+	
 }

@@ -11,13 +11,21 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.arth.bean.ClassBean;
+import com.arth.bean.SubjectBean;
 import com.arth.bean.UserBean;
+import com.arth.dao.ClassDao;
+import com.arth.dao.SubjectDao;
 import com.arth.dao.UserDao;
 
 @Controller
 public class SessionController {
 	@Autowired
 	UserDao userDao;
+	@Autowired
+	ClassDao classdao;
+	@Autowired
+	SubjectDao subjectdao;
 
 	@Autowired
 	BCryptPasswordEncoder bcryptPasswordEncoder;
@@ -70,7 +78,7 @@ public class SessionController {
 	}
 
 	@PostMapping("/login")
-	public String authenticate(UserBean user, Model model,HttpSession session) {
+	public String authenticate(UserBean user, Model model,HttpSession session,ClassBean classes,SubjectBean subject) {
 
 		boolean isCorrect = false;
 		UserBean dbUser = userDao.getUserByEmail(user.getEmail());
@@ -83,6 +91,10 @@ public class SessionController {
 		}
 
 		if (isCorrect == true) {
+			int count=classdao.countClass(classes);
+			int countsub=subjectdao.countSubject(subject);
+			model.addAttribute("cc",count);
+			model.addAttribute("cs",countsub);
 
 			return "AdminDashboard";
 		}

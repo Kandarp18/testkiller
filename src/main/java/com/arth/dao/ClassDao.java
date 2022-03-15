@@ -49,6 +49,9 @@ public class ClassDao {
 		}
 		return dbClass;
 	}
+	public int countClass(ClassBean classes) {
+		return stmt.queryForObject("select count(*) from classes where status='Active'", Integer.class);
+	}
 
 
 }

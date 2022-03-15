@@ -1,4 +1,5 @@
-
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1" isELIgnored="false"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -103,7 +104,7 @@
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
                                                 Total Subject</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">119</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">${cs}</div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
@@ -119,7 +120,7 @@
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
                                                 Total Classes</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">109</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">${cc}</div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>

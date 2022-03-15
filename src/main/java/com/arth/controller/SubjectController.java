@@ -8,8 +8,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.arth.bean.SubjectBean;
 
+import com.arth.bean.SubjectBean;
+import com.arth.dao.ClassDao;
 import com.arth.dao.SubjectDao;
 
 
@@ -17,6 +18,8 @@ import com.arth.dao.SubjectDao;
 public class SubjectController {
 	@Autowired
 	SubjectDao subjectdao;
+	@Autowired
+	ClassDao classdao;
 	
 	@GetMapping("/subject")
 	public String newSubject(Model model) {
@@ -51,6 +54,14 @@ public class SubjectController {
 		subjectdao.updateSubject(subject);
 		return "redirect:/class";
 	}
+	@GetMapping("/assignsubject")
+	public String assignSubject(Model model) {
+		model.addAttribute("classes", classdao.getAllClasses());
+		model.addAttribute("subject",subjectdao.getAllSubject());
+		return "AssignSubject";
+	}
+	
+	
 	
 	
 }

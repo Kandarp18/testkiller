@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.arth.bean.AssignSubjectBean;
+
 import com.arth.dao.AssignSubjectDao;
 import com.arth.dao.ClassDao;
 import com.arth.dao.SubjectDao;
@@ -28,8 +29,8 @@ public class AssignSubjectController {
 	}
 	
 	@PostMapping("/assignsubject")
-	public String addAssign(AssignSubjectBean asb,Model model) {
-		
+	public String addAssign(AssignSubjectBean asb) {
+		assignsubjectdao.assignSubject(asb);
 	return "redirect:/assignsubject";
 	}
 	

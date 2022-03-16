@@ -73,12 +73,15 @@
 		                                      <td>${c.className}</td>
 		                                      <td>${c.status }</td>
 		                                      <td>
-		                                      <button type="button"  class="btn btn-warning" >
-		                                      <a  href="deleteclass/${c.classId}">Delete</a>
-		                                      </button> |
-                                  <button type="button" name="editclass" class="btn btn-warning" data-toggle="modal" data-target="#editModal">
-			                                  <a href="editclass?classId=${c.classId}" style="color:black;" data-toggle="modal">Edit</a>
-			                        </button>     
+		                                       <a href="editclass?classId=${c.classId}" style="color:black;" data-toggle="modal">
+                                  <button type="button" name="editclass" class="btn btn-warning btn-circle btn-sm edit_button" data-toggle="modal" data-target="#editModal">
+			                                 <i class="fas fa-edit"></i>
+			                        </button> </a> &nbsp;
+		                                      <a  href="deleteclass/${c.classId}">
+		                                      <button type="button"  class="btn btn-danger btn-circle btn-sm delete_button" >
+		                                      <i class="fas fa-times"></i>
+		                                      </button></a> 
+		                                         
 		                                       </td>
 	                                           </tr>
                                       </c:forEach>

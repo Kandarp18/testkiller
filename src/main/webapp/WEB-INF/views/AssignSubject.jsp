@@ -63,8 +63,10 @@
                                             <th>Action</th>
                                         </tr>
                                     </thead>
+                                   
                                     <tbody>
                                          <c:forEach items="${asb }" var="asb">
+                                         <tr>
                                          <td>${asb.className }</td>
                                          <td>${asb.subjectName }</td>
                                          <td>...</td>
@@ -76,8 +78,10 @@
 			                                  <a href="editclass?classId=${c.classId}" style="color:black;" data-toggle="modal">Edit</a>
 			                        </button>     
 		                                       </td>
+		                                       </tr>
                                          </c:forEach>
                                     </tbody>
+                                   
                                 </table>
                             </div>
                         </div>
@@ -144,20 +148,20 @@
         			<span id="form_message"></span>
                     <div class="form-group">
                         <label>Class Name</label>
-                        <select name="className" id="className" class="form-control" required>
+                        <select name="classId" id="classId" class="form-control" required>
                             <option value="">Select Class</option>
                               <c:forEach items="${classes }" var="c">
-                                <option>${c.className }</option>
+                                <option value="${c.classId }">${c.className }</option>
                             </c:forEach>
                             </select>
 
                     </div>
 		          	<div class="form-group">
 		          		<label>Subject Name</label>
-		          		<select name="subjectName" id="subjectName" class="form-control" required>
+		          		<select name="subjectId" id="subjectId" class="form-control" required>
                             <option value="">Select Subject</option>
                             <c:forEach items="${subject}" var="s">
-                                <option >${s.subjectName }</option>
+                                <option value="${s.subjectId }">${s.subjectName }</option>
                             </c:forEach>
                             
                         </select>       

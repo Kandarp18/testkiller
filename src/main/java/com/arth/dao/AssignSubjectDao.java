@@ -18,34 +18,34 @@ public class AssignSubjectDao {
 	@Autowired
 	JdbcTemplate stmt;
 	public void assignSubject(AssignSubjectBean asgb) {
-		stmt.update("insert into assignsubject (classname,subjectname) values (?,?)",asgb.getClassName(),asgb.getSubjectName());
+		stmt.update("insert into assignsubject (classid,subjectid) values (?,?)",asgb.getClassId(),asgb.getSubjectId());
 	}
 	
 	public List<AssignSubjectBean> getAllAssign() {
-		List<AssignSubjectBean> roles = stmt.query("select * from assignsubject", new BeanPropertyRowMapper<AssignSubjectBean>(AssignSubjectBean.class));
+		List<AssignSubjectBean> roles = stmt.query("select a.*,c.className,s.subjectName from assignsubject a,classes c,subject s where a.classid=c.classid and a.subjectid=s.subjectid", new BeanPropertyRowMapper<AssignSubjectBean>(AssignSubjectBean.class));
 		return roles;
 	}
 
 	public void deleteAssignSubject(int assignSubjectId) {
 		stmt.update("delete from assignsubject where assignsubjectid = ?", assignSubjectId);
 	}
-	public AssignSubjectBean getClassByName(String className) {
+	public AssignSubjectBean getClassById(int classId) {
 		AssignSubjectBean dbClass = null;
 
 		try {
-			dbClass = stmt.queryForObject("select * from assignsubject where classname = ? ",
-					new BeanPropertyRowMapper<AssignSubjectBean>(AssignSubjectBean.class), new Object[] { className });
+			dbClass = stmt.queryForObject("select * from assignsubject where classid = ? ",
+					new BeanPropertyRowMapper<AssignSubjectBean>(AssignSubjectBean.class), new Object[] { classId });
 		}catch(Exception e) {
 			
 		}
 		return dbClass;
 	}
-	public AssignSubjectBean getSubjectByName(String subjectName) {
+	public AssignSubjectBean getSubjectById(int subjectId) {
 		AssignSubjectBean dbSubject = null;
 
 		try {
-			dbSubject = stmt.queryForObject("select * from assignsubject where subjectname = ? ",
-					new BeanPropertyRowMapper<AssignSubjectBean>(AssignSubjectBean.class), new Object[] { subjectName });
+			dbSubject = stmt.queryForObject("select * from assignsubject where subjectid = ? ",
+					new BeanPropertyRowMapper<AssignSubjectBean>(AssignSubjectBean.class), new Object[] { subjectId });
 		}catch(Exception e) {
 			
 		}

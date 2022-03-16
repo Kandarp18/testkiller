@@ -33,10 +33,10 @@ public class AssignSubjectController {
 	@PostMapping("/assignsubject")
 	public String addAssign(AssignSubjectBean asb,Model model) {
 		boolean p=false;
-		AssignSubjectBean dbClass=assignsubjectdao.getClassByName(asb.getClassName());
-		AssignSubjectBean dbSubject=assignsubjectdao.getSubjectByName(asb.getSubjectName());
+		AssignSubjectBean dbClass=assignsubjectdao.getClassById(asb.getClassId());
+		AssignSubjectBean dbSubject=assignsubjectdao.getSubjectById(asb.getSubjectId());
 		if(dbClass!=null && dbSubject!=null) {
-		if((asb.getClassName()).equalsIgnoreCase(dbClass.getClassName()) && (asb.getSubjectName()).equalsIgnoreCase(dbSubject.getSubjectName())){
+		if((asb.getClassId()==dbClass.getClassId())&&(asb.getSubjectId())==dbSubject.getSubjectId()){
 			p=true;
 		}
 		}

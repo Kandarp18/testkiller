@@ -1,5 +1,9 @@
 package com.arth.controller;
 
+
+
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,9 +24,15 @@ public class SubjectController {
 	@Autowired
 	ClassDao classdao;
 	
+	
+	@SuppressWarnings("deprecation")
 	@GetMapping("/subject")
 	public String newSubject(Model model) {
+		Date date=new Date();
 		model.addAttribute("subject", subjectdao.getAllSubject());
+	
+	 model.addAttribute("dy",date.toLocaleString());
+	
 		return "NewSubject";
 	}
 	
@@ -41,6 +51,7 @@ public class SubjectController {
 			model.addAttribute("error","This Class Name Already Exists!");
 			return "redirect:/subject";
 		}else {
+			
 			subjectdao.insertSubject(subject);
 		}
 	return "redirect:/subject";

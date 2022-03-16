@@ -68,12 +68,17 @@
 	                                      <tr>
 		                                      
 		                                      <td>${s.subjectName}</td>
-		                                      <td>${s.createdOn }</td>
+		                                      <td>${dy }</td>
 		                                      <td>${s.status}</td>
-		                                      <td><a href="deletesubject/${s.subjectId}">Delete</a> |
-		                                        <button type="button" name="editclass" class="btn btn-warning" data-toggle="modal" data-target="#editModal">
-			                                  <a href="editsubject?subjectId=${s.subjectId}" style="color:black;" data-toggle="modal">Edit</a>
-			                        </button>       
+		                                      <td>
+		                                      <a href="editsubject?subjectId=${s.subjectId}" style="color:black;" data-toggle="modal">
+		                                        <button type="button" name="editclass" class="btn btn-warning btn-circle btn-sm edit_button" data-toggle="modal" data-target="#editModal">
+			                                 <i class="fas fa-edit"></i>
+			                        </button></a> &nbsp;
+		                                      <a  href="deletesubject/${s.subjectId}">
+		                                      <button type="button"  class="btn btn-danger btn-circle btn-sm delete_button" >
+		                                      <i class="fas fa-times"></i>
+		                                      </button></a>       
                                       
 		                                       </td>
 	                                           </tr>
@@ -145,7 +150,7 @@
       <div class="modal-body">
         <span id="form_message"></span>
         <p style="color:red;">  ${error }</p>
-                   <input type="hidden" name="createdOn" id="p1" >
+                 
 		          	<div class="form-group">
 		          		<label>Subject Name</label>
 		          		<input type="text" name="subjectName" id="subjectName" class="form-control" required data-parsley-pattern="/^[a-zA-Z0-9 \s]+$/" data-parsley-trigger="keyup" />
@@ -204,19 +209,7 @@
     </form>
   </div>
 </div>
-<script>
 
-var today = new Date();
-
-var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
-
-var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-
-var dateTime = date+' '+time;
-
-document.getElementById("p1").innerHTML = dateTime;
-
-</script>
 <script type="text/javascript">
 			$(document).ready(function() {
 				$('#subjecttable').DataTable();

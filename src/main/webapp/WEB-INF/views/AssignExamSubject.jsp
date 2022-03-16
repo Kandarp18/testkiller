@@ -152,7 +152,7 @@
                     </div>
                     <div class="form-group">
                         <label>Exam Date & Time</label>
-                        <input type="text" name="subject_exam_datetime" id="subject_exam_datetime" class="form-control datepicker" readonly required data-parsley-trigger="keyup" />
+                        <input type="text" name="subject_exam_datetime" id="subject_exam_datetime" class="form-control datepicker"  required data-parsley-trigger="keyup" />
                     </div>
                     <div class="form-group">
                         <label>Total Question</label>
@@ -190,6 +190,17 @@
     
   </div>
 </div>
+<script type="text/javascript">
+ var date = new Date();
+    date.setDate(date.getDate());
+    $("#subject_exam_datetime").datetimepicker({
+        startDate: date,
+        format: 'yyyy-mm-dd hh:ii',
+        autoclose: true
+    });
+    
+
+</script>
 <script type="text/javascript">
 			$(document).ready(function() {
 				$('#subjecttable').DataTable();

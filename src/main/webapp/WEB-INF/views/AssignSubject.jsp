@@ -74,8 +74,8 @@
 		                                      <button type="button"  class="btn btn-warning" >
 		                                      <a  href="deleteassignsubject/${asb.assignSubjectId}">Delete</a>
 		                                      </button> |
-                                  <button type="button" name="editclass" class="btn btn-warning" data-toggle="modal" data-target="#editModal">
-			                                  <a href="editclass?classId=${c.classId}" style="color:black;" data-toggle="modal">Edit</a>
+                                  <button type="button" name="editAssign" class="btn btn-warning" data-toggle="modal" data-target="#editAssign">
+			                                  <a href="editassignsubject?assignSubjectId=${asb.assignSubjectId}" style="color:black;" data-toggle="modal">Edit</a>
 			                        </button>     
 		                                       </td>
 		                                       </tr>
@@ -170,6 +170,50 @@
         		<div class="modal-footer">
           			
           			<input type="submit" name="submit" id="submit_button" class="btn btn-success" value="Add" />
+          			<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        		</div>
+      		</div>
+    	</form>
+  </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="editAssign" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <form method="post" id="subject_assign_form" action="updateassignsubject">
+      		<div class="modal-content">
+        		<div class="modal-header">
+          			<h4 class="modal-title" id="modal_title">Assign Subject to Class</h4>
+          			<button type="button" class="close" data-dismiss="modal">&times;</button>
+        		</div>
+        		<div class="modal-body">
+        		 <p style="color:red;">  ${error }</p>
+        			<span id="form_message"></span>
+                    <div class="form-group">
+                        <label>Class Name</label>
+                        <select name="classId" id="classId" class="form-control" required>
+                            <option value="">Select Class</option>
+                              <c:forEach items="${classes }" var="c">
+                                <option value="${c.classId }">${c.className }</option>
+                            </c:forEach>
+                            </select>
+
+                    </div>
+		          	<div class="form-group">
+		          		<label>Subject Name</label>
+		          		<select name="subjectId" id="subjectId" class="form-control" required>
+                            <option value="">Select Subject</option>
+                            <c:forEach items="${subject}" var="s">
+                                <option value="${s.subjectId }">${s.subjectName }</option>
+                            </c:forEach>
+                            
+                        </select>       
+		          	</div>
+        		</div>
+        		<div class="modal-footer">
+          			
+          			<input type="submit" name="submit" id="submit_button" class="btn btn-success" value="Edit" />
           			<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         		</div>
       		</div>

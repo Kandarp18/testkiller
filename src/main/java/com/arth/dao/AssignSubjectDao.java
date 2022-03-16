@@ -13,6 +13,7 @@ import com.arth.bean.AssignSubjectBean;
 
 
 
+
 @Repository
 public class AssignSubjectDao {
 	@Autowired
@@ -52,6 +53,15 @@ public class AssignSubjectDao {
 		return dbSubject;
 	}
 
-	
+	public void updateAssign(AssignSubjectBean asb) {
+		stmt.update("update assignsubject set classid = ?,subjectid = ? where assignsubjectid = ? ",asb.getClassId(),asb.getSubjectId(),asb.getAssignSubjectId());
+	}
+	public AssignSubjectBean getAssignById(int assignSubjectId) {
+
+	 AssignSubjectBean asb = stmt.queryForObject("select * from assignsubject where assignsubjectid = ? ", new BeanPropertyRowMapper<AssignSubjectBean>(AssignSubjectBean.class), new Object[] { assignSubjectId });
+
+		return asb;
+	}
+
 	
 }

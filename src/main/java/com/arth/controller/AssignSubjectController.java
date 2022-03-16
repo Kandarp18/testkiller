@@ -8,9 +8,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.arth.bean.AssignSubjectBean;
-
 import com.arth.dao.AssignSubjectDao;
 import com.arth.dao.ClassDao;
 import com.arth.dao.SubjectDao;
@@ -41,8 +41,9 @@ public class AssignSubjectController {
 		AssignSubjectBean dbClass=assignsubjectdao.getClassById(asb.getClassId());
 		AssignSubjectBean dbSubject=assignsubjectdao.getSubjectById(asb.getSubjectId());
 		if(dbClass!=null && dbSubject!=null) {
-		if((asb.getClassId()==dbClass.getClassId())&&(asb.getSubjectId())==dbSubject.getSubjectId()){
+		if(asb.getClassId()==dbClass.getClassId() && asb.getSubjectId()==dbSubject.getSubjectId()){
 			p=true;
+			System.out.println(asb.getClassId());
 		}
 		}
 		
@@ -59,5 +60,21 @@ public class AssignSubjectController {
        assignsubjectdao.deleteAssignSubject(assignSubjectId);
 		return "redirect:/assignsubject";
 	}
+	@GetMapping("/editassignsubject")
+	public String editSubject(@RequestParam("assignSubjectId") int assignSubjectId, Model model) {	
+		
+	
+		model.addAttribute("sub", assignsubjectdao.getAssignById(assignSubjectId));
+		
+		return "redirect:/assignsubject";
+
+	}
+
+	@PostMapping("/updateassignsubject")
+	public String updateAssignSubjectById(AssignSubjectBean asb) {
+		assignsubjectdao.updateAssign(asb);
+		return "redirect:/assignsubject";
+	}
+	
 	
 }

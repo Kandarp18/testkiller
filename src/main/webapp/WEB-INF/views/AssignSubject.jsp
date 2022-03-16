@@ -69,7 +69,7 @@
                                          <tr>
                                          <td>${asb.className }</td>
                                          <td>${asb.subjectName }</td>
-                                         <td>...</td>
+                                         <td>${dy }</td>
                                         <td>
 		                                      <button type="button"  class="btn btn-warning" >
 		                                      <a  href="deleteassignsubject/${asb.assignSubjectId}">Delete</a>

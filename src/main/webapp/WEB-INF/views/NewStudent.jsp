@@ -76,7 +76,7 @@
 		                                      <td>${s.email }</td>
 		                                      <td>${s.gender }</td>
 		                                      <td>${s.dateOfBirth }</td>
-		                                      <td>...</td>
+		                                      <td>${dy }</td>
 		                                      <td>${s.status}</td>
 		                                      <td>
 		                                      <button type="button"  class="btn btn-warning" >

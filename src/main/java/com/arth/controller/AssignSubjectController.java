@@ -1,5 +1,7 @@
 package com.arth.controller;
 
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,7 +28,8 @@ public class AssignSubjectController {
 		model.addAttribute("classes", classdao.getAllClassesByStatus());
 		model.addAttribute("subject",subjectdao.getAllSubjectByStatus());
 		model.addAttribute("asb", assignsubjectdao.getAllAssign());
-		
+		  Date date=new Date();
+		model.addAttribute("dy",date.toLocaleString());
 		return "AssignSubject";
 	}
 	

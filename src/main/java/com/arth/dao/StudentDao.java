@@ -11,6 +11,7 @@ import com.arth.bean.StudentBean;
 
 
 
+
 @Repository
 public class StudentDao {
 	@Autowired
@@ -21,7 +22,7 @@ public class StudentDao {
 	}
 
 	public List<StudentBean> getAllStudent() {
-		return stmt.query("select *  from student",
+		return stmt.query("select * from student",
 				new BeanPropertyRowMapper<StudentBean>(StudentBean.class));
 	}
 	public StudentBean getStudentByEmail(String email) {
@@ -44,5 +45,9 @@ public class StudentDao {
 	}
 	public void deleteStudent(int studentId) {
 		stmt.update("delete from student where studentid = ?", studentId);
+	}
+	public List<StudentBean> getAllStudentByStatus() {
+		List<StudentBean> student = stmt.query("select * from student where status='Active'", new BeanPropertyRowMapper<StudentBean>(StudentBean.class));
+		return student;
 	}
 }

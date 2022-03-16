@@ -1,7 +1,6 @@
 package com.arth.controller;
 
-
-
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -74,6 +73,10 @@ public class StudentController {
 	public String getAllStudent(Model model) {
 		List<StudentBean> student = studentdao.getAllStudent();
 	   model.addAttribute("student", student);
+	   Date date=new Date();
+		
+	
+	 model.addAttribute("dy",date.toLocaleString());
 		return "NewStudent";
 	}
 	@PostMapping("/insertstudent")

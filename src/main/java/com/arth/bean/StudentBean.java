@@ -3,8 +3,8 @@ package com.arth.bean;
 import java.sql.Date;
 
 public class StudentBean {
-private int StudentId;	
-private String StudentName;
+private int studentId;	
+private String studentName;
 private String email;
 private String password;
 private int otp;
@@ -17,17 +17,18 @@ public String getStatus() {
 public void setStatus(String status) {
 	this.status = status;
 }
+
 public int getStudentId() {
-	return StudentId;
+	return studentId;
 }
 public void setStudentId(int studentId) {
-	StudentId = studentId;
+	this.studentId = studentId;
 }
 public String getStudentName() {
-	return StudentName;
+	return studentName;
 }
 public void setStudentName(String studentName) {
-	StudentName = studentName;
+	this.studentName = studentName;
 }
 public String getEmail() {
 	return email;

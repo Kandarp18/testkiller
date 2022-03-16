@@ -39,10 +39,7 @@ public class AdminController {
 	
 
 	
-	@GetMapping("/assignstudent")
-	public String assignStudent() {
-		return "AssignStudent";
-	}
+	
 
 	@GetMapping("/exam")
 	public String newExam() {

@@ -23,12 +23,14 @@ public class AssignSubjectController {
 	SubjectDao subjectdao;
 	@Autowired
 	AssignSubjectDao assignsubjectdao;
+	@Autowired
+	Date date;
 	@GetMapping("/assignsubject")
 	public String assignSubject(Model model) {
 		model.addAttribute("classes", classdao.getAllClassesByStatus());
 		model.addAttribute("subject",subjectdao.getAllSubjectByStatus());
 		model.addAttribute("asb", assignsubjectdao.getAllAssign());
-		  Date date=new Date();
+		 
 		model.addAttribute("dy",date.toLocaleString());
 		return "AssignSubject";
 	}

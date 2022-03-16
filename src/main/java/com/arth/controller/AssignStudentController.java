@@ -22,13 +22,15 @@ public class AssignStudentController {
 	@Autowired
 	ClassDao classdao;
 	@Autowired
+	Date date;
+	@Autowired
 	StudentDao studentdao;
 	@GetMapping("/assignstudent")
 	public String assignStudent(Model model) {
 		model.addAttribute("classes",classdao.getAllClassesByStatus());
 		model.addAttribute("student", studentdao.getAllStudentByStatus());
 		model.addAttribute("ast", assignstudentdao.getAllAssign());
-		 Date date=new Date();
+		 
 		 model.addAttribute("dy",date.toLocaleString());
 		return "AssignStudent";
 	}

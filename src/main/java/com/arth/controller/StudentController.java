@@ -23,7 +23,8 @@ public class StudentController {
 	BCryptPasswordEncoder bCryptPasswordEncoder;
 	@Autowired
 	StudentDao studentdao;
-
+   @Autowired
+   Date date;
 	@GetMapping("/studentdashboard")
 	public String newStudent() {
 		return "StudentDashboard";
@@ -73,7 +74,7 @@ public class StudentController {
 	public String getAllStudent(Model model) {
 		List<StudentBean> student = studentdao.getAllStudent();
 	   model.addAttribute("student", student);
-	   Date date=new Date();
+	   
 		
 	
 	 model.addAttribute("dy",date.toLocaleString());

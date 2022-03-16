@@ -132,5 +132,48 @@ public class SessionController {
 			return "NewPassword";
 		}
 	}
+	@PostMapping("/forgetpassword")
+	public String forgetPassword(UserBean user, Model model, HttpSession session) {
+		UserBean dbUser = userDao.getUserByEmail(user.getEmail());
 
+		if (dbUser == null) {
+			model.addAttribute("error", "Please Enter Valid Email");
+			return "ForgetPassword";
+
+		} else {
+			int otp = (int) (Math.random() * 1000000); // 0325842.15621 * 1000000
+			session.setAttribute("otp", otp);
+			session.setAttribute("email", user.getEmail());
+			model.addAttribute("msg", "Otp is generated and sent to your email!!!");
+			System.out.println("your otp is => " + otp);
+			/// send email to user
+
+			return "EditPassword";
+		}
+
+	}
+	@RequestMapping(value = "forgetpassword", method = RequestMethod.GET)
+	public String forgetPassword() {
+		return "ForgetPassword";
+
+	}
+	@PostMapping("/editpassword")
+	public String updatePassword(UserBean user, HttpSession session, Model model) {
+		int otp = (int) session.getAttribute("otp");
+		String email = (String) session.getAttribute("email");
+
+		if (otp == user.getOtp() && email.equalsIgnoreCase(user.getEmail())) {
+
+			String encPassword = bcryptPasswordEncoder.encode(user.getPassword());
+			user.setPassword(encPassword);
+
+			userDao.updatePassword(user);
+
+			model.addAttribute("msg", "Password Modified Please Login");
+			return "Login";
+		} else {
+			model.addAttribute("error", "You data mismatch with our records!!!");
+			return "EditPassword";
+		}
+	}
 }

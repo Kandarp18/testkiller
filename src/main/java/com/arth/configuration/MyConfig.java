@@ -14,7 +14,7 @@ public class MyConfig {
 		return new BCryptPasswordEncoder();
 	}
 	@Bean
-	public Date date(){
+	public Date toLocaleString(){
 		return new Date();
 	}
 }

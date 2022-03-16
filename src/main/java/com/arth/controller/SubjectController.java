@@ -23,7 +23,8 @@ public class SubjectController {
 	SubjectDao subjectdao;
 	@Autowired
 	ClassDao classdao;
-	
+	@Autowired
+	Date date;
 	
 	@SuppressWarnings("deprecation")
 	@GetMapping("/subject")

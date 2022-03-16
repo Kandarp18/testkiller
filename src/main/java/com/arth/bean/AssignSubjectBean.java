@@ -1,28 +1,23 @@
 package com.arth.bean;
 
 public class AssignSubjectBean {
-	private int classId;
-	private String className;
-	private int subjectId;
+	private int assignSubjectId;
+		private String className;
 	private String subjectName;
-	public int getClassId() {
-		return classId;
+	public int getAssignSubjectId() {
+		return assignSubjectId;
 	}
-	public void setClassId(int classId) {
-		this.classId = classId;
+	public void setAssignSubjectId(int assignSubjectId) {
+		this.assignSubjectId = assignSubjectId;
 	}
+	
 	public String getClassName() {
 		return className;
 	}
 	public void setClassName(String className) {
 		this.className = className;
 	}
-	public int getSubjectId() {
-		return subjectId;
-	}
-	public void setSubjectId(int subjectId) {
-		this.subjectId = subjectId;
-	}
+	
 	public String getSubjectName() {
 		return subjectName;
 	}

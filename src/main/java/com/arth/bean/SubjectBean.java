@@ -4,7 +4,13 @@ public class SubjectBean {
 
 	private int subjectId;
 	private String subjectName;
-	
+	private String createdOn;
+	public String getCreatedOn() {
+		return createdOn;
+	}
+	public void setCreatedOn(String createdOn) {
+		this.createdOn = createdOn;
+	}
 	private String status;
 	public String getStatus() {
 		return status;

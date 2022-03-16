@@ -68,7 +68,7 @@
 	                                      <tr>
 		                                      
 		                                      <td>${s.subjectName}</td>
-		                                      <td>...</td>
+		                                      <td>${s.createdOn }</td>
 		                                      <td>${s.status}</td>
 		                                      <td><a href="deletesubject/${s.subjectId}">Delete</a> |
 		                                        <button type="button" name="editclass" class="btn btn-warning" data-toggle="modal" data-target="#editModal">
@@ -145,7 +145,7 @@
       <div class="modal-body">
         <span id="form_message"></span>
         <p style="color:red;">  ${error }</p>
-                   
+                   <input type="hidden" name="createdOn" id="p1" >
 		          	<div class="form-group">
 		          		<label>Subject Name</label>
 		          		<input type="text" name="subjectName" id="subjectName" class="form-control" required data-parsley-pattern="/^[a-zA-Z0-9 \s]+$/" data-parsley-trigger="keyup" />
@@ -204,6 +204,19 @@
     </form>
   </div>
 </div>
+<script>
+
+var today = new Date();
+
+var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+
+var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+
+var dateTime = date+' '+time;
+
+document.getElementById("p1").innerHTML = dateTime;
+
+</script>
 <script type="text/javascript">
 			$(document).ready(function() {
 				$('#subjecttable').DataTable();

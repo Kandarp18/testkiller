@@ -64,7 +64,19 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                         
+                                         <c:forEach items="${asb }" var="asb">
+                                         <td>${asb.className }</td>
+                                         <td>${asb.subjectName }</td>
+                                         <td>...</td>
+                                        <td>
+		                                      <button type="button"  class="btn btn-warning" >
+		                                      <a  href="deleteassignsubject/${asb.assignSubjectId}">Delete</a>
+		                                      </button> |
+                                  <button type="button" name="editclass" class="btn btn-warning" data-toggle="modal" data-target="#editModal">
+			                                  <a href="editclass?classId=${c.classId}" style="color:black;" data-toggle="modal">Edit</a>
+			                        </button>     
+		                                       </td>
+                                         </c:forEach>
                                     </tbody>
                                 </table>
                             </div>
@@ -128,10 +140,11 @@
           			<button type="button" class="close" data-dismiss="modal">&times;</button>
         		</div>
         		<div class="modal-body">
+        		 <p style="color:red;">  ${error }</p>
         			<span id="form_message"></span>
                     <div class="form-group">
                         <label>Class Name</label>
-                        <select name="classId" id="classId" class="form-control" required>
+                        <select name="className" id="className" class="form-control" required>
                             <option value="">Select Class</option>
                               <c:forEach items="${classes }" var="c">
                                 <option>${c.className }</option>
@@ -141,7 +154,7 @@
                     </div>
 		          	<div class="form-group">
 		          		<label>Subject Name</label>
-		          		<select name="subjectid" id="subjectid" class="form-control" required>
+		          		<select name="subjectName" id="subjectName" class="form-control" required>
                             <option value="">Select Subject</option>
                             <c:forEach items="${subject}" var="s">
                                 <option >${s.subjectName }</option>

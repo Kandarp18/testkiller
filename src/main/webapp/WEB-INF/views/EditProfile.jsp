@@ -69,13 +69,7 @@
                                             <label>Password</label>
                                             <input type="password" name="password" id="user_password" class="form-control" required data-parsley-maxlength="16" data-parsley-trigger="keyup" />
                                         </div>
-                                        <div class="form-group">
-                                            <label>Select Profile Image</label><br />
-                                            <input type="file" name="user_image" id="user_image" />
-                                            <br />
-                                            <span class="text-muted">Only .jpg, .png file allowed for upload</span><br />
-                                            <span id="uploaded_image"></span>
-                                        </div>
+                                       
                                     <!--</div>
                                 </div>!-->
                             </div>

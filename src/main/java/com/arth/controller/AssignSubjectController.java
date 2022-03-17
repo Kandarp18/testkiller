@@ -39,22 +39,24 @@ public class AssignSubjectController {
 	@PostMapping("/assignsubject")
 	public String addAssign(AssignSubjectBean asb,Model model,SubjectBean subject) {
 		boolean p=false;
+		  AssignSubjectBean dbAssign=assignsubjectdao.getAllById(asb.getClassId(), asb.getSubjectId());
+		   if(dbAssign!=null) {
+			   if((dbAssign.getClassId()==asb.getClassId()) && (dbAssign.getSubjectId()==asb.getSubjectId())) {
+				   p=true;
+			   }
+		   }
 		
-		AssignSubjectBean dbClass=assignsubjectdao.getClassById(asb.getClassId());
-		AssignSubjectBean dbSubject=assignsubjectdao.getSubjectById(asb.getSubjectId());
-		if(dbClass!=null && dbSubject!=null) {
-		if(asb.getClassId()==dbClass.getClassId() && asb.getSubjectId()==dbSubject.getSubjectId()){
-			p=true;
 		
-		}
-		}
 		
 		if(p==true) {
 			
 			model.addAttribute("error","This Subject Name Already Exists in this Class!");
 			
 		}else {
-			
+		System.out.println(asb.getClassId());
+		System.out.println(asb.getSubjectId());
+		
+		
 		assignsubjectdao.assignSubject(asb);
 		}
 	return "redirect:/assignsubject";

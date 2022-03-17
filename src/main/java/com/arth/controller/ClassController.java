@@ -37,7 +37,7 @@ public class ClassController {
 		boolean p=false;
 		ClassBean dbClass=classdao.getClassByName(classes.getClassName());
 		if(dbClass!=null) {
-		if((classes.getClassName()).equalsIgnoreCase(dbClass.getClassName())==true){
+		if((classes.getClassName()).equalsIgnoreCase(dbClass.getClassName())){
 			p=true;
 		}
 		}

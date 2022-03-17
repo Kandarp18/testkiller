@@ -62,6 +62,15 @@ public class AssignSubjectDao {
 
 		return asb;
 	}
+	public AssignSubjectBean getAllById(int classId,int subjectId) {
+		AssignSubjectBean dbAssign=null;
+		try {
+			dbAssign=stmt.queryForObject("select * from assignsubject where classid= ? and subjectid=?", new BeanPropertyRowMapper<AssignSubjectBean>(AssignSubjectBean.class),new Object[]{classId,subjectId});
+		}catch(Exception e) {
+			
+		}
+		return dbAssign;
+	}
 
 	
 }

@@ -37,11 +37,10 @@ public class AssignStudentController {
 	@PostMapping("/assignstudent")
 	public String addAssign(AssignStudentBean asb,Model model) {
 		boolean p=false;
-		AssignStudentBean dbClass=assignstudentdao.getClassById(asb.getClassId());
-		AssignStudentBean dbStudent=assignstudentdao.getStudentById(asb.getStudentId());
-		AssignStudentBean dbRollNo=assignstudentdao.getStudentByRollNo(asb.getRollNo());
-		if(dbClass!=null && dbStudent!=null && dbRollNo!=null) {
-		if((asb.getClassId()==dbClass.getClassId())&&(asb.getStudentId()==dbStudent.getStudentId())&&(asb.getRollNo().equalsIgnoreCase(dbRollNo.getRollNo()))){
+		
+		AssignStudentBean dbAssign=assignstudentdao.getAllStudent(asb.getClassId(),asb.getStudentId(),asb.getRollNo());
+		if(dbAssign!=null) {
+		if((asb.getClassId()==dbAssign.getClassId())&&(asb.getStudentId()==dbAssign.getStudentId())&&(asb.getRollNo().equalsIgnoreCase(dbAssign.getRollNo()))){
 			p=true;
 		}
 		}

@@ -43,7 +43,7 @@ public class ClassDao {
 
 		try {
 			dbClass = stmt.queryForObject("select * from classes where classname = ? ",
-					new BeanPropertyRowMapper<ClassBean>(ClassBean.class), new Object[] { className });
+					new BeanPropertyRowMapper<ClassBean>(ClassBean.class), new Object[] { className});
 		}catch(Exception e) {
 			
 		}

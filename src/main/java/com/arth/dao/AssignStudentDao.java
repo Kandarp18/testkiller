@@ -61,7 +61,17 @@ public class AssignStudentDao {
 		}
 		return dbRollNo;
 	}
-	
+	public AssignStudentBean getAllStudent(int classId,int studentId,String rollNo) {
+		AssignStudentBean dbAssign = null;
+
+		try {
+			dbAssign = stmt.queryForObject("select * from assignstudent where classid = ? and studentid = ? and rollno = ? ",
+					new BeanPropertyRowMapper<AssignStudentBean>(AssignStudentBean.class), new Object[] { classId,studentId,rollNo });
+		}catch(Exception e) {
+			
+		}
+		return dbAssign;
+	}
 	
 	
 }

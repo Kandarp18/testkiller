@@ -108,6 +108,12 @@ public class StudentController {
 
 		return "redirect:/student";
 	}
+	@GetMapping("/logoutstudent")
+	public String logoutStudent(HttpSession session) {
+		session.invalidate();
+		return "redirect:/loginstudent";
+
+	}
 
 
 }

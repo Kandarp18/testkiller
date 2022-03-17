@@ -108,8 +108,8 @@
 										<li><a href="auth-lock-screen.html"> <i
 												class="feather icon-lock"></i> Lock Screen
 										</a></li>
-										<li><a href="logout"> <i
-												class="feather icon-log-out"></i> Logout
+										<li><a href="#" data-toggle="modal" data-target="#logoutModal"> 
+										<i class="feather icon-log-out"></i> Logout
 										</a></li>
 									</ul>
 								</div>

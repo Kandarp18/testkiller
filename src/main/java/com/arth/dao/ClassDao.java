@@ -38,12 +38,12 @@ public class ClassDao {
 	public void updateClass(ClassBean c) {
 		stmt.update("update classes set classname = ? where classid = ? ",c.getClassName(), c.getClassId());
 	}
-	public ClassBean getClassByName(String className,String status) {
+	public ClassBean getClassByName(String className) {
 		ClassBean dbClass = null;
 
 		try {
-			dbClass = stmt.queryForObject("select * from classes where classname = ? and status=?",
-					new BeanPropertyRowMapper<ClassBean>(ClassBean.class), new Object[] { className,status});
+			dbClass = stmt.queryForObject("select * from classes where classname = ?",
+					new BeanPropertyRowMapper<ClassBean>(ClassBean.class), new Object[] { className});
 		}catch(Exception e) {
 			
 		}

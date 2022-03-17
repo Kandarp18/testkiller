@@ -35,9 +35,9 @@ public class ClassController {
 	@PostMapping("/newclass")
 	public String addClass(ClassBean classes,Model model) {
 		boolean p=false;
-		ClassBean dbClass=classdao.getClassByName(classes.getClassName(),classes.getStatus());
+		ClassBean dbClass=classdao.getClassByName(classes.getClassName());
 	    if(dbClass!=null) {
-		if((classes.getClassName()).equalsIgnoreCase(dbClass.getClassName())&&(classes.getStatus()).equals(dbClass.getStatus())){
+		if((classes.getClassName()).equalsIgnoreCase(dbClass.getClassName())){
 			p=true;
 		}
 		}

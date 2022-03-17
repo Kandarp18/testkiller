@@ -53,8 +53,6 @@ public class AssignSubjectController {
 			model.addAttribute("error","This Subject Name Already Exists in this Class!");
 			
 		}else {
-		System.out.println(asb.getClassId());
-		System.out.println(asb.getSubjectId());
 		
 		
 		assignsubjectdao.assignSubject(asb);

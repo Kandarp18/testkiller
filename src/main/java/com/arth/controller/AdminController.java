@@ -36,15 +36,6 @@ public class AdminController {
 		return "AdminDashboard";
 	}
 	
-	
-
-	
-	
-
-	@GetMapping("/exam")
-	public String newExam() {
-		return "NewExam";
-	}
 	@GetMapping("/examsubject")
 	public String assignExamSubject() {
 		return "AssignExamSubject";

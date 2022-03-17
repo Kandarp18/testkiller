@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -66,7 +67,28 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        
+                                        <c:forEach items="${exam }" var="e">
+	                                      <tr>
+		                                      
+		                                      <td>${e.examName}</td>
+		                                      <td>${e.className }</td>
+		                                      <td>${e.duration } Minute</td>
+		                                      <td>${e.resultDate }</td>
+		                                      <td>${e.status }</td>
+		                                      <td>${dy }</td>
+		                                      <td>
+		                                       <a href="editclass?classId=${c.classId}" style="color:black;" data-toggle="modal">
+                                  <button type="button" name="editclass" class="btn btn-warning btn-circle btn-sm edit_button" data-toggle="modal" data-target="#editModal">
+			                                 <i class="fas fa-edit"></i>
+			                        </button> </a> &nbsp;
+		                                      <a  href="deleteexam/${e.examId}">
+		                                      <button type="button"  class="btn btn-danger btn-circle btn-sm delete_button" >
+		                                      <i class="fas fa-times"></i>
+		                                      </button></a> 
+		                                         
+		                                       </td>
+	                                           </tr>
+                                      </c:forEach>
                                     </tbody>
                                 </table>
                             </div>
@@ -123,7 +145,7 @@
      <!-- Modal -->
 <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
   <div class="modal-dialog" role="document">
-    <form method="post" id="exam_form">
+    <form method="post" action="exam">
       		<div class="modal-content">
         		<div class="modal-header">
           			<h4 class="modal-title" id="modal_title">Add Exam Data</h4>
@@ -133,37 +155,34 @@
         			<span id="form_message"></span>
                     <div class="form-group">
                         <label>Exam Name</label>
-                        <input type="text" name="exam_title" id="exam_title" class="form-control" required data-parsley-pattern="/^[a-zA-Z0-9 \s]+$/" data-parsley-trigger="keyup" />
+                        <input type="text" name="examName" id="examName" class="form-control" required data-parsley-pattern="/^[a-zA-Z0-9 \s]+$/" data-parsley-trigger="keyup" />
                     </div>
                     <div class="form-group">
                         <label>Class</label>
-                        <select name="exam_class_id" id="exam_class_id" class="form-control" required>
+                        <select name="classId" id="classId" class="form-control" required>
                             <option value="">Select Class</option>
-                            
-                                <option value="78">123</option>
-                                
-                                <option value="76">12th cs tm</option>
-                                
-                                <option value="148">1777</option>
-                                
-                                                                         
-                                        </select>
+                            <c:forEach items="${classes }" var="c">
+                                <option value="${c.classId }">${c.className }</option>
+                            </c:forEach>
+                            </select>                    
                     </div>
 		          	
                     <div class="form-group">
                         <label>Exam Duration for Each Subject <span class="text-danger">*</span></label>
-                        <select name="exam_duration" id="exam_duration" class="form-control" required>
+                        <select name="duration" id="duration" class="form-control" required>
                             <option value="">Select</option>
                             <option value="5">5 Minute</option>
-                            <option value="30">30 Minute</option>
-                            <option value="60">1 Hour</option>
-                            <option value="120">2 Hour</option>
-                            <option value="180">3 Hour</option>
+                            <option value="15">15 Minute</option>
+                            <option value="10">10 Minute</option>
+                             <option value="20">20 Minute</option>
+                              <option value="30">30 Minute</option>
+                            <option value="60">60 Minute</option>
+                            <option value="90">90 Minute</option>
+                            <option value="120">120 Minute</option>
                         </select>
                     </div>
-                    <div class="form-group" id="ifedit">
-
-                    </div>
+                    <input type="hidden" name="status" value="Pending">
+                    <input type="hidden" name="resultDate" value="Not Publish">
         		</div>
         		<div class="modal-footer">
           			

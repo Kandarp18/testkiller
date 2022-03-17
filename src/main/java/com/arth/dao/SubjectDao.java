@@ -37,6 +37,7 @@ public class SubjectDao {
 	public void updateSubject(SubjectBean subject) {
 		stmt.update("update subject set subjectname = ? where subjectid = ? ", subject.getSubjectName(), subject.getSubjectId());
 	}
+	
 	public int countSubject(SubjectBean subject) {
 		return stmt.queryForObject("select count(*) from subject where status='Active'", Integer.class);
 	}

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.arth.bean.AssignSubjectBean;
+import com.arth.bean.SubjectBean;
 import com.arth.dao.AssignSubjectDao;
 import com.arth.dao.ClassDao;
 import com.arth.dao.SubjectDao;
@@ -36,21 +37,24 @@ public class AssignSubjectController {
 	}
 	
 	@PostMapping("/assignsubject")
-	public String addAssign(AssignSubjectBean asb,Model model) {
+	public String addAssign(AssignSubjectBean asb,Model model,SubjectBean subject) {
 		boolean p=false;
+		
 		AssignSubjectBean dbClass=assignsubjectdao.getClassById(asb.getClassId());
 		AssignSubjectBean dbSubject=assignsubjectdao.getSubjectById(asb.getSubjectId());
 		if(dbClass!=null && dbSubject!=null) {
 		if(asb.getClassId()==dbClass.getClassId() && asb.getSubjectId()==dbSubject.getSubjectId()){
 			p=true;
-			
+		
 		}
 		}
 		
 		if(p==true) {
+			
 			model.addAttribute("error","This Subject Name Already Exists in this Class!");
 			
 		}else {
+			
 		assignsubjectdao.assignSubject(asb);
 		}
 	return "redirect:/assignsubject";

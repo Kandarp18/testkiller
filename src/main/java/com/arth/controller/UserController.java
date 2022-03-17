@@ -48,7 +48,7 @@ public class UserController {
 			return "NewUser";
 		}else {
 		String plainPassword = user.getPassword();
-		String encPassword = bCryptPasswordEncoder.encode(plainPassword);// 10
+		String encPassword = bCryptPasswordEncoder.encode(plainPassword);
 		user.setPassword(encPassword);
 		userDao.addUser(user);
 		return "redirect:/getallusers";

@@ -19,6 +19,7 @@
 			<th>Email</th>
 		    <th>Password</th>
 		    <th>Gender</th>
+		    <th>Contact No</th>
 			<th>RoleName</th>
 			<th>Action</th>
 		</tr>
@@ -30,6 +31,7 @@
 				<td>${u.email}</td>
 				<td>${u.password}</td>
 				<td>${u.gender }</td>
+				<td>${u.contactNo }</td>
 				<td>${u.roleName}</td>
 				<td><a href="deleteuser/${u.userId}">Delete</a></td>
 			</tr>

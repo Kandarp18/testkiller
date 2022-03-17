@@ -47,6 +47,10 @@
                    </select>
                   </div>
                    <div class="form-group">
+                    <label for="contactNo" class="sr-only">ContactNo</label>
+                    <input type="text" name="contactNo" id="contactNo" class="form-control" placeholder="Contact No" required>
+                  </div>
+                   <div class="form-group">
                        <label for="role" class="sr-only">Role</label>
                    <select name="roleId" id="role" class="form-control" required>
                          <option>Select Role</option>
@@ -62,7 +66,7 @@
                     <input type="password" name="password" id="password" class="form-control" placeholder="***********" required>
                   </div>
                   <input  id="login" class="btn btn-block login-btn mb-4" type="submit" value="Register" >
-               
+                 <p style="color:red;">  ${error }</p>
                 </form>
                 
                 <nav class="login-card-footer-nav">

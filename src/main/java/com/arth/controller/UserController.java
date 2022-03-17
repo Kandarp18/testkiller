@@ -34,12 +34,25 @@ public class UserController {
 	}
 
 	@PostMapping("/saveuser")
-	public String saveUser(UserBean user) {
+	public String saveUser(UserBean user,Model model) {
+		boolean p=false;
+		UserBean dbUser=userDao.getUserByEmail(user.getEmail());
+		if(dbUser!=null) {
+		if((user.getEmail()).equalsIgnoreCase(dbUser.getEmail())==true){
+			p=true;
+		}
+		}
+		
+		if(p==true) {
+			model.addAttribute("error","Account with this Email Address already exists!");
+			return "NewUser";
+		}else {
 		String plainPassword = user.getPassword();
 		String encPassword = bCryptPasswordEncoder.encode(plainPassword);// 10
 		user.setPassword(encPassword);
 		userDao.addUser(user);
 		return "redirect:/getallusers";
+		}
 	}
 
 	@GetMapping("/getallusers")

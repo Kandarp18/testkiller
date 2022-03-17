@@ -10,6 +10,17 @@ public class UserBean {
 	private String roleName;
 	private int otp;
 	private String gender;
+	private String contactNo;
+
+	
+
+	public String getContactNo() {
+		return contactNo;
+	}
+
+	public void setContactNo(String contactNo) {
+		this.contactNo = contactNo;
+	}
 
 	public String getGender() {
 		return gender;

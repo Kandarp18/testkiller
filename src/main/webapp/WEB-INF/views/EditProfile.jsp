@@ -59,7 +59,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label>Contact Number</label>
-                                            <input type="tex" name="user_contact_no" id="user_contact_no" class="form-control" required data-parsley-maxlength="12" data-parsley-type="integer" data-parsley-trigger="keyup" />
+                                            <input type="text" name="user_contact_no" id="user_contact_no" class="form-control" required data-parsley-maxlength="12" data-parsley-type="integer" data-parsley-trigger="keyup" />
                                         </div>
                                         <div class="form-group">
                                             <label>Email Address</label>

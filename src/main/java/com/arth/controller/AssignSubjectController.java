@@ -43,13 +43,13 @@ public class AssignSubjectController {
 		if(dbClass!=null && dbSubject!=null) {
 		if(asb.getClassId()==dbClass.getClassId() && asb.getSubjectId()==dbSubject.getSubjectId()){
 			p=true;
-			System.out.println(asb.getClassId());
+			
 		}
 		}
 		
 		if(p==true) {
 			model.addAttribute("error","This Subject Name Already Exists in this Class!");
-			return "redirect:/assignsubject";
+			
 		}else {
 		assignsubjectdao.assignSubject(asb);
 		}

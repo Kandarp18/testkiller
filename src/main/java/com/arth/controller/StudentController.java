@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-
+import com.arth.bean.ClassBean;
 import com.arth.bean.StudentBean;
 import com.arth.dao.StudentDao;
 
@@ -38,12 +38,25 @@ public class StudentController {
 		return "LoginStudent";
 	}
 	@PostMapping("/savestudent")
-	public String saveStudent(StudentBean student) {
+	public String saveStudent(StudentBean student,Model model) {
+		boolean p=false;
+		StudentBean dbStudent=studentdao.getStudentByEmail(student.getEmail());
+		if(dbStudent!=null) {
+		if((student.getEmail()).equalsIgnoreCase(dbStudent.getEmail())==true){
+			p=true;
+		}
+		}
+		
+		if(p==true) {
+			model.addAttribute("error","Account with this Email Address already exists!");
+			return "SignUp";
+		}else {
 		String plainPassword = student.getPassword();
 		String encPassword = bCryptPasswordEncoder.encode(plainPassword);// 10
 		student.setPassword(encPassword);
 		studentdao.addStudent(student);
 		return "redirect:/loginstudent";
+		}
 	}
 	@PostMapping("/loginstudent")
 	public String authenticate(StudentBean student, Model model,HttpSession session) {

@@ -58,7 +58,7 @@
                     <input type="password" name="password" id="password" class="form-control" placeholder="***********" required>
                   </div>
                   <input  id="login" class="btn btn-block login-btn mb-4" type="submit" value="Register" >
-               
+                <p style="color:red;">  ${error }</p>
                 </form>
                 
                 <nav class="login-card-footer-nav">

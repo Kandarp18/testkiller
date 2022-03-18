@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import com.arth.bean.ExamBean;
 import com.arth.dao.AssignSubjectDao;
@@ -17,11 +18,18 @@ public class AssignExamController {
 	AssignSubjectDao assignsubjectdao;
 	@GetMapping("/examsubject")
 	public String assignExamSubject(ExamBean exam,Model model) {
+		
 		model.addAttribute("exam", examdao.getAllExam());
-	
-			model.addAttribute("subject",assignsubjectdao.getAllAssignSubject(exam.getExamId()));
-	
+
 	return "AssignExamSubject";
+
+}
+	@GetMapping("/examsubject/{examId}")
+	public String assignExamSubject(@PathVariable int examId,Model model) {
+	     
+			model.addAttribute("subject",examdao.getAllSubject(examId));
+	
+	return "redirect:/examsubject";
 }
 }
 

@@ -73,7 +73,7 @@
 		                                      <td>${c.className}</td>
 		                                      <td>${c.status }</td>
 		                                      <td>
-		                                       <a href="editclass?classId=${c.classId}" style="color:black;" data-toggle="modal">
+		                                       <a href="editclass?classId=${c.classId}"  data-toggle="modal">
                                   <button type="button" name="editclass" class="btn btn-warning btn-circle btn-sm edit_button" data-toggle="modal" data-target="#editModal">
 			                                 <i class="fas fa-edit"></i>
 			                        </button> </a> &nbsp;

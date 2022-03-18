@@ -1,3 +1,5 @@
+  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!-- Modal -->
 <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalTitle" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -26,7 +28,9 @@
 		          		   <option value="Active">Active</option>
 		          		   <option value="InActive">InActive</option>
 		          		</select>
+		          		 
 		          	</div>
+		         
         		</div>
       
       <div class="modal-footer">
@@ -34,6 +38,7 @@
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
     </div>
+   
     </form>
   </div>
 </div>

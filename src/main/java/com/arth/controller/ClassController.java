@@ -68,7 +68,7 @@ public String editClass(@RequestParam("classId") int classId, Model model) {
 	ClassBean classes=classdao.getClassById(classId);
 	model.addAttribute("c", classes);
 	
-	return "EditClass";
+	return "redirect:/editclass?classId="+classId;
 
 }
 

@@ -123,7 +123,7 @@
      <!-- Modal -->
 <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
   <div class="modal-dialog" role="document">
-    <form method="post" id="exam_subject_form">
+    <form method="post" id="examsubject">
       		<div class="modal-content">
         		<div class="modal-header">
           			<h4 class="modal-title" id="modal_title">Add Exam Subject Data</h4>
@@ -133,7 +133,7 @@
         			<span id="form_message"></span>
                     <div class="form-group">
                         <label>Exam Name</label>
-                        <select name="examId" id="examId" class="form-control" required>
+                        <select name="examId" path="examId" class="form-control" required>
                             <option value="">Select Exam</option>
                              <c:forEach items="${exam }" var="e">
                                 <option value="${e.examId }">${e.examName }</option>

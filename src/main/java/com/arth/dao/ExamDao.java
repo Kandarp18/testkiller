@@ -7,6 +7,7 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import com.arth.bean.ClassBean;
 import com.arth.bean.ExamBean;
 
 
@@ -20,11 +21,24 @@ public class ExamDao {
 	}
 
 	public List<ExamBean> getAllExam() {
-		return stmt.query("select e.*,c.className  from exam e,classes c where e.classid=c.classid ",
+		return stmt.query("select e.*,c.className from exam e,classes c where e.classid=c.classid ",
 				new BeanPropertyRowMapper<ExamBean>(ExamBean.class));
 	}
 	public void deleteExam(int examId) {
 		stmt.update("delete from exam where examid = ?", examId);
+	}
+	public ExamBean getExamById(int examId) {
+
+		   ExamBean exam = stmt.queryForObject("select * from exam where examid = ? ", new BeanPropertyRowMapper<ExamBean>(ExamBean.class), new Object[] { examId });
+
+			return exam;
+		}
+	public int countExam(ExamBean exam) {
+		return stmt.queryForObject("select count(*) from exam", Integer.class);
+	}
+
+	public int countResult(ExamBean result) {
+		return stmt.queryForObject("select count(*) from exam where status='Completed'", Integer.class);
 	}
 
 }

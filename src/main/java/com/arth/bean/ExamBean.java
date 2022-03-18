@@ -7,12 +7,13 @@ public class ExamBean {
   private String className;
   private String status;
   private String resultDate;
-  private String duration;
+  private int duration;
   
-public String getDuration() {
+
+public int getDuration() {
 	return duration;
 }
-public void setDuration(String duration) {
+public void setDuration(int duration) {
 	this.duration = duration;
 }
 public int getExamId() {

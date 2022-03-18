@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -133,30 +133,30 @@
         			<span id="form_message"></span>
                     <div class="form-group">
                         <label>Exam Name</label>
-                        <select name="exam_id" id="exam_id" class="form-control" required>
+                        <select name="examId" id="examId" class="form-control" required>
                             <option value="">Select Exam</option>
-                            
-                                <option value="470">2</option>
+                             <c:forEach items="${exam }" var="e">
+                                <option value="${e.examId }">${e.examName }</option>
+                            </c:forEach>
                                 
-                                <option value="464">4</option>
-                                
-                                <option value="236">a</option>
-                                
-                                                              </select>
+                        </select>
                     </div>
                     <div class="form-group">
                         <label>Subject</label>
-                        <select name="subject_id" id="subject_id" class="form-control" required>
+                        <select name="subjectId" id="subjectId" class="form-control" required>
                             <option value="">Select Subject</option>
+                            <c:forEach items="${subject }" var="s">
+                                <option value="${s.subjectId }">${s.subjectName }</option>
+                            </c:forEach>
                         </select>
                     </div>
                     <div class="form-group">
                         <label>Exam Date & Time</label>
-                        <input type="text" name="subject_exam_datetime" id="subject_exam_datetime" class="form-control datepicker"  required data-parsley-trigger="keyup" />
+                        <input type="text" name="examDate" id="subject_exam_datetime" class="form-control datepicker"  required data-parsley-trigger="keyup" />
                     </div>
                     <div class="form-group">
                         <label>Total Question</label>
-                        <select name="subject_total_question" id="subject_total_question" class="form-control" required>
+                        <select name="totalQuestion" id="totalQuestion" class="form-control" required>
                             <option value="">Select</option>
                             <option value="5">5 Question</option>
                             <option value="10">10 Question</option>
@@ -169,7 +169,7 @@
                     </div>
                     <div class="form-group">
                         <label>Marks for Correct Answer</label>
-                        <select name="marks_per_right_answer" id="marks_per_right_answer" class="form-control">
+                        <select name="rightMark" id="marks_per_right_answer" class="form-control">
                             <option value="">Select</option>
                             <option value="1">+1 Mark</option>
                             <option value="2">+2 Mark</option>
@@ -191,6 +191,7 @@
   </div>
 </div>
 <script type="text/javascript">
+
  var date = new Date();
     date.setDate(date.getDate());
     $("#subject_exam_datetime").datetimepicker({

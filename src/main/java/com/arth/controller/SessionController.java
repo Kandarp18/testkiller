@@ -12,10 +12,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.arth.bean.ClassBean;
+import com.arth.bean.ExamBean;
 import com.arth.bean.StudentBean;
 import com.arth.bean.SubjectBean;
 import com.arth.bean.UserBean;
 import com.arth.dao.ClassDao;
+import com.arth.dao.ExamDao;
 import com.arth.dao.StudentDao;
 import com.arth.dao.SubjectDao;
 import com.arth.dao.UserDao;
@@ -30,6 +32,8 @@ public class SessionController {
 	SubjectDao subjectdao;
 	@Autowired
 	StudentDao studentdao;
+	@Autowired
+	ExamDao examdao;
 
 	@Autowired
 	BCryptPasswordEncoder bcryptPasswordEncoder;
@@ -83,7 +87,7 @@ public class SessionController {
 	}
 
 	@PostMapping("/login")
-	public String authenticate(UserBean user, Model model,HttpSession session,ClassBean classes,SubjectBean subject,StudentBean student) {
+	public String authenticate(ExamBean exam,UserBean user, Model model,HttpSession session,ClassBean classes,SubjectBean subject,StudentBean student) {
 
 		boolean isCorrect = false;
 		UserBean dbUser = userDao.getUserByEmail(user.getEmail());
@@ -101,10 +105,13 @@ public class SessionController {
 			int count=classdao.countClass(classes);
 			int countsub=subjectdao.countSubject(subject);
 			int countstd=studentdao.countStudent(student);
+			int countexam=examdao.countExam(exam);
+			int countresult=examdao.countResult(exam);
 			model.addAttribute("cc",count);
 			model.addAttribute("cs",countsub);
 			model.addAttribute("cst",countstd);
-
+			model.addAttribute("ce", countexam);
+			model.addAttribute("cr",countresult);
 			return "AdminDashboard";
 		}
 		else {

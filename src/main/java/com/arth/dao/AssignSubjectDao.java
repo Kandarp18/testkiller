@@ -71,6 +71,8 @@ public class AssignSubjectDao {
 		}
 		return dbAssign;
 	}
-
-	
+	public List<AssignSubjectBean> getAllAssignSubject(int examId) {
+		List<AssignSubjectBean> subject = stmt.query("select a.*,s.subjectName from assignsubject a,subject s where a.subjectid=s.subjectid and classid in (select classid from exam where examid=?)", new BeanPropertyRowMapper<AssignSubjectBean>(AssignSubjectBean.class),new Object[] {examId});
+		return subject;
+	}
 }

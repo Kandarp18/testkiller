@@ -151,6 +151,7 @@
           			<button type="button" class="close" data-dismiss="modal">&times;</button>
         		</div>
         		<div class="modal-body">
+        		 <p style="color:red;">  ${error }</p>
         			<span id="form_message"></span>
 		          	<div class="form-group">
 		          		<label>Student Name</label>

@@ -94,12 +94,25 @@ public class StudentController {
 		return "NewStudent";
 	}
 	@PostMapping("/insertstudent")
-	public String listStudent(StudentBean student) {
+	public String listStudent(StudentBean student,Model model) {
+		boolean p=false;
+		StudentBean dbStudent=studentdao.getStudentByEmail(student.getEmail());
+		if(dbStudent!=null) {
+		if((student.getEmail()).equalsIgnoreCase(dbStudent.getEmail())==true){
+			p=true;
+		}
+		}
+		
+		if(p==true) {
+			model.addAttribute("error","Account with this Email Address already exists!");
+			return "redirect:/student";
+		}else {
 		String plainPassword = student.getPassword();
 		String encPassword = bCryptPasswordEncoder.encode(plainPassword);// 10
 		student.setPassword(encPassword);
 		studentdao.addStudent(student);
 		return "redirect:/student";
+	}
 	}
 	@GetMapping("/deletestudent/{studentId}")
 	public String deleteSubject(@PathVariable("studentId") int studentId) {

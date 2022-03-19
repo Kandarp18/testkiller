@@ -172,8 +172,8 @@
                         <select name="duration" id="duration" class="form-control" required>
                             <option value="">Select</option>
                             <option value="5">5 Minute</option>
-                            <option value="15">15 Minute</option>
                             <option value="10">10 Minute</option>
+                              <option value="15">15 Minute</option>
                              <option value="20">20 Minute</option>
                               <option value="30">30 Minute</option>
                             <option value="60">60 Minute</option>

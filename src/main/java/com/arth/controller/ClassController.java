@@ -44,7 +44,7 @@ public class ClassController {
 		
 		if(p==true) {
 			model.addAttribute("error","This Class Name Already Exists!");
-			return "redirect:/class";
+			
 		}else {
 			classdao.insertClass(classes);
 		}
@@ -68,7 +68,7 @@ public String editClass(@RequestParam("classId") int classId, Model model) {
 	ClassBean classes=classdao.getClassById(classId);
 	model.addAttribute("c", classes);
 	
-	return "redirect:/editclass?classId="+classId;
+	return "redirect:/class/editclass?classId="+classId;
 
 }
 

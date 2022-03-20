@@ -49,10 +49,7 @@ public class AdminController {
 		return "AssignExamQuestion";
 	}
 
-	@GetMapping("/users")
-	public String createUser() {
-		return "User";
-	}
+	
 	@GetMapping("/profile")
 	public String Profile() {
 		return "EditProfile";

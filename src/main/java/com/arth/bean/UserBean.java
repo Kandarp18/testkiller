@@ -5,12 +5,13 @@ public class UserBean {
 	private int userId;
 	private String email;
 	private String password;
-	private String firstName;
+	private String userName;
 	private int roleId;
 	private String roleName;
 	private int otp;
 	private String gender;
 	private String contactNo;
+	private String status;
 
 	
 
@@ -78,12 +79,22 @@ public class UserBean {
 		this.password = password;
 	}
 
-	public String getFirstName() {
-		return firstName;
+	public String getUserName() {
+		return userName;
 	}
 
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+	
 
 }

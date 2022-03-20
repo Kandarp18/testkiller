@@ -29,14 +29,14 @@
               <p class="login-card-description">Register Now!</p>
               <form action="saveuser" method="post">
               <div class="form-group">
-                    <label for="firstName" class="sr-only">FirstName</label>
-                    <input type="text" name="firstName" id="email" class="form-control" placeholder="FirstName" required>
+                    <label for="userName" class="sr-only">UserName</label>
+                    <input type="text" name="userName" id="userName" class="form-control" placeholder="UserName" required>
                   </div>
                   <div class="form-group">
                     <label for="email" class="sr-only">Email</label>
                     <input type="email" name="email" id="email" class="form-control" placeholder="Email address" required>
                   </div>
-                    
+                    <input type="hidden" name="status" value="Active">
                      <div class="form-group">
                        <label for="gender" class="sr-only">Gender</label>
                    <select name="gender" id="gender" class="form-control" required>

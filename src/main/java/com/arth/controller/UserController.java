@@ -1,5 +1,6 @@
 package com.arth.controller;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,8 @@ public class UserController {
 	UserDao userDao;
 	@Autowired
 	BCryptPasswordEncoder bCryptPasswordEncoder;
+	 @Autowired
+	   Date date;
 
 	@GetMapping("/newuser")
 	public String newUser(Model model) {
@@ -32,6 +35,37 @@ public class UserController {
 		model.addAttribute("roles", roles);
 		return "NewUser";
 	}
+	@GetMapping("/users")
+	public String createUser(Model model) {
+		List<RoleBean> role = roleDao.getAllRoles();
+		model.addAttribute("role", role);
+		model.addAttribute("users", userDao.getAllUsers());
+		 model.addAttribute("dy",date.toLocaleString());
+		return "User";
+	}
+	@PostMapping("/listuser")
+	public String listUser(UserBean user,Model model) {
+		boolean p=false;
+		UserBean dbUser=userDao.getUserByEmail(user.getEmail());
+		if(dbUser!=null) {
+		if((user.getEmail()).equalsIgnoreCase(dbUser.getEmail())==true){
+			p=true;
+		}
+		}
+		
+		if(p==true) {
+			model.addAttribute("error","Account with this Email Address already exists!");
+			
+		}else {
+		String plainPassword = user.getPassword();
+		String encPassword = bCryptPasswordEncoder.encode(plainPassword);
+		user.setPassword(encPassword);
+		userDao.addUser(user);
+		
+		}
+		return "redirect:/users";
+	}
+
 
 	@PostMapping("/saveuser")
 	public String saveUser(UserBean user,Model model) {
@@ -51,7 +85,7 @@ public class UserController {
 		String encPassword = bCryptPasswordEncoder.encode(plainPassword);
 		user.setPassword(encPassword);
 		userDao.addUser(user);
-		return "redirect:/getallusers";
+		return "redirect:/login";
 		}
 	}
 
@@ -67,7 +101,7 @@ public class UserController {
 
 		userDao.deleteUser(userId);
 
-		return "redirect:/getallusers";
+		return "redirect:/users";
 	}
 
 }

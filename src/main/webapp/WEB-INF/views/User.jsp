@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -58,16 +59,39 @@
                                         <tr>
                                           
                                             <th>User Name</th>
-                                            <th>User Contact No.</th>
+                                           
                                             <th>User Email</th>
-                                            <th>User Password</th>
+                                             <th>User Contact No.</th>
+                                             <th>Gender</th>
+                                            <th>Role Name</th>
                                             <th>Created On</th>
                                             <th>Status</th>          
                                             <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        
+                                        <c:forEach items="${users }" var="u">
+	                                      <tr>
+		                                      
+		                                      <td>${u.userName}</td>
+		                                      <td>${u.email }</td>
+		                                      <td>${u.contactNo }</td>
+		                                      <td>${u.gender }</td>
+		                                      <td>${u.roleName }</td>
+		                                      <td>${dy }</td>
+		                                      <td>${u.status}</td>
+		                                      <td>
+		                                      <a href="editclass?classId=${c.classId}"  data-toggle="modal">
+                                    <button type="button" name="editclass" class="btn btn-warning btn-circle btn-sm edit_button" data-toggle="modal" data-target="#editModal">
+			                                 <i class="fas fa-edit"></i>
+			                        </button> </a> &nbsp;
+		                                      <a  href="deleteuser/${u.userId}">
+		                                      <button type="button"  class="btn btn-danger btn-circle btn-sm delete_button" >
+		                                      <i class="fas fa-times"></i>
+		                                      </button></a> 
+		                                       </td>
+	                                           </tr>
+                                      </c:forEach>
                                     </tbody>
                                 </table>
                             </div>
@@ -124,7 +148,7 @@
      <!-- Modal -->
 <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
   <div class="modal-dialog" role="document">
-    <form method="post" id="user_form" enctype="multipart/form-data">
+    <form method="post" action="listuser">
       		<div class="modal-content">
         		<div class="modal-header">
           			<h4 class="modal-title" id="modal_title">Add Data</h4>
@@ -133,40 +157,69 @@
         		<div class="modal-body">
         			<span id="form_message"></span>
                     <div class="form-group">
-                        <div class="row">
-                            <label class="col-md-4 text-right">User Name <span class="text-danger">*</span></label>
-                            <div class="col-md-8">
-                                <input type="text" name="user_name" id="user_name" class="form-control" required data-parsley-pattern="/^[a-zA-Z\s]+$/" data-parsley-maxlength="150" data-parsley-trigger="keyup" />
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="row">
-                            <label class="col-md-4 text-right">User Contact No. <span class="text-danger">*</span></label>
-                            <div class="col-md-8">
-                                <input type="text" name="user_contact_no" id="user_contact_no" class="form-control" required data-parsley-type="integer" data-parsley-minlength="10" data-parsley-maxlength="12" data-parsley-trigger="keyup" />
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="row">
-                            <label class="col-md-4 text-right">User Email <span class="text-danger">*</span></label>
-                            <div class="col-md-8">
-                                <input type="text" name="user_email" id="user_email" class="form-control" required data-parsley-type="email" data-parsley-maxlength="150" data-parsley-trigger="keyup" />
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="row">
-                            <label class="col-md-4 text-right">User Password <span class="text-danger">*</span></label>
-                            <div class="col-md-8">
-                                <input type="password" name="user_password" id="user_password" class="form-control" required data-parsley-minlength="6" data-parsley-maxlength="16" data-parsley-trigger="keyup" />
-                            </div>
-                        </div>
+                        
+                            <label >User Name <span class="text-danger">*</span></label>
+                            
+                                <input type="text" name="userName" id="userName" class="form-control" required data-parsley-pattern="/^[a-zA-Z\s]+$/" data-parsley-trigger="keyup" />
+                       
                     </div>
                     
-                   
+                    <div class="form-group">
+                        
+                            <label >User Email <span class="text-danger">*</span></label>
+                            
+                                <input type="text" name="email" id="email" class="form-control" required data-parsley-type="email" data-parsley-trigger="keyup" />
+                           
+                       
+                    </div>
+                    
+                    <div class="form-group">
+                       
+                            <label >User Contact No. <span class="text-danger">*</span></label>
+                           
+                               <input type="text" name="contactNo" id="contactNo" class="form-control" required data-parsley-type="integer" data-parsley-minlength="10" data-parsley-maxlength="12" data-parsley-trigger="keyup" />
+                            
+                     
+                    </div>
+                    
+                   <div class="form-group">
+                    
+                       <label for="gender" >Gender<span class="text-danger">*</span></label>
+                   <select name="gender" id="gender" class="form-control" required>
+                    <option>Select Gender</option>
+                        <option value="Male">Male</option>
+                          <option value="Female">Female</option>
+                            <option value="Other">Other</option>
+                   </select>
+               
+                  </div>
+                    <div class="form-group">
+                      
+                            <label >User Password <span class="text-danger">*</span></label>
+                           
+                                <input type="password" name="password" id="password" class="form-control" required data-parsley-minlength="6" data-parsley-maxlength="16" data-parsley-trigger="keyup" />
+                           
+                    </div>
+                     <div class="form-group">
+                       <label for="role">Role Name<span class="text-danger">*</span></label>
+                   <select name="roleId" id="role" class="form-control" required>
+                         <option>Select Role</option>
+                         <c:forEach items="${role }" var="role">
+                              <option value="${role.roleId }">${role.roleName }</option>
+                         </c:forEach>
+                   </select>
+                  </div>
+		         	
+                    	<div class="form-group">
+		          		
+		          		 <label >Status</label>
+		          		<select name="status" id="status" class="form-control" required>
+		          		   <option value="Active">Active</option>
+		          		   <option value="InActive">InActive</option>
+		          		</select>
+		          	
+                  </div>  
+         
         		</div>
         		<div class="modal-footer">
           			
@@ -175,6 +228,7 @@
         		</div>
       		</div>
     	</form>
+    
   </div>
 </div>
 

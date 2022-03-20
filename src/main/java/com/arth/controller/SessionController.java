@@ -101,7 +101,7 @@ public class SessionController {
 			}
 		}
 
-		if (isCorrect == true) {
+		if (isCorrect == true ) {
 			int count=classdao.countClass(classes);
 			int countsub=subjectdao.countSubject(subject);
 			int countstd=studentdao.countStudent(student);

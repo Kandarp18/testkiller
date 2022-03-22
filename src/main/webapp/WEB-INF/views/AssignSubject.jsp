@@ -71,12 +71,15 @@
                                          <td>${asb.subjectName }</td>
                                          <td>${dy }</td>
                                         <td>
-		                                      <button type="button"  class="btn btn-warning" >
-		                                      <a  href="deleteassignsubject/${asb.assignSubjectId}">Delete</a>
-		                                      </button> |
-                                  <button type="button" name="editAssign" class="btn btn-warning" data-toggle="modal" data-target="#editAssign">
-			                                  <a href="editassignsubject?assignSubjectId=${asb.assignSubjectId}" style="color:black;" data-toggle="modal">Edit</a>
-			                        </button>     
+                                        <a href="editassignsubject?assignSubjectId=${asb.assignSubjectId}" style="color:black;" data-toggle="modal">
+		                                     <button type="button" name="edit" class="btn btn-warning btn-circle btn-sm edit_button" data-toggle="modal" data-target="#editAssign">
+			                                 <i class="fas fa-edit"></i>
+			                                 </button></a>
+                                         <a  href="deleteassignsubject/${asb.assignSubjectId}">
+                                          <button type="button"  class="btn btn-danger btn-circle btn-sm delete_button" >
+		                                      <i class="fas fa-times"></i>
+		                                      </button></a> 
+		                                     
 		                                       </td>
 		                                       </tr>
                                          </c:forEach>
@@ -184,7 +187,7 @@
     <form method="post" id="subject_assign_form" action="updateassignsubject">
       		<div class="modal-content">
         		<div class="modal-header">
-          			<h4 class="modal-title" id="modal_title">Assign Subject to Class</h4>
+          			<h4 class="modal-title" id="modal_title">Edit Data</h4>
           			<button type="button" class="close" data-dismiss="modal">&times;</button>
         		</div>
         		<div class="modal-body">

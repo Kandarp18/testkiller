@@ -29,7 +29,7 @@ public class SubjectController {
 	@SuppressWarnings("deprecation")
 	@GetMapping("/subject")
 	public String newSubject(Model model) {
-		Date date=new Date();
+		
 		model.addAttribute("subject", subjectdao.getAllSubject());
 	
 	 model.addAttribute("dy",date.toLocaleString());
@@ -50,7 +50,7 @@ public class SubjectController {
 		
 		if(p==true) {
 			model.addAttribute("error","This Class Name Already Exists!");
-			return "redirect:/subject";
+			
 		}else {
 			
 			subjectdao.insertSubject(subject);

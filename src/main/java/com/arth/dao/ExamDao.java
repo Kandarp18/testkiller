@@ -7,7 +7,7 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-import com.arth.bean.ClassBean;
+
 import com.arth.bean.ExamBean;
 
 
@@ -43,5 +43,14 @@ public class ExamDao {
 	public List<ExamBean> getAllSubject(int examId) {
 		return stmt.query("select e.classid,s.subjectName,s.subjectid from exam e,subject s,classes c where e.classid=c.classid and examid=?",
 				new BeanPropertyRowMapper<ExamBean>(ExamBean.class),new Object[] {examId});
+	}
+	public ExamBean getAllById(int classId,String examName) {
+	ExamBean dbExam=null;
+		try {
+			dbExam=stmt.queryForObject("select * from exam where classid= ? and examname=?", new BeanPropertyRowMapper<ExamBean>(ExamBean.class),new Object[]{classId,examName});
+		}catch(Exception e) {
+			
+		}
+		return dbExam;
 	}
 }

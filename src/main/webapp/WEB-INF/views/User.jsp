@@ -81,8 +81,8 @@
 		                                      <td>${dy }</td>
 		                                      <td>${u.status}</td>
 		                                      <td>
-		                                      <a href="editclass?classId=${c.classId}"  data-toggle="modal">
-                                    <button type="button" name="editclass" class="btn btn-warning btn-circle btn-sm edit_button" data-toggle="modal" data-target="#editModal">
+		                                      <a href="edituser?userId=${u.userId}"  data-toggle="modal">
+                                    <button type="button" name="editclass" class="btn btn-warning btn-circle btn-sm edit_button" data-toggle="modal" data-target="#editUser">
 			                                 <i class="fas fa-edit"></i>
 			                        </button> </a> &nbsp;
 		                                      <a  href="deleteuser/${u.userId}">
@@ -231,6 +231,95 @@
     
   </div>
 </div>
+
+
+ <!-- Modal -->
+<div class="modal fade" id="editUser" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <form method="post" action="listuser">
+      		<div class="modal-content">
+        		<div class="modal-header">
+          			<h4 class="modal-title" id="modal_title">Edit Data</h4>
+          			<button type="button" class="close" data-dismiss="modal">&times;</button>
+        		</div>
+        		<div class="modal-body">
+        			<span id="form_message"></span>
+                    <div class="form-group">
+                        
+                            <label >User Name <span class="text-danger">*</span></label>
+                            
+                                <input type="text" name="userName" id="userName" class="form-control" required data-parsley-pattern="/^[a-zA-Z\s]+$/" data-parsley-trigger="keyup" />
+                       
+                    </div>
+                    
+                    <div class="form-group">
+                        
+                            <label >User Email <span class="text-danger">*</span></label>
+                            
+                                <input type="text" name="email" id="email" class="form-control" required data-parsley-type="email" data-parsley-trigger="keyup" />
+                           
+                       
+                    </div>
+                    
+                    <div class="form-group">
+                       
+                            <label >User Contact No. <span class="text-danger">*</span></label>
+                           
+                               <input type="text" name="contactNo" id="contactNo" class="form-control" required data-parsley-type="integer" data-parsley-minlength="10" data-parsley-maxlength="12" data-parsley-trigger="keyup" />
+                            
+                     
+                    </div>
+                    
+                   <div class="form-group">
+                    
+                       <label for="gender" >Gender<span class="text-danger">*</span></label>
+                   <select name="gender" id="gender" class="form-control" required>
+                    <option>Select Gender</option>
+                        <option value="Male">Male</option>
+                          <option value="Female">Female</option>
+                            <option value="Other">Other</option>
+                   </select>
+               
+                  </div>
+                    <div class="form-group">
+                      
+                            <label >User Password <span class="text-danger">*</span></label>
+                           
+                                <input type="password" name="password" id="password" class="form-control" required data-parsley-minlength="6" data-parsley-maxlength="16" data-parsley-trigger="keyup" />
+                           
+                    </div>
+                     <div class="form-group">
+                       <label for="role">Role Name<span class="text-danger">*</span></label>
+                   <select name="roleId" id="role" class="form-control" required>
+                         <option>Select Role</option>
+                         <c:forEach items="${role }" var="role">
+                              <option value="${role.roleId }">${role.roleName }</option>
+                         </c:forEach>
+                   </select>
+                  </div>
+		         	
+                    	<div class="form-group">
+		          		
+		          		 <label >Status</label>
+		          		<select name="status" id="status" class="form-control" required>
+		          		   <option value="Active">Active</option>
+		          		   <option value="InActive">InActive</option>
+		          		</select>
+		          	
+                  </div>  
+         
+        		</div>
+        		<div class="modal-footer">
+          			
+          			<input type="submit" name="submit" id="submit_button" class="btn btn-success" value="Edit" />
+          			<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        		</div>
+      		</div>
+    	</form>
+    
+  </div>
+</div>
+
 
 <script type="text/javascript">
 			$(document).ready(function() {

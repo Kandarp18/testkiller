@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-
+<meta charset="ISO-8859-1">
     <title>Testkiller</title>
 
     <jsp:include page="AllCss.jsp"></jsp:include>
@@ -37,7 +37,7 @@
                     <h1 class="h3 mb-4 text-gray-800">Dashboard</h1>
 
                     <!-- Content Row -->
-                    <div class="row row-cols-5">
+                    <div class="row">
                         <!-- Earnings (Monthly) Card Example -->
                         <div class="col mb-4">
                             <div class="card border-left-primary shadow h-100 py-2">

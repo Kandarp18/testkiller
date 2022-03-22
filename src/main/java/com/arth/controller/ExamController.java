@@ -29,8 +29,22 @@ public class ExamController {
 		return "NewExam";
 	}
 	@PostMapping("/exam")
-	public String insertClass(ExamBean exam) {
+	public String insertClass(ExamBean exam,Model model) {
+boolean p=false;
+		
+		ExamBean dbExam=examdao.getAllById(exam.getClassId(),exam.getExamName());
+		if(dbExam!=null) {
+		if((exam.getClassId()==dbExam.getClassId())&&((exam.getExamName()).equalsIgnoreCase(dbExam.getExamName()))){
+			p=true;
+		}
+		}
+		
+		if(p==true) {
+			model.addAttribute("error","Duplicate Data!");
+		
+		}else {
 		examdao.addExam(exam);
+		}
 		return "redirect:/exam";
 	}
 	@GetMapping("/deleteexam/{examId}")

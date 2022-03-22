@@ -79,12 +79,15 @@
 		                                      <td>${dy }</td>
 		                                      <td>${s.status}</td>
 		                                      <td>
-		                                      <button type="button"  class="btn btn-warning" >
-		                                      <a  href="deletestudent/${s.studentId}">Delete</a>
-		                                      </button> |
-                                  <button type="button" name="editclass" class="btn btn-warning" data-toggle="modal" data-target="#editModal">
-			                                  <a href="editclass?classId=${c.classId}" style="color:black;" data-toggle="modal">Edit</a>
-			                        </button>     
+		                             <a href="editstudent?studentId=${s.studentId}" style="color:black;" data-toggle="modal">
+		                                     <button type="button" name="edit" class="btn btn-warning btn-circle btn-sm edit_button" data-toggle="modal" data-target="#editStudent">
+			                                 <i class="fas fa-edit"></i>
+			                                 </button></a>
+                                        <a  href="deletestudent/${s.studentId}">
+                                          <button type="button"  class="btn btn-danger btn-circle btn-sm delete_button" >
+		                                      <i class="fas fa-times"></i>
+		                                      </button></a>   
+			                       
 		                                       </td>
 	                                           </tr>
                                       </c:forEach>
@@ -189,6 +192,62 @@
         		<div class="modal-footer">
           			
           			<input type="submit" name="submit" id="submit_button" class="btn btn-success" value="Add" />
+          			<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        		</div>
+      		</div>
+    	</form>
+  </div>
+</div>
+
+
+ <!-- Modal -->
+<div class="modal fade" id="editStudent" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+   <form method="post" action="insertstudent" >
+      		<div class="modal-content">
+        		<div class="modal-header">
+          			<h4 class="modal-title" id="modal_title">Edit Student</h4>
+          			<button type="button" class="close" data-dismiss="modal">&times;</button>
+        		</div>
+        		<div class="modal-body">
+        		 <p style="color:red;">  ${error }</p>
+        			<span id="form_message"></span>
+		          	<div class="form-group">
+		          		<label>Student Name</label>
+		          		<input type="text" name="studentName" id="studentName" class="form-control" required data-parsley-pattern="/^[a-zA-Z0-9 \s]+$/" data-parsley-trigger="keyup" />
+		          	</div>
+                   
+                    <div class="form-group">
+                        <label>Student Email</label>
+                        <input type="text" name="email" id="email" class="form-control" required data-parsley-type="email" data-parsley-trigger="keyup" />
+                    </div>
+                    <div class="form-group">
+                        <label>Student Password</label>
+                        <input type="password" name="password" id="password" class="form-control" required  data-parsley-trigger="keyup" />
+                    </div>
+                    <div class="form-group">
+                        <label>Gender</label>
+                        <select name="gender" id="gender" class="form-control">
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Date of Birth</label>
+                        <input type="date" name="dateOfBirth" id="dateOfBirth" class="form-control datepicker"  required data-parsley-trigger="keyup" />
+                    </div>
+                    	<div class="form-group">
+		          		<label>Status</label>
+		          		<select name="status" id="status" class="form-control" required>
+		          		   <option value="Active">Active</option>
+		          		   <option value="InActive">InActive</option>
+		          		</select>
+		          	</div>
+                    
+        		</div>
+        		<div class="modal-footer">
+          			
+          			<input type="submit" name="submit" id="submit_button" class="btn btn-success" value="Edit" />
           			<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         		</div>
       		</div>

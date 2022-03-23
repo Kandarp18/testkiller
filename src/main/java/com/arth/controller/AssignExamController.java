@@ -27,7 +27,7 @@ public class AssignExamController {
 	@GetMapping("/examsubject/{examId}")
 	public String assignExamSubject(@PathVariable int examId,Model model) {
 	     
-			model.addAttribute("subject",examdao.getAllSubject(examId));
+			model.addAttribute("subject",assignsubjectdao.getAllAssignSubject(examId));
 	
 	return "redirect:/examsubject";
 }

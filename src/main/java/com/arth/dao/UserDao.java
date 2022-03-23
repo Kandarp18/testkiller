@@ -44,4 +44,14 @@ public class UserDao {
 	public void updatePassword(UserBean user) {
 		stmt.update("update users set password = ? where email = ?", user.getPassword(), user.getEmail());
 	}
+	public UserBean getUserById(int userId) {
+
+		UserBean user = stmt.queryForObject("select * from users where userid = ? ", new BeanPropertyRowMapper<UserBean>(UserBean.class), new Object[] { userId });
+
+		return user;
+	}
+
+	public void updateUser(UserBean user) {
+		stmt.update("update users set username = ?,email = ?,contactno = ? where userid = ? ",user.getUserName(),user.getEmail(),user.getContactNo(),user.getUserId());
+	}
 }

@@ -32,7 +32,7 @@ public class RoleDao {
 
 	public RoleBean getRoleById(int roleId) {
 
-		RoleBean role = stmt.queryForObject("select *  from role where roleid = ? ",
+		RoleBean role = stmt.queryForObject("select * from role where roleid = ? ",
 				new BeanPropertyRowMapper<RoleBean>(RoleBean.class), new Object[] { roleId });
 
 		return role;

@@ -1,5 +1,7 @@
 package com.arth.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +20,7 @@ import com.arth.bean.SubjectBean;
 import com.arth.bean.UserBean;
 import com.arth.dao.ClassDao;
 import com.arth.dao.ExamDao;
+import com.arth.dao.RoleDao;
 import com.arth.dao.StudentDao;
 import com.arth.dao.SubjectDao;
 import com.arth.dao.UserDao;
@@ -34,7 +37,8 @@ public class SessionController {
 	StudentDao studentdao;
 	@Autowired
 	ExamDao examdao;
-
+	@Autowired
+	RoleDao roledao;
 	@Autowired
 	BCryptPasswordEncoder bcryptPasswordEncoder;
 
@@ -91,7 +95,7 @@ public class SessionController {
 
 		boolean isCorrect = false;
 		UserBean dbUser = userDao.getUserByEmail(user.getEmail());
-		
+	
 		if (dbUser != null ) {
 
 			if (bcryptPasswordEncoder.matches(user.getPassword(), dbUser.getPassword()) ) {

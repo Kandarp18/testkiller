@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -36,40 +36,51 @@
 
                     <!-- DataTales Example -->
                     
-                    <form method="post" id="profile_form" enctype="multipart/form-data">
+                    <form method="post">
                         <div class="row"><div class="col-md-6"><span id="message"></span><div class="card shadow mb-4">
                             <div class="card-header py-3">
                                 <div class="row">
                                     <div class="col">
                                         <h6 class="m-0 font-weight-bold text-primary">Profile</h6>
                                     </div>
-                                    <div clas="col" align="right">
-                                        <input type="hidden" name="action" value="profile" />
-                                        <button type="submit" name="edit_button" id="edit_button" class="btn btn-primary btn-sm"><i class="fas fa-edit"></i> Edit</button>
-                                        &nbsp;&nbsp;
-                                    </div>
+                                  
                                 </div>
                             </div>
                             <div class="card-body">
                                 <!--<div class="row">
                                     <div class="col-md-6">!-->
                                         <div class="form-group">
-                                            <label>Name</label>
-                                            <input type="text" name="firstName" id="user_name" value="${user.firstName }" class="form-control" required data-parsley-pattern="/^[a-zA-Z0-9 \s]+$/" data-parsley-maxlength="175" data-parsley-trigger="keyup" />
+                                            <label>User Name</label>
+                                            <input type="text" name="userName" id="userName" value="${user.userName }" readonly class="form-control" required data-parsley-pattern="/^[a-zA-Z0-9 \s]+$/" data-parsley-maxlength="175" data-parsley-trigger="keyup" />
                                         </div>
                                         <div class="form-group">
                                             <label>Contact Number</label>
-                                            <input type="text" name="user_contact_no" id="user_contact_no" class="form-control" required data-parsley-maxlength="12" data-parsley-type="integer" data-parsley-trigger="keyup" />
+                                            <input type="text" name="contactNo" id="contactNo" value="${user.contactNo }" readonly class="form-control" required data-parsley-maxlength="12" data-parsley-type="integer" data-parsley-trigger="keyup" />
                                         </div>
                                         <div class="form-group">
                                             <label>Email Address</label>
-                                            <input type="tex" name="email" id="user_email" value="${user.email }" class="form-control" required data-parsley-maxlength="175" data-parsley-type="email" data-parsley-trigger="keyup" />
+                                            <input type="text" name="email" id="email" value="${user.email }" readonly class="form-control" required data-parsley-maxlength="175" data-parsley-type="email" data-parsley-trigger="keyup" />
                                         </div>
                                         <div class="form-group">
-                                            <label>Password</label>
-                                            <input type="password" name="password" id="user_password" class="form-control" required data-parsley-maxlength="16" data-parsley-trigger="keyup" />
+                                            <label>Gender</label>
+                                            <input type="text" name="gender" id="gender" value="${user.gender }" class="form-control" readonly required data-parsley-maxlength="175" data-parsley-trigger="keyup" />
                                         </div>
-                                       
+                                      
+                                       <div class="form-group">
+                                            <label>Role Name</label>
+                                            
+                                         <input type="text" name="roleName" id="roleName" value="Admin" class="form-control" readonly required data-parsley-maxlength="175" data-parsley-trigger="keyup" />
+                                                 
+                                           
+                      
+                                   
+                  
+                                        </div>
+                                        
+                                       <div class="form-group">
+                                            <label>Status</label>
+                                            <input type="text" name="status" id="status" value="${user.status }" class="form-control" readonly required data-parsley-maxlength="175" data-parsley-trigger="keyup" />
+                                        </div>
                                     <!--</div>
                                 </div>!-->
                             </div>

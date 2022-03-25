@@ -325,7 +325,7 @@ solid
 								<div class="col-lg-4">
 									<div class="page-header-breadcrumb">
 										<ul class=" breadcrumb breadcrumb-title">
-											<li class="breadcrumb-item"><a href="#!"><i
+											<li class="breadcrumb-item"><a href="studentdashboard"><i
 													class="feather icon-home"></i></a></li>
 											<li class="breadcrumb-item"><a href="#!">Dashboard
 													</a></li>
@@ -347,17 +347,14 @@ solid
 													<div class="card-body">
 														<div class="row align-items-center m-b-30">
 															<div class="col">
-																<h6 class="m-b-5 text-white">Total Members</h6>
-																<h3 class="m-b-0 f-w-700 text-white">${totalUserCount}</h3>
+																<h6 class="m-b-5 text-white">Total Appeared Exam</h6>
+																<h3 class="m-b-0 f-w-700 text-white">0</h3>
 															</div>
 															<div class="col-auto">
-																<i class="fas fa-money-bill-alt text-c-red f-18"></i>
+																<i class="fas fa-database text-c-blue f-18"></i>
 															</div>
 														</div>
-														<p class="m-b-0 text-white">
-															<span class="label label-danger m-r-10">+11%</span>From
-															Previous Month
-														</p>
+														
 													</div>
 												</div>
 											</div>
@@ -366,17 +363,14 @@ solid
 													<div class="card-body">
 														<div class="row align-items-center m-b-30">
 															<div class="col">
-																<h6 class="m-b-5 text-white">On Board Developers</h6>
-																<h3 class="m-b-0 f-w-700 text-white">${totalDeveloperCount}</h3>
+																<h6 class="m-b-5 text-white">Total Passed Exam</h6>
+																<h3 class="m-b-0 f-w-700 text-white">0</h3>
 															</div>
 															<div class="col-auto">
-																<i class="fas fa-database text-c-blue f-18"></i>
+																<i class="fas fa-database text-c-green f-18"></i>
 															</div>
 														</div>
-														<p class="m-b-0 text-white">
-															<span class="label label-primary m-r-10">+12%</span>From
-															Previous Month
-														</p>
+														
 													</div>
 												</div>
 											</div>
@@ -385,17 +379,14 @@ solid
 													<div class="card-body">
 														<div class="row align-items-center m-b-30">
 															<div class="col">
-																<h6 class="m-b-5 text-white">Average Price</h6>
-																<h3 class="m-b-0 f-w-700 text-white">$6,780</h3>
+																<h6 class="m-b-5 text-white">Total Failed Exam</h6>
+																<h3 class="m-b-0 f-w-700 text-white">0</h3>
 															</div>
 															<div class="col-auto">
-																<i class="fas fa-dollar-sign text-c-green f-18"></i>
+																<i class="fas fa-database text-c-red f-18"></i>
 															</div>
 														</div>
-														<p class="m-b-0 text-white">
-															<span class="label label-success m-r-10">+52%</span>From
-															Previous Month
-														</p>
+														
 													</div>
 												</div>
 											</div>
@@ -404,17 +395,14 @@ solid
 													<div class="card-body">
 														<div class="row align-items-center m-b-30">
 															<div class="col">
-																<h6 class="m-b-5 text-white">Product Sold</h6>
-																<h3 class="m-b-0 f-w-700 text-white">6,784</h3>
+																<h6 class="m-b-5 text-white">Total Active Exam</h6>
+																<h3 class="m-b-0 f-w-700 text-white">1</h3>
 															</div>
 															<div class="col-auto">
-																<i class="fas fa-tags text-c-yellow f-18"></i>
+																<i class="fas fa-database text-c-yellow f-18"></i>
 															</div>
 														</div>
-														<p class="m-b-0 text-white">
-															<span class="label label-warning m-r-10">+52%</span>From
-															Previous Month
-														</p>
+														
 													</div>
 												</div>
 											</div>

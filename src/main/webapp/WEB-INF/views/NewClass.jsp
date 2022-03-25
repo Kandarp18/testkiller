@@ -75,15 +75,9 @@
 		                                      
 		                                      <td>
 		                                     
-		                                       <a href="editclass?classId=${c.classId}"  data-toggle="modal">
-                                    <button type="button" name="editclass" class="btn btn-warning btn-circle btn-sm edit_button" data-toggle="modal" data-target="#editModal">
-			                                 <i class="fas fa-edit"></i>
-			                        </button> </a> &nbsp;
-		                                      <a  href="deleteclass/${c.classId}">
-		                                      <button type="button"  class="btn btn-danger btn-circle btn-sm delete_button" >
-		                                      <i class="fas fa-times"></i>
-		                                      </button></a> 
-		                                     
+		                                       <a href="editclass?classId=${c.classId}"  >
+                                    <button type="button" name="edit" class="btn btn-warning btn-circle btn-sm edit_button" ><i class="fas fa-edit"></i></button> </a> &nbsp;
+		                                      
 		                                       
 		                                       </td>
 	                                           </tr>
@@ -163,14 +157,7 @@
 		          		<label>Class Name</label>
 		          		<input type="text" name="className" id="className" class="form-control" required data-parsley-pattern="/^[a-zA-Z0-9 \s]+$/" data-parsley-trigger="keyup" />
 		          	</div>
-		          	<div class="form-group">
-		          		<label>Status</label>
-		          		<select name="status" id="status" class="form-control" required>
-		          		   <option value="Active">Active</option>
-		          		   <option value="InActive">InActive</option>
-		          		</select>
-		          	</div>
-        		</div>
+		          	<input type="hidden" name="status" value="Active">
       
       <div class="modal-footer">
         <input type="submit" name="submit" id="submit_button" class="btn btn-success" value="Add" />
@@ -183,48 +170,6 @@
 
  
 
-<!-- Modal -->
-<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalTitle" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-  	<form method="post" action="updateclass">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="editModalLabel">Edit Class</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      
-       <div class="modal-body">
-      
-       
-        			<span id="form_message"></span>
-        			
-        			<input type="hidden" name="classId" value="${c.classId }" />
-		          	<div class="form-group">
-		          		<label>Class Name</label>
-		          		<input type="text" name="className" value="${c.className }"  class="form-control" />
-		          	</div>
-		          	<div class="form-group">
-		          		<label>Status</label>
-		          		<select name="status" id="status" class="form-control" required>
-		          		   <option value="Active">Active</option>
-		          		   <option value="InActive">InActive</option>
-		          		</select>
-		          		 
-		          	</div>
-		         
-        		</div>
-      
-      <div class="modal-footer">
-        <input type="submit" name="submit" id="submit_button" class="btn btn-success" value="Edit" />
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-   
-    </form>
-  </div>
-</div>
 
 <jsp:include page="AllJs.jsp"></jsp:include>
 

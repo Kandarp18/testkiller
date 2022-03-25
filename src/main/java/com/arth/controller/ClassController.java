@@ -65,17 +65,34 @@ public class ClassController {
 
 @GetMapping("/editclass")
 public String editClass(@RequestParam("classId") int classId, Model model) {	
+	
+	
+	
 	ClassBean classes=classdao.getClassById(classId);
 	model.addAttribute("c", classes);
-	
-	return "redirect:/class/editclass?classId="+classId;
+	return "EditClass";
 
 }
 
 @PostMapping("/updateclass")
-public String updateClass(ClassBean classes) {
+public String updateClass(@RequestParam("classId") int classId,ClassBean classes,Model model) {
+	boolean p=false;
+	ClassBean dbClass=classdao.getAllById(classes.getClassName(),classes.getStatus());
+    if(dbClass!=null) {
+	if((classes.getClassName()).equalsIgnoreCase(dbClass.getClassName())&&(classes.getStatus().equals(dbClass.getStatus()))){
+		p=true;
+	}
+	}
+	
+	if(p==true) {
+		model.addAttribute("error","This Class Name Already Exists!");
+
+		return "redirect:/editclass?classId="+classId;
+	}else {
 	classdao.updateClass(classes);
+	}
 	return "redirect:/class";
+
 }
 
 }

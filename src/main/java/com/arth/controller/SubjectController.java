@@ -69,14 +69,29 @@ public class SubjectController {
 		
 	
 		model.addAttribute("sub", subjectdao.getSubjectById(subjectId));
-		
-		return "redirect:/subject";
+		return "EditSubject";
 
 	}
 
 	@PostMapping("/updatesubject")
-	public String updateSubjectById(SubjectBean subject) {
+	public String updateSubjectById(@RequestParam("subjectId") int subjectId,SubjectBean subject,Model model) {
+		boolean p=false;
+		
+		   SubjectBean dbSubject=subjectdao.getAllById(subject.getSubjectName(),subject.getStatus());
+		   if(dbSubject!=null) {
+				if((subject.getSubjectName()).equalsIgnoreCase(dbSubject.getSubjectName())&&(subject.getStatus().equals(dbSubject.getStatus()))){
+					p=true;
+				
+				}
+				}
+			
+			if(p==true) {
+				model.addAttribute("error","This Subject Name Already Exists!");
+
+				return "redirect:/editsubject?subjectId="+subjectId;
+			}else {
 		subjectdao.updateSubject(subject);
+			}
 		return "redirect:/subject";
 	}
 	

@@ -66,11 +66,13 @@ public class AssignSubjectController {
 	}
 	@GetMapping("/editassignsubject")
 	public String editSubject(@RequestParam("assignSubjectId") int assignSubjectId, Model model) {	
-		
-	
+		model.addAttribute("classes", classdao.getAllClassesByStatus());
+
+		model.addAttribute("subject",subjectdao.getAllSubjectByStatus());
+
 		model.addAttribute("sub", assignsubjectdao.getAssignById(assignSubjectId));
 		
-		return "redirect:/assignsubject";
+		return "EditAssignSubject";
 
 	}
 

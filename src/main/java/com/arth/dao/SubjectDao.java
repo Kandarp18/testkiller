@@ -35,7 +35,7 @@ public class SubjectDao {
 	}
 
 	public void updateSubject(SubjectBean subject) {
-		stmt.update("update subject set subjectname = ? where subjectid = ? ", subject.getSubjectName(), subject.getSubjectId());
+		stmt.update("update subject set subjectname = ?,status=? where subjectid = ? ", subject.getSubjectName(),subject.getStatus(), subject.getSubjectId());
 	}
 	
 	public int countSubject(SubjectBean subject) {
@@ -57,5 +57,15 @@ public class SubjectDao {
 		List<SubjectBean> classes = stmt.query("select * from subject where status='Active'", new BeanPropertyRowMapper<SubjectBean>(SubjectBean.class));
 		return classes;
 	}
+	public SubjectBean getAllById(String subjectName,String status) {
+		SubjectBean dbAssign=null;
+		try {
+			dbAssign=stmt.queryForObject("select * from subject where subjectname = ? and status= ? ", new BeanPropertyRowMapper<SubjectBean>(SubjectBean.class),new Object[]{subjectName,status});
+		}catch(Exception e) {
+			
+		}
+		return dbAssign;
+	}
+
 	
 }

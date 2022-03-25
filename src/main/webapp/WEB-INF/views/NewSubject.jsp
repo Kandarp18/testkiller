@@ -74,14 +74,11 @@
 		                                      <td>${dy }</td>
 		                                      <td>${s.status}</td>
 		                                      <td>
-		                                      <a href="editsubject?subjectId=${s.subjectId}" style="color:black;" data-toggle="modal">
-		                                        <button type="button" name="editclass" class="btn btn-warning btn-circle btn-sm edit_button" data-toggle="modal" data-target="#editModal">
+		                                      <a href="editsubject?subjectId=${s.subjectId}" style="color:black;" >
+		                                        <button type="button" name="editclass" class="btn btn-warning btn-circle btn-sm edit_button">
 			                                 <i class="fas fa-edit"></i>
-			                        </button></a> &nbsp;
-		                                      <a  href="deletesubject/${s.subjectId}">
-		                                      <button type="button"  class="btn btn-danger btn-circle btn-sm delete_button" >
-		                                      <i class="fas fa-times"></i>
-		                                      </button></a>       
+			                        </button></a> 
+		                                             
                                       
 		                                       </td>
 	                                           </tr>
@@ -152,61 +149,16 @@
       </div>
       <div class="modal-body">
         <span id="form_message"></span>
-        <p style="color:red;">  ${error }</p>
                  
 		          	<div class="form-group">
 		          		<label>Subject Name</label>
 		          		<input type="text" name="subjectName" id="subjectName" class="form-control" required data-parsley-pattern="/^[a-zA-Z0-9 \s]+$/" data-parsley-trigger="keyup" />
 		          	</div>
-		          	<div class="form-group">
-		          		<label>Status</label>
-		          		<select name="status" id="status" class="form-control" required>
-		          		   <option value="Active">Active</option>
-		          		   <option value="InActive">InActive</option>
-		          		</select>
-		          	</div>
+		          	<input type="hidden" name="status" value="Active">
       </div>
       <div class="modal-footer">
         <input type="submit" name="submit" id="submit_button" class="btn btn-success" value="Add" />
          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-    </form>
-  </div>
-</div>
-
-<!-- Modal -->
-<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalTitle" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-  	<form method="post" action="updatesubject">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="editModalLabel">Edit Subject</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      
-       <div class="modal-body">
-        			<span id="form_message"></span>
-        			
-        			<input type="hidden" name="subjectId" value="${sub.subjectId }" />
-		          	<div class="form-group">
-		          		<label>Subject Name</label>
-		          		<input type="text" name="subjectName" value="${sub.subjectName }" id="subjectName" class="form-control" />
-		          	</div>
-		          	<div class="form-group">
-		          		<label>Status</label>
-		          		<select name="status" id="status" class="form-control" required>
-		          		   <option value="Active">Active</option>
-		          		   <option value="InActive">InActive</option>
-		          		</select>
-		          	</div>
-        		</div>
-   
-      <div class="modal-footer">
-        <input type="submit" name="submit" id="submit" class="btn btn-success" value="Edit" />
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
     </div>
     </form>

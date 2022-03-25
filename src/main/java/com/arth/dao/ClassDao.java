@@ -36,7 +36,7 @@ public class ClassDao {
 	}
 
 	public void updateClass(ClassBean c) {
-		stmt.update("update classes set classname = ? where classid = ? ",c.getClassName(), c.getClassId());
+		stmt.update("update classes set classname = ?,status=? where classid = ? ",c.getClassName(),c.getStatus(), c.getClassId());
 	}
 	public ClassBean getClassByName(String className) {
 		ClassBean dbClass = null;
@@ -56,6 +56,15 @@ public class ClassDao {
 	public List<ClassBean> getAllClassesByStatus() {
 		List<ClassBean> classes = stmt.query("select * from classes where status='Active'", new BeanPropertyRowMapper<ClassBean>(ClassBean.class));
 		return classes;
+	}
+	public ClassBean getAllById(String className,String status) {
+		ClassBean dbAssign=null;
+		try {
+			dbAssign=stmt.queryForObject("select * from classes where classname = ? and status=?", new BeanPropertyRowMapper<ClassBean>(ClassBean.class),new Object[]{className,status});
+		}catch(Exception e) {
+			
+		}
+		return dbAssign;
 	}
 
 

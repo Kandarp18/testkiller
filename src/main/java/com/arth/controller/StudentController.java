@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.arth.bean.StudentBean;
 import com.arth.dao.StudentDao;
@@ -126,6 +127,19 @@ public class StudentController {
 		return "redirect:/loginstudent";
 
 	}
+	@GetMapping("/editstudent")
+	public String editSubject(@RequestParam("studentId") int studentId, Model model) {	
+		model.addAttribute("student", studentdao.getStudentById(studentId));
+		
+		return "EditStudent";
 
+	}
+
+	@PostMapping("/updatestudent")
+	public String updateStudent(StudentBean student) {
+		studentdao.updateStudent(student);
+		return "redirect:/student";
+	}
+	
 
 }

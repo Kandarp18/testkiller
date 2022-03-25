@@ -50,4 +50,14 @@ public class StudentDao {
 		List<StudentBean> student = stmt.query("select * from student where status='Active'", new BeanPropertyRowMapper<StudentBean>(StudentBean.class));
 		return student;
 	}
+	public StudentBean getStudentById(int studentId) {
+
+		StudentBean student = stmt.queryForObject("select * from student where studentid = ? ", new BeanPropertyRowMapper<StudentBean>(StudentBean.class), new Object[] { studentId });
+
+		return student;
+	}
+
+	public void updateStudent(StudentBean student) {
+		stmt.update("update student set studentname = ?,email = ?,gender = ?,dateofbirth = ?,status = ? where studentid = ?",student.getStudentName(),student.getEmail(),student.getGender(),student.getDateOfBirth(),student.getStatus(),student.getStudentId() );
+	}
 }

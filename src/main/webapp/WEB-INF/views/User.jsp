@@ -210,16 +210,7 @@
                    </select>
                   </div>
 		         	
-                    	<div class="form-group">
-		          		
-		          		 <label >Status</label>
-		          		<select name="status" id="status" class="form-control" required>
-		          		   <option value="Active">Active</option>
-		          		   <option value="InActive">InActive</option>
-		          		</select>
-		          	
-                  </div>  
-         
+                    	<input type="hidden" name="status" value="Active">
         		</div>
         		<div class="modal-footer">
           			

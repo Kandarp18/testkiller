@@ -72,6 +72,14 @@ public class AssignStudentDao {
 		}
 		return dbAssign;
 	}
-	
+	public void updateAssign(AssignStudentBean asb) {
+		stmt.update("update assignstudent set rollno = ?,classid = ?,studentid = ? where assignstudentid = ? ",asb.getRollNo(),asb.getClassId(),asb.getStudentId(),asb.getAssignStudentId());
+	}
+	public AssignStudentBean getAssignById(int assignStudentId) {
+
+	 AssignStudentBean asb = stmt.queryForObject("select a.*,s.studentName,c.className from assignstudent a,student s,classes c where a.classid=c.classid and s.studentid=a.studentid and assignstudentid = ? ", new BeanPropertyRowMapper<AssignStudentBean>(AssignStudentBean.class), new Object[] { assignStudentId });
+
+		return asb;
+	}
 	
 }

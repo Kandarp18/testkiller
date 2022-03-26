@@ -25,7 +25,7 @@
                             <div class="card-header py-3">
                                 <div class="row">
                                     <div class="col">
-                                        <h6 class="m-0 font-weight-bold text-primary">Edit Class</h6>
+                                        <h6 class="m-0 font-weight-bold text-primary">Edit Student</h6>
                                     </div>
                                   
                                 </div>
@@ -35,15 +35,15 @@
        
         			<span id="form_message"></span>
         			        <p style="color:red;">  ${error }</p>
+        			       <input type="hidden" name="studentId" value="${student.studentId }" />
         			
-        			<input type="hidden" name="classId" value="${c.classId }" />
 		          	<div class="form-group">
 		          		<label>Student Name</label>
 		          		<input type="text" name="studentName" value="${student.studentName }"  class="form-control" />
 		          	</div>
 		          	<div class="form-group">
 		          		<label>Email Address</label>
-		          		<input type="text" name="email" value="${student.email }"  class="form-control" />
+		          		<input type="email" name="email" value="${student.email }"  class="form-control" />
 		          	</div>
 		          	<div class="form-group">
 		          		<label>Gender</label>
@@ -72,7 +72,7 @@
       
       <div class="modal-footer">
         <input type="submit" name="submit" id="submit" class="btn btn-success" value="Edit" />
-       <a href="class"> <button type="button" class="btn btn-default">Close</button></a>
+       <a href="student"> <button type="button" class="btn btn-default">Close</button></a>
       </div>
     </div>
      </div>

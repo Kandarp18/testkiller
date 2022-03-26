@@ -21,7 +21,7 @@
 
 
                    <jsp:include page="AdminHeader.jsp"></jsp:include>
- <form method="post" action="updateassignsubject">
+ <form method="post" action="updateassignstudent">
                         <div class="row"><div class="col-md-6"><span id="message"></span><div class="card shadow mb-4">
                             <div class="card-header py-3">
                                 <div class="row">
@@ -36,13 +36,13 @@
        
         			<span id="form_message"></span>
         			
-        			<input type="hidden" name="assignSubjectId" value="${sub.assignSubjectId }" />
-        			
+        			<input type="hidden" name="assignStudentId" value="${ast.assignStudentId }" />
+        				
                     <div class="form-group">
                         <label>Class Name</label>
                         <select name="classId" id="classId" class="form-control" required>
                          
-                                    <option value="${sub.classId }">${sub.className }</option>
+                                    <option value="${ast.classId }">${ast.className }</option>
            <option value="">Select Class</option>
                         <c:forEach items="${classes }" var="c">
                             <option value="${c.classId }">${c.className }</option>
@@ -51,20 +51,26 @@
 
                     </div>
 		          	<div class="form-group">
-		          		<label>Subject Name</label>
-		          		<select name="subjectId" id="subjectId" class="form-control" required>
-		          	<option value="${sub.subjectId }">${sub.subjectName }</option>
+		          		<label>Student Name</label>
+		          		<select name="studentId" id="studentId" class="form-control" required>
+		       
+		          		
+		          	<option value="${ast.studentId }">${ast.studentName }</option>
 		          		<option value="">Select Subject</option>
-		          		<c:forEach items="${subject }" var="s">
-                           <option value="${s.subjectId }">${s.subjectName }</option>
+		          		<c:forEach items="${student }" var="s">
+                           <option value="${s.studentId }">${s.studentName }</option>
                            </c:forEach> 
                         </select>       
+		          	</div>
+		          	<div class="form-group">
+		          		<label>Roll No.</label>
+		          		<input type="text" name="rollNo" value="${ast.rollNo}"  class="form-control" />
 		          	</div>
         		</div>
       
       <div class="modal-footer">
         <input type="submit" name="submit" id="submit" class="btn btn-success" value="Edit" />
-       <a href="assignsubject"> <button type="button" class="btn btn-default">Close</button></a>
+       <a href="assignstudent"> <button type="button" class="btn btn-default">Close</button></a>
       </div>
     </div>
      </div>

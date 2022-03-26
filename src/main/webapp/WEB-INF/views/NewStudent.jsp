@@ -79,15 +79,11 @@
 		                                      <td>${dy }</td>
 		                                      <td>${s.status}</td>
 		                                      <td>
-		                             <a href="editstudent?studentId=${s.studentId}" style="color:black;" >
+		                             <a href="editstudent?studentId=${s.studentId}"  >
 		                                     <button type="button" name="edit" class="btn btn-warning btn-circle btn-sm edit_button" >
 			                                 <i class="fas fa-edit"></i>
 			                                 </button></a>
-                                        <a  href="deletestudent/${s.studentId}">
-                                          <button type="button"  class="btn btn-danger btn-circle btn-sm delete_button" >
-		                                      <i class="fas fa-times"></i>
-		                                      </button></a>   
-			                       
+                                       
 		                                       </td>
 	                                           </tr>
                                       </c:forEach>

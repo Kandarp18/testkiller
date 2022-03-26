@@ -72,8 +72,8 @@
                                          <td>${ast.className }</td>
                                          <td>${dy }</td>
                                         <td>
-                                        <a href="editassignstudent?assignStudentId=${ast.assignStudentId}" style="color:black;" data-toggle="modal">
-		                                     <button type="button" name="edit" class="btn btn-warning btn-circle btn-sm edit_button" data-toggle="modal" data-target="#editAssign">
+                                        <a href="editassignstudent?assignStudentId=${ast.assignStudentId}" >
+		                                     <button type="button" name="edit" class="btn btn-warning btn-circle btn-sm edit_button" >
 			                                 <i class="fas fa-edit"></i>
 			                                 </button></a>
                                         <a  href="deleteassignstudent/${ast.assignStudentId}">
@@ -181,50 +181,6 @@
   </div>
 </div>
 
-
-<div class="modal fade" id="editAssign" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-   <form method="post" id="assignstudent">
-      		<div class="modal-content">
-        		<div class="modal-header">
-          			<h4 class="modal-title" id="modal_title">Edit Data</h4>
-          			<button type="button" class="close" data-dismiss="modal">&times;</button>
-        		</div>
-        		<div class="modal-body">
-        			<span id="form_message"></span>
-                    <div class="form-group">
-                        <label>Class Name</label>
-                        <select name="classId" id="classId" class="form-control" required>
-                            <option value="">Select Class</option>
-                              <c:forEach items="${classes }" var="c">
-                                <option value="${c.classId }">${c.className }</option>
-                            </c:forEach>
-                            
-                            </select>
-                    </div>
-		          	<div class="form-group">
-		          		<label>Student Name</label>
-		          		<select name="studentId" id="studentId" class="form-control" required>
-                            <option value="">Select Student</option>
-                            <c:forEach items="${student }" var="s">
-                                <option value="${s.studentId }">${s.studentName }</option>
-                            </c:forEach>
-                            </select>
-		          	</div>
-                    <div class="form-group">
-                        <label>Roll No.</label>
-                        <input type="text" name="rollNo" id="rollNo" class="form-control" required />
-                    </div>
-        		</div>
-        		<div class="modal-footer">
-          			
-          			<input type="submit" name="submit" id="submit_button" class="btn btn-success" value="Edit" />
-          			<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        		</div>
-      		</div>
-    	</form>
-  </div>
-</div>
     <script type="text/javascript">
 			$(document).ready(function() {
 				$('#subjecttable').DataTable();

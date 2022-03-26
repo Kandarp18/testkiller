@@ -128,7 +128,7 @@ public class StudentController {
 
 	}
 	@GetMapping("/editstudent")
-	public String editSubject(@RequestParam("studentId") int studentId, Model model) {	
+	public String editStudent(@RequestParam("studentId") int studentId, Model model) {	
 		model.addAttribute("student", studentdao.getStudentById(studentId));
 		
 		return "EditStudent";
@@ -136,8 +136,21 @@ public class StudentController {
 	}
 
 	@PostMapping("/updatestudent")
-	public String updateStudent(StudentBean student) {
+	public String updateStudent(@RequestParam("studentId") int studentId,StudentBean student,Model model) {
+		boolean p=false;
+		StudentBean dbStudent=studentdao.getStudentByEmail(student.getEmail());
+		if(dbStudent!=null) {
+		if((student.getEmail()).equalsIgnoreCase(dbStudent.getEmail())==true){
+			p=true;
+		}
+		}
+		
+		if(p==true) {
+			model.addAttribute("error","Account with this Email Address already exists!");
+			return "redirect:/editstudent?studentId="+studentId;
+		}else {
 		studentdao.updateStudent(student);
+		}
 		return "redirect:/student";
 	}
 	

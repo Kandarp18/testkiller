@@ -10,8 +10,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.arth.bean.RoleBean;
+import com.arth.bean.StudentBean;
 import com.arth.bean.UserBean;
 import com.arth.dao.RoleDao;
 import com.arth.dao.UserDao;
@@ -103,5 +105,32 @@ public class UserController {
 
 		return "redirect:/users";
 	}
+	@GetMapping("/edituser")
+	public String editStudent(@RequestParam("userId") int userId, Model model) {	
+		model.addAttribute("user", userDao.getUserById(userId));
+		List<RoleBean> role = roleDao.getAllRoles();
+		model.addAttribute("role", role);
+		return "EditUser";
 
+	}
+
+	@PostMapping("/updateuser")
+	public String updateStudent(@RequestParam("userId") int userId,UserBean user,Model model) {
+		boolean p=false;
+		UserBean dbUser=userDao.getUserByEmail(user.getEmail());
+		if(dbUser!=null) {
+		if((user.getEmail()).equalsIgnoreCase(dbUser.getEmail())){
+			p=true;
+		}
+		}
+		
+		if(p==true) {
+			model.addAttribute("error","Account with this Email Address already exists!");
+			return "redirect:/edituser?userId="+userId;
+		}else {
+		userDao.updateUser(user);
+		}
+		return "redirect:/users";
+	}
+	
 }

@@ -21,7 +21,7 @@ public class UserDao {
 	}
 
 	public List<UserBean> getAllUsers() {
-		return stmt.query("select u.*,r.roleName  from users u,role r where u.roleid = r.roleid ",
+		return stmt.query("select u.*,r.roleName from users u,role r where u.roleid = r.roleid ",
 				new BeanPropertyRowMapper<UserBean>(UserBean.class));
 	}
 
@@ -46,12 +46,12 @@ public class UserDao {
 	}
 	public UserBean getUserById(int userId) {
 
-		UserBean user = stmt.queryForObject("select * from users where userid = ? ", new BeanPropertyRowMapper<UserBean>(UserBean.class), new Object[] { userId });
+		UserBean user = stmt.queryForObject("select u.*,r.roleName from users u,role r where u.roleid = r.roleid and userid = ? ", new BeanPropertyRowMapper<UserBean>(UserBean.class), new Object[] { userId });
 
 		return user;
 	}
 
 	public void updateUser(UserBean user) {
-		stmt.update("update users set username = ?,email = ?,contactno = ? where userid = ? ",user.getUserName(),user.getEmail(),user.getContactNo(),user.getUserId());
+		stmt.update("update users set username = ?,email = ?,gender = ?,contactno = ?,roleid=?,status=? where userid = ? ",user.getUserName(),user.getEmail(),user.getGender(),user.getContactNo(),user.getStatus(),user.getRoleId(),user.getUserId());
 	}
 }

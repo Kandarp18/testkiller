@@ -140,7 +140,7 @@ public class StudentController {
 		boolean p=false;
 		StudentBean dbStudent=studentdao.getStudentByEmail(student.getEmail());
 		if(dbStudent!=null) {
-		if((student.getEmail()).equalsIgnoreCase(dbStudent.getEmail())==true){
+		if((student.getEmail()).equalsIgnoreCase(dbStudent.getEmail())){
 			p=true;
 		}
 		}

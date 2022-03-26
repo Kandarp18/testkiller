@@ -1,5 +1,6 @@
 package com.arth.dao;
 
+import java.sql.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,5 +60,16 @@ public class StudentDao {
 
 	public void updateStudent(StudentBean student) {
 		stmt.update("update student set studentname = ?,email = ?,gender = ?,dateofbirth = ?,status = ? where studentid = ?",student.getStudentName(),student.getEmail(),student.getGender(),student.getDateOfBirth(),student.getStatus(),student.getStudentId());
+	}
+	public StudentBean getStudent(String email) {
+		StudentBean dbStudent = null;
+
+		try {
+			dbStudent = stmt.queryForObject("select * from student where  email = ? and status=? ",
+					new BeanPropertyRowMapper<StudentBean>(StudentBean.class), new Object[] {email});
+		} catch (Exception e) {
+
+		}
+		return dbStudent;
 	}
 }

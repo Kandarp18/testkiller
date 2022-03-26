@@ -61,13 +61,9 @@ public class AdminController {
 	
 	@GetMapping("/profile")
 	public String profile(RoleBean role,Model model) {
-				return "EditProfile";
+	return "EditProfile";
 	}
       
-      @PostMapping("/updateprofile")
-  	public String updateProfile(UserBean user) {
-  		userdao.updateUser(user);
-  		return "redirect:/profile";
+     
   	}
 	
-}

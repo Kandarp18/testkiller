@@ -76,7 +76,7 @@
 		                                      <td>${e.resultDate }</td>
 		                                      <td>
 		                                      <c:if test="${e.status}=='Pending'">
-		                                      <p class="badge badge-warning">Pending</p>
+		                                     Pending
 		                                      </c:if>
 		                                      <c:if test="${e.status}=='Created'">
 		                                      <p class="badge badge-success">Created</p>

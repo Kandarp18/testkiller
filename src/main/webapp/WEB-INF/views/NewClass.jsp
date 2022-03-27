@@ -74,11 +74,8 @@
 		                                      <td>${c.status }</td>
 		                                      
 		                                      <td>
-		                                       <a href="editclass?classId=${c.classId}"  >
-                                    <button type="button" name="edit" class="btn btn-warning btn-circle btn-sm edit_button" ><i class="fas fa-edit"></i></button> </a> 
-		                                      
-		                                      
-		                                       
+		                                       <a href="editclass?classId=${c.classId}">                                 
+                                  <button type="button" name="edit" class="btn btn-warning btn-circle btn-sm edit_button" ><i class="fas fa-edit"></i></button> </a> 		       
 		                                       </td>
 	                                           </tr>
                                       </c:forEach>

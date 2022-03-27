@@ -101,7 +101,6 @@ public class SessionController {
 			if (bcryptPasswordEncoder.matches(user.getPassword(), dbUser.getPassword()) ) {
 				isCorrect = true;
 				session.setAttribute("user", dbUser);
-				
 			}
 		}
 

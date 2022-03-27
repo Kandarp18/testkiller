@@ -138,9 +138,9 @@ public class StudentController {
 	@PostMapping("/updatestudent")
 	public String updateStudent(@RequestParam("studentId") int studentId,StudentBean student,Model model) {
 		boolean p=false;
-		StudentBean dbStudent=studentdao.getStudentByEmail(student.getEmail());
-		if(dbStudent!=null) {
-		if((student.getEmail()).equalsIgnoreCase(dbStudent.getEmail())){
+		StudentBean dbStudent=studentdao.getStudent(student.getEmail(),student.getStudentId());
+		if(dbStudent!=null ) {
+			if(student.getEmail().equalsIgnoreCase(dbStudent.getEmail()) && (student.getStudentId()!=dbStudent.getStudentId())) {
 			p=true;
 		}
 		}
@@ -150,6 +150,8 @@ public class StudentController {
 			return "redirect:/editstudent?studentId="+studentId;
 		}else {
 		studentdao.updateStudent(student);
+		model.addAttribute("success","Student Data Changed Successfully!");
+
 		}
 		return "redirect:/student";
 	}

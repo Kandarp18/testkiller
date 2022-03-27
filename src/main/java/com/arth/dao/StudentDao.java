@@ -61,12 +61,12 @@ public class StudentDao {
 	public void updateStudent(StudentBean student) {
 		stmt.update("update student set studentname = ?,email = ?,gender = ?,dateofbirth = ?,status = ? where studentid = ?",student.getStudentName(),student.getEmail(),student.getGender(),student.getDateOfBirth(),student.getStatus(),student.getStudentId());
 	}
-	public StudentBean getStudent(String email) {
+	public StudentBean getStudent(String email,int studentId) {
 		StudentBean dbStudent = null;
 
 		try {
-			dbStudent = stmt.queryForObject("select * from student where  email = ? and status=? ",
-					new BeanPropertyRowMapper<StudentBean>(StudentBean.class), new Object[] {email});
+			dbStudent = stmt.queryForObject("select * from student where email=? and studentid=? ",
+					new BeanPropertyRowMapper<StudentBean>(StudentBean.class), new Object[] {email,studentId});
 		} catch (Exception e) {
 
 		}

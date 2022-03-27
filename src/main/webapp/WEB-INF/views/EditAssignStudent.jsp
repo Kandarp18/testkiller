@@ -40,10 +40,10 @@
         				
                     <div class="form-group">
                         <label>Class Name</label>
-                        <select name="classId" id="classId" class="form-control" required>
+                        <select name="classId" id="classId" class="form-control" required >
                          
                                     <option value="${ast.classId }">${ast.className }</option>
-           <option value="">Select Class</option>
+                          <option value="">Select Class</option>
                         <c:forEach items="${classes }" var="c">
                             <option value="${c.classId }">${c.className }</option>
                              </c:forEach>

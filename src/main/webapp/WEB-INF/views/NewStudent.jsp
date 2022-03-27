@@ -36,7 +36,9 @@
                     <h1 class="h3 mb-4 text-gray-800">Student Management</h1>
 
                     <!-- DataTales Example -->
-                    <span id="message"></span>
+                    <span id="message">
+                    <p style="color:green;">${success }</p>
+                    </span>
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
                         	<div class="row">

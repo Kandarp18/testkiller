@@ -74,11 +74,21 @@
 		                                      <td>${e.className }</td>
 		                                      <td>${e.duration } Minute</td>
 		                                      <td>${e.resultDate }</td>
-		                                      <td>${e.status }</td>
+		                                      <td>
+		                                      <c:if test="${e.status}=='Pending'">
+		                                      <p class="badge badge-warning">Pending</p>
+		                                      </c:if>
+		                                      <c:if test="${e.status}=='Created'">
+		                                      <p class="badge badge-success">Created</p>
+		                                      </c:if>
+		                                      <c:if test="${e.status}=='Completed'">
+		                                      <p class="badge badge-dark">Completed</p>
+		                                      </c:if>
+		                                      </td>
 		                                      <td>${dy }</td>
 		                                      <td>
-		                                       <a href="editexam?examId=${e.examId}" style="color:black;" data-toggle="modal">
-                                  <button type="button" name="editclass" class="btn btn-warning btn-circle btn-sm edit_button" data-toggle="modal" data-target="#editExam">
+		                                       <a href="editexam?examId=${e.examId}" >
+                                  <button type="button" name="editclass" class="btn btn-warning btn-circle btn-sm edit_button" >
 			                                 <i class="fas fa-edit"></i>
 			                        </button> </a> &nbsp;
 		                                      <a  href="deleteexam/${e.examId}">
@@ -194,60 +204,30 @@
     
   </div>
 </div>
-
-
- <!-- Modal -->
-<div class="modal fade" id="editExam" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <form method="post" action="exam">
-      		<div class="modal-content">
-        		<div class="modal-header">
-          			<h4 class="modal-title" id="modal_title">Edit Exam Data</h4>
-          			<button type="button" class="close" data-dismiss="modal">&times;</button>
-        		</div>
-        		<div class="modal-body">
-        			<span id="form_message"></span>
+<div id="publishresultModal" class="modal fade">
+    <div class="modal-dialog">
+        <form method="post" >
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="modal_title">Publish Exam Result</h4>
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                </div>
+                <div class="modal-body">                    
                     <div class="form-group">
-                        <label>Exam Name</label>
-                        <input type="text" name="examName" id="examName" class="form-control" required data-parsley-pattern="/^[a-zA-Z0-9 \s]+$/" data-parsley-trigger="keyup" />
+                        <label>Exam Result Publish Date &amp; Time</label>
+                        <input type="text" name="resultDate" id="exam_result_publish_datetime" class="form-control datepicker"  required="" data-parsley-trigger="keyup">
                     </div>
-                    <div class="form-group">
-                        <label>Class</label>
-                        <select name="classId" id="classId" class="form-control" required>
-                            <option value="">Select Class</option>
-                            <c:forEach items="${classes }" var="c">
-                                <option value="${c.classId }">${c.className }</option>
-                            </c:forEach>
-                            </select>                    
-                    </div>
-		          	
-                    <div class="form-group">
-                        <label>Exam Duration for Each Subject <span class="text-danger">*</span></label>
-                        <select name="duration" id="duration" class="form-control" required>
-                            <option value="">Select</option>
-                            <option value="5">5 Minute</option>
-                            <option value="10">10 Minute</option>
-                              <option value="15">15 Minute</option>
-                             <option value="20">20 Minute</option>
-                              <option value="30">30 Minute</option>
-                            <option value="60">60 Minute</option>
-                            <option value="90">90 Minute</option>
-                            <option value="120">120 Minute</option>
-                        </select>
-                    </div>
-                    <input type="hidden" name="status" value="Pending">
-                    <input type="hidden" name="resultDate" value="Not Publish">
-        		</div>
-        		<div class="modal-footer">
-          			
-          			<input type="submit" name="submit" id="submit_button" class="btn btn-success" value="Edit" />
-          			<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        		</div>
-      		</div>
-    	</form>
-    
-  </div>
+                </div>
+                <div class="modal-footer">
+                    
+                    <input type="submit" name="submit" id="result_publish_submit_button" class="btn btn-success" value="Publish">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </form>
+    </div>
 </div>
+
 <script type="text/javascript">
 			$(document).ready(function() {
 				$('#examtable').DataTable();

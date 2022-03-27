@@ -47,7 +47,8 @@
 		          	</div>
 		          	<div class="form-group">
 		          		<label>Gender</label>
-		          		<select name="gender" id="gender" class="form-control">
+		          		<select name="gender" id="gender" class="form-control" required>
+		          		<option value="${student.gender }">${student.gender }</option>
                           <option value="">Select Gender</option>
                             <option value="Male">Male</option>
                             <option value="Female">Female</option>
@@ -61,7 +62,6 @@
 		          	<div class="form-group">
 		          		<label>Status</label>
 		          		<select name="status" id="status" class="form-control" required>
-		          		<option value="">Select Status</option>
 		          		   <option value="Active">Active</option>
 		          		   <option value="InActive">InActive</option>
 		          		</select>

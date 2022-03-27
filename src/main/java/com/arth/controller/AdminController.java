@@ -1,11 +1,14 @@
 package com.arth.controller;
 
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.arth.bean.ClassBean;
 import com.arth.bean.ExamBean;
@@ -60,7 +63,10 @@ public class AdminController {
 
 	
 	@GetMapping("/profile")
-	public String profile(RoleBean role,Model model) {
+	public String profile(@RequestParam("userId") int userId,Model model) {
+		model.addAttribute("u", userdao.getUserById(userId));
+		List<RoleBean> role = roledao.getAllRoles();
+		model.addAttribute("role", role);	
 	return "EditProfile";
 	}
       

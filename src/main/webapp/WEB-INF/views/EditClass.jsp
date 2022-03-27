@@ -44,7 +44,6 @@
 		          	<div class="form-group">
 		          		<label>Status</label>
 		          		<select name="status" id="status" class="form-control" required>
-		          		<option value="">Select Status</option>
 		          		   <option value="Active">Active</option>
 		          		   <option value="InActive">InActive</option>
 		          		</select>

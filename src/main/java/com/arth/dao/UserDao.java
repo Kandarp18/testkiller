@@ -52,6 +52,17 @@ public class UserDao {
 	}
 
 	public void updateUser(UserBean user) {
-		stmt.update("update users set username = ?,email = ?,gender = ?,contactno = ?,roleid=?,status=? where userid = ? ",user.getUserName(),user.getEmail(),user.getGender(),user.getContactNo(),user.getStatus(),user.getRoleId(),user.getUserId());
+		stmt.update("update users set username = ?,email = ?,gender = ?,contactno = ?,roleid=?,status=? where userid = ? ",user.getUserName(),user.getEmail(),user.getGender(),user.getContactNo(),user.getRoleId(),user.getStatus(),user.getUserId());
+	}
+	public UserBean getUser(String email,int userId) {
+		UserBean dbUser = null;
+
+		try {
+			dbUser = stmt.queryForObject("select * from users where email = ? and userid=? ",
+					new BeanPropertyRowMapper<UserBean>(UserBean.class), new Object[] { email,userId });
+		} catch (Exception e) {
+
+		}
+		return dbUser;
 	}
 }

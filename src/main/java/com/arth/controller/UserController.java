@@ -117,9 +117,9 @@ public class UserController {
 	@PostMapping("/updateuser")
 	public String updateStudent(@RequestParam("userId") int userId,UserBean user,Model model) {
 		boolean p=false;
-		UserBean dbUser=userDao.getUserByEmail(user.getEmail());
+		UserBean dbUser=userDao.getUser(user.getEmail(),user.getUserId());
 		if(dbUser!=null) {
-		if((user.getEmail()).equalsIgnoreCase(dbUser.getEmail())){
+		if((user.getEmail()).equalsIgnoreCase(dbUser.getEmail())&&(user.getUserId()!=dbUser.getUserId())){
 			p=true;
 		}
 		}

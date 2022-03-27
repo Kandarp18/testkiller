@@ -7,7 +7,6 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-
 import com.arth.bean.ExamBean;
 
 
@@ -29,7 +28,7 @@ public class ExamDao {
 	}
 	public ExamBean getExamById(int examId) {
 
-		   ExamBean exam = stmt.queryForObject("select * from exam where examid = ? ", new BeanPropertyRowMapper<ExamBean>(ExamBean.class), new Object[] { examId });
+		   ExamBean exam = stmt.queryForObject("select e.*,c.className from exam e,classes c where e.classid=c.classid and examid = ? ", new BeanPropertyRowMapper<ExamBean>(ExamBean.class), new Object[] { examId });
 
 			return exam;
 		}
@@ -52,5 +51,9 @@ public class ExamDao {
 			
 		}
 		return dbExam;
+	}
+	
+	public void updateExam(ExamBean e) {
+		stmt.update("update exam set examname=?,resultdate=?,duration=?,status=?,classid=? where examid=?",e.getExamName(),e.getResultDate(),e.getDuration(),e.getStatus(),e.getClassId(),e.getExamId());
 	}
 }

@@ -64,7 +64,7 @@ public class StudentDao {
 		StudentBean dbStudent = null;
 
 		try {
-			dbStudent = stmt.queryForObject("select * from student where email=? and studentid=? ",
+			dbStudent = stmt.queryForObject("select * from student where email = ? and studentid = ? ",
 					new BeanPropertyRowMapper<StudentBean>(StudentBean.class), new Object[] {email,studentId});
 		} catch (Exception e) {
 

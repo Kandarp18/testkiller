@@ -66,7 +66,7 @@ boolean p=false;
 	public String updateClass(@RequestParam("examId") int examId,ExamBean exam,Model model) {
 boolean p=false;
 		
-		ExamBean dbExam=examdao.getAllById(exam.getClassId(),exam.getExamName());
+		ExamBean dbExam=examdao.getAll(exam.getClassId(),exam.getExamName());
 		if(dbExam!=null) {
 		if((exam.getClassId()==dbExam.getClassId())&&((exam.getExamName()).equalsIgnoreCase(dbExam.getExamName()))){
 			p=true;

@@ -43,10 +43,10 @@ public class ExamDao {
 		return stmt.query("select e.classid,s.subjectName,s.subjectid from exam e,subject s,classes c where e.classid=c.classid and examid=?",
 				new BeanPropertyRowMapper<ExamBean>(ExamBean.class),new Object[] {examId});
 	}
-	public ExamBean getAllById(int classId,String examName) {
+	public ExamBean getAll(int classId,String examName) {
 	ExamBean dbExam=null;
 		try {
-			dbExam=stmt.queryForObject("select * from exam where classid= ? and examname=?", new BeanPropertyRowMapper<ExamBean>(ExamBean.class),new Object[]{classId,examName});
+			dbExam=stmt.queryForObject("select * from exam where duration=? and resultdate=? and status = ? and classid= ? and examname=?", new BeanPropertyRowMapper<ExamBean>(ExamBean.class),new Object[]{classId,examName});
 		}catch(Exception e) {
 			
 		}
@@ -56,4 +56,14 @@ public class ExamDao {
 	public void updateExam(ExamBean e) {
 		stmt.update("update exam set examname=?,resultdate=?,duration=?,status=?,classid=? where examid=?",e.getExamName(),e.getResultDate(),e.getDuration(),e.getStatus(),e.getClassId(),e.getExamId());
 	}
+	public ExamBean getAllById(int classId,String examName) {
+		ExamBean dbExam=null;
+			try {
+				dbExam=stmt.queryForObject("select * from exam where classid= ? and examname=?", new BeanPropertyRowMapper<ExamBean>(ExamBean.class),new Object[]{classId,examName});
+			}catch(Exception e) {
+				
+			}
+			return dbExam;
+		}
+		
 }

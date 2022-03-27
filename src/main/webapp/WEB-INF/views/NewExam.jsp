@@ -76,13 +76,13 @@
 		                                      <td>${e.resultDate }</td>
 		                                      <td>
 		                                      <c:if test="${e.status}=='Pending'">
-		                                     Pending
+		                                     <span class="badge badge-warning">Pending</span>
 		                                      </c:if>
 		                                      <c:if test="${e.status}=='Created'">
-		                                      <p class="badge badge-success">Created</p>
+		                                      <span class="badge badge-success">Created</span>
 		                                      </c:if>
 		                                      <c:if test="${e.status}=='Completed'">
-		                                      <p class="badge badge-dark">Completed</p>
+		                                      <span class="badge badge-dark">Completed</span>
 		                                      </c:if>
 		                                      </td>
 		                                      <td>${dy }</td>

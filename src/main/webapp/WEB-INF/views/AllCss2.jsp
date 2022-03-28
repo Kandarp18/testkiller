@@ -183,6 +183,9 @@ solid
 }
 </style>
 <style>
+.card-header{
+line-height: 1.5;
+}
 .gm-style-moc {
 	background-color: rgba(0, 0, 0, 0.45);
 	pointer-events: none;
@@ -210,6 +213,15 @@ solid
 .gm-style {
 	font: 400 11px Roboto, Arial, sans-serif;
 	text-decoration: none;
+}
+.py-3 {
+  padding-top: 1rem !important;
+}
+.py-3 {
+  padding-bottom: 1rem !important;
+}
+.shadow {
+  box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15) !important;
 }
 </style>
 <meta http-equiv="content-type" content="text/html;charset=UTF-8">

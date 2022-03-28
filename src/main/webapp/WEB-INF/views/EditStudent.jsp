@@ -43,7 +43,7 @@
 		          	</div>
 		          	<div class="form-group">
 		          		<label>Email Address</label>
-		          		<input type="email" name="email" value="${student.email }"  class="form-control" />
+		          		<input type="email" name="email" value="${student.email }"  readonly class="form-control" />
 		          	</div>
 		          	<div class="form-group">
 		          		<label>Gender</label>

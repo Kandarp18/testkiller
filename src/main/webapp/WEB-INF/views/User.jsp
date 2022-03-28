@@ -86,7 +86,7 @@
 			                                 <i class="fas fa-edit"></i>
 			                        </button> </a> &nbsp;
 		                                      <a  href="deleteuser/${u.userId}">
-		                                      <button type="button"  class="btn btn-danger btn-circle btn-sm delete_button" >
+		                                      <button type="button" onclick="return confirm('Are you sure you want to delete this item?');" class="btn btn-danger btn-circle btn-sm delete_button" >
 		                                      <i class="fas fa-times"></i>
 		                                      </button></a> 
 		                                       </td>

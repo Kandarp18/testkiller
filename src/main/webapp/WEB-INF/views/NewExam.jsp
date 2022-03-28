@@ -75,27 +75,35 @@
 		                                      <td>${e.duration } Minute</td>
 		                                      <td>${e.resultDate }</td>
 		                                      <td>
-		                                      <c:if test="${e.status}=='Pending'">
+		                                      <c:if test="${e.statusId==1}">
 		                                     <span class="badge badge-warning">Pending</span>
 		                                      </c:if>
-		                                      <c:if test="${e.status}=='Created'">
+		                                      <c:if test="${e.statusId==2}">
 		                                      <span class="badge badge-success">Created</span>
 		                                      </c:if>
-		                                      <c:if test="${e.status}=='Completed'">
+		                                      <c:if test="${e.statusId==3}">
 		                                      <span class="badge badge-dark">Completed</span>
 		                                      </c:if>
 		                                      </td>
 		                                      <td>${dy }</td>
 		                                      <td>
+		                                      <c:if test="${e.statusId==1}">
 		                                       <a href="editexam?examId=${e.examId}" >
                                   <button type="button" name="editclass" class="btn btn-warning btn-circle btn-sm edit_button" >
 			                                 <i class="fas fa-edit"></i>
 			                        </button> </a> &nbsp;
 		                                      <a  href="deleteexam/${e.examId}">
-		                                      <button type="button"  class="btn btn-danger btn-circle btn-sm delete_button" >
+		                                      <button type="button" onclick="return confirm('Are you sure you want to delete this item?');" class="btn btn-danger btn-circle btn-sm delete_button" >
 		                                      <i class="fas fa-times"></i>
 		                                      </button></a> 
-		                                         
+		                                      </c:if>
+		                                        <c:if test="${e.statusId==2}">
+		                                        </c:if>
+		                                        <c:if test="${e.statusId==3}">
+		                                        <button type="button" name="resultDate" class="btn btn-primary btn-sm publish_result">Publish Result</button>
+		                                        &nbsp;&nbsp;
+		                                        <a href="#!" class="btn btn-secondary btn-sm">View Result</a>
+		                                        </c:if>
 		                                       </td>
 	                                           </tr>
                                       </c:forEach>
@@ -191,7 +199,7 @@
                             <option value="120">120 Minute</option>
                         </select>
                     </div>
-                    <input type="hidden" name="status" value="Pending">
+                    <input type="hidden" name="statusId" value="1">
                     <input type="hidden" name="resultDate" value="Not Publish">
         		</div>
         		<div class="modal-footer">

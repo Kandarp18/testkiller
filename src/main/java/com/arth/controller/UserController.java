@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.arth.bean.RoleBean;
-import com.arth.bean.StudentBean;
 import com.arth.bean.UserBean;
 import com.arth.dao.RoleDao;
 import com.arth.dao.UserDao;

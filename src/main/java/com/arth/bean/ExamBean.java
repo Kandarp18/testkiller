@@ -5,11 +5,25 @@ public class ExamBean {
   private String examName;
   private int classId;
   private String className;
-  private String status;
   private String resultDate;
   private int duration;
+  private int statusId;
+  private String statusName;
+  
   
 
+public int getStatusId() {
+	return statusId;
+}
+public void setStatusId(int statusId) {
+	this.statusId = statusId;
+}
+public String getStatusName() {
+	return statusName;
+}
+public void setStatusName(String statusName) {
+	this.statusName = statusName;
+}
 public int getDuration() {
 	return duration;
 }
@@ -40,12 +54,7 @@ public String getClassName() {
 public void setClassName(String className) {
 	this.className = className;
 }
-public String getStatus() {
-	return status;
-}
-public void setStatus(String status) {
-	this.status = status;
-}
+
 public String getResultDate() {
 	return resultDate;
 }

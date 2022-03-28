@@ -43,15 +43,9 @@
 		          	</div>
 		          	 <div class="form-group">
                         <label>Class Name</label>
-                        <select name="classId" id="classId" class="form-control" required>
+                        <input type="text" name="classId" value="${exam.className }" class="form-control" readonly required>
                          
-                       <option value="${exam.classId }">${exam.className }</option>
-                              <option value="">Select Class</option>
-                        <c:forEach items="${classes }" var="c">
-                            <option value="${c.classId }">${c.className }</option>
-                             </c:forEach>
-                            </select>
-
+                      
                     </div>
                     <div class="form-group">
                         <label>Exam Duration for Each Subject <span class="text-danger">*</span></label>
@@ -72,9 +66,9 @@
                     <input type="hidden" name="resultDate" value="Not Publish">
 		          	<div class="form-group" id="ifedit">
 		          	<label>Exam Status <span class="text-danger">*</span></label>
-		          	<select name="status" id="status" class="form-control">
-		          	<option value="Pending">Pending</option>
-		          	<option value="Created">Created</option>
+		          	<select name="statusId" id="statusId" class="form-control">
+		          	<option value="1">Pending</option>
+		          	<option value="2">Created</option>
 		          	</select>
 		          	<span class="text-muted"><small>If you have select Created status, then Student will able to view Exam details in their dashboard &amp; you will not able to edit or delete this exam data.</small>
 		          	</span>

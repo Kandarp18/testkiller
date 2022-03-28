@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.arth.bean.ClassBean;
@@ -15,7 +14,6 @@ import com.arth.bean.ExamBean;
 import com.arth.bean.RoleBean;
 import com.arth.bean.StudentBean;
 import com.arth.bean.SubjectBean;
-import com.arth.bean.UserBean;
 import com.arth.dao.ClassDao;
 import com.arth.dao.ExamDao;
 import com.arth.dao.RoleDao;

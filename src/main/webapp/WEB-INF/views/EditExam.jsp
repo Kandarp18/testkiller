@@ -25,7 +25,7 @@
                             <div class="card-header py-3">
                                 <div class="row">
                                     <div class="col">
-                                        <h6 class="m-0 font-weight-bold text-primary">Edit Class</h6>
+                                        <h6 class="m-0 font-weight-bold text-primary">Edit Data</h6>
                                     </div>
                                   
                                 </div>

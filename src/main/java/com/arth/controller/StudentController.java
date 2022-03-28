@@ -155,6 +155,10 @@ public class StudentController {
 		}
 		return "redirect:/student";
 	}
-	
+	@GetMapping("/studentprofile")
+	public String studentProfile(@RequestParam("studentId") int studentId,Model model) {
+		model.addAttribute("student", studentdao.getStudentById(studentId));
+		return "StudentProfile";
+	}
 
 }

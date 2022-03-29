@@ -157,8 +157,13 @@ public class StudentController {
 	}
 	@GetMapping("/studentprofile")
 	public String studentProfile(@RequestParam("studentId") int studentId,Model model) {
-		model.addAttribute("student", studentdao.getStudentById(studentId));
+		model.addAttribute("s", studentdao.getStudentById(studentId));
 		return "StudentProfile";
+	}
+	@PostMapping("/updateprofile")
+	public String updateProfile(StudentBean student) {
+		studentdao.updateStudent(student);
+		return "redirect:/studentdashboard";
 	}
 
 }

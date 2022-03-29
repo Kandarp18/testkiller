@@ -36,4 +36,14 @@ public class AssignExamDao {
 		List<AssignExamBean> subject = stmt.query("select a.*,s.subjectname from assignexam a ,subject s where a.subjectid=s.subjectid and s.subjectid in (select subjectid from assignexam where examid=?)", new BeanPropertyRowMapper<AssignExamBean>(AssignExamBean.class),new Object[] {examId});
 		return subject;
 	}
+	public AssignExamBean getExamById(int assignExamId) {
+
+		AssignExamBean exam = stmt.queryForObject("select a.*,e.examName,s.subjectName from assignexam a,exam e,subject s where s.subjectid=a.subjectid and e.examid=a.examid and assignexamid = ? ", new BeanPropertyRowMapper<AssignExamBean>(AssignExamBean.class), new Object[] { assignExamId });
+
+		return exam;
+	}
+
+	public void updateExam(AssignExamBean exam) {
+		stmt.update("update assignexam set totalquestion=?,examdate=?,rightmark=? ",exam.getTotalQuestion(),exam.getExamDate(),exam.getRightMark());
+	}
 }

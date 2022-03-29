@@ -80,7 +80,7 @@
                                          <td>${q.option4 }</td>
                                          <td>${q.answer }</td>
                                         <td>
-                                        <a href="editassignexam?assignExamId=${e.assignExamId}" >
+                                        <a href="editquestion?questionId=${q.questionId}" >
 		                                     <button type="button" name="edit" class="btn btn-warning btn-circle btn-sm edit_button" >
 			                                 <i class="fas fa-edit"></i>
 			                                 </button></a>

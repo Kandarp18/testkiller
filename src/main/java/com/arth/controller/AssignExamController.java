@@ -6,8 +6,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.arth.bean.AssignExamBean;
+import com.arth.bean.ClassBean;
 import com.arth.bean.ExamBean;
 import com.arth.dao.AssignExamDao;
 import com.arth.dao.ExamDao;
@@ -49,6 +51,19 @@ public class AssignExamController {
 	public String deleteExam(@PathVariable("assignExamId") int assignExamId) {
        assignexamdao.deleteAssignExam(assignExamId);
 		return "redirect:/examsubject";
+	}
+	@GetMapping("/editassignexam")
+	public String editSubject(@RequestParam("assignExamId") int assignExamId, Model model) {	
+		model.addAttribute("e", examdao.getAllExamByStatus());
+		model.addAttribute("ae", assignexamdao.getExamById(assignExamId));
+		return "EditAssignExam";
+
+	}
+	@PostMapping("/updateassignexam")
+	public String updateExam(@RequestParam("assignExamId") int assignExamId,AssignExamBean exam,Model model) {
+		assignexamdao.updateExam(exam);
+		return "redirect:/examsubject";
+
 	}
 }
 

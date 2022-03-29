@@ -52,11 +52,7 @@ public class AdminController {
 		model.addAttribute("cr",countresult);
 		return "AdminDashboard";
 	}
-	
-	
-	
 
-	
 	@GetMapping("/profile")
 	public String profile(@RequestParam("userId") int userId,Model model) {
 		model.addAttribute("u", userdao.getUserById(userId));

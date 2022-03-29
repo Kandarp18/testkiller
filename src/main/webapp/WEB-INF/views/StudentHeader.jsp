@@ -66,7 +66,7 @@
 								<div class="dropdown-primary dropdown">
 									<div class="dropdown-toggle" data-toggle="dropdown"
 										aria-expanded="false">
-										<img src="jpg/task-u4.jpg" class="img-radius"
+										<img src="jpg/dummyuser.jpg" class="img-radius"
 											alt=""> <span>${student.studentName}</span> <i
 											class="feather icon-chevron-down"></i>
 									</div>

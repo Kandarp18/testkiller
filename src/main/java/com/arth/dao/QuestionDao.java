@@ -7,6 +7,7 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import com.arth.bean.AssignExamBean;
 import com.arth.bean.QuestionBean;
 
 @Repository
@@ -24,5 +25,15 @@ public class QuestionDao {
 	
 	public void deleteQuestion(int questionId) {
 		stmt.update("delete from question where questionid = ?", questionId);
+	}
+	public QuestionBean getQuestionById(int questionId) {
+
+		QuestionBean question = stmt.queryForObject("select q.*,e.examName,s.subjectName from question q,exam e,subject s where s.subjectid=q.subjectid and e.examid=q.examid and questionid = ? ", new BeanPropertyRowMapper<QuestionBean>(QuestionBean.class), new Object[] { questionId });
+
+		return question;
+	}
+
+	public void updateQuestion(QuestionBean q) {
+		stmt.update("update question set question=?,option1=?,option2=?,option3=?,option4=?,answer=? ",q.getQuestion(),q.getOption1(),q.getOption2(),q.getOption3(),q.getOption4(),q.getAnswer());
 	}
 }

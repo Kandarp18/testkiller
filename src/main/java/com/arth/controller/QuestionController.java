@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.arth.bean.AssignExamBean;
 import com.arth.bean.QuestionBean;
 import com.arth.dao.ExamDao;
 import com.arth.dao.QuestionDao;

@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.arth.bean.AssignExamBean;
-import com.arth.bean.ClassBean;
 import com.arth.bean.ExamBean;
 import com.arth.dao.AssignExamDao;
 import com.arth.dao.ExamDao;

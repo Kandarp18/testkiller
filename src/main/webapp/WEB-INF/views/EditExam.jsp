@@ -43,13 +43,13 @@
 		          	</div>
 		          	 <div class="form-group">
                         <label>Class Name</label>
-                        <input type="text" name="classId" value="${exam.className }" class="form-control" readonly required>
-                         
-                      
+                        <select name="classId" class="form-control" readonly required>
+                         <option value="${exam.classId }">${exam.className }</option>
+                      </select>
                     </div>
                     <div class="form-group">
                         <label>Exam Duration for Each Subject <span class="text-danger">*</span></label>
-                        <select name="duration" id="duration" class="form-control" required="" data-parsley-id="9">
+                        <select name="duration" id="duration" class="form-control" required data-parsley-id="9">
                 <option value="${exam.duration }">${exam.duration } Minute</option>
                            
                             <option value="">Select</option>

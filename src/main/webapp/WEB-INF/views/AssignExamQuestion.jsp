@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -68,7 +69,30 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        
+                                         <c:forEach items="${q }" var="q">
+                                         <tr>
+                                         <td>${q.examName}</td>
+                                         <td>${q.subjectName }</td>
+                                         <td>${q.question }</td>
+                                          <td>${q.option1 }</td>
+                                         <td>${q.option2 }</td>
+                                         <td>${q.option3 }</td>
+                                         <td>${q.option4 }</td>
+                                         <td>${q.answer }</td>
+                                        <td>
+                                        <a href="editassignexam?assignExamId=${e.assignExamId}" >
+		                                     <button type="button" name="edit" class="btn btn-warning btn-circle btn-sm edit_button" >
+			                                 <i class="fas fa-edit"></i>
+			                                 </button></a>
+                                        <a  href="deletequestion/${q.questionId}">
+                                          <button type="button" onclick="return confirm('Are you sure you want to delete this item?');"  class="btn btn-danger btn-circle btn-sm delete_button" >
+		                                      <i class="fas fa-times"></i>
+		                                      </button></a>
+                                      
+		                                       </td>
+		                                       </tr>
+                                         </c:forEach>
+                              
                                     </tbody>
                                 </table>
                             </div>
@@ -125,7 +149,7 @@
      <!-- Modal -->
 <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
   <div class="modal-dialog" role="document">
-   <form method="post" id="exam_subject_question_form">
+   <form method="post" action="examsubjectquestion">
       		<div class="modal-content">
         		<div class="modal-header">
           			<h4 class="modal-title" id="modal_title">Add Exam Subject Question Data</h4>
@@ -136,22 +160,18 @@
                     <div class="form-group row">
                         <label class="col-sm-3 col-form-label">Exam Name</label>
                         <div class="col-sm-9">
-                            <select name="exam_id" id="exam_id" class="form-control" required>
+                            <select name="examId" id="examId" onchange="loadSubject()" class="form-control" required>
                                 <option value="">Select Exam</option>
-                                
-                                    <option value="470">2</option>
-                                    
-                                    <option value="464">4</option>
-                                    
-                                    <option value="236">a</option>
-                                    
-                                                                        </select>
+                                 <c:forEach items="${exam }" var="e">
+                                <option value="${e.examId }">${e.examName }</option>
+                            </c:forEach>                             
+                                                       </select>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-sm-3 col-form-label">Subject</label>
                         <div class="col-sm-9">
-                            <select name="exam_subject_id" id="exam_subject_id" class="form-control" required>
+                            <select name="subjectId" id="subjectId" class="form-control" required>
                                 <option value="">Select Subject</option>
                             </select>
                         </div>
@@ -159,42 +179,42 @@
                     <div class="form-group row">
                         <label class="col-sm-3 col-form-label">Question Title</label>
                         <div class="col-sm-9">
-                            <input type="text" name="exam_subject_question_title" id="exam_subject_question_title" class="form-control datepicker" required data-parsley-trigger="keyup" />
+                            <input type="text" name="question" id="question" class="form-control datepicker" required data-parsley-trigger="keyup" />
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-sm-3 col-form-label">Option 1</label>
                         <div class="col-sm-9">
-                            <input type="text" name="option_title_1" id="option_title_1" autocomplete="off" class="form-control" required />
+                            <input type="text" name="option1" id="option1" autocomplete="off" class="form-control" required />
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-sm-3 col-form-label">Option 2</label>
                         <div class="col-sm-9">
-                            <input type="text" name="option_title_2" id="option_title_2" autocomplete="off" class="form-control" required />
+                            <input type="text" name="option2" id="option2" autocomplete="off" class="form-control" required />
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-sm-3 col-form-label">Option 3</label>
                         <div class="col-sm-9">
-                            <input type="text" name="option_title_3" id="option_title_3" autocomplete="off" class="form-control" required />
+                            <input type="text" name="option3" id="option3" autocomplete="off" class="form-control" required />
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-sm-3 col-form-label">Option 4</label>
                         <div class="col-sm-9">
-                            <input type="text" name="option_title_4" id="option_title_4" autocomplete="off" class="form-control" required />
+                            <input type="text" name="option4" id="option4" autocomplete="off" class="form-control" required />
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-sm-3 col-form-label">Answer</label>
                         <div class="col-sm-9">
-                            <select name="exam_subject_question_answer" id="exam_subject_question_answer" class="form-control" required>
+                            <select name="answer" id="answer" class="form-control" required>
                                 <option value="">Select</option>
-                                <option value="1">1 Option</option>
-                                <option value="2">2 Option</option>
-                                <option value="3">3 Option</option>
-                                <option value="4">4 Option</option>
+                                <option value="option1">1 Option</option>
+                                <option value="option2">2 Option</option>
+                                <option value="option3">3 Option</option>
+                                <option value="option4">4 Option</option>
                             </select>
                         </div>
                     </div>
@@ -212,6 +232,21 @@
 			$(document).ready(function() {
 				$('#subjecttable').DataTable();
 			});
+			
+			function loadSubject(){
+				let examId = $("#examId")[0].value 
+				
+				 
+				$("#subjectId").empty(); 
+				
+				$.get("getsubjectbyexamid",{examId:examId}).done(function(data){
+					$("#subjectId").append($("<option    />").val("").text("Select Subject"));
+                        for(let i=0;i<data.length;i++){ 
+							$("#subjectId").append($("<option     />").val(data[i].subjectId).text(data[i].subjectName));
+                        }
+                        
+				 });
+			}
 		</script>
 </body>
 

@@ -54,10 +54,7 @@ public class AdminController {
 	}
 	
 	
-	@GetMapping("/examsubjectquestion")
-	public String assignExamQuestion() {
-		return "AssignExamQuestion";
-	}
+	
 
 	
 	@GetMapping("/profile")

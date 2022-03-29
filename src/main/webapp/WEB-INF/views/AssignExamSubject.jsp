@@ -59,14 +59,33 @@
                                         <tr>
                                             <th>Exam Name</th>
                                             <th>Subject</th>
-                                            <th>Exam Datetime</th>
+                                            <th>Exam Date</th>
                                             <th>Total Question</th>
                                             <th>Right Answer Mark</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        
+                                         <c:forEach items="${e }" var="e">
+                                         <tr>
+                                         <td>${e.examName}</td>
+                                         <td>${e.subjectName }</td>
+                                         <td>${e.examDate }</td>
+                                         <td>${e.totalQuestion }</td>
+                                          <td>+${e.rightMark } Mark</td>
+                                        <td>
+                                        <a href="editassignexam?assignExamId=${e.assignExamId}" >
+		                                     <button type="button" name="edit" class="btn btn-warning btn-circle btn-sm edit_button" >
+			                                 <i class="fas fa-edit"></i>
+			                                 </button></a>
+                                        <a  href="deleteassignexam/${e.assignExamId}">
+                                          <button type="button" onclick="return confirm('Are you sure you want to delete this item?');"  class="btn btn-danger btn-circle btn-sm delete_button" >
+		                                      <i class="fas fa-times"></i>
+		                                      </button></a>
+                                      
+		                                       </td>
+		                                       </tr>
+                                         </c:forEach>
                                     </tbody>
                                 </table>
                             </div>
@@ -133,7 +152,7 @@
         			<span id="form_message"></span>
                     <div class="form-group">
                         <label>Exam Name</label>
-                        <select name="examId" path="examId" class="form-control" required>
+                        <select name="examId" id="examId" class="form-control" onchange="loadSubject()" required>
                             <option value="">Select Exam</option>
                              <c:forEach items="${exam }" var="e">
                                 <option value="${e.examId }">${e.examName }</option>
@@ -145,14 +164,12 @@
                         <label>Subject</label>
                         <select name="subjectId" id="subjectId" class="form-control" required>
                             <option value="">Select Subject</option>
-                            <c:forEach items="${subject }" var="s">
-                                <option value="${s.subjectId }">${s.subjectName }</option>
-                            </c:forEach>
+                            
                         </select>
                     </div>
                     <div class="form-group">
-                        <label>Exam Date & Time</label>
-                        <input type="text" name="examDate" id="subject_exam_datetime" class="form-control datepicker"  required data-parsley-trigger="keyup" />
+                        <label>Exam Date</label>
+                        <input type="date" name="examDate" id="examDate" class="form-control datepicker"  required data-parsley-trigger="keyup" />
                     </div>
                     <div class="form-group">
                         <label>Total Question</label>
@@ -190,22 +207,26 @@
     
   </div>
 </div>
-<script type="text/javascript">
 
- var date = new Date();
-    date.setDate(date.getDate());
-    $("#subject_exam_datetime").datetimepicker({
-        startDate: date,
-        format: 'yyyy-mm-dd hh:ii',
-        autoclose: true
-    });
-    
-
-</script>
 <script type="text/javascript">
 			$(document).ready(function() {
 				$('#subjecttable').DataTable();
 			});
+			
+			function loadSubject(){
+				let examId = $("#examId")[0].value 
+				
+				 
+				$("#subjectId").empty(); 
+				
+				$.get("getsubjectbyexam",{examId:examId}).done(function(data){
+					$("#subjectId").append($("<option    />").val("").text("Select Subject"));
+                        for(let i=0;i<data.length;i++){ 
+							$("#subjectId").append($("<option     />").val(data[i].subjectId).text(data[i].subjectName));
+                        }
+                        
+				 });
+			}
 		</script>
 </body>
 

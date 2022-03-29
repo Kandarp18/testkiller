@@ -1,6 +1,7 @@
 package com.arth.controller;
 
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -8,9 +9,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.arth.bean.AssignExamBean;
 import com.arth.bean.ExamBean;
+import com.arth.dao.AssignExamDao;
 import com.arth.dao.ClassDao;
 import com.arth.dao.ExamDao;
 
@@ -22,6 +28,8 @@ public class ExamController {
   ClassDao classdao;
   @Autowired
 	Date date;
+  @Autowired
+  AssignExamDao assignexamdao;
 	@GetMapping("/exam")
 	public String newExam(Model model) {
 		model.addAttribute("classes",classdao.getAllClassesByStatus());
@@ -81,6 +89,12 @@ boolean p=false;
 		}
 		return "redirect:/exam";
 
+	}
+	@RequestMapping(value = "/getsubjectbyexamid",method = RequestMethod.GET,  produces="application/json")
+	@ResponseBody
+	public List<AssignExamBean> getSubjectByExam(@RequestParam("examId") int examId) {
+		
+		return assignexamdao.getAllAssignSubject(examId);
 	}
 
 }

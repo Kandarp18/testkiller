@@ -65,5 +65,8 @@ public class ExamDao {
 			}
 			return dbExam;
 		}
-		
+	public List<ExamBean> getAllExamByStatus() {
+		return stmt.query("select e.*,c.className,s.statusName from exam e,classes c,status s where e.classid=c.classid and e.statusid=s.statusid and s.statusid=1",
+				new BeanPropertyRowMapper<ExamBean>(ExamBean.class));
+	}
 }

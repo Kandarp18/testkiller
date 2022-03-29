@@ -1,19 +1,29 @@
 package com.arth.bean;
 
+import java.sql.Date;
+
 public class AssignExamBean {
-private int examid;
+private int assignExamId;
+private int examId;
 private String examName;
 private int subjectId;
 private String subjectName;
-private String examDate;
+private Date examDate;
 private int totalQuestion;
 private int rightMark;
 
-public int getExamid() {
-	return examid;
+
+public int getAssignExamId() {
+	return assignExamId;
 }
-public void setExamid(int examid) {
-	this.examid = examid;
+public void setAssignExamId(int assignExamId) {
+	this.assignExamId = assignExamId;
+}
+public int getExamId() {
+	return examId;
+}
+public void setExamId(int examId) {
+	this.examId = examId;
 }
 public String getExamName() {
 	return examName;
@@ -33,10 +43,11 @@ public String getSubjectName() {
 public void setSubjectName(String subjectName) {
 	this.subjectName = subjectName;
 }
-public String getExamDate() {
+
+public Date getExamDate() {
 	return examDate;
 }
-public void setExamDate(String examDate) {
+public void setExamDate(Date examDate) {
 	this.examDate = examDate;
 }
 public int getTotalQuestion() {

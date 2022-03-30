@@ -45,7 +45,7 @@ public class SubjectDao {
 		SubjectBean dbSubject = null;
 
 		try {
-			dbSubject = stmt.queryForObject("select * from subject where subjectname = ? ",
+			dbSubject = stmt.queryForObject("select * from subject where lower(subjectname) = lower(?) ",
 					new BeanPropertyRowMapper<SubjectBean>(SubjectBean.class), new Object[] { subjectName });
 		}catch(Exception e) {
 			
@@ -60,7 +60,7 @@ public class SubjectDao {
 	public SubjectBean getAllById(String subjectName,String status) {
 		SubjectBean dbAssign=null;
 		try {
-			dbAssign=stmt.queryForObject("select * from subject where subjectname = ? and status= ? ", new BeanPropertyRowMapper<SubjectBean>(SubjectBean.class),new Object[]{subjectName,status});
+			dbAssign=stmt.queryForObject("select * from subject where lower(subjectname) = lower(?) and status= ? ", new BeanPropertyRowMapper<SubjectBean>(SubjectBean.class),new Object[]{subjectName,status});
 		}catch(Exception e) {
 			
 		}

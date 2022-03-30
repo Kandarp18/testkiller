@@ -44,6 +44,6 @@ public class AssignExamDao {
 	}
 
 	public void updateExam(AssignExamBean exam) {
-		stmt.update("update assignexam set totalquestion=?,examdate=?,rightmark=? ",exam.getTotalQuestion(),exam.getExamDate(),exam.getRightMark());
+		stmt.update("update assignexam set totalquestion=?,examdate=?,rightmark=? where assignexamid=? ",exam.getTotalQuestion(),exam.getExamDate(),exam.getRightMark(),exam.getAssignExamId());
 	}
 }

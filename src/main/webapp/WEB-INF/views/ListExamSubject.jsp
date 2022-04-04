@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>List Roles</title>
+<title>Testkiller</title>
 <jsp:include page="AllCss2.jsp"></jsp:include>
 
 </head>
@@ -30,7 +30,7 @@
 									<div class="page-header-title">
 										<i class="feather icon-inbox bg-c-blue"></i>
 										<div class="d-inline">
-											<h5>List Roles</h5>
+											<h5>List Exams</h5>
 										</div>
 									</div>
 								</div>
@@ -39,10 +39,9 @@
 										<ul class=" breadcrumb breadcrumb-title">
 											<li class="breadcrumb-item"><a href="studentdashboard"><i
 													class="feather icon-home"></i></a></li>
-											<li class="breadcrumb-item"><a href="#!">Bootstrap
-													Table</a></li>
-											<li class="breadcrumb-item"><a href="#!">Basic
-													Initialization</a></li>
+											<li class="breadcrumb-item"><a href="#!">Exams
+													</a></li>
+											
 										</ul>
 									</div>
 								</div>
@@ -59,7 +58,7 @@
 											<div class="col-sm-12">
 												<div class="card">
 													<div class="card-header">
-														<h5>Default Ordering</h5>
+														<h5>Active Exams</h5>
 
 													</div>
 													<div class="card-block">
@@ -71,21 +70,26 @@
 																		<table id="listRoles" class="table table-striped">
 																			<thead>
 																				<tr role="row">
-																					<th>RoleId</th>
-																					<th>RoleName</th>
+																					<th>Exam Name</th>
+																					<th>Exam Date</th>
+																					<th>Total Question</th>
+																					<th>Correct Answer</th>
+																					<th>Status</th>
 																					<th>Action</th>
 																				</tr>
 																			</thead>
 																			<tbody>
 
 
-																				<c:forEach items="${roles}" var="role">
+																				<c:forEach items="${exam}" var="e">
 																					<tr>
-																						<td>${role.roleId}</td>
-																						<td>${role.roleName}</td>
-																						<td><a href="deleterole/${role.roleId}">Delete</a>
-																							| <a href="editrole?roleId=${role.roleId}">Edit</a>
-																						</td>
+																						<td>${e.subjectName}</td>
+																						<td>${e.examDate}</td>
+																						<td>${e.totalQuestion}</td>
+																						<td><b class="text-success">+${e.rightMark} Mark</b></td>
+																						<td><span class="badge badge-success">${e.statusName}</span></td>
+																					
+																						<td> </td>
 																					</tr>
 																				</c:forEach>
 
@@ -143,10 +147,5 @@
         </div>
     </div>
 <jsp:include page="AllJs2.jsp"></jsp:include>
-<script type="text/javascript">
-			$(document).ready(function() {
-				$('#listRoles').DataTable();
-			});
-</script>
 </body>
 </html>

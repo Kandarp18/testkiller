@@ -159,7 +159,7 @@
 		          	<input type="hidden" name="status" value="Active">
       
       <div class="modal-footer">
-        <input type="submit" name="submit" id="submit_button" class="btn btn-success" value="Add" />
+        <input type="submit" name="submit" id="submit" class="btn btn-success" value="Add" />
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
     </div>

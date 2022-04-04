@@ -46,4 +46,8 @@ public class AssignExamDao {
 	public void updateExam(AssignExamBean exam) {
 		stmt.update("update assignexam set totalquestion=?,examdate=?,rightmark=? where assignexamid=? ",exam.getTotalQuestion(),exam.getExamDate(),exam.getRightMark(),exam.getAssignExamId());
 	}
+	public List<AssignExamBean> getAllExamByStudent() {
+		return stmt.query("select a.*,e.examName,s.subjectName,st.statusName from assignexam a ,exam e,subject s,status st where e.examid=a.examid and a.subjectid=s.subjectid and e.statusid=st.statusid and st.statusid=2",
+				new BeanPropertyRowMapper<AssignExamBean>(AssignExamBean.class));
+	}
 }

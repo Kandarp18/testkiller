@@ -14,11 +14,20 @@
 				<ul class="pcoded-item pcoded-left-item" item-border="true"
 					item-border-style="solid" subitem-border="false">
 
-					<li class=" "><a href="listroles"
-						class="waves-effect waves-dark"> <span class="pcoded-micon">
+					<li class="pcoded-hasmenu" dropdown-icon="style1" subitem-icon="style1">
+					<a href="javascript:void(0)" class="waves-effect waves-dark"> <span class="pcoded-micon">
 								<i class="feather icon-feather"></i>
-						</span> <span class="pcoded-mtext">Roles</span>
-					</a></li>
+						</span> <span class="pcoded-mtext">Exams</span></a>
+						<ul class="pcoded-submenu">
+							<li class=" "><a href="listexam"
+								class="waves-effect waves-dark"> <span class="pcoded-mtext">Active Exam</span>
+							</a></li>
+							<li class=" "><a href="listexam"
+								class="waves-effect waves-dark"> <span class="pcoded-mtext">Completed Exam</span>
+							</a></li>
+							
+						</ul>
+					</li>
 
 
 

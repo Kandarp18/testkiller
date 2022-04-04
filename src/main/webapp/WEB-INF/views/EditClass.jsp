@@ -63,6 +63,7 @@
      </div>
      </div>
      </div>        
-<jsp:include page="AllJs.jsp"></jsp:include>                                  
+<jsp:include page="AllJs.jsp"></jsp:include>   
+                         
 </body>
 </html>

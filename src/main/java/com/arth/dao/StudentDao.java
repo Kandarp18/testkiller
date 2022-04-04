@@ -9,9 +9,6 @@ import org.springframework.stereotype.Repository;
 
 import com.arth.bean.StudentBean;
 
-
-
-
 @Repository
 public class StudentDao {
 	@Autowired

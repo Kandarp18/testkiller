@@ -11,8 +11,22 @@ private String subjectName;
 private Date examDate;
 private int totalQuestion;
 private int rightMark;
+private int statusId;
+private String statusName;
 
 
+public int getStatusId() {
+	return statusId;
+}
+public void setStatusId(int statusId) {
+	this.statusId = statusId;
+}
+public String getStatusName() {
+	return statusName;
+}
+public void setStatusName(String statusName) {
+	this.statusName = statusName;
+}
 public int getAssignExamId() {
 	return assignExamId;
 }

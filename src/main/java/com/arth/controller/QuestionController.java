@@ -8,7 +8,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.arth.bean.AssignExamBean;
 import com.arth.bean.QuestionBean;
+import com.arth.dao.AssignExamDao;
 import com.arth.dao.ExamDao;
 import com.arth.dao.QuestionDao;
 
@@ -18,6 +20,8 @@ public class QuestionController {
 	ExamDao examdao;
 	@Autowired
 	QuestionDao questiondao;
+	@Autowired
+	AssignExamDao assignexamdao;
 	
 	@GetMapping("/examsubjectquestion")
 	public String assignExamQuestion(Model model) {
@@ -28,7 +32,8 @@ public class QuestionController {
 		return "AssignExamQuestion";
 	}
 	@PostMapping("/examsubjectquestion")
-	public String insertExam(QuestionBean question) {
+	public String insertExam(QuestionBean question,AssignExamBean exam,Model model) {
+		
           questiondao.assignQuestion(question);
 		
 		return "redirect:/examsubjectquestion";

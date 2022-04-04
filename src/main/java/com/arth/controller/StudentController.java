@@ -14,7 +14,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.arth.bean.ExamBean;
+import com.arth.bean.RoleBean;
 import com.arth.bean.StudentBean;
+import com.arth.dao.AssignExamDao;
+import com.arth.dao.ExamDao;
 import com.arth.dao.StudentDao;
 
 @Controller
@@ -23,10 +27,15 @@ public class StudentController {
 	BCryptPasswordEncoder bCryptPasswordEncoder;
 	@Autowired
 	StudentDao studentdao;
+	@Autowired
+	ExamDao examdao;
+	@Autowired
+	AssignExamDao assignexamdao;
    @Autowired
    Date date;
 	@GetMapping("/studentdashboard")
-	public String newStudent() {
+	public String newStudent(ExamBean exam,Model model) {
+		model.addAttribute("count", examdao.count(exam));
 		return "StudentDashboard";
 	}
 	@GetMapping("/newstudent")
@@ -59,7 +68,7 @@ public class StudentController {
 		}
 	}
 	@PostMapping("/loginstudent")
-	public String authenticate(StudentBean student, Model model,HttpSession session) {
+	public String authenticate(ExamBean exam,StudentBean student, Model model,HttpSession session) {
 
 		boolean isCorrect = false;
 		StudentBean dbStudent=studentdao.getStudentByEmail(student.getEmail());
@@ -75,6 +84,7 @@ public class StudentController {
 
 		if (isCorrect == true) {
 			
+			model.addAttribute("count", examdao.count(exam));
 
 			return "StudentDashboard";
 		}
@@ -165,5 +175,16 @@ public class StudentController {
 		studentdao.updateStudent(student);
 		return "redirect:/studentdashboard";
 	}
+	@GetMapping("/listexam")
+	public String listExam(Model model) {
+		model.addAttribute("exam", examdao.getAllExamByStudent());
+		return "ListExams";
+	}
+	@GetMapping("/listexamsubject")
+	public String listExamSubject(Model model) {
+		model.addAttribute("exam",assignexamdao.getAllExamByStudent() );
+		return "ListExamSubject";
+	}
+
 
 }

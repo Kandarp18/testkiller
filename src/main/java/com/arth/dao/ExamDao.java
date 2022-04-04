@@ -35,9 +35,12 @@ public class ExamDao {
 	public int countExam(ExamBean exam) {
 		return stmt.queryForObject("select count(*) from exam", Integer.class);
 	}
+	public int count(ExamBean exam) {
+		return stmt.queryForObject("select count(*) from exam where statusid=2", Integer.class);
+	}
 
 	public int countResult(ExamBean result) {
-		return stmt.queryForObject("select count(*) from exam where statusid='3'", Integer.class);
+		return stmt.queryForObject("select count(*) from exam where statusid=3", Integer.class);
 	}
 	public List<ExamBean> getAllSubject(int examId) {
 		return stmt.query("select e.classid,s.subjectName,s.subjectid from exam e,subject s,classes c where e.classid=c.classid and examid=?",
@@ -69,4 +72,9 @@ public class ExamDao {
 		return stmt.query("select e.*,c.className,s.statusName from exam e,classes c,status s where e.classid=c.classid and e.statusid=s.statusid and s.statusid=1",
 				new BeanPropertyRowMapper<ExamBean>(ExamBean.class));
 	}
+	public List<ExamBean> getAllExamByStudent() {
+		return stmt.query("select e.*,s.statusName from exam e,classes c,student st,status s,assignstudent a where e.classid=c.classid and a.studentid=st.studentid and e.statusid=s.statusid and s.statusid=2 and a.classid=c.classid ",
+				new BeanPropertyRowMapper<ExamBean>(ExamBean.class));
+	}
+	
 }

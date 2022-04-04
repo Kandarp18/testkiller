@@ -72,9 +72,15 @@ public class ExamDao {
 		return stmt.query("select e.*,c.className,s.statusName from exam e,classes c,status s where e.classid=c.classid and e.statusid=s.statusid and s.statusid=1",
 				new BeanPropertyRowMapper<ExamBean>(ExamBean.class));
 	}
-	public List<ExamBean> getAllExamByStudent() {
-		return stmt.query("select e.*,s.statusName from exam e,classes c,student st,status s,assignstudent a where e.classid=c.classid and a.studentid=st.studentid and e.statusid=s.statusid and s.statusid=2 and a.classid=c.classid ",
-				new BeanPropertyRowMapper<ExamBean>(ExamBean.class));
+	public List<ExamBean> getAllExamByStudent(int studentId) {
+		return stmt.query("select e.*,s.statusName from exam e,classes c,student st,status s,assignstudent a where e.classid=c.classid and a.studentid=st.studentid and e.statusid=s.statusid and s.statusid=2 and a.classid=c.classid and st.studentid=?",
+				new BeanPropertyRowMapper<ExamBean>(ExamBean.class),new Object[] {studentId});
 	}
+	public ExamBean getExam(int examId) {
+
+		   ExamBean exam = stmt.queryForObject("select * from exam where examid = ? ", new BeanPropertyRowMapper<ExamBean>(ExamBean.class), new Object[] { examId });
+
+			return exam;
+		}
 	
 }

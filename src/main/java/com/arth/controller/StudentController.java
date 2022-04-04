@@ -176,13 +176,15 @@ public class StudentController {
 		return "redirect:/studentdashboard";
 	}
 	@GetMapping("/listexam")
-	public String listExam(Model model) {
-		model.addAttribute("exam", examdao.getAllExamByStudent());
+	public String listExam(@RequestParam("studentId") int studentId,Model model) {
+		model.addAttribute("student",studentdao.getStudentById(studentId));
+		model.addAttribute("exam", examdao.getAllExamByStudent(studentId));
 		return "ListExams";
 	}
 	@GetMapping("/listexamsubject")
-	public String listExamSubject(Model model) {
-		model.addAttribute("exam",assignexamdao.getAllExamByStudent() );
+	public String listExamSubject(@RequestParam("examId") int examId,Model model) {
+		model.addAttribute("e",examdao.getExamById(examId));
+		model.addAttribute("exam",assignexamdao.getAllExamByStudent(examId));
 		return "ListExamSubject";
 	}
 

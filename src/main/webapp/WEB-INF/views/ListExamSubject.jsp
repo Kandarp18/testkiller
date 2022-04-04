@@ -70,7 +70,7 @@
 																		<table id="listRoles" class="table table-striped">
 																			<thead>
 																				<tr role="row">
-																					<th>Exam Name</th>
+																					<th>Subject Name</th>
 																					<th>Exam Date</th>
 																					<th>Total Question</th>
 																					<th>Correct Answer</th>

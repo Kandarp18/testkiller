@@ -99,7 +99,7 @@
 		                                      </c:if>
 		                                        <c:if test="${e.statusId==2}">
 		                                         <a href="editexam?examId=${e.examId}" >
-                                  <button type="button" name="editclass" class="btn btn-warning btn-circle btn-sm edit_button" >
+                                  <button type="button" name="editexam" class="btn btn-warning btn-circle btn-sm edit_button" >
 			                                 <i class="fas fa-edit"></i>
 			                        </button> </a> &nbsp;
 		                                      <a  href="deleteexam/${e.examId}">

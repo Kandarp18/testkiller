@@ -96,5 +96,8 @@ boolean p=false;
 		
 		return assignexamdao.getAllAssignSubject(examId);
 	}
-
+	@GetMapping("/newtest")
+   public String newTest() {
+		return "NewTest";
+	}
 }

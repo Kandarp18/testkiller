@@ -19,13 +19,19 @@ import com.arth.bean.ExamBean;
 import com.arth.dao.AssignExamDao;
 import com.arth.dao.ClassDao;
 import com.arth.dao.ExamDao;
+import com.arth.dao.QuestionDao;
+import com.arth.dao.StudentDao;
 
 @Controller
 public class ExamController {
   @Autowired
   ExamDao examdao;
   @Autowired
+  QuestionDao questiondao;
+  @Autowired
   ClassDao classdao;
+  @Autowired
+  StudentDao studentdao;
   @Autowired
 	Date date;
   @Autowired
@@ -97,7 +103,9 @@ boolean p=false;
 		return assignexamdao.getAllAssignSubject(examId);
 	}
 	@GetMapping("/newtest")
-   public String newTest() {
+   public String newTest(@RequestParam("examId") int examId,@RequestParam("subjectId") int subjectId,Model model) {
+		questiondao.getAll(examId, subjectId);
+		
 		return "NewTest";
 	}
 }

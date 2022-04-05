@@ -43,7 +43,7 @@ public class ExamDao {
 		return stmt.queryForObject("select count(*) from exam where statusid=3", Integer.class);
 	}
 	public List<ExamBean> getAllSubject(int examId) {
-		return stmt.query("select e.classid,s.subjectName,s.subjectid from exam e,subject s,classes c where e.classid=c.classid and examid=?",
+		return stmt.query("select e.*,s.subjectName,s.subjectid from exam e,subject s,classes c where e.classid=c.classid and examid=?",
 				new BeanPropertyRowMapper<ExamBean>(ExamBean.class),new Object[] {examId});
 	}
 	public ExamBean getAll(int classId,String examName) {

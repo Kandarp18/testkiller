@@ -35,5 +35,9 @@ public class QuestionDao {
 	public void updateQuestion(QuestionBean q) {
 		stmt.update("update question set question=?,option1=?,option2=?,option3=?,option4=?,answer=? where questionid=?",q.getQuestion(),q.getOption1(),q.getOption2(),q.getOption3(),q.getOption4(),q.getAnswer(),q.getQuestionId());
 	}
-	
+	public List<QuestionBean> getAll(int examId,int subjectId){
+		List<QuestionBean> question=stmt.query("select q.*,e.examName,s.subjectName from question q,exam e,subject s where q.examid=e.examid and s.subjectid=q.subjectid and e.examid=? and s.subjectid=?", new BeanPropertyRowMapper<QuestionBean>(QuestionBean.class),new Object[] {examId,subjectId});
+		return question;
+		
+	}
 }

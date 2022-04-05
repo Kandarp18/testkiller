@@ -42,10 +42,10 @@
                         <div class="card-header">
                             <div class="row">
                                 <div class="col-md-6">
-                                <b>Exam : </b>java1                               
+                                <b>Exam : </b>${e.examName }                              
                                  </div>
                                 <div class="col-md-6">
-                                    <b>Subject : </b>abc                              
+                                    <b>Subject : </b>${e.subjectName }                             
                                  </div>
                             </div>
                         </div>
@@ -60,7 +60,7 @@
 				
 					<div class="col-md-6 mb-4">
 						<div class="radio">
-							<label><b>A.&nbsp;&nbsp;</b><input type="radio" name="option_1" class="answer_option" data-question_id="569" data-id="1"> asdf</label>
+							<label><b>A.&nbsp;&nbsp;</b><input type="radio" name="option_1" class="answer_option" data-question_id="569" data-id="1"></label>
 						</div>
 					</div>
 					
@@ -114,7 +114,7 @@
                                 </div>
                                 <div class="col-md-4">
                                     <div class="text-center mt-2 mb-2">
-                                        <div id="exam_timer" data-timer="20" style="max-width:375px; width: 100%; height: 190px; margin:0 auto"></div>
+                                        <div id="exam_timer" data-timer="100" style="max-width:375px; width: 100%; height: 190px; margin:0 auto"></div>
                                     </div>
                                     <div class="card shadow">
                                         <div class="card-header"><b>Student Details</b></div>
@@ -164,67 +164,7 @@
 </html>
 <script>
 $(document).ready(function(){
-    var exam_id = "514";
-    var exam_subject_id = "309";
-    function load_question(question_id = '', exam_id, exam_subject_id)
-    {
-        $.ajax({
-            url:"ajax_action.php",
-            method:"POST",
-            data:{exam_id:exam_id, exam_subject_id:exam_subject_id, question_id:question_id, page:'view_subject_exam', action:'load_question'},
-            success:function(data)
-            {
-                $('#single_question_area').html(data);
-            }
-        })
-    }
-
-    load_question('', exam_id, exam_subject_id);
-
-    question_navigation();
-
-    function question_navigation()
-    {
-        $.ajax({
-            url:"ajax_action.php",
-            method:"POST",
-            data:{exam_id:exam_id, exam_subject_id:exam_subject_id, page:'view_subject_exam', action:'question_navigation'},
-            success:function(data)
-            {
-                $('#question_navigation_area').html(data);
-            }
-        })
-    }
-
-    $(document).on('click', '.next', function(){
-        var question_id = $(this).attr('id');
-        load_question(question_id, exam_id, exam_subject_id);
-    });
-
-    $(document).on('click', '.previous', function(){
-        var question_id = $(this).attr('id');
-        load_question(question_id, exam_id, exam_subject_id);
-    });
-
-    $(document).on('click', '.question_navigation', function(){
-        var question_id = $(this).data('question_id');
-        load_question(question_id, exam_id, exam_subject_id);
-    });
-
-    $(document).on('click', '.answer_option', function(){
-        var question_id = $(this).data('question_id');
-        var answer_option = $(this).data('id');
-        $.ajax({
-            url:"ajax_action.php",
-            method:"POST",
-            data:{question_id:question_id, answer_option:answer_option, exam_id:exam_id, exam_subject_id:exam_subject_id, page:'view_subject_exam', action:'answer'},
-            success:function()
-            {
-
-            }
-        });
-    });
-
+ 
     $("#exam_timer").TimeCircles({
         "animation": "smooth",
         "bg_width": 1.2,
@@ -260,7 +200,7 @@ $(document).ready(function(){
         {
             $("#exam_timer").TimeCircles().destroy();
             alert('Exam Time Completed');
-            location.href="/listexam?studentId=11";
+            location.href="/listexam?studentId=10";
         }
     });
 

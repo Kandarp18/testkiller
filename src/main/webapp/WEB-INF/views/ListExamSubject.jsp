@@ -87,9 +87,12 @@
 																						<td>${e.examDate}</td>
 																						<td>${e.totalQuestion}</td>
 																						<td><b class="text-success">+${e.rightMark} Mark</b></td>
-																						<td><span class="badge badge-success">${e.statusName}</span></td>
+																						<td><span class="badge badge-success">Started</span></td>
 																					
-																						<td> </td>
+																						<td> 
+																						<a href="newtest?examId=${e.examId }&subjectId=${e.subjectId}">                                 
+                                  <button type="button" name="edit" class="btn btn-warning btn-circle btn-sm edit_button" ><i class="fas fa-edit"></i></button> </a> 		       
+																						</td>
 																					</tr>
 																				</c:forEach>
 

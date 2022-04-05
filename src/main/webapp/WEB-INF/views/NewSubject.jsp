@@ -77,8 +77,8 @@
 		                                      <a href="editsubject?subjectId=${s.subjectId}" style="color:black;" >
 		                                        <button type="button" name="editclass" class="btn btn-warning btn-circle btn-sm edit_button">
 			                                 <i class="fas fa-edit"></i>
-			                        </button></a> 
-		                                             
+			                                  </button></a> 
+		                                            
                                       
 		                                       </td>
 	                                           </tr>

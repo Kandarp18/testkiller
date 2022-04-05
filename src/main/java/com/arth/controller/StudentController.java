@@ -18,6 +18,7 @@ import com.arth.bean.ExamBean;
 import com.arth.bean.RoleBean;
 import com.arth.bean.StudentBean;
 import com.arth.dao.AssignExamDao;
+import com.arth.dao.ClassDao;
 import com.arth.dao.ExamDao;
 import com.arth.dao.StudentDao;
 
@@ -31,11 +32,13 @@ public class StudentController {
 	ExamDao examdao;
 	@Autowired
 	AssignExamDao assignexamdao;
+	@Autowired
+	ClassDao classdao;
    @Autowired
    Date date;
 	@GetMapping("/studentdashboard")
 	public String newStudent(ExamBean exam,Model model) {
-		model.addAttribute("count", examdao.count(exam));
+		
 		return "StudentDashboard";
 	}
 	@GetMapping("/newstudent")
@@ -84,8 +87,6 @@ public class StudentController {
 
 		if (isCorrect == true) {
 			
-			model.addAttribute("count", examdao.count(exam));
-
 			return "StudentDashboard";
 		}
 		else {

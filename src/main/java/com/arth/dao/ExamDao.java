@@ -35,8 +35,8 @@ public class ExamDao {
 	public int countExam(ExamBean exam) {
 		return stmt.queryForObject("select count(*) from exam", Integer.class);
 	}
-	public int count(ExamBean exam) {
-		return stmt.queryForObject("select count(*) from exam where statusid=2", Integer.class);
+	public int count(int classId) {
+		return stmt.queryForObject("select count(*) from exam where statusid=2",Integer.class );
 	}
 
 	public int countResult(ExamBean result) {

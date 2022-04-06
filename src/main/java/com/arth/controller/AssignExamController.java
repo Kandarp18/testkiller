@@ -1,5 +1,9 @@
 package com.arth.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,8 +14,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.arth.bean.AssignExamBean;
 import com.arth.bean.ExamBean;
+import com.arth.bean.QuestionBean;
 import com.arth.dao.AssignExamDao;
 import com.arth.dao.ExamDao;
+import com.arth.dao.ExamQuestionDao;
+import com.arth.dao.QuestionDao;
 
 @Controller
 public class AssignExamController {
@@ -19,6 +26,10 @@ public class AssignExamController {
 	ExamDao examdao;
 	@Autowired
 	AssignExamDao assignexamdao;
+	@Autowired
+ExamQuestionDao examquestiondao;
+	@Autowired
+	QuestionDao questiondao;
 	@GetMapping("/examsubject")
 	public String assignExamSubject(ExamBean exam,Model model) {
 		
@@ -27,6 +38,38 @@ public class AssignExamController {
 	    return "AssignExamSubject";
 
 }
+	public int getRandomNumberUsingNextInt(int min,int max) {
+		Random random=new Random();
+		return random.nextInt(max - min) + min;
+	}
+	@GetMapping("/generatequestion")
+	public String generateQuestion(@RequestParam("examId") int examId,Model model) {
+		AssignExamBean exam=assignexamdao.getAssignExamById(examId);		
+				int subjectId=exam.getSubjectId();
+			int totalQuestion=exam.getTotalQuestion();
+			int questionId=0;
+		List<QuestionBean> question=questiondao.getQuestionBySubject(subjectId);
+		
+	      if(question.size()>=totalQuestion) {
+	    	  int totalFound=1;
+	    	  ArrayList<Integer> randomQ=new ArrayList<>();
+	    	  while(totalFound <= totalQuestion) {
+	    		  int random=getRandomNumberUsingNextInt(0, question.size()-1);
+	    		  if(!randomQ.contains(random)) {
+	    			  randomQ.add(random);
+	    			  totalFound++;
+	    		  }
+	    	  }
+	    	  for(int i: randomQ) {
+	    		  examquestiondao.mapQuestion(examId, question.get(i).getQuestionId());
+	    	  }
+	    	  return "redirect:/examsubjectquestion";
+	      }else {
+	    	  model.addAttribute("error","Please Add Sufficient Questions!");
+	    	  return "redirect:/examsubject";
+	      }
+		
+	}
 	@PostMapping("/examsubject")
 	public String insertExam(AssignExamBean exam,Model model) {
        boolean p=false;

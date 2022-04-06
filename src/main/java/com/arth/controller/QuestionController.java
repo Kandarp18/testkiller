@@ -28,7 +28,7 @@ public class QuestionController {
 		
 		model.addAttribute("exam", examdao.getAllExamByStatus());
         model.addAttribute("q", questiondao.getAllQuestion());
-
+        
 		return "AssignExamQuestion";
 	}
 	@PostMapping("/examsubjectquestion")

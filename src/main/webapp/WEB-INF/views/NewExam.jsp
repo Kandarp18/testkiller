@@ -108,8 +108,7 @@
 		                                      </button></a> 
 		                                        </c:if>
 		                                        <c:if test="${e.statusId==3}">
-		                                        <button type="button" name="resultDate" class="btn btn-primary btn-sm publish_result">Publish Result</button>
-		                                        &nbsp;&nbsp;
+		                                    
 		                                        <a href="#!" class="btn btn-secondary btn-sm">View Result</a>
 		                                        </c:if>
 		                                       </td>
@@ -220,29 +219,7 @@
     
   </div>
 </div>
-<div id="publishresultModal" class="modal fade">
-    <div class="modal-dialog">
-        <form method="post" >
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title" id="modal_title">Publish Exam Result</h4>
-                    <button type="button" class="close" data-dismiss="modal">×</button>
-                </div>
-                <div class="modal-body">                    
-                    <div class="form-group">
-                        <label>Exam Result Publish Date </label>
-                        <input type="text" name="resultDate" id="resultDate" class="form-control datepicker"  required data-parsley-trigger="keyup">
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    
-                    <input type="submit" name="submit" id="result_publish_submit_button" class="btn btn-success" value="Publish">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </form>
-    </div>
-</div>
+
 
 <script type="text/javascript">
 			$(document).ready(function() {

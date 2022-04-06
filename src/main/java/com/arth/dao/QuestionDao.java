@@ -31,6 +31,12 @@ public class QuestionDao {
 
 		return question;
 	}
+	public List<QuestionBean> getQuestionBySubject(int subjectId) {
+
+		List<QuestionBean> question = stmt.query("select * from question where subjectid= ? ", new BeanPropertyRowMapper<QuestionBean>(QuestionBean.class), new Object[] { subjectId });
+           return question;
+		
+	}
 
 	public void updateQuestion(QuestionBean q) {
 		stmt.update("update question set question=?,option1=?,option2=?,option3=?,option4=?,answer=? where questionid=?",q.getQuestion(),q.getOption1(),q.getOption2(),q.getOption3(),q.getOption4(),q.getAnswer(),q.getQuestionId());

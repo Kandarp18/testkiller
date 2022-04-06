@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!doctype html>
 <html lang="en">
 	<head>
@@ -42,10 +43,17 @@
                         <div class="card-header">
                             <div class="row">
                                 <div class="col-md-6">
-                                <b>Exam : </b>${e.examName }                              
+                                <b>Exam : </b>
+                              
+                                ${e.examName }                              
+                              
                                  </div>
                                 <div class="col-md-6">
-                                    <b>Subject : </b>${e.subjectName }                             
+                                
+                                    <b>Subject : </b>
+                                    
+                                    ${s.subjectName }
+                                                               
                                  </div>
                             </div>
                         </div>
@@ -114,7 +122,7 @@
                                 </div>
                                 <div class="col-md-4">
                                     <div class="text-center mt-2 mb-2">
-                                        <div id="exam_timer" data-timer="100" style="max-width:375px; width: 100%; height: 190px; margin:0 auto"></div>
+                                        <div id="exam_timer" data-timer="${e.duration }" style="max-width:375px; width: 100%; height: 190px; margin:0 auto"></div>
                                     </div>
                                     <div class="card shadow">
                                         <div class="card-header"><b>Student Details</b></div>
@@ -192,15 +200,14 @@ $(document).ready(function(){
         }
     });
 
-    var total_second = "300";
-    var remaining_minutes = "285";
+   
 
     $("#exam_timer").TimeCircles().addListener(function(unit, value, total) {
         if(total < 1)
         {
             $("#exam_timer").TimeCircles().destroy();
             alert('Exam Time Completed');
-            location.href="/listexam?studentId=10";
+            location.href="/listexamsubject?examId=${e.examId}";
         }
     });
 

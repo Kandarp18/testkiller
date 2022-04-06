@@ -55,17 +55,8 @@
                     </div>
                     <div class="form-group">
                         <label>Total Question</label>
-                        <select name="totalQuestion" id="totalQuestion" class="form-control" required>
-                            <option value="${ae.totalQuestion }">${ae.totalQuestion }</option>
-                            <option value="">Select</option>
-                            <option value="5">5 Question</option>
-                            <option value="10">10 Question</option>
-                            <option value="25">25 Question</option>
-                            <option value="50">50 Question</option>
-                            <option value="100">100 Question</option>
-                            <option value="200">200 Question</option>
-                            <option value="300">300 Question</option>
-                        </select>
+                   <input type="text" name="totalQuestion" id="totalQuestion" value="${ae.totalQuestion }"  class="form-control" required data-parsley-pattern="/^[a-zA-Z0-9 \s]+$/" data-parsley-trigger="keyup" />
+                        
                     </div>
 		           <div class="form-group">
                         <label>Marks for Correct Answer</label>

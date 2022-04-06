@@ -42,6 +42,12 @@ public class AssignExamDao {
 
 		return exam;
 	}
+	public AssignExamBean getAssignExamById(int examId) {
+
+		AssignExamBean exam = stmt.queryForObject("select * from assignexam where examid=? ", new BeanPropertyRowMapper<AssignExamBean>(AssignExamBean.class), new Object[] { examId });
+
+		return exam;
+	}
 
 	public void updateExam(AssignExamBean exam) {
 		stmt.update("update assignexam set totalquestion=?,examdate=?,rightmark=? where assignexamid=? ",exam.getTotalQuestion(),exam.getExamDate(),exam.getRightMark(),exam.getAssignExamId());

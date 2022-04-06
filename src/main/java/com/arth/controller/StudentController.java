@@ -178,7 +178,7 @@ public class StudentController {
 	}
 	@GetMapping("/listexam")
 	public String listExam(@RequestParam("studentId") int studentId,Model model) {
-		model.addAttribute("s",studentdao.getStudentById(studentId));
+		model.addAttribute("student",studentdao.getStudentById(studentId));
 		model.addAttribute("exam", examdao.getAllExamByStudent(studentId));
 		return "ListExams";
 	}

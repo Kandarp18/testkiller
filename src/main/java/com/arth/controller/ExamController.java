@@ -21,6 +21,7 @@ import com.arth.dao.ClassDao;
 import com.arth.dao.ExamDao;
 import com.arth.dao.QuestionDao;
 import com.arth.dao.StudentDao;
+import com.arth.dao.SubjectDao;
 
 @Controller
 public class ExamController {
@@ -33,6 +34,8 @@ public class ExamController {
   @Autowired
   StudentDao studentdao;
   @Autowired
+  SubjectDao subjectdao;
+  @Autowired
 	Date date;
   @Autowired
   AssignExamDao assignexamdao;
@@ -43,9 +46,11 @@ public class ExamController {
 		model.addAttribute("dy",date.toLocaleString());
 		return "NewExam";
 	}
+	
+
 	@PostMapping("/exam")
 	public String insertClass(ExamBean exam,Model model) {
-boolean p=false;
+      boolean p=false;
 		
 		ExamBean dbExam=examdao.getAllById(exam.getClassId(),exam.getExamName());
 		if(dbExam!=null) {
@@ -96,6 +101,7 @@ boolean p=false;
 		return "redirect:/exam";
 
 	}
+	
 	@RequestMapping(value = "/getsubjectbyexamid",method = RequestMethod.GET,  produces="application/json")
 	@ResponseBody
 	public List<AssignExamBean> getSubjectByExam(@RequestParam("examId") int examId) {
@@ -104,8 +110,9 @@ boolean p=false;
 	}
 	@GetMapping("/newtest")
    public String newTest(@RequestParam("examId") int examId,@RequestParam("subjectId") int subjectId,Model model) {
-		questiondao.getAll(examId, subjectId);
-		
+		model.addAttribute("e",questiondao.getAll(examId, subjectId));
+		model.addAttribute("e", examdao.getExam(examId));
+		model.addAttribute("s", subjectdao.getSubjectById(subjectId));
 		return "NewTest";
 	}
 }

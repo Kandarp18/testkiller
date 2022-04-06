@@ -43,9 +43,11 @@ ExamQuestionDao examquestiondao;
 		return random.nextInt(max - min) + min;
 	}
 	@GetMapping("/generatequestion")
-	public String generateQuestion(@RequestParam("examId") int examId,Model model) {
-		AssignExamBean exam=assignexamdao.getAssignExamById(examId);		
-				int subjectId=exam.getSubjectId();
+	public String generateQuestion(@RequestParam("examId") int examId,@RequestParam("subjectId") int subjectId,Model model) {
+		AssignExamBean exam=assignexamdao.getAssignExamById(examId,subjectId);
+		
+				int subId=exam.getSubjectId();
+				
 			int totalQuestion=exam.getTotalQuestion();
 			int questionId=0;
 		List<QuestionBean> question=questiondao.getQuestionBySubject(subjectId);
@@ -60,11 +62,15 @@ ExamQuestionDao examquestiondao;
 	    			  totalFound++;
 	    		  }
 	    	  }
+	      
 	    	  for(int i: randomQ) {
 	    		  examquestiondao.mapQuestion(examId, question.get(i).getQuestionId());
 	    	  }
+	      
 	    	  return "redirect:/assignexamquestion";
-	      }else {
+	      }
+		
+	      else {
 	    	  model.addAttribute("error","Please Add Sufficient Questions!");
 	    	  return "redirect:/examsubject";
 	      }

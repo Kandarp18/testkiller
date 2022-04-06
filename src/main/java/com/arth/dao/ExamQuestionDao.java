@@ -20,4 +20,5 @@ public void mapQuestion(int examId,int questionId) {
 public List<QuestionBean> getAllQuestionByExam(int examId){
 	return stmt.query("select * from question where questionid in (select questionid from examquestion where examid=?)",new BeanPropertyRowMapper<QuestionBean>(QuestionBean.class),new Object[] {examId});
 }
+
 }

@@ -82,7 +82,7 @@
                                           <button type="button" onclick="return confirm('Are you sure you want to delete this item?');"  class="btn btn-danger btn-circle btn-sm delete_button" >
 		                                      <i class="fas fa-times"></i>
 		                                      </button></a>&nbsp;&nbsp;
-                                      <a href="generatequestion?examId=${e.examId }">
+                                      <a href="generatequestion?examId=${e.examId }&subjectId=${e.subjectId}">
                                       <button type="button" name="generatequestion" class="btn btn-primary btn-sm publish_result" >
                                       Generate Question
                                       </button>

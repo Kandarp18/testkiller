@@ -53,6 +53,7 @@
                         <a class="collapse-item" href="exam">Exam</a>
                         <a class="collapse-item" href="examsubject">Exam Subject</a>
                         <a class="collapse-item" href="examsubjectquestion">Question</a>
+                        <a class="collapse-item" href="assignexamquestion">Assign Question</a>
                     </div>
                 </div>
             </li>

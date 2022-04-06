@@ -56,4 +56,10 @@ public class QuestionController {
 		return "redirect:/examsubjectquestion";
 
 	}
+	@GetMapping("/assignexamquestion")
+	public String assignQuestion(Model model) {
+		
+		model.addAttribute("q",questiondao.getAssignQuestion());
+		return "AssignQuestion";
+	}
 }

@@ -63,7 +63,7 @@ ExamQuestionDao examquestiondao;
 	    	  for(int i: randomQ) {
 	    		  examquestiondao.mapQuestion(examId, question.get(i).getQuestionId());
 	    	  }
-	    	  return "redirect:/examsubjectquestion";
+	    	  return "redirect:/assignexamquestion";
 	      }else {
 	    	  model.addAttribute("error","Please Add Sufficient Questions!");
 	    	  return "redirect:/examsubject";

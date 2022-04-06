@@ -46,4 +46,10 @@ public class QuestionDao {
 		return question;
 		
 	}
+	public List<QuestionBean> getAssignQuestion() {
+
+		List<QuestionBean> question = stmt.query("select q.*,e.examName,s.subjectName from question q,exam e,subject s,examquestion eq where eq.questionid=q.questionid and s.subjectid=q.subjectid and e.examid=eq.examid  ", new BeanPropertyRowMapper<QuestionBean>(QuestionBean.class));
+
+		return question;
+	}
 }

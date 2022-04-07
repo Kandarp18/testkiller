@@ -130,9 +130,9 @@
                                             <div class="row">
                                               
                                                 <div class="col-md-8">
-                                                    <b>Roll No : </b>12<br />
-                                                    <b>Name : </b>Kandarp<br />
-                                                    <b>Class : </b>123                                                </div>
+                                                    <b>Roll No : </b>${st.rollNo }<br />
+                                                    <b>Name : </b>${st.studentName }<br />
+                                                    <b>Class : </b>${st.className}                                               </div>
                                             </div>
                                         </div>
                                     </div>

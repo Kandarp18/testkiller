@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.arth.bean.AssignExamBean;
 import com.arth.bean.ExamBean;
 import com.arth.dao.AssignExamDao;
+import com.arth.dao.AssignStudentDao;
 import com.arth.dao.ClassDao;
 import com.arth.dao.ExamDao;
 import com.arth.dao.QuestionDao;
@@ -39,6 +40,8 @@ public class ExamController {
 	Date date;
   @Autowired
   AssignExamDao assignexamdao;
+  @Autowired
+  AssignStudentDao assignstudentdao;
 	@GetMapping("/exam")
 	public String newExam(Model model) {
 		model.addAttribute("classes",classdao.getAllClassesByStatus());
@@ -113,6 +116,7 @@ boolean p=false;
 		model.addAttribute("e",questiondao.getAll(examId, subjectId));
 		model.addAttribute("e", examdao.getExam(examId));
 		model.addAttribute("s", subjectdao.getSubjectById(subjectId));
+		
 		return "NewTest";
 	}
 }

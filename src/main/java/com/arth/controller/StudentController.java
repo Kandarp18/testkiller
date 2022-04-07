@@ -91,7 +91,7 @@ public class StudentController {
 		}
 		else {
 			model.addAttribute("error", "Invalid Credentials!");
-			return "Login";
+			return "LoginStudent";
 		}
 	}
 	@GetMapping("/student")

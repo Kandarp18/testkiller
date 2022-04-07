@@ -30,7 +30,7 @@
 									<div class="page-header-title">
 										<i class="feather icon-inbox bg-c-blue"></i>
 										<div class="d-inline">
-											<h5>List Exams</h5>
+											<h5>Exam Schedule Details</h5>
 										</div>
 									</div>
 								</div>
@@ -40,6 +40,8 @@
 											<li class="breadcrumb-item"><a href="studentdashboard"><i
 													class="feather icon-home"></i></a></li>
 											<li class="breadcrumb-item"><a href="#!">Exams
+													</a></li>
+													<li class="breadcrumb-item"><a href="#!">Active Exams
 													</a></li>
 											
 										</ul>

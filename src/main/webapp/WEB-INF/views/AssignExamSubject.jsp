@@ -62,7 +62,7 @@
                                             <th>Exam Date</th>
                                             <th>Total Question</th>
                                             <th>Right Answer Mark</th>
-                                            <th>Action</th>
+                                            <th style="text-align:center;">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>

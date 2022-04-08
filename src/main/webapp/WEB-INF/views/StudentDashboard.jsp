@@ -41,7 +41,7 @@
 									<div class="page-header-title">
 										<i class="feather icon-home bg-c-blue"></i>
 										<div class="d-inline">
-											<h5>Welcome, ${student.studentName }</h5>
+											<h5>Welcome, ${s.studentName }</h5>
 											
 										</div>
 									</div>

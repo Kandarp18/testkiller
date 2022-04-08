@@ -37,8 +37,13 @@ public class StudentController {
    @Autowired
    Date date;
 	@GetMapping("/studentdashboard")
-	public String newStudent(ExamBean exam,Model model) {
-		
+	public String newStudent(@RequestParam("studentId") int studentId,ExamBean exam,Model model) {
+		model.addAttribute("s", studentdao.getStudentById(studentId));
+		return "StudentDashboard";
+	}
+	@PostMapping("/studentdashboard")
+	public String student(@RequestParam("studentId") int studentId,ExamBean exam,Model model) {
+		model.addAttribute("s", studentdao.getStudentById(studentId));
 		return "StudentDashboard";
 	}
 	@GetMapping("/newstudent")
@@ -80,7 +85,7 @@ public class StudentController {
 
 			if (bCryptPasswordEncoder.matches(student.getPassword(), dbStudent.getPassword()) ) {
 				isCorrect = true;
-				session.setAttribute("student", dbStudent);
+				session.setAttribute("s", dbStudent);
 				
 			}
 		}
@@ -177,20 +182,26 @@ public class StudentController {
 		return "StudentProfile";
 	}
 	@PostMapping("/updateprofile")
-	public String updateProfile(StudentBean student) {
+	public String updateProfile(@RequestParam("studentId") int studentId,StudentBean student,Model model) {
 		studentdao.updateStudent(student);
-		return "redirect:/studentdashboard";
+		
+			model.addAttribute("success","Student Data Changed Successfully!");
+			model.addAttribute("s", studentdao.getStudentById(studentId));
+			
+		return "StudentProfile";
 	}
 	@GetMapping("/listexam")
 	public String listExam(@RequestParam("studentId") int studentId,Model model) {
 		model.addAttribute("student",studentdao.getStudentById(studentId));
 		model.addAttribute("exam", examdao.getAllExamByStudent(studentId));
+		model.addAttribute("s", studentdao.getStudentById(studentId));
 		return "ListExams";
 	}
 	@GetMapping("/listexamsubject")
-	public String listExamSubject(@RequestParam("examId") int examId,Model model) {
+	public String listExamSubject(@RequestParam("examId") int examId,@RequestParam("studentId") int studentId,Model model) {
 		model.addAttribute("e",examdao.getExamById(examId));
 		model.addAttribute("exam",assignexamdao.getAllExamByStudent(examId));
+		model.addAttribute("s", studentdao.getStudentById(studentId));
 		return "ListExamSubject";
 	}
 

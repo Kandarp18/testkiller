@@ -58,6 +58,7 @@ public class AdminController {
 		model.addAttribute("u", userdao.getUserById(userId));
 		List<RoleBean> role = roledao.getAllRoles();
 		model.addAttribute("role", role);	
+		
 	return "EditProfile";
 	}
       

@@ -19,10 +19,10 @@
 								<i class="feather icon-feather"></i>
 						</span> <span class="pcoded-mtext">Exams</span></a>
 						<ul class="pcoded-submenu">
-							<li class=" "><a href="listexam?studentId=${student.studentId }"
+							<li class=" "><a href="listexam?studentId=${s.studentId }"
 								class="waves-effect waves-dark"> <span class="pcoded-mtext">Active Exam</span>
 							</a></li>
-							<li class=" "><a href="listexam?studentId=${student.studentId }"
+							<li class=" "><a href="listexam?studentId=${s.studentId }"
 								class="waves-effect waves-dark"> <span class="pcoded-mtext">Completed Exam</span>
 							</a></li>
 							

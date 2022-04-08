@@ -87,7 +87,7 @@
 																						<td>${e.examName}</td>
 																						<td>${e.duration} Minute</td>
 																						<td><span class="badge badge-success">${e.statusName}</span></td>
-																						<td><a href="listexamsubject?examId=${e.examId }">View</a></td>
+																						<td><a href="listexamsubject?examId=${e.examId }&studentId=${s.studentId}">View</a></td>
 																						<td> </td>
 																					</tr>
 																				</c:forEach>

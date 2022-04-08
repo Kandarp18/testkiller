@@ -33,8 +33,8 @@
                                    <div class="modal-body">
       
        
-        			<span id="form_message"></span>
-        			        <p style="color:red;">  ${error }</p>
+        			<span id="form_message">
+        			        <p style="color:red;">  ${error }</p></span>
         			       <input type="hidden" name="studentId" value="${student.studentId }" />
         			
 		          	<div class="form-group">

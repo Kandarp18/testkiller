@@ -49,15 +49,20 @@ public class AssignSubjectController {
 		
 		
 		if(p==true) {
-			
+			model.addAttribute("classes", classdao.getAllClassesByStatus());
+			model.addAttribute("subject",subjectdao.getAllSubjectByStatus());
 			model.addAttribute("error","This Subject Name Already Exists in this Class!");
-			
+			model.addAttribute("asb", assignsubjectdao.getAllAssign());
 		}else {
+			assignsubjectdao.assignSubject(asb);
+			model.addAttribute("classes", classdao.getAllClassesByStatus());
+			model.addAttribute("subject",subjectdao.getAllSubjectByStatus());
 		
-		
-		assignsubjectdao.assignSubject(asb);
+		model.addAttribute("success","Subject Assigned Successfully!");
+		model.addAttribute("asb", assignsubjectdao.getAllAssign());
+		model.addAttribute("dy",date.toLocaleString());
 		}
-	return "redirect:/assignsubject";
+	return "AssignSubject";
 	}
 	@GetMapping("/deleteassignsubject/{assignSubjectId}")
 	public String deleteClass(@PathVariable("assignSubjectId") int assignSubjectId) {
@@ -89,16 +94,21 @@ public class AssignSubjectController {
 		
 		
 		if(p==true) {
-			
+			model.addAttribute("classes", classdao.getAllClassesByStatus());
+			model.addAttribute("subject",subjectdao.getAllSubjectByStatus());
+			model.addAttribute("sub", assignsubjectdao.getAssignById(assignSubjectId));
 			model.addAttribute("error","This Subject Name Already Exists in this Class!");
-			return "redirect:/editassignsubject?assignSubjectId="+assignSubjectId;
+			return "EditAssignSubject";
 
 		}else {
+			assignsubjectdao.updateAssign(asb);
+			model.addAttribute("dy",date.toLocaleString());
+			model.addAttribute("asb", assignsubjectdao.getAllAssign());
+			model.addAttribute("success","Subject Assignment Modified Successfully!");
+			
 		
-		
-		assignsubjectdao.updateAssign(asb);
 		}
-		return "redirect:/assignsubject";
+		return "AssignSubject";
 	}
 	
 	

@@ -33,7 +33,7 @@ public class AssignExamDao {
 		stmt.update("delete from assignexam where assignexamid = ?", assignExamId);
 	}
 	public List<AssignExamBean> getAllAssignSubject(int examId) {
-		List<AssignExamBean> subject = stmt.query("select a.*,s.subjectname from assignexam a ,subject s where a.subjectid=s.subjectid and s.subjectid in (select subjectid from assignexam where examid=?)", new BeanPropertyRowMapper<AssignExamBean>(AssignExamBean.class),new Object[] {examId});
+		List<AssignExamBean> subject = stmt.query("select a.*,s.subjectname from assignexam a ,subject s where a.subjectid=s.subjectid and a.examid=?", new BeanPropertyRowMapper<AssignExamBean>(AssignExamBean.class),new Object[] {examId});
 		return subject;
 	}
 	public AssignExamBean getExamById(int assignExamId) {

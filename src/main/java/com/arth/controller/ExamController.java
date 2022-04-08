@@ -63,12 +63,19 @@ public class ExamController {
 		}
 		
 		if(p==true) {
+			model.addAttribute("classes",classdao.getAllClassesByStatus());
+			model.addAttribute("exam",examdao.getAllExam());
 			model.addAttribute("error","Duplicate Data!");
-		
+			model.addAttribute("dy",date.toLocaleString());
+		     
 		}else {
-		examdao.addExam(exam);
+			examdao.addExam(exam);
+			model.addAttribute("exam",examdao.getAllExam());
+			model.addAttribute("success","Exam Details Added Successfully!");	
+		
+		model.addAttribute("dy",date.toLocaleString());
 		}
-		return "redirect:/exam";
+		return "NewExam";
 	}
 	@GetMapping("/deleteexam/{examId}")
 	public String deleteExam(@PathVariable("examId") int examId) {
@@ -97,11 +104,17 @@ boolean p=false;
 		
 		if(p==true) {
 			model.addAttribute("error","Duplicate Data!");
-		      return "redirect:/editexam?examId="+examId;
+			model.addAttribute("classes",classdao.getAllClassesByStatus());
+			model.addAttribute("exam",examdao.getExamById(examId));
+		      return "EditExam";
 		}else {
 		examdao.updateExam(exam);
+		model.addAttribute("exam",examdao.getAllExam());
+		model.addAttribute("success","Exam Details Modified Successfully!");	
+		model.addAttribute("classes",classdao.getAllClassesByStatus());
+	model.addAttribute("dy",date.toLocaleString());
 		}
-		return "redirect:/exam";
+		return "NewExam";
 
 	}
 	

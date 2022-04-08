@@ -34,7 +34,9 @@
                                    <div class="modal-body">
       
        
-        			<span id="form_message"></span>
+        			<span id="form_message">
+        			<p style="color:red;">  ${error }</p>
+        			</span>
         			
         			<input type="hidden" name="assignStudentId" value="${ast.assignStudentId }" />
         				

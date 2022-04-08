@@ -33,7 +33,8 @@
                    
                     <!-- Page Heading -->
                     <h1 class="h3 mb-4 text-gray-800">Exam Subject Management</h1>
-
+<p class="alert-success">  ${success }</p>
+<p class="alert-danger">  ${error }</p>
                     <!-- DataTales Example -->
                     <span id="message"></span>
                     <div class="card shadow mb-4">
@@ -92,6 +93,7 @@
                                          </c:forEach>
                                     </tbody>
                                 </table>
+                              
                             </div>
                         </div>
                     </div>

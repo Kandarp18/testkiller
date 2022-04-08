@@ -36,7 +36,8 @@
                     
                     <!-- Page Heading -->
                     <h1 class="h3 mb-4 text-gray-800">Classes Management</h1>
-
+<p class="alert-danger">${error }</p>
+<p class="alert-success">${success }</p>
                     <!-- DataTales Example -->
                     <span id="message"></span>
                     <div class="card shadow mb-4">
@@ -150,7 +151,6 @@
       </div>
       
        <div class="modal-body">
-        <p style="color:red;">  ${error }</p>
         			<span id="form_message"></span>
 		          	<div class="form-group">
 		          		<label>Class Name</label>

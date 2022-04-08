@@ -56,15 +56,17 @@ public class SubjectController {
 		
 		}
 		}
-		
 		if(p==true) {
-			model.addAttribute("error","This Class Name Already Exists!");
-			
+			model.addAttribute("error","This Subject Name Already Exists!");
+			model.addAttribute("subject", subjectdao.getAllSubject());
+			model.addAttribute("dy",date.toLocaleString());
 		}else {
-			
+			model.addAttribute("dy",date.toLocaleString());
 			subjectdao.insertSubject(subject);
+			model.addAttribute("success","Subject Added Successfully!");
+			model.addAttribute("subject", subjectdao.getAllSubject());
 		}
-	return "redirect:/subject";
+	return "NewSubject";
 	}
 	@GetMapping("/deletesubject/{subjectId}")
 	public String deleteSubject(@PathVariable("subjectId") int subjectId) {
@@ -96,12 +98,15 @@ public class SubjectController {
 			
 			if(p==true) {
 				model.addAttribute("error","This Subject Name Already Exists!");
-
-				return "redirect:/editsubject?subjectId="+subjectId;
+				model.addAttribute("sub", subjectdao.getSubjectById(subjectId));
+				return "EditSubject";
 			}else {
 		subjectdao.updateSubject(subject);
+		model.addAttribute("success","Subject Name Modified Successfully!");
+		model.addAttribute("subject", subjectdao.getAllSubject());
+		model.addAttribute("dy",date.toLocaleString());
 			}
-		return "redirect:/subject";
+		return "NewSubject";
 	}
 	@RequestMapping(value = "/getsubjectbyexam",method = RequestMethod.GET,  produces="application/json")
 	@ResponseBody

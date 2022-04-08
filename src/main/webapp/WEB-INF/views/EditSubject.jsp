@@ -33,9 +33,9 @@
                                    <div class="modal-body">
       
        
-        			<span id="form_message"></span>
+        			<span id="form_message">
         			        <p style="color:red;">  ${error }</p>
-        			
+        			</span>
         			<input type="hidden" name="subjectId" value="${sub.subjectId }" />
 		          	<div class="form-group">
 		          		<label>Subject Name</label>

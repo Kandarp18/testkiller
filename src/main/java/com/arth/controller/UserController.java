@@ -55,16 +55,24 @@ public class UserController {
 		}
 		
 		if(p==true) {
-			model.addAttribute("error","Account with this Email Address already exists!");
+			model.addAttribute("error","User Data already exists!");
+			List<RoleBean> role = roleDao.getAllRoles();
+			model.addAttribute("role", role);
+			model.addAttribute("users", userDao.getAllUsers());
+			 model.addAttribute("dy",date.toLocaleString());
 			
 		}else {
 		String plainPassword = user.getPassword();
 		String encPassword = bCryptPasswordEncoder.encode(plainPassword);
 		user.setPassword(encPassword);
 		userDao.addUser(user);
+		List<RoleBean> role = roleDao.getAllRoles();
+		model.addAttribute("role", role);
+		model.addAttribute("users", userDao.getAllUsers());
+		 model.addAttribute("dy",date.toLocaleString());
 		
 		}
-		return "redirect:/users";
+		return "User";
 	}
 
 
@@ -124,12 +132,23 @@ public class UserController {
 		}
 		
 		if(p==true) {
-			model.addAttribute("error","Account with this Email Address already exists!");
-			return "redirect:/edituser?userId="+userId;
+			model.addAttribute("error","User Data already exists!");
+			model.addAttribute("user", userDao.getUserById(userId));
+			List<RoleBean> role = roleDao.getAllRoles();
+			model.addAttribute("role", role);
+			model.addAttribute("users", userDao.getAllUsers());
+			 model.addAttribute("dy",date.toLocaleString());
+			return "EditUser";
 		}else {
 		userDao.updateUser(user);
+		model.addAttribute("success","User Data Modified Successfully!");
+		model.addAttribute("user", userDao.getUserById(userId));
+		List<RoleBean> role = roleDao.getAllRoles();
+		model.addAttribute("role", role);
+		model.addAttribute("users", userDao.getAllUsers());
+		 model.addAttribute("dy",date.toLocaleString());
 		}
-		return "redirect:/users";
+		return "User";
 	}
 	
 }

@@ -86,7 +86,7 @@ public class StudentController {
 		}
 
 		if (isCorrect == true) {
-			
+		
 			return "StudentDashboard";
 		}
 		else {
@@ -98,9 +98,6 @@ public class StudentController {
 	public String getAllStudent(Model model) {
 		List<StudentBean> student = studentdao.getAllStudent();
 	   model.addAttribute("student", student);
-	   
-		
-	
 	 model.addAttribute("dy",date.toLocaleString());
 		return "NewStudent";
 	}
@@ -115,15 +112,21 @@ public class StudentController {
 		}
 		
 		if(p==true) {
-			model.addAttribute("error","Account with this Email Address already exists!");
-			return "redirect:/student";
+			model.addAttribute("dy",date.toLocaleString());
+			   model.addAttribute("student", studentdao.getAllStudent());
+			model.addAttribute("error","Student Data already exists!");
+	
 		}else {
 		String plainPassword = student.getPassword();
 		String encPassword = bCryptPasswordEncoder.encode(plainPassword);// 10
 		student.setPassword(encPassword);
 		studentdao.addStudent(student);
-		return "redirect:/student";
-	}
+		model.addAttribute("dy",date.toLocaleString());
+	    model.addAttribute("student", studentdao.getAllStudent());
+		model.addAttribute("success","Student Data Added!");
+		}
+		return "NewStudent";
+
 	}
 	@GetMapping("/deletestudent/{studentId}")
 	public String deleteSubject(@PathVariable("studentId") int studentId) {
@@ -158,13 +161,15 @@ public class StudentController {
 		
 		if(p==true) {
 			model.addAttribute("error","Account with this Email Address already exists!");
-			return "redirect:/editstudent?studentId="+studentId;
+			model.addAttribute("student", studentdao.getStudentById(studentId));
+			return "EditStudent";
 		}else {
 		studentdao.updateStudent(student);
+		 model.addAttribute("dy",date.toLocaleString());
 		model.addAttribute("success","Student Data Changed Successfully!");
-
+		model.addAttribute("student", studentdao.getAllStudent());
 		}
-		return "redirect:/student";
+		return "NewStudent";
 	}
 	@GetMapping("/studentprofile")
 	public String studentProfile(@RequestParam("studentId") int studentId,Model model) {

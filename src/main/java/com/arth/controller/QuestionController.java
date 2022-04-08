@@ -35,8 +35,10 @@ public class QuestionController {
 	public String insertExam(QuestionBean question,AssignExamBean exam,Model model) {
 		
           questiondao.assignQuestion(question);
-		
-		return "redirect:/examsubjectquestion";
+          model.addAttribute("exam", examdao.getAllExamByStatus());
+          model.addAttribute("q", questiondao.getAllQuestion());
+          model.addAttribute("success", "Question Added Successfully");
+		return "AssignExamQuestion";
 	}
 	@GetMapping("/deletequestion/{questionId}")
 	public String deleteExam(@PathVariable("questionId") int questionId) {
@@ -53,7 +55,10 @@ public class QuestionController {
 	@PostMapping("/updatequestion")
 	public String updateQuestion(@RequestParam("questionId") int questionId,QuestionBean question,Model model) {
 		questiondao.updateQuestion(question);
-		return "redirect:/examsubjectquestion";
+		 model.addAttribute("exam", examdao.getAllExamByStatus());
+         model.addAttribute("q", questiondao.getAllQuestion());
+         model.addAttribute("success", "Question Details Modified Successfully");
+		return "AssignExamQuestion";
 
 	}
 	@GetMapping("/assignexamquestion")

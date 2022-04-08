@@ -62,7 +62,7 @@ public class ExamDao {
 	public ExamBean getAllById(int classId,String examName) {
 		ExamBean dbExam=null;
 			try {
-				dbExam=stmt.queryForObject("select * from exam where classid= ? and examname=?", new BeanPropertyRowMapper<ExamBean>(ExamBean.class),new Object[]{classId,examName});
+				dbExam=stmt.queryForObject("select * from exam where classid= ? and lower(examname) = lower(?)", new BeanPropertyRowMapper<ExamBean>(ExamBean.class),new Object[]{classId,examName});
 			}catch(Exception e) {
 				
 			}

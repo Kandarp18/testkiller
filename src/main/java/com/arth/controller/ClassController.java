@@ -37,11 +37,15 @@ public class ClassController {
 
 		if (p == true) {
 			model.addAttribute("error", "This Class Name Already Exists!");
+			model.addAttribute("classes", classdao.getAllClasses());
+			
 
 		} else {
 			classdao.insertClass(classes);
+			model.addAttribute("success", "Class Added Successfully!");
+			model.addAttribute("classes", classdao.getAllClasses());
 		}
-		return "redirect:/class";
+		return "NewClass";
 	}
 
 	@GetMapping("/deleteclass/{classId}")
@@ -74,12 +78,16 @@ public class ClassController {
 
 		if (p == true) {
 			model.addAttribute("error", "This Class Name Already Exists!");
+			ClassBean c = classdao.getClassById(classId);
+			model.addAttribute("c", c);
 
-			return "redirect:/editclass?classId=" + classId;
+			return "EditClass";
 		} else {
 			classdao.updateClass(classes);
+			model.addAttribute("success", "Class Name Modified Successfully !");
+			model.addAttribute("classes", classdao.getAllClasses());
 		}
-		return "redirect:/class";
+		return "NewClass";
 
 	}
 

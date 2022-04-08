@@ -34,7 +34,8 @@
                    
                     <!-- Page Heading -->
                     <h1 class="h3 mb-4 text-gray-800">Exam Management</h1>
-
+<p class="alert-danger">${error }</p>
+<p class="alert-success">${success }</p>
                     <!-- DataTales Example -->
                     <span id="message"></span>
                     <div class="card shadow mb-4">

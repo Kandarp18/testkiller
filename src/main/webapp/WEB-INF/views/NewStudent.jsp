@@ -34,10 +34,11 @@
                    
                     <!-- Page Heading -->
                     <h1 class="h3 mb-4 text-gray-800">Student Management</h1>
-
+<p class="alert-danger">${error }</p>
+<p class="alert-success">${success }</p>
                     <!-- DataTales Example -->
                     <span id="message">
-                    <p style="color:green;">${success }</p>
+                   
                     </span>
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
@@ -85,7 +86,7 @@
 		                                     <button type="button" name="edit" class="btn btn-warning btn-circle btn-sm edit_button" >
 			                                 <i class="fas fa-edit"></i>
 			                                 </button></a>
-                                       
+                                         
 		                                       </td>
 	                                           </tr>
                                       </c:forEach>
@@ -152,7 +153,7 @@
           			<button type="button" class="close" data-dismiss="modal">&times;</button>
         		</div>
         		<div class="modal-body">
-        		 <p style="color:red;">  ${error }</p>
+        		 
         			<span id="form_message"></span>
 		          	<div class="form-group">
 		          		<label>Student Name</label>

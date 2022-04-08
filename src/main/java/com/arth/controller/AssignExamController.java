@@ -50,6 +50,13 @@ ExamQuestionDao examquestiondao;
 				
 			int totalQuestion=exam.getTotalQuestion();
 			int questionId=0;
+		List<QuestionBean>  qs=	examquestiondao.getAllQuestionByExam(subjectId);
+		if(qs.size()!=0) {
+			model.addAttribute("error","Questions Already Generated!!");
+			model.addAttribute("e",assignexamdao.getAllAssign());
+			model.addAttribute("exam", examdao.getAllExamByStatus());
+			return "AssignExamSubject";
+		}
 		List<QuestionBean> question=questiondao.getQuestionBySubject(subjectId);
 		
 	      if(question.size()>=totalQuestion) {
@@ -66,13 +73,16 @@ ExamQuestionDao examquestiondao;
 	    	  for(int i: randomQ) {
 	    		  examquestiondao.mapQuestion(examId, question.get(i).getQuestionId());
 	    	  }
-	      
-	    	  return "redirect:/assignexamquestion";
+	    	  model.addAttribute("success", "Question Generated Successfully");
+	    	  model.addAttribute("q",questiondao.getAssignQuestion());
+	    	  return "AssignQuestion";
 	      }
 		
 	      else {
 	    	  model.addAttribute("error","Please Add Sufficient Questions!");
-	    	  return "redirect:/examsubject";
+	    	  model.addAttribute("exam", examdao.getAllExamByStatus());
+	    	  model.addAttribute("e",assignexamdao.getAllAssign());
+	    	  return "AssignExamSubject";
 	      }
 		
 	}
@@ -89,11 +99,15 @@ ExamQuestionDao examquestiondao;
 		
 		if(p==true) {
 			model.addAttribute("error","Duplicate Data!");
-		
+			model.addAttribute("exam", examdao.getAllExamByStatus());
+	        model.addAttribute("e",assignexamdao.getAllAssign());
 		}else {
 		assignexamdao.assignExam(exam);
+		model.addAttribute("exam", examdao.getAllExamByStatus());
+        model.addAttribute("e",assignexamdao.getAllAssign());
+        model.addAttribute("success", "Exam Assigned Successfully!");
 		}
-		return "redirect:/examsubject";
+		return "AssignExamSubject";
 	}
 	@GetMapping("/deleteassignexam/{assignExamId}")
 	public String deleteExam(@PathVariable("assignExamId") int assignExamId) {
@@ -110,7 +124,10 @@ ExamQuestionDao examquestiondao;
 	@PostMapping("/updateassignexam")
 	public String updateExam(@RequestParam("assignExamId") int assignExamId,AssignExamBean exam,Model model) {
 		assignexamdao.updateExam(exam);
-		return "redirect:/examsubject";
+		model.addAttribute("exam", examdao.getAllExamByStatus());
+        model.addAttribute("e",assignexamdao.getAllAssign());
+        model.addAttribute("success", "Exam Assignment Modified Successfully!");
+		return "AssignExamSubject";
 
 	}
 }

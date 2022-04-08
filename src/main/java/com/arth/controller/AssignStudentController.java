@@ -48,12 +48,18 @@ public class AssignStudentController {
 		
 		if(p==true) {
 			model.addAttribute("error","Duplicate Data!");
-			return "redirect:/assignstudent";
+			model.addAttribute("classes",classdao.getAllClassesByStatus());
+			model.addAttribute("student", studentdao.getAllStudentByStatus());
+			model.addAttribute("ast", assignstudentdao.getAllAssign());
 		}else {
 			 
 		assignstudentdao.assignStudent(asb);
+		model.addAttribute("success","Student Assigned Successfully!");
+		model.addAttribute("classes",classdao.getAllClassesByStatus());
+		model.addAttribute("student", studentdao.getAllStudentByStatus());
+		model.addAttribute("ast", assignstudentdao.getAllAssign());
 		}
-	return "redirect:/assignstudent";
+	return "AssignStudent";
 	}
 	@GetMapping("/deleteassignstudent/{assignStudentId}")
 	public String deleteClass(@PathVariable("assignStudentId") int assignStudentId) {
@@ -82,14 +88,19 @@ public class AssignStudentController {
 		}
 		
 		if(p==true) {
-			model.addAttribute("error","Duplicate Data!");
-			return "redirect:/editassignstudent?assignStudentId="+assignStudentId;
+			model.addAttribute("classes", classdao.getAllClassesByStatus());
+	         model.addAttribute("error", "Duplicate Data!");
+			model.addAttribute("student",studentdao.getAllStudentByStatus());
+			model.addAttribute("ast", assignstudentdao.getAssignById(assignStudentId));
+			return "EditAssignStudent";
 		}else {
-			 
+			assignstudentdao.updateAssign(asb);
+			model.addAttribute("ast", assignstudentdao.getAllAssign());
+			 model.addAttribute("success", "Student Assignment Modified Successfully!");
+			 model.addAttribute("dy",date.toLocaleString());
 		
-		assignstudentdao.updateAssign(asb);
 		}
-		return "redirect:/assignstudent";
+		return "AssignStudent";
 	}
 	
 }

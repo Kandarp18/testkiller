@@ -49,7 +49,7 @@
 								<div class="col-lg-4">
 									<div class="page-header-breadcrumb">
 										<ul class=" breadcrumb breadcrumb-title">
-											<li class="breadcrumb-item"><a href="studentdashboard"><i
+											<li class="breadcrumb-item"><a href="studentdashboard?studentId=${s.studentId }"><i
 													class="feather icon-home"></i></a></li>
 											<li class="breadcrumb-item"><a href="#!">Dashboard
 													</a></li>

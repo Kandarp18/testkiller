@@ -126,7 +126,7 @@ boolean p=false;
 	}
 	@GetMapping("/newtest")
    public String newTest(@RequestParam("studentId") int studentId,@RequestParam("examId") int examId,@RequestParam("subjectId") int subjectId,Model model) {
-		model.addAttribute("e",questiondao.getAll(examId, subjectId));
+		model.addAttribute("q",questiondao.getAll(examId, subjectId));
 		model.addAttribute("e", examdao.getExam(examId));
 		model.addAttribute("s", subjectdao.getSubjectById(subjectId));
 		model.addAttribute("st", studentdao.getStudentById(studentId));

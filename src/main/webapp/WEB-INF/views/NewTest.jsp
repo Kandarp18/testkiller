@@ -57,53 +57,56 @@
                                  </div>
                             </div>
                         </div>
-                        
+                       
                         <div class="card-body">
+                         
                             <div class="row">
+                          
                                 <div class="col-md-8">
+                                  
                                     <div id="single_question_area" class="mb-2">
+                                    
                                   <div class="card">
-                                  <c:forEach items="${q }" var="q">
+                                 <c:forEach items="${q}" var="q"> 
 					<div class="card-header"><b>Question - </b>${q.question }</div>
 					<div class="card-body">
 						<div class="row">
 				
 					<div class="col-md-6 mb-4">
 						<div class="radio">
-							<label><b>&nbsp;&nbsp;</b><input type="radio" name="option1" class="answer_option" data-question_id="569" data-id="1">${q.option1 }</label>
+							<label><b>&nbsp;&nbsp;</b><input type="radio" name="option1" class="answer_option" >${q.option1 }</label>
 						</div>
 					</div>
 					
 					<div class="col-md-6 mb-4">
 						<div class="radio">
-							<label><b>&nbsp;&nbsp;</b><input type="radio" name="option1" class="answer_option" data-question_id="569" data-id="2">${q.option2 }</label>
+							<label><b>&nbsp;&nbsp;</b><input type="radio" name="option1" class="answer_option" >${q.option2 }</label>
 						</div>
 					</div>
 					
 					<div class="col-md-6 mb-4">
 						<div class="radio">
-							<label><b>&nbsp;&nbsp;</b><input type="radio" name="option1" class="answer_option" data-question_id="569" data-id="3">${q.option3 }</label>
+							<label><b>&nbsp;&nbsp;</b><input type="radio" name="option1" class="answer_option" >${q.option3 }</label>
 						</div>
 					</div>
 					
 					<div class="col-md-6 mb-4">
 						<div class="radio">
-							<label><b>&nbsp;&nbsp;</b><input type="radio" name="option1" class="answer_option" data-question_id="569" data-id="4"> ${q.option4 }</label>
+							<label><b>&nbsp;&nbsp;</b><input type="radio" name="option1" class="answer_option" > ${q.option4 }</label>
 						</div>
 					</div>
-					</c:forEach>
+					
 				</div>
-				
-				  	<div align="center">
-				   		<button type="button" name="previous" class="btn btn-info btn-lg previous" id="" disabled="">Previous</button>
-				   		<button type="button" name="next" class="btn btn-warning btn-lg next" id="570">Next</button>
+				</c:forEach>
+				  	
 				  	</div>
-				  	</div></div>  
+				  	
+				  	</div>  
                                     </div>
                                     
                                 <div class="col-md-4">
                                     <div class="text-center mt-2 mb-2">
-                                        <div id="exam_timer" data-timer=20 style="max-width:375px; width: 100%; height: 190px; margin:0 auto"></div>
+                                        <div id="exam_timer" data-timer=100 style="max-width:375px; width: 100%; height: 190px; margin:0 auto"></div>
                                     </div>
                                     <div class="card shadow">
                                         <div class="card-header"><b>Student Details</b></div>
@@ -122,7 +125,7 @@
                         </div>
                     </div>
 
-                			
+                		
 	    </div>
 		<!-- Bootstrap core JavaScript-->
 	    <script src="vendor/jquery/jquery.min.js"></script>

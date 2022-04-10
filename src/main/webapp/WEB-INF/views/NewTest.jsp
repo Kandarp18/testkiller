@@ -57,39 +57,41 @@
                                  </div>
                             </div>
                         </div>
+                        
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-md-8">
                                     <div id="single_question_area" class="mb-2">
                                   <div class="card">
-					<div class="card-header"><b>Question - </b>qwsed</div>
+                                  <c:forEach items="${q }" var="q">
+					<div class="card-header"><b>Question - </b>${q.question }</div>
 					<div class="card-body">
 						<div class="row">
 				
 					<div class="col-md-6 mb-4">
 						<div class="radio">
-							<label><b>A.&nbsp;&nbsp;</b><input type="radio" name="option_1" class="answer_option" data-question_id="569" data-id="1"></label>
+							<label><b>&nbsp;&nbsp;</b><input type="radio" name="option1" class="answer_option" data-question_id="569" data-id="1">${q.option1 }</label>
 						</div>
 					</div>
 					
 					<div class="col-md-6 mb-4">
 						<div class="radio">
-							<label><b>B.&nbsp;&nbsp;</b><input type="radio" name="option_1" class="answer_option" data-question_id="569" data-id="2"> zxcvb</label>
+							<label><b>&nbsp;&nbsp;</b><input type="radio" name="option1" class="answer_option" data-question_id="569" data-id="2">${q.option2 }</label>
 						</div>
 					</div>
 					
 					<div class="col-md-6 mb-4">
 						<div class="radio">
-							<label><b>C.&nbsp;&nbsp;</b><input type="radio" name="option_1" class="answer_option" data-question_id="569" data-id="3"> Zxcvb</label>
+							<label><b>&nbsp;&nbsp;</b><input type="radio" name="option1" class="answer_option" data-question_id="569" data-id="3">${q.option3 }</label>
 						</div>
 					</div>
 					
 					<div class="col-md-6 mb-4">
 						<div class="radio">
-							<label><b>D.&nbsp;&nbsp;</b><input type="radio" name="option_1" class="answer_option" data-question_id="569" data-id="4"> zxcvb n</label>
+							<label><b>&nbsp;&nbsp;</b><input type="radio" name="option1" class="answer_option" data-question_id="569" data-id="4"> ${q.option4 }</label>
 						</div>
 					</div>
-					
+					</c:forEach>
 				</div>
 				
 				  	<div align="center">
@@ -98,31 +100,10 @@
 				  	</div>
 				  	</div></div>  
                                     </div>
-                                    <div id="question_navigation_area" class="mb-2">
-                                  <div class="card">
-				<div class="card-header"><b>Question Navigation</b></div>
-				<div class="card-body">
-					<div class="row">
-			
-				<div class="col-sm-1 mb-2">
-					<button type="button" class="btn btn-primary question_navigation" data-question_id="569">1</button>
-				</div>
-				
-				<div class="col-sm-1 mb-2">
-					<button type="button" class="btn btn-primary question_navigation" data-question_id="570">2</button>
-				</div>
-				
-				<div class="col-sm-1 mb-2">
-					<button type="button" class="btn btn-primary question_navigation" data-question_id="571">3</button>
-				</div>
-				
-				</div>
-			</div></div>
-                                    </div>
-                                </div>
+                                    
                                 <div class="col-md-4">
                                     <div class="text-center mt-2 mb-2">
-                                        <div id="exam_timer" data-timer="${e.duration }" style="max-width:375px; width: 100%; height: 190px; margin:0 auto"></div>
+                                        <div id="exam_timer" data-timer=20 style="max-width:375px; width: 100%; height: 190px; margin:0 auto"></div>
                                     </div>
                                     <div class="card shadow">
                                         <div class="card-header"><b>Student Details</b></div>
@@ -130,9 +111,9 @@
                                             <div class="row">
                                               
                                                 <div class="col-md-8">
-                                                    <b>Roll No : </b>${st.rollNo }<br />
-                                                    <b>Name : </b>${st.studentName }<br />
-                                                    <b>Class : </b>${st.className}                                               </div>
+                                                    <b>Roll No : </b>${ast.rollNo }<br />
+                                                    <b>Name : </b>${ast.studentName }<br />
+                                                    <b>Class : </b>${ast.className }                                           </div>
                                             </div>
                                         </div>
                                     </div>
@@ -207,7 +188,7 @@ $(document).ready(function(){
         {
             $("#exam_timer").TimeCircles().destroy();
             alert('Exam Time Completed');
-            location.href="/listexamsubject?examId=${e.examId}";
+            location.href="/listexamsubject?examId=${e.examId}&studentId=${st.studentId}";
         }
     });
 

@@ -92,7 +92,7 @@
 																						<td><span class="badge badge-success">Started</span></td>
 																					
 																						<td> 
-																						<a href="newtest?examId=${e.examId }&subjectId=${e.subjectId}">                                 
+																						<a href="newtest?examId=${e.examId }&subjectId=${e.subjectId}&studentId=${s.studentId}">                                 
                                   <button type="button" name="edit" class="btn btn-warning btn-circle btn-sm edit_button" ><i class="fas fa-edit"></i></button> </a> 		       
 																						</td>
 																					</tr>

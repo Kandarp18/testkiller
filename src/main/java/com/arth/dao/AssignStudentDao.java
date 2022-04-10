@@ -81,5 +81,10 @@ public class AssignStudentDao {
 
 		return asb;
 	}
-	
+	public AssignStudentBean getAssignByStudent(int studentId) {
+
+		 AssignStudentBean asb = stmt.queryForObject("select a.*,s.studentName,c.className from assignstudent a,student s,classes c where a.classid=c.classid and s.studentid=a.studentid and a.studentid = ? ", new BeanPropertyRowMapper<AssignStudentBean>(AssignStudentBean.class), new Object[] { studentId });
+
+			return asb;
+		}
 }

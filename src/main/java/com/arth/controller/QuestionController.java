@@ -62,9 +62,9 @@ public class QuestionController {
 
 	}
 	@GetMapping("/assignexamquestion")
-	public String assignQuestion(Model model) {
+	public String assignQuestion(@RequestParam("examId") int examId,@RequestParam("subjectId") int subjectId,Model model) {
 		
-		model.addAttribute("q",questiondao.getAssignQuestion());
+		model.addAttribute("q",questiondao.getAssignQuestion(examId, subjectId));
 		return "AssignQuestion";
 	}
 }

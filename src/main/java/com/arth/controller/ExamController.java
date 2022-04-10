@@ -125,11 +125,12 @@ boolean p=false;
 		return assignexamdao.getAllAssignSubject(examId);
 	}
 	@GetMapping("/newtest")
-   public String newTest(@RequestParam("examId") int examId,@RequestParam("subjectId") int subjectId,Model model) {
+   public String newTest(@RequestParam("studentId") int studentId,@RequestParam("examId") int examId,@RequestParam("subjectId") int subjectId,Model model) {
 		model.addAttribute("e",questiondao.getAll(examId, subjectId));
 		model.addAttribute("e", examdao.getExam(examId));
 		model.addAttribute("s", subjectdao.getSubjectById(subjectId));
-		
+		model.addAttribute("st", studentdao.getStudentById(studentId));
+		model.addAttribute("ast",assignstudentdao.getAssignByStudent(studentId));
 		return "NewTest";
 	}
 }

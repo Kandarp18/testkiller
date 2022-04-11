@@ -33,7 +33,7 @@
 			    <div class="container-fluid">
 	    	<br />
 	    	<div class="text-center">
-                    
+                 
             </div>
                     <br />
                     <!-- Page Heading -->
@@ -57,20 +57,19 @@
                                  </div>
                             </div>
                         </div>
-                       
-                        <div class="card-body">
-                         
+                      
+                            
                             <div class="row">
                           
                                 <div class="col-md-8">
                                   
-                                    <div id="single_question_area" class="mb-2">
-                                    
-                                  <div class="card">
-                                 <c:forEach items="${q}" var="q"> 
-					<div class="card-header"><b>Question - </b>${q.question }</div>
-					<div class="card-body">
-						<div class="row">
+                                   
+                                     
+                                  
+                     <c:forEach items="${q}" var="q">  
+					<b>Question - </b>${q.question }
+					
+					
 				
 					<div class="col-md-6 mb-4">
 						<div class="radio">
@@ -96,17 +95,14 @@
 						</div>
 					</div>
 					
-				</div>
+				
 				</c:forEach>
-				  	
-				  	</div>
-				  	
-				  	</div>  
-                                    </div>
+                </div>
                                     
                                 <div class="col-md-4">
                                     <div class="text-center mt-2 mb-2">
-                                        <div id="exam_timer" data-timer=100 style="max-width:375px; width: 100%; height: 190px; margin:0 auto"></div>
+                                        <div id="exam_timer" data-timer=100 style="max-width:375px; width: 100%; height: 190px; margin:0 auto">
+                                        </div>
                                     </div>
                                     <div class="card shadow">
                                         <div class="card-header"><b>Student Details</b></div>
@@ -116,17 +112,18 @@
                                                 <div class="col-md-8">
                                                     <b>Roll No : </b>${ast.rollNo }<br />
                                                     <b>Name : </b>${ast.studentName }<br />
-                                                    <b>Class : </b>${ast.className }                                           </div>
+                                                    <b>Class : </b>${ast.className }                                           
+                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-
+                            </div>
+                  
+</div>
                 		
-	    </div>
+	    
 		<!-- Bootstrap core JavaScript-->
 	    <script src="vendor/jquery/jquery.min.js"></script>
 	    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -154,7 +151,7 @@
 
 	</body>
 </html>
-<script>
+<script type="text/javascript">
 $(document).ready(function(){
  
     $("#exam_timer").TimeCircles({

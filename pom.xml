@@ -64,6 +64,18 @@
 			<artifactId>postgresql</artifactId>
 			<scope>runtime</scope>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/javax.mail/mail -->
+          <dependency>
+     <groupId>javax.mail</groupId>
+       <artifactId>mail</artifactId>
+    <version>1.4.7</version>
+      </dependency>
+		<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-crypto -->
+<dependency>
+    <groupId>org.springframework.security</groupId>
+    <artifactId>spring-security-crypto</artifactId>
+</dependency>
+		
 	</dependencies>
 
 	<build>

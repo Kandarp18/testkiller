@@ -23,7 +23,7 @@ import com.arth.dao.RoleDao;
 import com.arth.dao.StudentDao;
 import com.arth.dao.SubjectDao;
 import com.arth.dao.UserDao;
-
+import com.arth.service.EmailService;
 @Controller
 public class SessionController {
 	@Autowired
@@ -40,6 +40,8 @@ public class SessionController {
 	RoleDao roledao;
 	@Autowired
 	BCryptPasswordEncoder bcryptPasswordEncoder;
+	@Autowired
+	EmailService emailservice;
 
 	
 
@@ -76,7 +78,7 @@ public class SessionController {
 			model.addAttribute("msg", "Otp is generated and sent to your email!!!");
 			System.out.println("your otp is => " + otp);
 			/// send email to user
-
+            emailservice.sendEmailForForgetPassword(student.getEmail(), otp+"");
 			return "NewPassword";
 		}
 
@@ -156,7 +158,7 @@ public class SessionController {
 			model.addAttribute("msg", "Otp is generated and sent to your email!!!");
 			System.out.println("your otp is => " + otp);
 			/// send email to user
-
+			 emailservice.sendEmailForForgetPassword(user.getEmail(), otp+"");   
 			return "EditPassword";
 		}
 

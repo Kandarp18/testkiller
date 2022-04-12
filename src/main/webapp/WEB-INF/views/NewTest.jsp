@@ -64,10 +64,11 @@
                                 <div class="col-md-8">
                                   
                                    
-                                     
-                                  
+                        <form method="post" action="listexamsubject?examId=${e.examId }&studentId=${st.studentId}" onsubmit="return confirm('Do you really want to submit this test?');">          
+                                 
                      <c:forEach items="${q}" var="q">  
 					<b>Question - </b>${q.question }
+					<br>
 					
 					
 				
@@ -97,8 +98,13 @@
 					
 				
 				</c:forEach>
+				<div class="text-center">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<input type="submit" name="submit"  class="btn btn-success" value="Final Submit">
+				</div>
+				 </form>    
                 </div>
-                                    
+                      
+                  
                                 <div class="col-md-4">
                                     <div class="text-center mt-2 mb-2">
                                         <div id="exam_timer" data-timer=100 style="max-width:375px; width: 100%; height: 190px; margin:0 auto">

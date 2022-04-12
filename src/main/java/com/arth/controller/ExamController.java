@@ -16,10 +16,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.arth.bean.AssignExamBean;
 import com.arth.bean.ExamBean;
+import com.arth.bean.QuestionBean;
+import com.arth.bean.SubjectBean;
 import com.arth.dao.AssignExamDao;
 import com.arth.dao.AssignStudentDao;
 import com.arth.dao.ClassDao;
 import com.arth.dao.ExamDao;
+import com.arth.dao.ExamQuestionDao;
 import com.arth.dao.QuestionDao;
 import com.arth.dao.StudentDao;
 import com.arth.dao.SubjectDao;
@@ -36,6 +39,8 @@ public class ExamController {
   StudentDao studentdao;
   @Autowired
   SubjectDao subjectdao;
+  @Autowired
+  ExamQuestionDao examquestiondao;
   @Autowired
 	Date date;
   @Autowired
@@ -125,8 +130,9 @@ boolean p=false;
 		return assignexamdao.getAllAssignSubject(examId);
 	}
 	@GetMapping("/newtest")
-   public String newTest(@RequestParam("studentId") int studentId,@RequestParam("examId") int examId,@RequestParam("subjectId") int subjectId,Model model) {
-		model.addAttribute("q",questiondao.getAll(examId, subjectId));
+   public String newTest(@RequestParam("studentId") int studentId,@RequestParam("examId") int examId,@RequestParam("subjectId") int subjectId,Model model,ExamBean exam,SubjectBean subject) {
+		List <QuestionBean> q=examquestiondao.getAllQuestionByExam(subjectId);
+		model.addAttribute("q",q);
 		model.addAttribute("e", examdao.getExam(examId));
 		model.addAttribute("s", subjectdao.getSubjectById(subjectId));
 		model.addAttribute("st", studentdao.getStudentById(studentId));

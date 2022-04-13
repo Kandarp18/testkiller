@@ -19,7 +19,7 @@ public class EmailService {
 	public void sendEmailForForgetPassword(String email,String otp) {
 	
 		final String from = "portfolio.service.2020@gmail.com";// from address
-		final String appPassword = "yourPassword"; //tejas123 
+		final String appPassword = "tejas123"; //tejas123 
 	
 		Properties prop = System.getProperties();
 

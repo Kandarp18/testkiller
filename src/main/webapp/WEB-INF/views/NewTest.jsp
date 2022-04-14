@@ -1,9 +1,13 @@
+<%@page import="com.arth.bean.StudentBean"%>
+<%@page import="com.arth.bean.ExamBean"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
      <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!doctype html>
 <html lang="en">
 	<head>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+	
 		<script data-ad-client="ca-pub-4529508631166774" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -64,47 +68,54 @@
                                 <div class="col-md-8">
                                   
                                    
-                        <form method="post" action="listexamsubject?examId=${e.examId }&studentId=${st.studentId}" onsubmit="return confirm('Do you really want to submit this test?');">          
-                                 
-                     <c:forEach items="${q}" var="q">  
+                        <form method="post" action="saveuserexamans" onsubmit="return confirm('Do you really want to submit this test?');">          
+                                 <%
+		                          int i = 0;
+		                          %>
+                     <c:forEach items="${q}" var="q"> 
+                     <fieldset id="group1"> 
 					<b>Question - </b>${q.question }
 					<br>
 					
 					
-				
+				<input type="hidden" value="${q.questionId}" name="question<%=i%>"> 
 					<div class="col-md-6 mb-4">
 						<div class="radio">
-							<label><b>&nbsp;&nbsp;</b><input type="radio" name="option1" class="answer_option" >${q.option1 }</label>
+							<label id="option1"><b>&nbsp;&nbsp;</b><input type="radio" value="${q.option1 }" name="userAns<%=i%>" class="answer_option" >${q.option1 }</label>
 						</div>
 					</div>
 					
 					<div class="col-md-6 mb-4">
 						<div class="radio">
-							<label><b>&nbsp;&nbsp;</b><input type="radio" name="option1" class="answer_option" >${q.option2 }</label>
+							<label id="option2"><b>&nbsp;&nbsp;</b><input type="radio" value="${q.option2 }" name="userAns<%=i%>" class="answer_option" >${q.option2 }</label>
 						</div>
 					</div>
 					
 					<div class="col-md-6 mb-4">
 						<div class="radio">
-							<label><b>&nbsp;&nbsp;</b><input type="radio" name="option1" class="answer_option" >${q.option3 }</label>
+							<label id="option3"><b>&nbsp;&nbsp;</b><input type="radio" value="${q.option3 }" name="userAns<%=i%>" class="answer_option" >${q.option3 }</label>
 						</div>
 					</div>
 					
 					<div class="col-md-6 mb-4">
 						<div class="radio">
-							<label><b>&nbsp;&nbsp;</b><input type="radio" name="option1" class="answer_option" > ${q.option4 }</label>
+							<label id="option4"><b>&nbsp;&nbsp;</b><input type="radio" value="${q.option4 }" name="userAns<%=i%>" class="answer_option" > ${q.option4 }</label>
 						</div>
 					</div>
 					
-				
+				</fieldset>
+			<%
+			i++;
+			%>
 				</c:forEach>
 				<div class="text-center">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				<input type="submit" name="submit"  class="btn btn-success" value="Final Submit">
+				<input type="submit" name="submit" onclick="saveAns()" class="btn btn-success" value="Final Submit">
 				</div>
 				 </form>    
-                </div>
-                      
-                  
+                
+
+	
+                  </div>
                                 <div class="col-md-4">
                                     <div class="text-center mt-2 mb-2">
                                         <div id="exam_timer" data-timer=100 style="max-width:375px; width: 100%; height: 190px; margin:0 auto">
@@ -129,74 +140,51 @@
                   
 </div>
                 		
-	    
-		<!-- Bootstrap core JavaScript-->
-	    <script src="vendor/jquery/jquery.min.js"></script>
-	    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<jsp:include page="AllJs.jsp"></jsp:include>
+	
+	                     <%
+	               ExamBean exam = (ExamBean) request.getAttribute("exam");
+	                %>
+	<%
+	StudentBean student = (StudentBean) session.getAttribute("student");
+	%>  
+<script>
+function saveAns() {
+	let total =<%=i%>;
+	let userAns = [];
+	let examId =<%=exam.getExamId()%>;
+	let studentId =<%=student.getStudentId()%>;
+	for (let i = 0; i < total; i++) {
+		let questions = document.getElementsByName("question" + i)
+		let ans = document.getElementsByName("userAns" + i);
+		for (let a = 0; a < 4; a++) {
+			if (ans[a].checked) {
+				let ua = {
+					"userAns" : ans[a].value,
+					"questionId" : questions[0].value,
+					"examId" : examId,
+					"studentId" : studentId
+				}
+				userAns.push(ua);
+				$.ajax({
+					url : "saveuserexamans",
+					type : "post",
+					data : ua,
+					success : function(data, textStatus, jqXHR) {
+						//data - response from server
+						console.log(data);
+					},
+					error : function(jqXHR, textStatus, errorThrown) {
+						console.log("error")
+					}
+				});
+			}
+		}
+	}//main loop 
+	
+	alert("exam submited please view result");
+}
 
-	    <script src="/vendor/datatables/jquery.dataTables.min.js"></script>
-	    <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
-
-	    <!-- Core plugin JavaScript-->
-	    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-
-	    <script type="text/javascript" src="vendor/parsley/dist/parsley.min.js"></script>
-
-	    <script type="text/javascript" src="vendor/TimeCircle/TimeCircles.js"></script>
-
-	    <script>
-		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-		  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-		  ga('create', 'UA-87739877-1', 'auto');
-		  ga('send', 'pageview');
-
-		</script>
-
+</script>
 	</body>
 </html>
-<script type="text/javascript">
-$(document).ready(function(){
- 
-    $("#exam_timer").TimeCircles({
-        "animation": "smooth",
-        "bg_width": 1.2,
-        "fg_width": 0.1,
-        "circle_bg_color": "#eee",
-        "time": {
-            "Days":
-            {
-                "show": false
-            },
-            "Hours":
-            {
-                "show": false
-            },
-            "Minutes": {
-                "text": "Minutes",
-                "color": "#ffc107",
-                "show": true
-            },
-            "Seconds": {
-                "text": "Seconds",
-                "color": "#007bff",
-                "show": true
-            }
-        }
-    });
-
-   
-
-    $("#exam_timer").TimeCircles().addListener(function(unit, value, total) {
-        if(total < 1)
-        {
-            $("#exam_timer").TimeCircles().destroy();
-            alert('Exam Time Completed');
-            location.href="/listexamsubject?examId=${e.examId}&studentId=${st.studentId}";
-        }
-    });
-
-});
-</script>

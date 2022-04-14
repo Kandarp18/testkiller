@@ -3,6 +3,8 @@ package com.arth.controller;
 import java.util.Date;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,6 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.arth.bean.AssignExamBean;
 import com.arth.bean.ExamBean;
 import com.arth.bean.QuestionBean;
+import com.arth.bean.StudentBean;
 import com.arth.bean.SubjectBean;
 import com.arth.dao.AssignExamDao;
 import com.arth.dao.AssignStudentDao;
@@ -130,13 +133,20 @@ boolean p=false;
 		return assignexamdao.getAllAssignSubject(examId);
 	}
 	@GetMapping("/newtest")
-   public String newTest(@RequestParam("studentId") int studentId,@RequestParam("examId") int examId,@RequestParam("subjectId") int subjectId,Model model,ExamBean exam,SubjectBean subject) {
+   public String newTest(@RequestParam("studentId") int studentId,@RequestParam("examId") int examId,@RequestParam("subjectId") int subjectId,Model model,HttpSession session) {
 		List <QuestionBean> q=examquestiondao.getAllQuestionByExam(subjectId);
+		StudentBean student = (StudentBean)session.getAttribute("student");
+		if(student == null) {
+			student = new StudentBean();
+			student.setStudentId(2);
+			session.setAttribute("student", student);
+		}
 		model.addAttribute("q",q);
 		model.addAttribute("e", examdao.getExam(examId));
 		model.addAttribute("s", subjectdao.getSubjectById(subjectId));
 		model.addAttribute("st", studentdao.getStudentById(studentId));
 		model.addAttribute("ast",assignstudentdao.getAssignByStudent(studentId));
+		model.addAttribute("studentId",student.getStudentId());
 		return "NewTest";
 	}
 }

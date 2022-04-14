@@ -17,8 +17,7 @@ public class UserExamAnsController {
 	@RequestMapping(value = "/saveuserexamans", method = RequestMethod.POST, produces = "application/json")
 	public String saveUserExamAns(UserExamAnsBean userexamans) {
 //		userExamAnsDao.adduserans(userexamans);
-		
-		
+		userexamansdao.adduserAns(userexamans);
 		
 		return "done";
 }

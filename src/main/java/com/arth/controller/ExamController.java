@@ -138,13 +138,13 @@ boolean p=false;
 		StudentBean student = (StudentBean)session.getAttribute("student");
 		if(student == null) {
 			student = new StudentBean();
-			student.setStudentId(2);
+			student.setStudentId(studentId);
 			session.setAttribute("student", student);
 		}
 		model.addAttribute("q",q);
 		model.addAttribute("e", examdao.getExam(examId));
 		model.addAttribute("s", subjectdao.getSubjectById(subjectId));
-		model.addAttribute("st", studentdao.getStudentById(studentId));
+		
 		model.addAttribute("ast",assignstudentdao.getAssignByStudent(studentId));
 		model.addAttribute("studentId",student.getStudentId());
 		return "NewTest";

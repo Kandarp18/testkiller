@@ -81,25 +81,25 @@
 				<input type="hidden" value="${q.questionId}" name="question<%=i%>"> 
 					<div class="col-md-6 mb-4">
 						<div class="radio">
-							<label id="option1"><b>&nbsp;&nbsp;</b><input type="radio" value="${q.option1 }" name="userAns<%=i%>" class="answer_option" >${q.option1 }</label>
+							<label id="option1"><input type="radio" value="${q.option1 }" name="userAns<%=i%>" class="answer_option"> ${q.option1 }</label>
 						</div>
 					</div>
 					
 					<div class="col-md-6 mb-4">
 						<div class="radio">
-							<label id="option2"><b>&nbsp;&nbsp;</b><input type="radio" value="${q.option2 }" name="userAns<%=i%>" class="answer_option" >${q.option2 }</label>
+							<label id="option2"><input type="radio" value="${q.option2 }" name="userAns<%=i%>" class="answer_option"> ${q.option2 }</label>
 						</div>
 					</div>
 					
 					<div class="col-md-6 mb-4">
 						<div class="radio">
-							<label id="option3"><b>&nbsp;&nbsp;</b><input type="radio" value="${q.option3 }" name="userAns<%=i%>" class="answer_option" >${q.option3 }</label>
+							<label id="option3"><input type="radio" value="${q.option3 }" name="userAns<%=i%>" class="answer_option"> ${q.option3 }</label>
 						</div>
 					</div>
 					
 					<div class="col-md-6 mb-4">
 						<div class="radio">
-							<label id="option4"><b>&nbsp;&nbsp;</b><input type="radio" value="${q.option4 }" name="userAns<%=i%>" class="answer_option" > ${q.option4 }</label>
+							<label id="option4"><input type="radio" value="${q.option4 }" name="userAns<%=i%>" class="answer_option"> ${q.option4 }</label>
 						</div>
 					</div>
 					
@@ -142,17 +142,61 @@
                 		
 	<jsp:include page="AllJs.jsp"></jsp:include>
 	
+<script type="text/javascript">
+$(document).ready(function(){
+ 
+    $("#exam_timer").TimeCircles({
+        "animation": "smooth",
+        "bg_width": 1.2,
+        "fg_width": 0.1,
+        "circle_bg_color": "#eee",
+        "time": {
+            "Days":
+            {
+                "show": false
+            },
+            "Hours":
+            {
+                "show": false
+            },
+            "Minutes": {
+                "text": "Minutes",
+                "color": "#ffc107",
+                "show": true
+            },
+            "Seconds": {
+                "text": "Seconds",
+                "color": "#007bff",
+                "show": true
+            }
+        }
+    });
+
+   
+
+    $("#exam_timer").TimeCircles().addListener(function(unit, value, total) {
+        if(total < 1)
+        {
+            $("#exam_timer").TimeCircles().destroy();
+            alert('Exam Time Completed');
+            location.href="/listexamsubject?examId=${e.examId}&studentId=${st.studentId}";
+        }
+    });
+
+});
+</script>        
+	
 	                     <%
-	               ExamBean exam = (ExamBean) request.getAttribute("exam");
+	               ExamBean e = (ExamBean) request.getAttribute("e");
 	                %>
-	<%
-	StudentBean student = (StudentBean) session.getAttribute("student");
-	%>  
+	         <%
+	            StudentBean student = (StudentBean) session.getAttribute("student");
+	             %>  
 <script>
 function saveAns() {
 	let total =<%=i%>;
 	let userAns = [];
-	let examId =<%=exam.getExamId()%>;
+	let examId =<%=e.getExamId()%>;
 	let studentId =<%=student.getStudentId()%>;
 	for (let i = 0; i < total; i++) {
 		let questions = document.getElementsByName("question" + i)
@@ -182,7 +226,7 @@ function saveAns() {
 		}
 	}//main loop 
 	
-	alert("exam submited please view result");
+
 }
 
 </script>

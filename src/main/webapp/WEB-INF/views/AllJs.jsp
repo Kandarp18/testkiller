@@ -3,7 +3,7 @@
 	    <script src="vendor/jquery/jquery.min.js"></script>
 	    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-	    <script src="/vendor/datatables/jquery.dataTables.min.js"></script>
+	    <script src="vendor/datatables/jquery.dataTables.min.js"></script>
 	    <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
 	    <!-- Core plugin JavaScript-->
@@ -24,47 +24,3 @@
 
 		</script>
 
-
-<script type="text/javascript">
-$(document).ready(function(){
- 
-    $("#exam_timer").TimeCircles({
-        "animation": "smooth",
-        "bg_width": 1.2,
-        "fg_width": 0.1,
-        "circle_bg_color": "#eee",
-        "time": {
-            "Days":
-            {
-                "show": false
-            },
-            "Hours":
-            {
-                "show": false
-            },
-            "Minutes": {
-                "text": "Minutes",
-                "color": "#ffc107",
-                "show": true
-            },
-            "Seconds": {
-                "text": "Seconds",
-                "color": "#007bff",
-                "show": true
-            }
-        }
-    });
-
-   
-
-    $("#exam_timer").TimeCircles().addListener(function(unit, value, total) {
-        if(total < 1)
-        {
-            $("#exam_timer").TimeCircles().destroy();
-            alert('Exam Time Completed');
-            location.href="/listexamsubject?examId=${e.examId}&studentId=${st.studentId}";
-        }
-    });
-
-});
-</script>        

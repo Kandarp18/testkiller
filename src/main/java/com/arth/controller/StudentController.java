@@ -204,6 +204,18 @@ public class StudentController {
 		model.addAttribute("s", studentdao.getStudentById(studentId));
 		return "ListExamSubject";
 	}
-
-
+	@GetMapping("/examresult")
+	public String listExamResult(@RequestParam("studentId") int studentId,Model model) {
+		model.addAttribute("student",studentdao.getStudentById(studentId));
+		model.addAttribute("exam", examdao.getAllExamByStudentId(studentId));
+		model.addAttribute("s", studentdao.getStudentById(studentId));
+		return "ListCompleteExams";
+	}
+	@GetMapping("/listexamsubjectresult")
+	public String listExamSubjectResult(@RequestParam("examId") int examId,@RequestParam("studentId") int studentId,Model model) {
+		model.addAttribute("e",examdao.getExamById(examId));
+		model.addAttribute("exam",assignexamdao.getAllExamByStudent(examId));
+		model.addAttribute("s", studentdao.getStudentById(studentId));
+		return "ListExamSubjectResult";
+	}
 }

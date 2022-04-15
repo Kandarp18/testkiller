@@ -4,8 +4,16 @@ public class UserExamBean {
 	private int userExamId;
 	private int examId;
 	private int studentId;
+	private int subjectId;
 	private String status;
 	private int obtainMarks;
+	
+	public int getSubjectId() {
+		return subjectId;
+	}
+	public void setSubjectId(int subjectId) {
+		this.subjectId = subjectId;
+	}
 	public int getUserExamId() {
 		return userExamId;
 	}

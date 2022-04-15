@@ -139,9 +139,6 @@
          </div>
                   
 </div>
-                		
-	<jsp:include page="AllJs.jsp"></jsp:include>
-	
 <script type="text/javascript">
 $(document).ready(function(){
  
@@ -184,7 +181,10 @@ $(document).ready(function(){
     });
 
 });
-</script>        
+</script> 
+                		
+	<jsp:include page="AllJs.jsp"></jsp:include>
+	
 	
 	                     <%
 	               ExamBean e = (ExamBean) request.getAttribute("e");
@@ -231,7 +231,12 @@ function saveAns() {
 	
  	 location.href="/listexamsubject?examId=${e.examId}&studentId=${student.studentId}";
 }
-
+window.history.forward();
+function noBack() {
+    window.history.forward();
+}
+  
 </script>
-	</body>
+
+</body>
 </html>

@@ -86,7 +86,14 @@
 																					<tr>
 																						<td>${e.examName}</td>
 																						<td>${e.duration} Minute</td>
-																						<td><span class="badge badge-success">${e.statusName}</span></td>
+																						<td>
+																						<c:if test="${e.statusId==2 }">
+																						<span class="badge badge-success">${e.statusName}</span>
+																						</c:if>
+																						<c:if test="${e.statusId==3 }">
+																						<span class="badge badge-dark">${e.statusName}</span>
+																						</c:if>
+																						</td>
 																						<td><a href="listexamsubject?examId=${e.examId }&studentId=${s.studentId}">View</a></td>
 																						<td> </td>
 																					</tr>

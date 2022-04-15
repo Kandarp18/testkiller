@@ -22,7 +22,7 @@
 							<li class=" "><a href="listexam?studentId=${s.studentId }"
 								class="waves-effect waves-dark"> <span class="pcoded-mtext">Active Exam</span>
 							</a></li>
-							<li class=" "><a href="listexam?studentId=${s.studentId }"
+							<li class=" "><a href="examresult?studentId=${s.studentId }"
 								class="waves-effect waves-dark"> <span class="pcoded-mtext">Completed Exam</span>
 							</a></li>
 							

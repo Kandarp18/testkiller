@@ -182,6 +182,8 @@
                   <input type="text" name="totalQuestion" id="totalQuestion"  class="form-control" required data-parsley-pattern="/^[a-zA-Z0-9 \s]+$/" data-parsley-trigger="keyup" />
                         
                     </div>
+                        <input type="hidden" name="statusId"  value="2" />
+                    
                     <div class="form-group">
                         <label>Marks for Correct Answer</label>
                         <select name="rightMark" id="marks_per_right_answer" class="form-control">

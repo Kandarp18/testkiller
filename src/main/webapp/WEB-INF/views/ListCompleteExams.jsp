@@ -30,7 +30,7 @@
 									<div class="page-header-title">
 										<i class="feather icon-inbox bg-c-blue"></i>
 										<div class="d-inline">
-											<h5>Exam Schedule Details</h5>
+											<h5>Exam List</h5>
 										</div>
 									</div>
 								</div>
@@ -41,12 +41,7 @@
 													class="feather icon-home"></i></a></li>
 											<li class="breadcrumb-item"><a href="#!">Exams
 													</a></li>
-													<li class="breadcrumb-item">
-													
-													<a href="#!">Active Exams
-													
-													
-													
+													<li class="breadcrumb-item"><a href="#!">Completed Exams
 													</a></li>
 											
 										</ul>
@@ -65,7 +60,7 @@
 											<div class="col-sm-12">
 												<div class="card">
 													<div class="card-header">
-														<h5>Active Exams</h5>
+														<h5>Completed Exams</h5>
 
 													</div>
 													<div class="card-block">
@@ -77,11 +72,10 @@
 																		<table id="listRoles" class="table table-striped" style="text-align:center;">
 																			<thead>
 																				<tr role="row">
-																					<th>Subject Name</th>
-																					<th>Exam Date</th>
-																					<th>Total Question</th>
-																					<th>Correct Answer</th>
+																					<th>Exam Name</th>
+																					<th>Duration</th>
 																					<th>Status</th>
+																					<th>TimeTable</th>
 																					<th>Action</th>
 																				</tr>
 																			</thead>
@@ -89,29 +83,17 @@
 
 
 																				<c:forEach items="${exam}" var="e">
-																					<tr >
-																						<td>${e.subjectName}</td>
-																						<td>${e.examDate}</td>
-																						<td >${e.totalQuestion}</td>
-																						<td><b class="text-success">+${e.rightMark} Mark</b></td>
+																					<tr>
+																						<td>${e.examName}</td>
+																						<td>${e.duration} Minute</td>
 																						<td>
-																						<c:if test="${e.statusId==2}">
-																						<span class="badge badge-success">Started</span>
-																						</c:if>
-																						<c:if test="${e.statusId==3}">
-																						<span class="badge badge-dark">Completed</span>
-																						</c:if>
-																						</td>
-																					
-																						<td> 
 																						
-																						<c:if test="${e.statusId==2}">
-																						<a href="newtest?examId=${e.examId }&subjectId=${e.subjectId}&studentId=${s.studentId}">                                 
-                                  <button type="button" name="edit" class="btn btn-warning btn-circle btn-sm edit_button" ><i class="fas fa-edit"></i></button> </a> 		       
-																						</c:if>
-																						<c:if test="${e.statusId==3}">
+																						<c:if test="${e.statusId==3 }">
+																						<span class="badge badge-dark">${e.statusName}</span>
 																						</c:if>
 																						</td>
+																						<td><a href="listexamsubjectresult?examId=${e.examId }&studentId=${s.studentId}">View</a></td>
+																						<td><a href="listexamsubject?examId=${e.examId }&studentId=${s.studentId}">View Result</a> </td>
 																					</tr>
 																				</c:forEach>
 

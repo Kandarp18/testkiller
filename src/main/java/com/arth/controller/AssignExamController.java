@@ -50,7 +50,7 @@ ExamQuestionDao examquestiondao;
 				
 			int totalQuestion=exam.getTotalQuestion();
 			int questionId=0;
-		List<QuestionBean>  qs=	examquestiondao.getAllQuestionByExam(subjectId);
+		List<QuestionBean>  qs=	examquestiondao.getAllQuestionBySubject(examId, subjectId);
 		if(qs.size()!=0) {
 			model.addAttribute("error","Questions Already Generated!!");
 			model.addAttribute("e",assignexamdao.getAllAssign());
@@ -130,5 +130,6 @@ ExamQuestionDao examquestiondao;
 		return "AssignExamSubject";
 
 	}
+	
 }
 

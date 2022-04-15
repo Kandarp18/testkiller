@@ -21,6 +21,7 @@ import com.arth.bean.ExamBean;
 import com.arth.bean.QuestionBean;
 import com.arth.bean.StudentBean;
 import com.arth.bean.SubjectBean;
+import com.arth.bean.UserExamBean;
 import com.arth.dao.AssignExamDao;
 import com.arth.dao.AssignStudentDao;
 import com.arth.dao.ClassDao;
@@ -29,6 +30,7 @@ import com.arth.dao.ExamQuestionDao;
 import com.arth.dao.QuestionDao;
 import com.arth.dao.StudentDao;
 import com.arth.dao.SubjectDao;
+import com.arth.dao.UserExamDao;
 
 @Controller
 public class ExamController {
@@ -50,6 +52,8 @@ public class ExamController {
   AssignExamDao assignexamdao;
   @Autowired
   AssignStudentDao assignstudentdao;
+  @Autowired
+  UserExamDao userexamdao;
 	@GetMapping("/exam")
 	public String newExam(Model model) {
 		model.addAttribute("classes",classdao.getAllClassesByStatus());
@@ -133,8 +137,11 @@ boolean p=false;
 		return assignexamdao.getAllAssignSubject(examId);
 	}
 	@GetMapping("/newtest")
-   public String newTest(@RequestParam("studentId") int studentId,@RequestParam("examId") int examId,@RequestParam("subjectId") int subjectId,Model model,HttpSession session) {
+   public String newTest(@RequestParam("studentId") int studentId,@RequestParam("examId") int examId,@RequestParam("subjectId") int subjectId,UserExamBean userExam,Model model,HttpSession session) {
 		List <QuestionBean> q=examquestiondao.getAllQuestionByExam(subjectId);
+		userexamdao.insertUserExam(userExam);
+		assignexamdao.updateStatus(examId, subjectId);
+		examdao.updateStatus(examId, subjectId);
 		StudentBean student = (StudentBean)session.getAttribute("student");
 		if(student == null) {
 			student = new StudentBean();

@@ -43,7 +43,7 @@
 													</a></li>
 													<li class="breadcrumb-item">
 													
-													<a href="#!">Active Exams
+													<a href="#!">Completed Exams
 													
 													
 													
@@ -65,7 +65,7 @@
 											<div class="col-sm-12">
 												<div class="card">
 													<div class="card-header">
-														<h5>Active Exams</h5>
+														<h5>Completed Exams</h5>
 
 													</div>
 													<div class="card-block">
@@ -105,12 +105,9 @@
 																					
 																						<td> 
 																						
-																						<c:if test="${e.statusId==2}">
-																						<a href="newtest?examId=${e.examId }&subjectId=${e.subjectId}&studentId=${s.studentId}">                                 
-                                  <button type="button" name="edit" class="btn btn-warning btn-circle btn-sm edit_button" ><i class="fas fa-edit"></i></button> </a> 		       
-																						</c:if>
-																						<c:if test="${e.statusId==3}">
-																						</c:if>
+																						
+																						<a href="newtest?examId=${e.examId }&subjectId=${e.subjectId}&studentId=${s.studentId}">View Result</a> 		       
+																						
 																						</td>
 																					</tr>
 																				</c:forEach>

@@ -82,6 +82,12 @@ public class ExamDao {
 
 			return exam;
 		}
-	
+	public void updateStatus(int examId,int subjectId) {
+		stmt.update("update exam set statusid=3 where examid=? and classid in (select classid from assignsubject where subjectid=?)",examId,subjectId);
+	}
+	public List<ExamBean> getAllExamByStudentId(int studentId) {
+		return stmt.query("select e.*,s.statusName from exam e,classes c,student st,status s,assignstudent a where e.classid=c.classid and a.studentid=st.studentid and e.statusid=s.statusid and s.statusid=3 and a.classid=c.classid and st.studentid=?",
+				new BeanPropertyRowMapper<ExamBean>(ExamBean.class),new Object[] {studentId});
+	}
 	
 }

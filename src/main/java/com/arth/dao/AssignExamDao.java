@@ -14,7 +14,7 @@ public class AssignExamDao {
 	@Autowired
 	JdbcTemplate stmt;
 	public void assignExam(AssignExamBean aeb) {
-		stmt.update("insert into assignexam (examid,subjectid,totalquestion,examdate,rightmark) values (?,?,?,?,?)",aeb.getExamId(),aeb.getSubjectId(),aeb.getTotalQuestion(),aeb.getExamDate(),aeb.getRightMark());
+		stmt.update("insert into assignexam (examid,subjectid,totalquestion,examdate,rightmark,statusid) values (?,?,?,?,?,?)",aeb.getExamId(),aeb.getSubjectId(),aeb.getTotalQuestion(),aeb.getExamDate(),aeb.getRightMark(),aeb.getStatusId());
 	}
 	public List<AssignExamBean> getAllAssign() {
 		List<AssignExamBean> exam = stmt.query("select a.*,s.subjectName,e.examName from assignexam a,subject s,exam e where a.subjectid=s.subjectid and a.examid=e.examid ", new BeanPropertyRowMapper<AssignExamBean>(AssignExamBean.class));
@@ -56,5 +56,7 @@ public class AssignExamDao {
 		return stmt.query("select a.*,s.subjectname,st.statusName from assignexam a ,subject s,status st where a.subjectid=s.subjectid and st.statusid=2 and a.examid=?",
 				new BeanPropertyRowMapper<AssignExamBean>(AssignExamBean.class),new Object[] {examId});
 	}
-
+public void updateStatus(int examId,int subjectId) {
+		stmt.update("update assignexam set statusid=3 where examid=? and subjectid=?",examId,subjectId);
+	}
 }

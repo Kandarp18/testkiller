@@ -69,7 +69,7 @@
 																class="dataTables_wrapper dt-bootstrap4">
 																<div class="row">
 																	<div class="col-xs-12 col-sm-12">
-																		<table id="listRoles" class="table table-striped">
+																		<table id="listRoles" class="table table-striped" style="text-align:center;">
 																			<thead>
 																				<tr role="row">
 																					<th>Subject Name</th>
@@ -84,10 +84,10 @@
 
 
 																				<c:forEach items="${exam}" var="e">
-																					<tr>
+																					<tr >
 																						<td>${e.subjectName}</td>
 																						<td>${e.examDate}</td>
-																						<td>${e.totalQuestion}</td>
+																						<td >${e.totalQuestion}</td>
 																						<td><b class="text-success">+${e.rightMark} Mark</b></td>
 																						<td><span class="badge badge-success">Started</span></td>
 																					

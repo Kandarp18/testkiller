@@ -56,4 +56,5 @@ public class AssignExamDao {
 		return stmt.query("select a.*,s.subjectname,st.statusName from assignexam a ,subject s,status st where a.subjectid=s.subjectid and st.statusid=2 and a.examid=?",
 				new BeanPropertyRowMapper<AssignExamBean>(AssignExamBean.class),new Object[] {examId});
 	}
+
 }

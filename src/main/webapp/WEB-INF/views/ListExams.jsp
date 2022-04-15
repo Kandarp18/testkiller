@@ -69,7 +69,7 @@
 																class="dataTables_wrapper dt-bootstrap4">
 																<div class="row">
 																	<div class="col-xs-12 col-sm-12">
-																		<table id="listRoles" class="table table-striped">
+																		<table id="listRoles" class="table table-striped" style="text-align:center;">
 																			<thead>
 																				<tr role="row">
 																					<th>Exam Name</th>

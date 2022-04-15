@@ -4,11 +4,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.arth.bean.UserExamAnsBean;
 import com.arth.dao.UserExamAnsDao;
 
-@Controller
+@RestController
 public class UserExamAnsController {
 	@Autowired
 	UserExamAnsDao userexamansdao;
@@ -17,6 +18,7 @@ public class UserExamAnsController {
 	@RequestMapping(value = "/saveuserexamans", method = RequestMethod.POST, produces = "application/json")
 	public String saveUserExamAns(UserExamAnsBean userexamans) {
 //		userExamAnsDao.adduserans(userexamans);
+		
 		userexamansdao.adduserAns(userexamans);
 		
 		return "done";

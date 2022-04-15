@@ -61,7 +61,7 @@
                                  </div>
                             </div>
                         </div>
-                      
+                      <br>
                             
                             <div class="row">
                           
@@ -109,16 +109,16 @@
 			%>
 				</c:forEach>
 				<div class="text-center">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				<input type="submit" name="submit" onclick="saveAns()" class="btn btn-success" value="Final Submit">
+				<input type="button" onclick="saveAns()" name="submit" class="btn btn-success" value="Final Submit">
 				</div>
 				 </form>    
-                
+                <br>
 
 	
                   </div>
                                 <div class="col-md-4">
                                     <div class="text-center mt-2 mb-2">
-                                        <div id="exam_timer" data-timer=100 style="max-width:375px; width: 100%; height: 190px; margin:0 auto">
+                                        <div id="exam_timer"  data-timer=50 style="max-width:375px; width: 100%; height: 190px; margin:0 auto">
                                         </div>
                                     </div>
                                     <div class="card shadow">
@@ -136,7 +136,7 @@
                                     </div>
                                 </div>
                             </div>
-                            </div>
+         </div>
                   
 </div>
                 		
@@ -179,7 +179,7 @@ $(document).ready(function(){
         {
             $("#exam_timer").TimeCircles().destroy();
             alert('Exam Time Completed');
-            location.href="/listexamsubject?examId=${e.examId}&studentId=${st.studentId}";
+            location.href="/listexamsubject?examId=${e.examId}&studentId=${student.studentId}";
         }
     });
 
@@ -188,18 +188,21 @@ $(document).ready(function(){
 	
 	                     <%
 	               ExamBean e = (ExamBean) request.getAttribute("e");
-	                %>
-	         <%
+	                 %>
+	            <%
 	            StudentBean student = (StudentBean) session.getAttribute("student");
 	             %>  
 <script>
 function saveAns() {
+	
 	let total =<%=i%>;
 	let userAns = [];
 	let examId =<%=e.getExamId()%>;
 	let studentId =<%=student.getStudentId()%>;
-	for (let i = 0; i < total; i++) {
+ 	
+ 	for (let i = 0; i < total; i++) {
 		let questions = document.getElementsByName("question" + i)
+		
 		let ans = document.getElementsByName("userAns" + i);
 		for (let a = 0; a < 4; a++) {
 			if (ans[a].checked) {
@@ -226,7 +229,7 @@ function saveAns() {
 		}
 	}//main loop 
 	
-
+ 	 location.href="/listexamsubject?examId=${e.examId}&studentId=${student.studentId}";
 }
 
 </script>

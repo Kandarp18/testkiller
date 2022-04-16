@@ -93,7 +93,7 @@
 																						</c:if>
 																						</td>
 																						<td><a href="listexamsubjectresult?examId=${e.examId }&studentId=${s.studentId}">View</a></td>
-																						<td><a href="listexamsubject?examId=${e.examId }&studentId=${s.studentId}">View Result</a> </td>
+																						<td><a href="examreport?examId=${e.examId}">View Result</a> </td>
 																					</tr>
 																				</c:forEach>
 

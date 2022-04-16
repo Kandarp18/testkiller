@@ -21,6 +21,7 @@ import com.arth.bean.ExamBean;
 import com.arth.bean.QuestionBean;
 import com.arth.bean.StudentBean;
 import com.arth.bean.SubjectBean;
+import com.arth.bean.UserExamAnsBean;
 import com.arth.bean.UserExamBean;
 import com.arth.dao.AssignExamDao;
 import com.arth.dao.AssignStudentDao;
@@ -30,6 +31,7 @@ import com.arth.dao.ExamQuestionDao;
 import com.arth.dao.QuestionDao;
 import com.arth.dao.StudentDao;
 import com.arth.dao.SubjectDao;
+import com.arth.dao.UserExamAnsDao;
 import com.arth.dao.UserExamDao;
 
 @Controller
@@ -54,6 +56,8 @@ public class ExamController {
   AssignStudentDao assignstudentdao;
   @Autowired
   UserExamDao userexamdao;
+  @Autowired
+  UserExamAnsDao userexamansdao;
 	@GetMapping("/exam")
 	public String newExam(Model model) {
 		model.addAttribute("classes",classdao.getAllClassesByStatus());
@@ -156,4 +160,25 @@ boolean p=false;
 		model.addAttribute("studentId",student.getStudentId());
 		return "NewTest";
 	}
+	@GetMapping("/examreport")
+	public String examResult(@RequestParam("examId") int examId,Model model) {
+		int totalCorrect = 0;
+		
+		List<QuestionBean> question = examquestiondao.getAllQuestion(examId);
+		List<UserExamAnsBean> userexamans = examdao.getUserExamAnsByQuestionId(examId);
+	
+		for(int i=0;i<question.size();i++) {
+			if(question.get(i).getAnswer().equals(userexamans.get(0).getUserAns())){
+				
+				userexamansdao.updateAnsStatus(examId);
+				totalCorrect++; 
+			}
+			else {
+				userexamansdao.updateWrongAnsStatus(examId);
+			}
+		
+		
+	}
+		return "ExamSubjectResult";
+}
 }

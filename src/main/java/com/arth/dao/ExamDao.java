@@ -8,6 +8,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.arth.bean.ExamBean;
+import com.arth.bean.UserExamAnsBean;
 
 
 @Repository
@@ -89,5 +90,10 @@ public class ExamDao {
 		return stmt.query("select e.*,s.statusName from exam e,classes c,student st,status s,assignstudent a where e.classid=c.classid and a.studentid=st.studentid and e.statusid=s.statusid and s.statusid=3 and a.classid=c.classid and st.studentid=?",
 				new BeanPropertyRowMapper<ExamBean>(ExamBean.class),new Object[] {studentId});
 	}
-	
+	public List<UserExamAnsBean> getUserExamAnsByQuestionId(int examId) {
+		// TODO Auto-generated method stub
+		List<UserExamAnsBean> userexamans = stmt.query("select * from userexamans where examid = ?", 
+				new BeanPropertyRowMapper<UserExamAnsBean>(UserExamAnsBean.class), new Object[] { examId });
+		return userexamans;
+	}
 }

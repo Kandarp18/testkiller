@@ -23,4 +23,7 @@ public List<QuestionBean> getAllQuestionByExam(int subjectId){
 public List<QuestionBean> getAllQuestionBySubject(int examId,int subjectId){
 	return stmt.query("select * from question where questionid in (select questionid from examquestion where examid=? and subjectid=?)",new BeanPropertyRowMapper<QuestionBean>(QuestionBean.class),new Object[] {examId,subjectId});
 }
+public List<QuestionBean> getAllQuestion(int examId){
+	return stmt.query("select * from question where questionid in (select questionid from examquestion where examid=?)",new BeanPropertyRowMapper<QuestionBean>(QuestionBean.class),new Object[] {examId});
+}
 }

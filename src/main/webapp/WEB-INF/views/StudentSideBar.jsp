@@ -31,24 +31,7 @@
 
 
 
-					<li class="pcoded-hasmenu" dropdown-icon="style1"
-						subitem-icon="style1"><a href="javascript:void(0)"
-						class="waves-effect waves-dark"> <span class="pcoded-micon">
-								<i class="feather icon-clipboard"></i>
-						</span> <span class="pcoded-mtext">Reports</span>
-					</a>
-						<ul class="pcoded-submenu">
-							<li class=" "><a href="projectreport?statusId=0"
-								class="waves-effect waves-dark"> <span class="pcoded-mtext">Project</span>
-							</a></li>
-							<li class=" "><a href="form-elements-add-on.html"
-								class="waves-effect waves-dark"> <span class="pcoded-mtext">Developer</span>
-							</a></li>
-							<li class=" "><a href="form-elements-advance.html"
-								class="waves-effect waves-dark"> <span class="pcoded-mtext">Task</span>
-							</a></li>
-						</ul></li>
-
+					
 
 				</ul>
 

@@ -96,4 +96,14 @@ public class ExamDao {
 				new BeanPropertyRowMapper<UserExamAnsBean>(UserExamAnsBean.class), new Object[] { examId });
 		return userexamans;
 	}
+	public List<UserExamAnsBean> getUserExamById(int subjectId) {
+		// TODO Auto-generated method stub
+		List<UserExamAnsBean> userexamans = stmt.query("select * from userexamans where  subjectid=?", 
+				new BeanPropertyRowMapper<UserExamAnsBean>(UserExamAnsBean.class), new Object[] { subjectId });
+		return userexamans;
+	}
+	public ExamBean countAppearedExam(int studentId) {
+		ExamBean e= stmt.queryForObject("select count(*) from exam where statusid=3 and classid in (select classid from assignstudent where studentid=?)",new BeanPropertyRowMapper<ExamBean>(ExamBean.class),new Object[] {studentId});
+		return e;
+	}
 }

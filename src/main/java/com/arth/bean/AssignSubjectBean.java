@@ -4,7 +4,7 @@ public class AssignSubjectBean {
 	private int assignSubjectId;
 	private int classId;
 	private int subjectId;
-		private String className;
+	private String className;
 	private String subjectName;
 	public int getAssignSubjectId() {
 		return assignSubjectId;

@@ -93,7 +93,7 @@
 																						</c:if>
 																						</td>
 																						<td><a href="listexamsubjectresult?examId=${e.examId }&studentId=${s.studentId}">View</a></td>
-																						<td><a href="examreport?examId=${e.examId}">View Result</a> </td>
+																						<td><button onclick="exportPdf()" ><a href="examreport?examId=${e.examId}">View Result</a></button> </td>
 																					</tr>
 																				</c:forEach>
 
@@ -151,5 +151,27 @@
         </div>
     </div>
 <jsp:include page="AllJs2.jsp"></jsp:include>
+<script type="text/javascript">
+			function exportPdf() {
+				const element = document.getElementById('listProjects');
+				var opt = {
+					margin : 1,
+					filename : 'Report.pdf',
+					image : {
+						type : 'jpeg',
+						quality : 0.98
+					},
+					html2canvas : {
+						scale : 1
+					},
+					jsPDF : {
+						unit : 'in',
+						format : 'letter',
+						orientation : 'landscape'
+					}
+				};
+				html2pdf().set(opt).from(element).save();
+			}
+		</script>
 </body>
 </html>

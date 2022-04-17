@@ -143,9 +143,9 @@ boolean p=false;
 	@GetMapping("/newtest")
    public String newTest(@RequestParam("studentId") int studentId,@RequestParam("examId") int examId,@RequestParam("subjectId") int subjectId,UserExamBean userExam,Model model,HttpSession session) {
 		List <QuestionBean> q=examquestiondao.getAllQuestionByExam(subjectId);
-		userexamdao.insertUserExam(userExam);
+		
 		assignexamdao.updateStatus(examId, subjectId);
-		examdao.updateStatus(examId, subjectId);
+		examdao.updateStatus(examId,subjectId);
 		StudentBean student = (StudentBean)session.getAttribute("student");
 		if(student == null) {
 			student = new StudentBean();
@@ -155,30 +155,15 @@ boolean p=false;
 		model.addAttribute("q",q);
 		model.addAttribute("e", examdao.getExam(examId));
 		model.addAttribute("s", subjectdao.getSubjectById(subjectId));
-		
+               
 		model.addAttribute("ast",assignstudentdao.getAssignByStudent(studentId));
 		model.addAttribute("studentId",student.getStudentId());
 		return "NewTest";
 	}
 	@GetMapping("/examreport")
-	public String examResult(@RequestParam("examId") int examId,Model model) {
-		int totalCorrect = 0;
-		
-		List<QuestionBean> question = examquestiondao.getAllQuestion(examId);
-		List<UserExamAnsBean> userexamans = examdao.getUserExamAnsByQuestionId(examId);
+	public String examResult(@RequestParam("examId") int examId,Model model,ExamBean exam) {
 	
-		for(int i=0;i<question.size();i++) {
-			if(question.get(i).getAnswer().equals(userexamans.get(0).getUserAns())){
-				
-				userexamansdao.updateAnsStatus(examId);
-				totalCorrect++; 
-			}
-			else {
-				userexamansdao.updateWrongAnsStatus(examId);
-			}
-		
-		
-	}
 		return "ExamSubjectResult";
 }
+	
 }

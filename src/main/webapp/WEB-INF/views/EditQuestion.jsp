@@ -84,14 +84,7 @@
 		                  <div class="form-group row">
                         <label class="col-sm-3 col-form-label">Answer</label>
                         <div class="col-sm-9">
-                            <select name="answer" id="answer" class="form-control" required>
-                            <option value="${q.answer }">${q.answer }</option>
-                                <option value="">Select</option>
-                                <option value="option1">1 Option</option>
-                                <option value="option2">2 Option</option>
-                                <option value="option3">3 Option</option>
-                                <option value="option4">4 Option</option>
-                            </select>
+                             <input type="text" name="answer" id="answer" value="${q.answer }" class="form-control" required />
                         </div>
                     </div>
         		</div>

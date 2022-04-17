@@ -39,11 +39,14 @@ public class StudentController {
 	@GetMapping("/studentdashboard")
 	public String newStudent(@RequestParam("studentId") int studentId,ExamBean exam,Model model) {
 		model.addAttribute("s", studentdao.getStudentById(studentId));
+		ExamBean e=examdao.countAppearedExam(studentId);
+		model.addAttribute("count", e);
 		return "StudentDashboard";
 	}
 	@PostMapping("/studentdashboard")
 	public String student(@RequestParam("studentId") int studentId,ExamBean exam,Model model) {
 		model.addAttribute("s", studentdao.getStudentById(studentId));
+		model.addAttribute("count", examdao.countAppearedExam(studentId));
 		return "StudentDashboard";
 	}
 	@GetMapping("/newstudent")
@@ -91,7 +94,7 @@ public class StudentController {
 		}
 
 		if (isCorrect == true) {
-		
+			
 			return "StudentDashboard";
 		}
 		else {
@@ -179,6 +182,7 @@ public class StudentController {
 	@GetMapping("/studentprofile")
 	public String studentProfile(@RequestParam("studentId") int studentId,Model model) {
 		model.addAttribute("s", studentdao.getStudentById(studentId));
+		
 		return "StudentProfile";
 	}
 	@PostMapping("/updateprofile")

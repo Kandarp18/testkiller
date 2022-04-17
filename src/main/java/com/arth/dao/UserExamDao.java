@@ -12,8 +12,11 @@ public class UserExamDao {
 	JdbcTemplate stmt;
 	public void insertUserExam(UserExamBean userExam) {
 		// TODO Auto-generated method stub
-		stmt.update("insert into userexam (examid,studentid,subjectid,status) values (?,?,?,'Started')", 
-				 userExam.getExamId(), userExam.getStudentId(),userExam.getSubjectId());
+		stmt.update("insert into userexam (examid,studentid,subjectid,status,obtainmarks) values (?,?,?,'Started',?)", 
+				 userExam.getExamId(), userExam.getStudentId(),userExam.getSubjectId(),userExam.getObtainMarks());
 	
+	}
+	public void updateMarks(UserExamBean userExam) {
+		stmt.update("update userexam set obtainmarks=? where examid=? and subjectid=?",userExam.getObtainMarks(),userExam.getExamId(),userExam.getSubjectId() );
 	}
 }

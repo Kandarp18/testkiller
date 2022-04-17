@@ -71,7 +71,7 @@ ExamQuestionDao examquestiondao;
 	    	  }
 	      
 	    	  for(int i: randomQ) {
-	    		  examquestiondao.mapQuestion(examId, question.get(i).getQuestionId());
+	    		  examquestiondao.mapQuestion(examId, question.get(i).getQuestionId(),subjectId);
 	    	  }
 	    	  model.addAttribute("success", "Question Generated Successfully");
 	    	  model.addAttribute("q",questiondao.getAssignQuestion());

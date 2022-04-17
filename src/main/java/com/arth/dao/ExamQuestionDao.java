@@ -14,8 +14,8 @@ public class ExamQuestionDao {
 @Autowired
 JdbcTemplate stmt;
 
-public void mapQuestion(int examId,int questionId) {
-	stmt.update("insert into examquestion (examid,questionid) values (?,?)",examId,questionId);
+public void mapQuestion(int examId,int questionId,int subjectId) {
+	stmt.update("insert into examquestion (examid,questionid,subjectId) values (?,?,?)",examId,questionId,subjectId);
 }
 public List<QuestionBean> getAllQuestionByExam(int subjectId){
 	return stmt.query("select * from question where questionid in (select questionid from examquestion where subjectid=?)",new BeanPropertyRowMapper<QuestionBean>(QuestionBean.class),new Object[] {subjectId});

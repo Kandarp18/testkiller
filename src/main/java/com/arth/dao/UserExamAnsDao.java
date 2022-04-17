@@ -1,9 +1,7 @@
 package com.arth.dao;
 
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -15,14 +13,14 @@ public class UserExamAnsDao {
 	JdbcTemplate stmt;
 	public void adduserAns(UserExamAnsBean userexamans) {
 		// TODO Auto-generated method stub
-		stmt.update("insert into userexamans (userans,studentid,questionid,examid) values (?,?,?,?) ", userexamans.getUserAns(), 
-				 userexamans.getStudentId(), userexamans.getQuestionId(), userexamans.getExamId());
-		System.out.println("done...");
+		stmt.update("insert into userexamans (userans,studentid,questionid,examid,subjectid,ansstatus) values (?,?,?,?,?,?) ", userexamans.getUserAns(), 
+				 userexamans.getStudentId(), userexamans.getQuestionId(), userexamans.getExamId(),userexamans.getSubjectId(),userexamans.getAnsStatus());
+		
 	}
-	public void updateAnsStatus(int examId) {
-		stmt.update("update userexamans set ansstatus=1 where questionid in (select questionid from examquestion where examid=?)",examId);
+	public void updateAnsStatus(int examId,int questionId) {
+		stmt.update("update userexamans set ansstatus=1 where examId=? and questionid=?",examId,questionId);
 	}
-	public void updateWrongAnsStatus(int examId) {
-		stmt.update("update userexamans set ansstatus=0 where questionid in (select questionid from examquestion where examid=?)",examId);
+	public void updateWrongAnsStatus(int examId,int questionId) {
+		stmt.update("update userexamans set ansstatus=0 where examId=? and questionid=?",examId,questionId);
 	}
 }

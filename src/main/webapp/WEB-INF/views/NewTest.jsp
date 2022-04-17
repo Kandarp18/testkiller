@@ -1,5 +1,6 @@
 <%@page import="com.arth.bean.StudentBean"%>
 <%@page import="com.arth.bean.ExamBean"%>
+<%@page import="com.arth.bean.SubjectBean"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
      <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -184,9 +185,11 @@ $(document).ready(function(){
 </script> 
                 		
 	<jsp:include page="AllJs.jsp"></jsp:include>
+	                <%
+	               SubjectBean s = (SubjectBean) request.getAttribute("s");
+	                 %>
 	
-	
-	                     <%
+	                 <%
 	               ExamBean e = (ExamBean) request.getAttribute("e");
 	                 %>
 	            <%
@@ -199,7 +202,7 @@ function saveAns() {
 	let userAns = [];
 	let examId =<%=e.getExamId()%>;
 	let studentId =<%=student.getStudentId()%>;
- 	
+ 	let subjectId=<%=s.getSubjectId()%>
  	for (let i = 0; i < total; i++) {
 		let questions = document.getElementsByName("question" + i)
 		
@@ -210,7 +213,8 @@ function saveAns() {
 					"userAns" : ans[a].value,
 					"questionId" : questions[0].value,
 					"examId" : examId,
-					"studentId" : studentId
+					"studentId" : studentId,
+					"subjectId" : subjectId
 				}
 				userAns.push(ua);
 				$.ajax({
@@ -228,12 +232,23 @@ function saveAns() {
 			}
 		}
 	}//main loop 
-	
- 	 location.href="/listexamsubject?examId=${e.examId}&studentId=${student.studentId}";
+
+	$.ajax({
+		url : "generateResult?examId="+examId+"&subjectId="+subjectId+"&studentId="+studentId,
+		type : "get",
+		success : function(data, textStatus, jqXHR) {
+			//data - response from server
+			console.log(data);
+		},
+		error : function(jqXHR, textStatus, errorThrown) {
+			console.log("error")
+		}
+	});
+location.href="/listexamsubject?examId=${e.examId}&studentId=${student.studentId}";
 }
 window.history.forward();
 function noBack() {
-    window.history.forward();
+window.history.forward();
 }
   
 </script>

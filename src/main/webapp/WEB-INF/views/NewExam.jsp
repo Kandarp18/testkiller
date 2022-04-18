@@ -61,7 +61,7 @@
                                             <th>Exam Name</th>
                                             <th>Class Name</th>
                                             <th>Exam Duration</th>
-                                            <th>Result Date & Time</th>
+                                            
                                             <th>Status</th>
                                             <th>Created On</th>
                                             <th>Action</th>
@@ -74,7 +74,7 @@
 		                                      <td>${e.examName}</td>
 		                                      <td>${e.className }</td>
 		                                      <td>${e.duration } Minute</td>
-		                                      <td>${e.resultDate }</td>
+		                                      
 		                                      <td>
 		                                      <c:if test="${e.statusId==1}">
 		                                     <span class="badge badge-warning">Pending</span>
@@ -110,7 +110,7 @@
 		                                        </c:if>
 		                                        <c:if test="${e.statusId==3}">
 		                                    
-		                                        <a href="#!" class="btn btn-secondary btn-sm">View Result</a>
+		                                        <a href="examstudentreport?examId=${e.examId }" class="btn btn-secondary btn-sm">View Result</a>
 		                                        </c:if>
 		                                       </td>
 	                                           </tr>
@@ -208,7 +208,7 @@
                         </select>
                     </div>
                     <input type="hidden" name="statusId" value="1">
-                    <input type="hidden" name="resultDate" value="Not Publish">
+                    
         		</div>
         		<div class="modal-footer">
           			

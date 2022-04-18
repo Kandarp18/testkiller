@@ -63,7 +63,7 @@
                             <option value="120">120 Minute</option>
                         </select>
                     </div>
-                    <input type="hidden" name="resultDate" value="Not Publish">
+                   
 		          	<div class="form-group" id="ifedit">
 		          	<label>Exam Status <span class="text-danger">*</span></label>
 		          	<select name="statusId" id="statusId" class="form-control">

@@ -5,9 +5,81 @@ public class UserExamBean {
 	private int examId;
 	private int studentId;
 	private int subjectId;
-	private String status;
-	private int obtainMarks;
 	
+	private int obtainMarks;
+	private String subjectName;
+	private String examName;
+	private int totalQuestion;
+	private String question;
+	private String answer;
+	private String userAns;
+	private String studentName;
+	private String ansStatus;
+	
+	private String rollNo;
+	private String className;
+	
+	
+	public String getClassName() {
+		return className;
+	}
+	public void setClassName(String className) {
+		this.className = className;
+	}
+	public String getStudentName() {
+		return studentName;
+	}
+	public void setStudentName(String studentName) {
+		this.studentName = studentName;
+	}
+	public String getRollNo() {
+		return rollNo;
+	}
+	public void setRollNo(String rollNo) {
+		this.rollNo = rollNo;
+	}
+	public String getAnsStatus() {
+		return ansStatus;
+	}
+	public void setAnsStatus(String ansStatus) {
+		this.ansStatus = ansStatus;
+	}
+	public String getQuestion() {
+		return question;
+	}
+	public void setQuestion(String question) {
+		this.question = question;
+	}
+	public String getAnswer() {
+		return answer;
+	}
+	public void setAnswer(String answer) {
+		this.answer = answer;
+	}
+	public String getUserAns() {
+		return userAns;
+	}
+	public void setUserAns(String userAns) {
+		this.userAns = userAns;
+	}
+	public String getSubjectName() {
+		return subjectName;
+	}
+	public void setSubjectName(String subjectName) {
+		this.subjectName = subjectName;
+	}
+	public String getExamName() {
+		return examName;
+	}
+	public void setExamName(String examName) {
+		this.examName = examName;
+	}
+	public int getTotalQuestion() {
+		return totalQuestion;
+	}
+	public void setTotalQuestion(int totalQuestion) {
+		this.totalQuestion = totalQuestion;
+	}
 	public int getSubjectId() {
 		return subjectId;
 	}
@@ -32,12 +104,7 @@ public class UserExamBean {
 	public void setStudentId(int studentId) {
 		this.studentId = studentId;
 	}
-	public String getStatus() {
-		return status;
-	}
-	public void setStatus(String status) {
-		this.status = status;
-	}
+	
 	public int getObtainMarks() {
 		return obtainMarks;
 	}

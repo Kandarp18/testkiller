@@ -93,7 +93,7 @@
 																						</c:if>
 																						</td>
 																						<td><a href="listexamsubjectresult?examId=${e.examId }&studentId=${s.studentId}">View</a></td>
-																						<td><button onclick="exportPdf()" ><a href="examreport?examId=${e.examId}">View Result</a></button> </td>
+																						<td><button onclick="exportPdf()" ><a href="examreport?examId=${e.examId}&studentId=${s.studentId}" class="btn btn-warning btn-circle btn-sm edit_button">View Result</a></button> </td>
 																					</tr>
 																				</c:forEach>
 

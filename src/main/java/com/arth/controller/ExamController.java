@@ -161,9 +161,31 @@ boolean p=false;
 		return "NewTest";
 	}
 	@GetMapping("/examreport")
-	public String examResult(@RequestParam("examId") int examId,Model model,ExamBean exam) {
-	
+	public String examResult(@RequestParam("examId") int examId,@RequestParam("studentId") int studentId,Model model,ExamBean exam) {
+		model.addAttribute("result", userexamdao.viewResult(examId, studentId));	
+		model.addAttribute("s", studentdao.getStudentById(studentId));
+		model.addAttribute("sum",userexamdao.sumMarks(examId, studentId));
+		model.addAttribute("ast",assignstudentdao.getAssignByStudent(studentId));
+		model.addAttribute("e", examdao.getExam(examId));
+		return "ExamResult";
+}
+	@GetMapping("/examsubjectreport")
+	public String examSubjectResult(@RequestParam("examId") int examId,@RequestParam("studentId") int studentId,@RequestParam("subjectId") int subjectId,Model model,ExamBean exam) {
+		model.addAttribute("st", subjectdao.getSubjectById(subjectId));
+		model.addAttribute("s", studentdao.getStudentById(studentId));
+		model.addAttribute("result", userexamdao.viewSubjectResult(examId, studentId, subjectId));
+		model.addAttribute("ast",assignstudentdao.getAssignByStudent(studentId));
+		model.addAttribute("e", examdao.getExam(examId));
+		model.addAttribute("sum",userexamdao.sumMarks(examId, studentId));
 		return "ExamSubjectResult";
+}
+	@GetMapping("/examstudentreport")
+	public String examStudentResult(@RequestParam("examId") int examId,Model model,ExamBean exam) {
+		
+		model.addAttribute("result",userexamdao.viewStudentResult(examId));
+		model.addAttribute("e", examdao.getClassNameByExamId(examId));
+		
+		return "ViewStudentResult";
 }
 	
 }

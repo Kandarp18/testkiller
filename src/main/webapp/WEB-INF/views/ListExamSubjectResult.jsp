@@ -106,7 +106,7 @@
 																						<td> 
 																						
 																						
-																						<a href="newtest?examId=${e.examId }&subjectId=${e.subjectId}&studentId=${s.studentId}">View Result</a> 		       
+																						<a href="examsubjectreport?examId=${e.examId }&subjectId=${e.subjectId}&studentId=${s.studentId}" class="btn btn-warning btn-circle btn-sm edit_button">View Result</a> 		       
 																						
 																						</td>
 																					</tr>

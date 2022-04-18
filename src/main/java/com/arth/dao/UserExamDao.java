@@ -1,6 +1,9 @@
 package com.arth.dao;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -12,11 +15,27 @@ public class UserExamDao {
 	JdbcTemplate stmt;
 	public void insertUserExam(UserExamBean userExam) {
 		// TODO Auto-generated method stub
-		stmt.update("insert into userexam (examid,studentid,subjectid,status,obtainmarks) values (?,?,?,'Started',?)", 
+		stmt.update("insert into userexam (examid,studentid,subjectid,obtainmarks) values (?,?,?,?)", 
 				 userExam.getExamId(), userExam.getStudentId(),userExam.getSubjectId(),userExam.getObtainMarks());
 	
 	}
 	public void updateMarks(UserExamBean userExam) {
 		stmt.update("update userexam set obtainmarks=? where examid=? and subjectid=?",userExam.getObtainMarks(),userExam.getExamId(),userExam.getSubjectId() );
+	}
+	public List<UserExamBean> viewResult(int examId,int studentId){
+		List<UserExamBean> result=stmt.query("select s.subjectName,u.*,a.totalQuestion from subject s,userexam u,assignexam a where u.examid=? and u.studentid=? and a.examid=u.examid and s.subjectid=u.subjectid",new BeanPropertyRowMapper<UserExamBean>(UserExamBean.class),new Object[] {examId,studentId});
+		return result;
+	}
+	public UserExamBean sumMarks(int examId,int studentId) {
+		UserExamBean sum=stmt.queryForObject("select (obtainmarks) from userexam where examid=? and studentid=?",new BeanPropertyRowMapper<UserExamBean>(UserExamBean.class),new Object[] {examId,studentId});
+	return sum;
+	}
+	public List<UserExamBean> viewSubjectResult(int examId,int studentId,int subjectId){
+		List<UserExamBean> result=stmt.query("select q.question,u.userans,q.answer,u.ansstatus from question q,userexamans u,exam e,student s,subject st where u.questionid=q.questionid and u.examid=e.examid and s.studentid=u.studentid and st.subjectid=u.subjectid and e.examid=? and s.studentid=? and st.subjectid=?",new BeanPropertyRowMapper<UserExamBean>(UserExamBean.class),new Object[] {examId,studentId,subjectId});
+		return result;
+	}
+	public List<UserExamBean> viewStudentResult(int examId){
+		List<UserExamBean> result=stmt.query("select c.className,s.studentName,a.*,e.totalQuestion,u.* from classes c,student s,assignstudent a,assignexam e,userexam u where e.examid=? and a.studentid=u.studentid and e.examid=u.examid and e.subjectid=u.subjectid and s.studentid=a.studentid and a.classid=c.classid",new BeanPropertyRowMapper<UserExamBean>(UserExamBean.class),new Object[] {examId});
+		return result;
 	}
 }

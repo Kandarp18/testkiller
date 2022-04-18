@@ -17,7 +17,7 @@ public class ExamDao {
 	JdbcTemplate stmt;
 
 	public void addExam(ExamBean exam) {
-		stmt.update("insert into exam (examname,resultdate,duration,classid,statusid) values (?,?,?,?,?) ", exam.getExamName(),exam.getResultDate(),exam.getDuration(),exam.getClassId(),exam.getStatusId());
+		stmt.update("insert into exam (examname,duration,classid,statusid) values (?,?,?,?) ", exam.getExamName(),exam.getDuration(),exam.getClassId(),exam.getStatusId());
 	}
 
 	public List<ExamBean> getAllExam() {
@@ -106,4 +106,10 @@ public class ExamDao {
 		ExamBean e= stmt.queryForObject("select count(*) from exam where statusid=3 and classid in (select classid from assignstudent where studentid=?)",new BeanPropertyRowMapper<ExamBean>(ExamBean.class),new Object[] {studentId});
 		return e;
 	}
+	public ExamBean getClassNameByExamId(int examId) {
+
+		   ExamBean exam = stmt.queryForObject("select e.*,c.className from exam e,classes c where e.examid = ? and e.classid=c.classid", new BeanPropertyRowMapper<ExamBean>(ExamBean.class), new Object[] { examId });
+
+			return exam;
+		}
 }

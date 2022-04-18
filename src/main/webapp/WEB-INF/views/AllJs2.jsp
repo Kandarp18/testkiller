@@ -42,4 +42,25 @@
 
 		gtag('config', 'UA-23581568-13');
 	</script>
-
+<script type="text/javascript">
+			function exportPdf() {
+				const element = document.getElementById('studenttable');
+				var opt = {
+					margin : 1,
+					filename : 'Report.pdf',
+					image : {
+						type : 'jpeg',
+						quality : 0.98
+					},
+					html2canvas : {
+						scale : 1
+					},
+					jsPDF : {
+						unit : 'in',
+						format : 'letter',
+						orientation : 'landscape'
+					}
+				};
+				html2pdf().set(opt).from(element).save();
+			}
+		</script>

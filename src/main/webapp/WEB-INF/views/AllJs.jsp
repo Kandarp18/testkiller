@@ -12,7 +12,7 @@
 	    <script type="text/javascript" src="vendor/parsley/dist/parsley.min.js"></script>
 
 	    <script type="text/javascript" src="vendor/TimeCircle/TimeCircles.js"></script>
-
+        <script type="text/javascript" src="js/html2pdf.js"></script>
 	    <script>
 		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),

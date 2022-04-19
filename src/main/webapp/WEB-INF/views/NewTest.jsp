@@ -244,6 +244,7 @@ function saveAns() {
 			console.log("error")
 		}
 	});
+	 alert('Exam Submitted Successfully!');
 location.href="/listexamsubject?examId=${e.examId}&studentId=${student.studentId}";
 }
 window.history.forward();

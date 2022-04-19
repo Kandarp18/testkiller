@@ -98,7 +98,7 @@ public class ExamDao {
 	}
 	public List<UserExamAnsBean> getUserExamById(int subjectId) {
 		// TODO Auto-generated method stub
-		List<UserExamAnsBean> userexamans = stmt.query("select * from userexamans where  subjectid=?", 
+		List<UserExamAnsBean> userexamans = stmt.query("select * from userexamans where subjectid=? ", 
 				new BeanPropertyRowMapper<UserExamAnsBean>(UserExamAnsBean.class), new Object[] { subjectId });
 		return userexamans;
 	}

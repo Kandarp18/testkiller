@@ -60,16 +60,14 @@
                                 <table class="table table-bordered" id="studenttable" width="100%" cellspacing="0">
                                     <thead>
                                     <tr>
-                                    <td>
-                                    </td>
-                                    <td colspan="2" style="text-align:center;"><b>Exam</b>-${e.examName }</td>
-                                    <td></td>
+                                    
+                                    <td colspan="4" style="text-align:center;"><b>Exam</b>-${e.examName }</td>
+                                   
                                     </tr>
                                     <tr>
-                                    <td>
-                                    </td>
-                                    <td colspan="2" style="text-align:center;"><b>Class</b>-${e.className }</td>
-                                    <td></td>
+                                    
+                                    <td colspan="4" style="text-align:center;"><b>Class</b>-${e.className }</td>
+                                   
                                     </tr>
                                         <tr>
                                             <th>Roll No</th>

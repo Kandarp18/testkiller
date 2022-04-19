@@ -64,7 +64,7 @@
 												<div class="card">
 													<div class="card-header">
 														<h5>Completed Exams</h5>&nbsp;&nbsp;&nbsp;&nbsp;
-                                                     <button onclick="exportPdf()">Download Pdf</button>
+                                                     <button onclick="exportPdf()">Download as Pdf</button>
 													</div>
 													<div class="card-block">
 														<div class="dt-responsive table-responsive">

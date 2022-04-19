@@ -105,7 +105,7 @@
 																						
 																						<td>
 																						<c:if test="${r.ansStatus=='correct' }">
-																						+1 Mark
+																						+${r.rightMark } Mark
 																						</c:if>
 																						<c:if test="${r.ansStatus=='wrong' }">
 																						0 Mark

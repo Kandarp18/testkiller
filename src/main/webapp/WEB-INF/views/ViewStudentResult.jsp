@@ -87,7 +87,7 @@
 		                                      <td>${r.rollNo }</td>
 		                                      <td>${r.studentName}</td>
 		                                      
-		                                      <td>${r.totalQuestion }</td>
+		                                      <td>${r.totalQuestion }*${r.rightMark }</td>
 		                                      <td>${r.obtainMarks }</td>
 		                                      
 	                                           </tr>

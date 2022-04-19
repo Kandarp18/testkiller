@@ -58,7 +58,7 @@ public class ExamDao {
 	}
 	
 	public void updateExam(ExamBean e) {
-		stmt.update("update exam set examname=?,resultdate=?,duration=?,statusid=?,classid=? where examid=?",e.getExamName(),e.getResultDate(),e.getDuration(),e.getStatusId(),e.getClassId(),e.getExamId());
+		stmt.update("update exam set examname=?,duration=?,statusid=?,classid=? where examid=?",e.getExamName(),e.getDuration(),e.getStatusId(),e.getClassId(),e.getExamId());
 	}
 	public ExamBean getAllById(int classId,String examName) {
 		ExamBean dbExam=null;

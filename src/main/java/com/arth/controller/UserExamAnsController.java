@@ -14,6 +14,7 @@ import com.arth.bean.AssignExamBean;
 import com.arth.bean.QuestionBean;
 import com.arth.bean.UserExamAnsBean;
 import com.arth.bean.UserExamBean;
+import com.arth.dao.AssignExamDao;
 import com.arth.dao.ExamDao;
 import com.arth.dao.ExamQuestionDao;
 import com.arth.dao.QuestionDao;
@@ -28,6 +29,8 @@ public class UserExamAnsController {
 	ExamQuestionDao examquestiondao;
 	@Autowired
 	ExamDao examdao;
+	@Autowired
+	AssignExamDao assignexamdao;
 	@Autowired
 	UserExamDao userexamdao;
 	@Autowired
@@ -60,13 +63,14 @@ public class UserExamAnsController {
 				totalCorrect++;
 			}
 		}
-	
+	AssignExamBean exam=assignexamdao.getAssignExam(examId);
 		//now we need to store correct ans and marks for student 
 		//we cancreate result table with column , examid , studentid, obtainmarks,
 		System.out.println(totalCorrect);
+		int totalObtainMarks=totalCorrect*exam.getRightMark();
 		UserExamBean userExam= new UserExamBean();
 		userExam.setExamId(examId);
-		userExam.setObtainMarks(totalCorrect);
+		userExam.setObtainMarks(totalObtainMarks);
 		userExam.setSubjectId(subjectId);
 		userExam.setStudentId(studentId);
 		userexamdao.insertUserExam(userExam);

@@ -59,4 +59,10 @@ public class AssignExamDao {
 public void updateStatus(int examId,int subjectId) {
 		stmt.update("update assignexam set statusid=3 where examid=? and subjectid=?",examId,subjectId);
 	}
+public AssignExamBean getAssignExam(int examId) {
+
+	AssignExamBean exam = stmt.queryForObject("select * from assignexam where examid=?  ", new BeanPropertyRowMapper<AssignExamBean>(AssignExamBean.class), new Object[] { examId });
+
+	return exam;
+}
 }

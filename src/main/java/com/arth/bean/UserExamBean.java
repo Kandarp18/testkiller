@@ -15,11 +15,18 @@ public class UserExamBean {
 	private String userAns;
 	private String studentName;
 	private String ansStatus;
-	
+	private int rightMark;
 	private String rollNo;
 	private String className;
 	
 	
+	
+	public int getRightMark() {
+		return rightMark;
+	}
+	public void setRightMark(int rightMark) {
+		this.rightMark = rightMark;
+	}
 	public String getClassName() {
 		return className;
 	}

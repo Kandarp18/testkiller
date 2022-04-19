@@ -5,7 +5,7 @@ public class ExamBean {
   private String examName;
   private int classId;
   private String className;
-  private String resultDate;
+ 
   private int duration;
   private int statusId;
   private String statusName;
@@ -55,12 +55,7 @@ public void setClassName(String className) {
 	this.className = className;
 }
 
-public String getResultDate() {
-	return resultDate;
-}
-public void setResultDate(String resultDate) {
-	this.resultDate = resultDate;
-}
+
   
   
 }

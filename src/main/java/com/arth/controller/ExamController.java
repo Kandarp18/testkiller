@@ -142,7 +142,7 @@ boolean p=false;
 	}
 	@GetMapping("/newtest")
    public String newTest(@RequestParam("studentId") int studentId,@RequestParam("examId") int examId,@RequestParam("subjectId") int subjectId,UserExamBean userExam,Model model,HttpSession session) {
-		List <QuestionBean> q=examquestiondao.getAllQuestionByExam(subjectId);
+		List <QuestionBean> q=examquestiondao.getAllQuestionBySubject(examId, subjectId);
 		
 		assignexamdao.updateStatus(examId, subjectId);
 		examdao.updateStatus(examId,subjectId);
@@ -181,10 +181,8 @@ boolean p=false;
 }
 	@GetMapping("/examstudentreport")
 	public String examStudentResult(@RequestParam("examId") int examId,Model model,ExamBean exam) {
-		
 		model.addAttribute("result",userexamdao.viewStudentResult(examId));
 		model.addAttribute("e", examdao.getClassNameByExamId(examId));
-		
 		return "ViewStudentResult";
 }
 	

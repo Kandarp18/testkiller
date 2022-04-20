@@ -96,10 +96,10 @@ public class ExamDao {
 				new BeanPropertyRowMapper<UserExamAnsBean>(UserExamAnsBean.class), new Object[] { examId });
 		return userexamans;
 	}
-	public List<UserExamAnsBean> getUserExamById(int subjectId) {
+	public List<UserExamAnsBean> getUserExamById(int examId,int subjectId) {
 		// TODO Auto-generated method stub
-		List<UserExamAnsBean> userexamans = stmt.query("select * from userexamans where subjectid=? ", 
-				new BeanPropertyRowMapper<UserExamAnsBean>(UserExamAnsBean.class), new Object[] { subjectId });
+		List<UserExamAnsBean> userexamans = stmt.query("select * from userexamans where examid=? and subjectid=? ", 
+				new BeanPropertyRowMapper<UserExamAnsBean>(UserExamAnsBean.class), new Object[] { examId,subjectId });
 		return userexamans;
 	}
 	public ExamBean countAppearedExam(int studentId) {

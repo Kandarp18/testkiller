@@ -56,7 +56,7 @@ public class UserExamAnsController {
 	public String generateResult(@RequestParam("studentId") int studentId,@RequestParam("subjectId") int subjectId,@RequestParam("examId") int examId,HttpSession session,AssignExamBean aeb) {
 		int totalCorrect = 0;
 
-		List<UserExamAnsBean> userexamans = examdao.getUserExamById(subjectId);
+		List<UserExamAnsBean> userexamans = examdao.getUserExamById(examId,subjectId);
       System.out.println(userexamans.size());
 		for (int i = 0; i < userexamans.size(); i++) {
 			if (userexamans.get(i).getAnsStatus().equals("correct")) {

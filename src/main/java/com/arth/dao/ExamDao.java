@@ -36,8 +36,9 @@ public class ExamDao {
 	public int countExam(ExamBean exam) {
 		return stmt.queryForObject("select count(*) from exam", Integer.class);
 	}
-	public int count(int classId) {
-		return stmt.queryForObject("select count(*) from exam where statusid=2",Integer.class );
+	public List<ExamBean> count(int studentId) {
+		List<ExamBean> e=stmt.query("select * from exam where statusid=2 and classid in (select classid from assignstudent where studentid=?)",new BeanPropertyRowMapper<ExamBean>(ExamBean.class),new Object[] {studentId});
+		return e;
 	}
 
 	public int countResult(ExamBean result) {
@@ -83,8 +84,8 @@ public class ExamDao {
 
 			return exam;
 		}
-	public void updateStatus(int examId,int subjectId) {
-		stmt.update("update exam set statusid=3 where examid=? and classid in (select classid from assignsubject where subjectid=?)",examId,subjectId);
+	public void updateExamStatus(int examId) {
+		stmt.update("update exam set statusid=3 where examid=? ",examId);
 	}
 	public List<ExamBean> getAllExamByStudentId(int studentId) {
 		return stmt.query("select e.*,s.statusName from exam e,classes c,student st,status s,assignstudent a where e.classid=c.classid and a.studentid=st.studentid and e.statusid=s.statusid and s.statusid=3 and a.classid=c.classid and st.studentid=?",
@@ -102,8 +103,8 @@ public class ExamDao {
 				new BeanPropertyRowMapper<UserExamAnsBean>(UserExamAnsBean.class), new Object[] { examId,subjectId });
 		return userexamans;
 	}
-	public ExamBean countAppearedExam(int studentId) {
-		ExamBean e= stmt.queryForObject("select count(*) from exam where statusid=3 and classid in (select classid from assignstudent where studentid=?)",new BeanPropertyRowMapper<ExamBean>(ExamBean.class),new Object[] {studentId});
+	public List<ExamBean> countAppearedExam(int studentId) {
+		List<ExamBean> e= stmt.query("select * from exam where statusid=3 and classid in (select classid from assignstudent where studentid=?)",new BeanPropertyRowMapper<ExamBean>(ExamBean.class),new Object[] {studentId});
 		return e;
 	}
 	public ExamBean getClassNameByExamId(int examId) {

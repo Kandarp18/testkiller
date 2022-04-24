@@ -145,7 +145,7 @@ boolean p=false;
 		List <QuestionBean> q=examquestiondao.getAllQuestionBySubject(examId, subjectId);
 		
 		assignexamdao.updateStatus(examId, subjectId);
-		examdao.updateStatus(examId,subjectId);
+		examdao.updateExamStatus(examId);
 		StudentBean student = (StudentBean)session.getAttribute("student");
 		if(student == null) {
 			student = new StudentBean();

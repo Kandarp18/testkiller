@@ -21,6 +21,7 @@ import com.arth.dao.AssignExamDao;
 import com.arth.dao.ClassDao;
 import com.arth.dao.ExamDao;
 import com.arth.dao.StudentDao;
+import com.arth.dao.UserExamDao;
 
 @Controller
 public class StudentController {
@@ -33,20 +34,29 @@ public class StudentController {
 	@Autowired
 	AssignExamDao assignexamdao;
 	@Autowired
+	UserExamDao userexamdao;
+	@Autowired
 	ClassDao classdao;
    @Autowired
    Date date;
 	@GetMapping("/studentdashboard")
 	public String newStudent(@RequestParam("studentId") int studentId,ExamBean exam,Model model) {
 		model.addAttribute("s", studentdao.getStudentById(studentId));
-		ExamBean e=examdao.countAppearedExam(studentId);
+		int e=examdao.countAppearedExam(studentId).size();
 		model.addAttribute("count", e);
+		model.addAttribute("c",examdao.count(studentId).size());
+		 model.addAttribute("cp",userexamdao.countPassResult(studentId).size());
+	       model.addAttribute("cw",userexamdao.countFailResult(studentId).size());
 		return "StudentDashboard";
 	}
 	@PostMapping("/studentdashboard")
 	public String student(@RequestParam("studentId") int studentId,ExamBean exam,Model model) {
 		model.addAttribute("s", studentdao.getStudentById(studentId));
-		model.addAttribute("count", examdao.countAppearedExam(studentId));
+	       int e=examdao.countAppearedExam(studentId).size();
+	       model.addAttribute("ca", e);
+	       model.addAttribute("c",examdao.count(studentId).size());
+	       model.addAttribute("cp",userexamdao.countPassResult(studentId).size());
+	       model.addAttribute("cw",userexamdao.countFailResult(studentId).size());
 		return "StudentDashboard";
 	}
 	@GetMapping("/newstudent")
@@ -94,7 +104,8 @@ public class StudentController {
 		}
 
 		if (isCorrect == true) {
-			
+	
+			 
 			return "StudentDashboard";
 		}
 		else {

@@ -72,7 +72,7 @@
 														<div class="row align-items-center m-b-30">
 															<div class="col">
 																<h6 class="m-b-5 text-white">Total Appeared Exam</h6>
-																<h3 class="m-b-0 f-w-700 text-white">1</h3>
+																<h3 class="m-b-0 f-w-700 text-white">${count} </h3>
 															</div>
 															<div class="col-auto">
 																<i class="fas fa-database text-c-blue f-18"></i>
@@ -88,7 +88,7 @@
 														<div class="row align-items-center m-b-30">
 															<div class="col">
 																<h6 class="m-b-5 text-white">Total Passed Exam</h6>
-																<h3 class="m-b-0 f-w-700 text-white">1</h3>
+																<h3 class="m-b-0 f-w-700 text-white">${cp }</h3>
 															</div>
 															<div class="col-auto">
 																<i class="fas fa-database text-c-green f-18"></i>
@@ -104,7 +104,7 @@
 														<div class="row align-items-center m-b-30">
 															<div class="col">
 																<h6 class="m-b-5 text-white">Total Failed Exam</h6>
-																<h3 class="m-b-0 f-w-700 text-white">0</h3>
+																<h3 class="m-b-0 f-w-700 text-white">${cw }</h3>
 															</div>
 															<div class="col-auto">
 																<i class="fas fa-database text-c-red f-18"></i>
@@ -120,7 +120,7 @@
 														<div class="row align-items-center m-b-30">
 															<div class="col">
 																<h6 class="m-b-5 text-white">Total Active Exam</h6>
-																<h3 class="m-b-0 f-w-700 text-white">1</h3>
+																<h3 class="m-b-0 f-w-700 text-white">${c }</h3>
 															</div>
 															<div class="col-auto">
 																<i class="fas fa-database text-c-yellow f-18"></i>

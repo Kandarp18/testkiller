@@ -38,4 +38,12 @@ public class UserExamDao {
 		List<UserExamBean> result=stmt.query("select c.className,s.studentName,a.*,e.totalQuestion,u.*,e.rightMark from classes c,student s,assignstudent a,assignexam e,userexam u where e.examid=? and a.studentid=u.studentid and e.examid=u.examid and e.subjectid=u.subjectid and s.studentid=a.studentid and a.classid=c.classid",new BeanPropertyRowMapper<UserExamBean>(UserExamBean.class),new Object[] {examId});
 		return result;
 	}
+	public List<UserExamBean> countFailResult(int studentId){
+		List<UserExamBean> result=stmt.query("select * from userexam where studentid=? and obtainmarks<5",new BeanPropertyRowMapper<UserExamBean>(UserExamBean.class),new Object[] {studentId});
+		return result;
+	}
+	public List<UserExamBean> countPassResult(int studentId){
+		List<UserExamBean> result=stmt.query("select * from userexam where studentid=? and obtainmarks>=5",new BeanPropertyRowMapper<UserExamBean>(UserExamBean.class),new Object[] {studentId});
+		return result;
+	}
 }

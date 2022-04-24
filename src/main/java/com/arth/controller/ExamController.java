@@ -128,7 +128,7 @@ boolean p=false;
 		model.addAttribute("exam",examdao.getAllExam());
 		model.addAttribute("success","Exam Details Modified Successfully!");	
 		model.addAttribute("classes",classdao.getAllClassesByStatus());
-	model.addAttribute("dy",date.toLocaleString());
+	    model.addAttribute("dy",date.toLocaleString());
 		}
 		return "NewExam";
 

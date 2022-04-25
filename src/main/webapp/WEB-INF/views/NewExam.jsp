@@ -197,6 +197,7 @@
                         <label>Exam Duration for Each Subject <span class="text-danger">*</span></label>
                         <select name="duration" id="duration" class="form-control" required>
                             <option value="">Select</option>
+                             <option value="1">1 Minute</option>
                             <option value="5">5 Minute</option>
                             <option value="10">10 Minute</option>
                               <option value="15">15 Minute</option>

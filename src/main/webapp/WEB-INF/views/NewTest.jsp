@@ -119,7 +119,7 @@
                   </div>
                                 <div class="col-md-4">
                                     <div class="text-center mt-2 mb-2">
-                                        <div id="exam_timer"  data-timer=50 style="max-width:375px; width: 100%; height: 190px; margin:0 auto">
+                                        <div id="exam_timer" data-timer=60 style="max-width:375px; width: 100%; height: 190px; margin:0 auto">
                                         </div>
                                     </div>
                                     <div class="card shadow">

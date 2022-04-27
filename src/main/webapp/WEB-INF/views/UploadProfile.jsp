@@ -62,7 +62,7 @@
                                     <div class="col-md-6">!-->
                       <p style="color:green;">${success }</p>
 		          	  <div class="form-group">
-																<label>ProfilePic</label>
+																<label>Profile Photo</label>
 																
 																	<input type="file" value="${s.profilePic }" name="profilePic" required class="form-control">
 																	<span class="text-muted">Only .jpg,.jpeg,.png file allowed for upload</span>

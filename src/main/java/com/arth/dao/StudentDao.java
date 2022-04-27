@@ -14,8 +14,8 @@ public class StudentDao {
 	@Autowired
 	JdbcTemplate stmt;
 	public void addStudent(StudentBean student) {
-		stmt.update("insert into student (studentname,email,gender,dateofbirth,password,status) values (?,?,?,?,?,?) ", 
-				student.getStudentName(),student.getEmail(),student.getGender(),student.getDateOfBirth(),student.getPassword(),student.getStatus());
+		stmt.update("insert into student (studentname,email,gender,dateofbirth,password,status,profilepic) values (?,?,?,?,?,?,?) ", 
+				student.getStudentName(),student.getEmail(),student.getGender(),student.getDateOfBirth(),student.getPassword(),student.getStatus(),student.getProfilePic());
 	}
 
 	public List<StudentBean> getAllStudent() {

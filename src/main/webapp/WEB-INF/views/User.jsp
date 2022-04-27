@@ -210,7 +210,7 @@
                          </c:forEach>
                    </select>
                   </div>
-		         	
+		         	<input type="hidden" name="profilePic" value="/images/21501.jpg">
                     	<input type="hidden" name="status" value="Active">
         		</div>
         		<div class="modal-footer">

@@ -181,7 +181,7 @@
                         <input type="date" name="dateOfBirth" id="dateOfBirth" class="form-control datepicker"  required data-parsley-trigger="keyup" />
                     </div>
                     	<input type="hidden" name="status" value="Active">
-                    
+                    <input type="hidden" name="profilePic" value="/images/dummyuser.jpg">
         		</div>
         		<div class="modal-footer">
           			

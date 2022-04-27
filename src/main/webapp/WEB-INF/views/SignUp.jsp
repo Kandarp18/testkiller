@@ -51,7 +51,7 @@
                     <input type="date" name="dateOfBirth" id="dateOfBirth" class="form-control" placeholder="Date Of Birth" required>
                   </div>
                   
-                 
+                 <input type="hidden" name="profilePic" value="/images/dummyuser.jpg">
                  <input type="hidden" name="status" value="Active">
                   <div class="form-group ">
                     <label for="password" class="sr-only">Password</label>

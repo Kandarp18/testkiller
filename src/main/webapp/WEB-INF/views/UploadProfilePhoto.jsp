@@ -38,7 +38,7 @@
         			<input type="hidden" name="userId" value="${user.userId }" />
 		          	<div class="form-group">
 		          		<label>Profile Photo</label>
-		          		<input type="file" name="profilePic" value="${user.profilePic }" required class="form-control" />
+		          		<input type="file" class="form-control" name="profilePic" value="${user.profilePic }" required  />
 		          	</div>
 		          	
 		         
@@ -46,7 +46,7 @@
       
       <div class="modal-footer">
         <input type="submit" name="submit" id="submit" class="btn btn-success" value="Edit" />
-       <a href="class"> <button type="button" class="btn btn-default">Close</button></a>
+       <a href="admindashboard"> <button type="button" class="btn btn-default">Close</button></a>
       </div>
     </div>
      </div>

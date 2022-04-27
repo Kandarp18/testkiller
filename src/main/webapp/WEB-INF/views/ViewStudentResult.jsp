@@ -57,19 +57,20 @@
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table class="table table-bordered" id="studenttable" width="100%" cellspacing="0">
+                                <table class="table table-bordered" style="text-align:center;" id="studenttable" width="100%" cellspacing="0">
                                     <thead>
                                     <tr>
                                     
-                                    <td colspan="4" style="text-align:center;"><b>Exam</b>-${e.examName }</td>
+                                    <td colspan="5" style="text-align:center;"><b>Exam</b>-${e.examName }</td>
                                    
                                     </tr>
                                     <tr>
                                     
-                                    <td colspan="4" style="text-align:center;"><b>Class</b>-${e.className }</td>
+                                    <td colspan="5" style="text-align:center;"><b>Class</b>-${e.className }</td>
                                    
                                     </tr>
                                         <tr>
+                                        <th>Student Image</th>
                                             <th>Roll No</th>
                                             <th>Student Name</th>
                                             
@@ -82,6 +83,7 @@
                                     <tbody>
                                          <c:forEach items="${result }" var="r">
 	                                      <tr>
+	                                      <td><img src=${r.profilePic } style="height:40px;"></td>
 		                                      <td>${r.rollNo }</td>
 		                                      <td>${r.studentName}</td>
 		                                      
@@ -144,6 +146,28 @@
     </div>
     <jsp:include page="AllJs.jsp"></jsp:include>
     <jsp:include page="AllJs2.jsp"></jsp:include>
+<script type="text/javascript">
+			function exportPdf() {
+				const element = document.getElementById('studenttable');
+				var opt = {
+					margin : 1,
+					filename : 'Report.pdf',
+					image : {
+						type : 'jpeg',
+						quality : 3.00
+					},
+					html2canvas : {
+						scale : 1
+					},
+					jsPDF : {
+						unit : 'in',
+						format : 'letter',
+						orientation : 'landscape'
+					}
+				};
+				html2pdf().set(opt).from(element).save();
+			}
+		</script>
 
 </body>
 

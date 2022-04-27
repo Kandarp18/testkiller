@@ -40,7 +40,7 @@
 								<div class="dropdown-primary dropdown">
 									<div class="dropdown-toggle" data-toggle="dropdown"
 										aria-expanded="false">
-										<img src="jpg/dummyuser.jpg" class="img-radius"
+										<img src="${s.profilePic }" class="img-radius"
 											alt=""> <span>${s.studentName}</span> <i
 											class="feather icon-chevron-down"></i>
 									</div>
@@ -51,7 +51,9 @@
 										<li><a href="studentprofile?studentId=${s.studentId }"> <i class="feather icon-user"></i>
 												Profile
 										</a></li>
-										
+										<li><a href="uploadprofile?studentId=${s.studentId }"> <i class="feather icon-upload-cloud"></i>
+												Change Profile Photo
+										</a></li>
 										
 										<li><a href="#" data-toggle="modal" data-target="#logoutModal"> 
 										<i class="feather icon-log-out"></i> Logout

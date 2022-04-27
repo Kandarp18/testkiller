@@ -126,7 +126,9 @@
                                         <div class="card-header"><b>Student Details</b></div>
                                         <div class="card-body">
                                             <div class="row">
-                                              
+                                              <div class="col-md-4">
+                                                    <p class="text-center"><img src="${st.profilePic }" class="img-fluid img-thumbnail" width="100"></p>
+                                                </div>
                                                 <div class="col-md-8">
                                                     <b>Roll No : </b>${ast.rollNo }<br />
                                                     <b>Name : </b>${ast.studentName }<br />

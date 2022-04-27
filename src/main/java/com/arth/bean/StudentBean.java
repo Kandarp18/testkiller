@@ -11,6 +11,14 @@ private int otp;
 private String gender;
 private Date dateOfBirth;
 private String status;
+private String profilePic;
+
+public String getProfilePic() {
+	return profilePic;
+}
+public void setProfilePic(String profilePic) {
+	this.profilePic = profilePic;
+}
 public String getStatus() {
 	return status;
 }

@@ -38,7 +38,7 @@
 
                     <!-- DataTales Example -->
                     
-                    <form method="post" action="updateprofile">
+                    <form method="post" action="updateprofile" >
                         <div class="row">
                         <div class="col-md-6">
                         <span id="message"></span>
@@ -83,10 +83,12 @@
 		         <input type="date" name="dateOfBirth" id="dateOfBirth" value="${s.dateOfBirth }" class="form-control datepicker"  required data-parsley-trigger="keyup" />
 		          		
 		          	</div>
+		          	 
 		          	<div class="form-group">
                                             <label>Status</label>
                                             <input type="text" name="status" id="status" value="${s.status }" readonly class="form-control" required data-parsley-pattern="/^[a-zA-Z0-9 \s]+$/" data-parsley-maxlength="175" data-parsley-trigger="keyup" />
                                         </div>
+                                      
                                     <!--</div>
                                 </div>!-->
                             </div>

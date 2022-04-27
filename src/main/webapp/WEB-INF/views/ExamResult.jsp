@@ -75,16 +75,14 @@
 																		<table id="listResult" class="table table-striped" style="text-align:center;">
 																			<thead>
 																			<tr >
-																			<td>
-																			</td>
-																			<td style="text-align:center;">
+																			
+																			<td colspan="4" style="text-align:center;">
 																			Exam Name : ${e.examName }
 																			</td>
-																			<td>
-																			</td>
+																			
 																			</tr>
 																			<tr>
-																			<td>
+																			<td colspan="2"> 
 																			<b>Student Name</b> : ${ast.studentName }
 																			</td>
 																			
@@ -99,6 +97,7 @@
 																			 </td>
 																			</tr>
 																				<tr role="row">
+																				     <th>Image</th>
 																					<th>Subject Name</th>
 																					<th>Total Marks</th>
 																					<th>Marks Obtain</th>
@@ -110,6 +109,7 @@
 
 																				<c:forEach items="${result}" var="r">
 																					<tr >
+																					<td><img src=${r.profilePic } style="height:40px;"></td>
 																						<td>${r.subjectName}</td>
 																						
 																						<td >${r.totalQuestion}*${r.rightMark }</td>
@@ -122,7 +122,7 @@
 																				
                                                                                   <tr>
                                                                                   
-                                                                                  <td style="text-align:right;" colspan="2">TotalMarks</td>
+                                                                                  <td style="text-align:right;" colspan="3">TotalMarks</td>
                                                                                   <td>${sum.obtainMarks} Marks</td>
                                                                                   </tr>
 
@@ -196,14 +196,14 @@
 					filename : 'Report.pdf',
 					image : {
 						type : 'jpeg',
-						quality : 0.98
+						quality : 3.00
 					},
 					html2canvas : {
 						scale : 1
 					},
 					jsPDF : {
 						unit : 'in',
-						format : 'letter',
+						format : 'A3',
 						orientation : 'landscape'
 					}
 				};

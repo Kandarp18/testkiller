@@ -54,9 +54,6 @@ public class StudentDao {
 		return student;
 	}
 
-	public void updateStudent(StudentBean student) {
-		stmt.update("update student set studentname = ?,email = ?,gender = ?,dateofbirth = ?,status = ? where studentid = ?",student.getStudentName(),student.getEmail(),student.getGender(),student.getDateOfBirth(),student.getStatus(),student.getStudentId());
-	}
 	public StudentBean getStudent(String email,int studentId) {
 		StudentBean dbStudent = null;
 
@@ -67,5 +64,8 @@ public class StudentDao {
 
 		}
 		return dbStudent;
+	}
+	public void updateStudent(StudentBean student) {
+		stmt.update("update student set studentname = ?,email = ?,gender = ?,dateofbirth = ?,status = ? where studentid = ?",student.getStudentName(),student.getEmail(),student.getGender(),student.getDateOfBirth(),student.getStatus(),student.getStudentId());
 	}
 }

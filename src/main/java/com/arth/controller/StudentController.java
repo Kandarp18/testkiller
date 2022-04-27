@@ -1,5 +1,8 @@
 package com.arth.controller;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 
@@ -13,6 +16,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.arth.bean.ExamBean;
 import com.arth.bean.RoleBean;
@@ -20,6 +24,7 @@ import com.arth.bean.StudentBean;
 import com.arth.dao.AssignExamDao;
 import com.arth.dao.ClassDao;
 import com.arth.dao.ExamDao;
+import com.arth.dao.ProfileDao;
 import com.arth.dao.StudentDao;
 import com.arth.dao.UserExamDao;
 
@@ -37,6 +42,8 @@ public class StudentController {
 	UserExamDao userexamdao;
 	@Autowired
 	ClassDao classdao;
+	@Autowired
+	ProfileDao profiledao;
    @Autowired
    Date date;
 	@GetMapping("/studentdashboard")
@@ -196,6 +203,37 @@ public class StudentController {
 		
 		return "StudentProfile";
 	}
+	@PostMapping("/saveprofile")
+	public String saveProfile(@RequestParam("profilePic") MultipartFile file, HttpSession session,Model model) {
+		StudentBean student = (StudentBean) session.getAttribute("s");
+		int studentId = student.getStudentId();
+		
+		String path = "C:\\Project\\testkiller\\src\\main\\resources\\static\\images\\";
+		byte image[] = new byte[(int) file.getSize()];
+		try {
+
+			File userFolder = new File(path, studentId + "");// 10 20 30
+			userFolder.mkdir(); // create folder if not present else it will not create
+			
+			profiledao.updateProfile("/images//"+ file.getOriginalFilename(), studentId);
+			// images/1/a.jpg
+			
+			image = file.getBytes();
+			File f = new File(userFolder, file.getOriginalFilename());
+			f.createNewFile();
+			FileOutputStream fos = new FileOutputStream(f);
+			fos.write(image);
+			fos.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		
+			
+			model.addAttribute("s", studentdao.getStudentById(studentId));
+			model.addAttribute("success","Profile Photo Updated Successfully!");
+		return "UploadProfile";
+	}
 	@PostMapping("/updateprofile")
 	public String updateProfile(@RequestParam("studentId") int studentId,StudentBean student,Model model) {
 		studentdao.updateStudent(student);
@@ -204,6 +242,11 @@ public class StudentController {
 			model.addAttribute("s", studentdao.getStudentById(studentId));
 			
 		return "StudentProfile";
+	}
+	@GetMapping("/uploadprofile")
+	public String uploadProfile(@RequestParam("studentId") int studentId,Model model) {
+		model.addAttribute("s", studentdao.getStudentById(studentId));
+		return "UploadProfile";
 	}
 	@GetMapping("/listexam")
 	public String listExam(@RequestParam("studentId") int studentId,Model model) {

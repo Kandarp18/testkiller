@@ -59,7 +59,7 @@
                          </c:forEach>
                    </select>
                   </div>
-                  <input type="hidden" name="profilePic" value="/images/21501.jpg">
+                  <input type="hidden" name="profilePic" value="/images/dummyuser.jpg">
                  
                   <div class="form-group mb-4">
                     <label for="password" class="sr-only">Password</label>

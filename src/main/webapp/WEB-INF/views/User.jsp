@@ -58,7 +58,7 @@
                                 <table class="table table-bordered" id="usertable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                          
+                                          <th>Image</th>
                                             <th>User Name</th>
                                            
                                             <th>User Email</th>
@@ -73,7 +73,7 @@
                                     <tbody>
                                         <c:forEach items="${users }" var="u">
 	                                      <tr>
-		                                      
+		                                      <td><img src=${u.profilePic } style="height:50px;"></td>
 		                                      <td>${u.userName}</td>
 		                                      <td>${u.email }</td>
 		                                      <td>${u.contactNo }</td>
@@ -86,10 +86,7 @@
                                     <button type="button" name="editclass" class="btn btn-warning btn-circle btn-sm edit_button" >
 			                                 <i class="fas fa-edit"></i>
 			                        </button> </a> &nbsp;
-		                                      <a  href="deleteuser/${u.userId}">
-		                                      <button type="button" onclick="return confirm('Are you sure you want to delete this item?');" class="btn btn-danger btn-circle btn-sm delete_button" >
-		                                      <i class="fas fa-times"></i>
-		                                      </button></a> 
+		                                      
 		                                       </td>
 	                                           </tr>
                                       </c:forEach>
@@ -210,7 +207,7 @@
                          </c:forEach>
                    </select>
                   </div>
-		         	<input type="hidden" name="profilePic" value="/images/21501.jpg">
+		         	<input type="hidden" name="profilePic" value="/images/dummyuser.jpg">
                     	<input type="hidden" name="status" value="Active">
         		</div>
         		<div class="modal-footer">

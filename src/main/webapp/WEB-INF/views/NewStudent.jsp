@@ -60,7 +60,7 @@
                                 <table class="table table-bordered" id="studenttable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            
+                                            <th>Image</th>
                                             <th>Student Name</th>
                                             <th>Student Email</th>
                                             <th>Gender</th>
@@ -74,7 +74,7 @@
                                     <tbody>
                                          <c:forEach items="${student }" var="s">
 	                                      <tr>
-		                                      
+		                                      <td><img src=${s.profilePic } style="height:50px;"></td>
 		                                      <td>${s.studentName}</td>
 		                                      <td>${s.email }</td>
 		                                      <td>${s.gender }</td>

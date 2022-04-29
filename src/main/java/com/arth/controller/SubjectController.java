@@ -29,8 +29,7 @@ public class SubjectController {
 	SubjectDao subjectdao;
 	@Autowired
 	ClassDao classdao;
-	@Autowired
-	Date date;
+	
 	@Autowired
 	 AssignSubjectDao assignsubjectdao;
 	
@@ -38,10 +37,10 @@ public class SubjectController {
 	@SuppressWarnings("deprecation")
 	@GetMapping("/subject")
 	public String newSubject(Model model) {
-		
+		Date date=new Date();
 		model.addAttribute("subject", subjectdao.getAllSubject());
 	
-	 model.addAttribute("dy",date.toLocaleString());
+	    model.addAttribute("dy",date.toLocaleString());
 	
 		return "NewSubject";
 	}
@@ -49,6 +48,7 @@ public class SubjectController {
 	@PostMapping("/newsubject")
 	public String newSubject(SubjectBean subject,Model model) {
 		boolean p=false;
+		Date date=new Date();
 	   SubjectBean dbSubject=subjectdao.getSubjectByName(subject.getSubjectName());
 		if(dbSubject!=null) {
 		if((subject.getSubjectName()).equalsIgnoreCase(dbSubject.getSubjectName())==true){
@@ -57,10 +57,12 @@ public class SubjectController {
 		}
 		}
 		if(p==true) {
+			
 			model.addAttribute("error","This Subject Name Already Exists!");
 			model.addAttribute("subject", subjectdao.getAllSubject());
 			model.addAttribute("dy",date.toLocaleString());
 		}else {
+			
 			model.addAttribute("dy",date.toLocaleString());
 			subjectdao.insertSubject(subject);
 			model.addAttribute("success","Subject Added Successfully!");

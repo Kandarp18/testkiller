@@ -50,7 +50,7 @@
 
         <!--Grid column-->
         <div class="col-md-9 mb-md-0 mb-5">
-            <form  action="contactus" method="post">
+            <form  action="contactus" method="post" onsubmit="return alert('Your query was submitted successfully!');" >
 
                 <!--Grid row-->
                 <div class="row">
@@ -116,7 +116,7 @@
         <div class="col-md-3 text-center">
             <ul class="list-unstyled mb-0">
                 <li><i class="fas fa-map-marker-alt fa-2x"></i>
-                    <p>Ahmedabad, Gujarat</p>
+                    <p>Arth Infosoft pvt. ltd.,Ahmedabad-60,Gujarat</p>
                 </li>
 
                 <li><i class="fas fa-phone mt-4 fa-2x"></i>

@@ -62,7 +62,11 @@
                     <i class="fas fa-users-cog"></i>
                     <span>User</span></a>
             </li>
-            
+            <li class="nav-item">
+                <a class="nav-link" href="queries">
+                    <i class="fas fa-phone"></i>
+                    <span>Queries</span></a>
+            </li>
             <!-- Sidebar Toggler (Sidebar) -->
             <div class="text-center d-none d-md-inline">
                 <button class="rounded-circle border-0" id="sidebarToggle" ></button>

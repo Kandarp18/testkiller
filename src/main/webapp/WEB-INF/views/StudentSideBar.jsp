@@ -35,13 +35,18 @@
 
 				</ul>
 
+	<ul class="pcoded-item pcoded-left-item" item-border="true"
+					item-border-style="solid" subitem-border="false">
 
 
+<li class=" " >
+					<a href="contactus?studentId=${s.studentId }" class="waves-effect waves-dark"> <span class="pcoded-micon">
+								<i class="fas fa-phone "></i>
+						</span> <span class="pcoded-mtext">Contact us</span></a>
 
 
-
-
-
+</li>
+</ul>
 
 
 

@@ -18,11 +18,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.arth.bean.ContactUsBean;
 import com.arth.bean.ExamBean;
 import com.arth.bean.RoleBean;
 import com.arth.bean.StudentBean;
 import com.arth.dao.AssignExamDao;
 import com.arth.dao.ClassDao;
+import com.arth.dao.ContactUsDao;
 import com.arth.dao.ExamDao;
 import com.arth.dao.ProfileDao;
 import com.arth.dao.StudentDao;
@@ -44,6 +46,8 @@ public class StudentController {
 	ClassDao classdao;
 	@Autowired
 	ProfileDao profiledao;
+	@Autowired
+	ContactUsDao contactusdao;
    @Autowired
    Date date;
 	@GetMapping("/studentdashboard")
@@ -275,5 +279,15 @@ public class StudentController {
 		model.addAttribute("exam",assignexamdao.getAllExamByStudent(examId));
 		model.addAttribute("s", studentdao.getStudentById(studentId));
 		return "ListExamSubjectResult";
+	}
+	@GetMapping("/contactus")
+	public String contactUs(@RequestParam("studentId") int studentId,ContactUsBean cub,Model model){
+		model.addAttribute("s",studentdao.getStudentById(studentId));
+		return "ContactUs";
+	}
+	@PostMapping("/contactus")
+	public String allQuery(ContactUsBean cub,Model model,HttpSession session) { 
+		contactusdao.insertQuery(cub);
+		return "ContactUs";
 	}
 }

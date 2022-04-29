@@ -23,6 +23,7 @@ import com.arth.bean.StudentBean;
 import com.arth.bean.SubjectBean;
 import com.arth.bean.UserBean;
 import com.arth.dao.ClassDao;
+import com.arth.dao.ContactUsDao;
 import com.arth.dao.ExamDao;
 import com.arth.dao.ProfileDao;
 import com.arth.dao.RoleDao;
@@ -47,7 +48,8 @@ public class AdminController {
     UserDao userdao;
 	@Autowired
 	ProfileDao profiledao;
-	
+	@Autowired
+	ContactUsDao contactusdao;
 
 	@GetMapping("/admindashboard")
 	public String adminDashboard(ClassBean classes,Model model,SubjectBean subject,StudentBean student,ExamBean exam) {
@@ -111,6 +113,11 @@ public class AdminController {
 		model.addAttribute("user", userdao.getUserById(userId));  
 		model.addAttribute("success","Profile Photo Updated Successfully!");
 		return "UploadProfilePhoto";
+	}
+	@GetMapping("/queries")
+	public String listAllQuery(Model model) {
+		model.addAttribute("query",contactusdao.getAllQuery());
+		return "Query";
 	}
   	}
 	

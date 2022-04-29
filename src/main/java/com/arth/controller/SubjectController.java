@@ -89,7 +89,7 @@ public class SubjectController {
 	@PostMapping("/updatesubject")
 	public String updateSubjectById(@RequestParam("subjectId") int subjectId,SubjectBean subject,Model model) {
 		boolean p=false;
-		
+		Date date=new Date();
 		   SubjectBean dbSubject=subjectdao.getAllById(subject.getSubjectName(),subject.getStatus());
 		   if(dbSubject!=null) {
 				if((subject.getSubjectName()).equalsIgnoreCase(dbSubject.getSubjectName())&&(subject.getStatus().equals(dbSubject.getStatus()))){
